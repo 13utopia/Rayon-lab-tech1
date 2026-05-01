@@ -37,6 +37,44 @@ const featureCards = [
   },
 ];
 
+const showcaseCards = [
+  {
+    title: 'Sentinel Fume Hoods',
+    description: 'Variable air volume (VAV) containment for high-toxicity environments.',
+    image:
+      'https://images.unsplash.com/photo-1581092918364-26e7d222d6f2?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Monolith Workstations',
+    description: 'Heavy-duty, vibration-isolated benches for precision instrumentation.',
+    image:
+      'https://images.unsplash.com/photo-1573497163129-6d6f7fab817f?auto=format&fit=crop&w=1200&q=80',
+  },
+  {
+    title: 'Secure Storage Vaults',
+    description: 'Corrosive and flammable material storage with passive venting.',
+    image:
+      'https://images.unsplash.com/photo-1581093448791-7a9c6dd68f3e?auto=format&fit=crop&w=1200&q=80',
+  },
+];
+
+const showcaseLabels = ['CONSECTE', 'IMMUNOLOGY', 'EQUIPMENT'];
+
+const whyChooseUsCards = [
+  'Precision Manufacturing',
+  'Chemical & Heat Resistant Materials',
+  'Custom Layout Planning',
+  'On-Time Delivery & Installation',
+  'Long-Term Durability',
+];
+
+const whyChooseUsPoints = [
+  'Access Expert Advice For A Thriving Life',
+  'Benefits Of Health Conscious Living',
+  'Benefits Of Proactive Health Management',
+  'Countless Benefits Of Prioritizing Health',
+];
+
 function FeatureIcon({ type }) {
   switch (type) {
     case 'microscope':
@@ -120,7 +158,10 @@ function App() {
         </div>
       </header>
 
-      <section className="feature-grid" aria-label="Feature highlights">
+     
+    
+
+      <section className="feature-grid" aria-label="Product advantages">
         {featureCards.map(({ title, description, icon }) => (
           <article className="feature-card" key={title}>
             <div className="card-top">
@@ -139,6 +180,132 @@ function App() {
             </button>
           </article>
         ))}
+      </section>
+
+      <section className="showcase-section" aria-label="Laboratory showcase">
+        <div className="showcase-header">
+          <div className="showcase-copy">
+            <h2>Laboratory Infrastructure Solutions</h2>
+            <p>Modular systems engineered for adaptability and stringent safety protocols.</p>
+          </div>
+          <div className="showcase-controls" aria-label="Showcase navigation">
+            <button type="button" className="showcase-arrow" aria-label="Previous showcase">
+              ←
+            </button>
+            <button type="button" className="showcase-arrow" aria-label="Next showcase">
+              →
+            </button>
+          </div>
+        </div>
+
+        <div className="showcase-grid">
+          {showcaseCards.map(({ title, description, image }) => (
+            <article className="showcase-card" key={title}>
+              <div className="showcase-media" style={{ backgroundImage: `url(${image})` }} />
+              <div className="showcase-meta">
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="showcase-indicator" aria-hidden="true">
+          <span className="showcase-dot active" />
+          <span className="showcase-dot" />
+          <span className="showcase-dot" />
+        </div>
+
+        <div className="showcase-tagline">
+          {showcaseLabels.map((label, index) => (
+            <React.Fragment key={label}>
+              <span>{label}</span>
+              {index < showcaseLabels.length - 1 ? <span className="tagline-separator">+</span> : null}
+            </React.Fragment>
+          ))}
+        </div>
+      </section>
+
+      <section className="hero-section" aria-label="Laboratory hero">
+        <div className="hero-watermark">RAYON</div>
+        <div className="hero-content">
+          <h2 className="hero-heading">
+            Manufacturer Of Premium Laboratory Furniture & Equipment In Ahmedabad For Your Lab Needs
+          </h2>
+          <p className="hero-description">
+            Trusted by institutions and industries, Rayon Lab Tech delivers reliable, durable, and fully customized laboratory solutions built to perform in demanding environments.
+          </p>
+          <div className="hero-actions">
+            <a className="hero-btn hero-btn-primary" href="#products">
+              Our Products
+              <span aria-hidden="true">→</span>
+            </a>
+            <a className="hero-btn hero-btn-secondary" href="#services">
+              Our Services
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="hero-visual">
+          <div className="hero-image-frame">
+            <div
+              className="hero-image"
+              style={{
+                backgroundImage:
+                  'url(https://images.unsplash.com/photo-1581092918364-26e7d222d6f2?auto=format&fit=crop&w=1200&q=80)',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="why-choose-us-section">
+        <div className="why-container">
+          {/* Left: Cards */}
+          <div className="why-left-cards">
+            {whyChooseUsCards.map((card, index) => (
+              <div key={index} className="why-card">
+                <div className="why-card-icon">→</div>
+                <div className="why-card-text">{card}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Center: Circular Image */}
+          <div className="why-center-image">
+            <div className="why-image-frame">
+              <div
+                className="why-image"
+                style={{
+                  backgroundImage:
+                    'url(https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80)',
+                }}
+              />
+            </div>
+            <div className="why-dots">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          </div>
+
+          {/* Right: Checklist */}
+          <div className="why-right-content">
+            <h3 className="why-heading">Well Equipped Laboratory Solutions</h3>
+            <p className="why-description">
+              Everything you need to excel in your laboratory environment
+            </p>
+            <ul className="why-checklist">
+              {whyChooseUsPoints.map((point, index) => (
+                <li key={index} className="why-check-item">
+                  <span className="checkmark">✓</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   );
