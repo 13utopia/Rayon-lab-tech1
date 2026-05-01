@@ -133,8 +133,8 @@ function App() {
             <p className="card-copy">{description}</p>
             <button className="card-action" type="button" aria-label={`Explore ${title}`}>
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M5 8H11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-                <path d="M9 5L12 8L9 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M6 10.5L10.5 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                <path d="M6 6H10.5V10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </article>
