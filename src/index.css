@@ -187,12 +187,12 @@ body {
 
 .feature-card {
   position: relative;
-  min-height: 220px;
-  padding: 24px;
+  min-height: 280px;
+  padding: 32px 24px 40px 24px;
   background: var(--surface);
-  border-radius: 28px;
-  border: 1px solid rgba(13, 33, 73, 0.08);
-  box-shadow: 0 18px 32px rgba(13, 33, 73, 0.08);
+  border-radius: 20px;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 10px 30px rgba(13, 33, 73, 0.05);
   display: flex;
   flex-direction: column;
 }
@@ -454,66 +454,98 @@ body {
 }
 
 .icon-circle {
-  width: 56px;
-  height: 56px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #0f2b80 0%, #1f4ccc 100%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: transparent;
   display: grid;
   place-items: center;
-  box-shadow: 0 20px 40px rgba(15, 47, 117, 0.12);
 }
 
 .icon-circle svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
 }
 
 .feature-card h3 {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--accent);
-  line-height: 1.25;
+  color: #111c38;
+  line-height: 1.3;
 }
 
 .card-divider {
-  margin: 14px 0 12px;
+  margin: 20px 0 16px;
   width: 100%;
   height: 1px;
-  background: rgba(13, 33, 73, 0.12);
+  background: rgba(11, 22, 48, 0.08);
 }
 
 .card-copy {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.75;
+  color: #5f6f8e;
+  font-size: 0.75rem;
+  line-height: 1.6;
   flex: 1;
 }
 
-.card-action {
+.card-btn-wrapper {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
-  width: 40px;
-  height: 40px;
+  bottom: 0;
+  right: 0;
+  background: var(--page-bg);
+  padding: 12px 0 0 12px;
+  border-top-left-radius: 20px;
+}
+
+.card-btn-wrapper::before,
+.card-btn-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.card-btn-wrapper::before {
+  top: -20px;
+  right: 0;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 10px 0 0 var(--page-bg);
+}
+
+.card-btn-wrapper::after {
+  bottom: 0;
+  left: -20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 0 0 0 var(--page-bg);
+}
+
+.card-action {
+  width: 36px;
+  height: 36px;
   border: none;
-  background: #eef3ff;
+  background: #ffffff;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 12px 24px rgba(15, 47, 117, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(13, 33, 73, 0.08);
   cursor: pointer;
+  color: #111c38;
+  transition: transform 0.3s ease;
 }
 
 .card-action svg {
-  width: 18px;
-  height: 18px;
-  color: var(--accent);
+  width: 16px;
+  height: 16px;
 }
 
-.card-action:hover {
-  transform: translateY(-1px);
+.feature-card:hover .card-action {
+  transform: rotate(45deg);
 }
 
 /* Why Choose Us Section */
