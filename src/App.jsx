@@ -2,9 +2,9 @@ import React from 'react';
 import './why-choose-us.css';
 import './stats-row.css';
 import scientistImage from './assets/scientist.png';
-import serve1Img from './assets/serve-3.png';
-import serve2Img from './assets/serve-2.png';
-import serve3Img from './assets/serve-1.png';
+import serveNew1 from './assets/serve-new-1.png';
+import serveNew2 from './assets/serve-new-2.png';
+import serveNew3 from './assets/serve-new-3.png';
 import icon1 from './assets/icon-1.png';
 import icon2 from './assets/icon-2.png';
 import icon3 from './assets/icon-3.png';
@@ -108,7 +108,7 @@ const serveCards = [
       'We study your processes, equipment flow, and safety needs to deliver a workspace that performs seamlessly.'
     ],
     icon: 'analysis',
-    image: serve1Img
+    image: serveNew1
   },
   {
     title: 'Design & Planning',
@@ -118,7 +118,7 @@ const serveCards = [
       'Our experts plan smart lab spaces and select suitable materials, delivering safety, functionality, and long-term scalability.'
     ],
     icon: 'design',
-    image: serve2Img
+    image: serveNew2
   },
   {
     title: 'Manufacturing & Installation',
@@ -128,7 +128,7 @@ const serveCards = [
       'We build high-accuracy components and manage smooth on-site setup while maintaining top quality standards.'
     ],
     icon: 'manufacturing',
-    image: serve3Img
+    image: serveNew3
   }
 ];
 
@@ -486,6 +486,126 @@ function App() {
           <div className="fact-line"></div>
           <span>FUN AND FACTS</span>
           <div className="fact-line"></div>
+        </div>
+      </section>
+
+      <section className="consultation-section" aria-label="Get Consultation">
+        <div className="consultation-container">
+          <div className="consultation-image-box">
+            <img src={scientistImage} alt="Scientist performing laboratory research" />
+          </div>
+          
+          <div className="consultation-form-card">
+            <div className="consult-hex-overlay">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 0 L186.6 50 L186.6 150 L100 200 L13.4 150 L13.4 50 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
+                <path d="M186.6 50 L273.2 100 L273.2 200 L186.6 250 L100 200 L100 100 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
+                <path d="M13.4 50 L100 100 L100 200 L13.4 150 L-73.2 100 L-73.2 0 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
+                <path d="M100 -100 L186.6 -50 L186.6 50 L100 100 L13.4 50 L13.4 -50 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
+              </svg>
+            </div>
+
+            <div className="consult-content">
+              <div className="consult-badge">CONTACT US</div>
+              <h2 className="consult-title">Let's Design Your Laboratory Setup</h2>
+              
+              <form className="consult-grid-form" onSubmit={(e) => e.preventDefault()}>
+                <div className="consult-row">
+                  <div className="consult-field">
+                    <select className="consult-input" defaultValue="">
+                      <option value="" disabled>Choose a Service</option>
+                      <option value="planning">Lab Planning</option>
+                      <option value="furniture">Lab Furniture</option>
+                      <option value="exhaust">Exhaust System</option>
+                    </select>
+                  </div>
+                  <div className="consult-field">
+                    <select className="consult-input" defaultValue="">
+                      <option value="" disabled>Type of Clean</option>
+                      <option value="class100">Class 100</option>
+                      <option value="class1000">Class 1000</option>
+                      <option value="class10000">Class 10000</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="consult-row">
+                  <div className="consult-field">
+                    <input type="text" className="consult-input" placeholder="Total Floor Area (sq ft)" />
+                  </div>
+                  <div className="consult-field">
+                    <input type="text" className="consult-input" placeholder="Your Name" />
+                  </div>
+                </div>
+
+                <div className="consult-row full">
+                  <div className="consult-field">
+                    <input type="email" className="consult-input" placeholder="Email Address" />
+                  </div>
+                </div>
+
+                <p className="consult-disclaimer">
+                  Share your requirements and our experts will guide you with the right layout, products, and cost estimation.
+                </p>
+
+                <div className="consult-submit-wrap">
+                  <div className="consult-btn-pill">
+                    <button type="submit" className="consult-main-btn">
+                      Get Consultation
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="serve-section-final" aria-label="What We Serve">
+        <div className="serve-header-final">
+          <h2 className="serve-heading-final">What We Serve</h2>
+          <p className="serve-subheading-final">
+            Precision-engineered components built to withstand rigorous scientific environments.
+          </p>
+        </div>
+
+        <div className="serve-grid-final">
+          {serveCards.map((card, index) => (
+            <article className="serve-card-final" key={index}>
+              <div className="serve-card-bg-icon">
+                <ServeIcon type={card.icon} />
+              </div>
+              
+              <div className="serve-card-header">
+                <div className="serve-card-main-icon">
+                  <ServeIcon type={card.icon} />
+                </div>
+                <h3 className="serve-card-title-final">{card.title}</h3>
+              </div>
+
+              <div className="serve-card-body-final">
+                {card.texts.map((text, tIndex) => (
+                  <p key={tIndex} className="serve-card-text-final">{text}</p>
+                ))}
+              </div>
+
+              <div className="serve-card-image-final-wrap">
+                <div className="serve-plus-hexagon-outer">
+                  <div className="serve-plus-hexagon-inner">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </div>
+                </div>
+                <img src={card.image} alt={card.title} className="serve-card-image-final" />
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
