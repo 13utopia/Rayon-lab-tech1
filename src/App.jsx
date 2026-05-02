@@ -1,4 +1,6 @@
 import React from 'react';
+import './why-choose-us.css';
+import './stats-row.css';
 import scientistImage from './assets/scientist.png';
 import serve1Img from './assets/serve-3.png';
 import serve2Img from './assets/serve-2.png';
@@ -7,12 +9,15 @@ import icon1 from './assets/icon-1.png';
 import icon2 from './assets/icon-2.png';
 import icon3 from './assets/icon-3.png';
 import icon4 from './assets/icon-4.png';
+import blog1 from './assets/blog-1.png';
+import blog2 from './assets/blog-2.png';
+import blog3 from './assets/blog-3.png';
 
 function HeaderLogo() {
   return (
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="header-logo-svg">
-      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="#0b1630" strokeWidth="4" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10"/>
-      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="#0b1630" strokeWidth="4" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100"/>
+      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="#0b1630" strokeWidth="4" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10" />
+      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="#0b1630" strokeWidth="4" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100" />
       <g transform="rotate(-15, 50, 50)">
         <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="#ffffff" stroke="#0b1630" strokeWidth="4" strokeLinejoin="round" />
         <path d="M38 36 L62 36" stroke="#0b1630" strokeWidth="4" strokeLinecap="round" />
@@ -30,22 +35,22 @@ const featureCards = [
   {
     title: 'Advanced Engineering',
     description: 'Built with precision materials for long-term durability and chemical resistance.',
-    icon: icon1,
+    icon: 'microscope',
   },
   {
     title: 'Modular Flexibility',
     description: 'Custom-designed lab setups tailored to your workflow and space requirements.',
-    icon: icon2,
+    icon: 'modular',
   },
   {
     title: 'Quality Assurance',
     description: 'Every unit is tested to meet safety, performance, and industry standards.',
-    icon: icon3,
+    icon: 'shield',
   },
   {
     title: 'End-to-End Solutions',
     description: 'From planning to installation — complete laboratory setup under one roof.',
-    icon: icon4,
+    icon: 'flask',
   },
 ];
 
@@ -238,8 +243,8 @@ function UserIcon() {
 function FooterLogo() {
   return (
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="nf-logo-svg">
-      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10"/>
-      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100"/>
+      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10" />
+      <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100" />
       <g transform="rotate(-15, 50, 50)">
         <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="#ffffff" />
         <path d="M38 36 L62 36" stroke="#ffffff" strokeWidth="5" strokeLinecap="round" />
@@ -277,15 +282,15 @@ function App() {
         <div className="actions">
           <div className="phone-wrapper">
             <div className="circle-icon" aria-label="Phone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
             </div>
             <span className="phone-number">+1(212)-255-511</span>
           </div>
-          
+
           <div className="circle-icon search-icon" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </div>
-          
+
           <a className="appt-btn" href="#">
             Appointment
             <span className="arrow" aria-hidden="true">→</span>
@@ -299,7 +304,7 @@ function App() {
           <article className="feature-card" key={title}>
             <div className="card-top">
               <div className="icon-circle">
-                <img src={icon} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <FeatureIcon type={icon} />
               </div>
               <h3>{title}</h3>
             </div>
@@ -347,13 +352,19 @@ function App() {
           <span className="showcase-dot" />
         </div>
 
-        <div className="showcase-tagline">
-          {showcaseLabels.map((label, index) => (
-            <React.Fragment key={label}>
-              <span>{label}</span>
-              {index < showcaseLabels.length - 1 ? <span className="tagline-separator">+</span> : null}
-            </React.Fragment>
-          ))}
+        <div className="showcase-marquee-wrapper">
+          <div className="showcase-marquee-content">
+            {[...Array(4)].map((_, i) => (
+              <React.Fragment key={i}>
+                {showcaseLabels.map((label) => (
+                  <React.Fragment key={`${i}-${label}`}>
+                    <span className="marquee-text">{label}</span>
+                    <span className="marquee-plus">+</span>
+                  </React.Fragment>
+                ))}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -477,8 +488,8 @@ function App() {
           <div className="fact-line"></div>
         </div>
       </section>
-      <section className="consultation-section">
-        {/* Stats Row */}
+
+      <section className="stats-section" aria-label="Key Statistics">
         <div className="stats-row">
           {statsData.map((stat, index) => (
             <div key={index} className="stat-item">
@@ -490,137 +501,20 @@ function App() {
             </div>
           ))}
         </div>
-
-        {/* Form Area */}
-        <div className="consultation-container">
-          <div className="consultation-image-wrapper">
-            <div
-              className="consultation-image"
-              style={{
-                backgroundImage: `url(${scientistImage})`,
-              }}
-            />
-          </div>
-
-          <div className="consultation-form-card">
-            <div className="form-card-bg-pattern"></div>
-            <div className="form-card-content">
-              <div className="form-badge">CONTACT US</div>
-              <h2 className="form-heading">Let's Design Your Laboratory Setup</h2>
-
-              <form className="consultation-form">
-                <div className="form-row">
-                  <div className="select-wrapper">
-                    <select defaultValue="" required>
-                      <option value="" disabled hidden>Choose a Service</option>
-                      <option value="fume-hood">Fume Hood</option>
-                      <option value="workbench">Workbench</option>
-                      <option value="storage">Storage Cabinets</option>
-                    </select>
-                    <span className="select-arrow">▼</span>
-                  </div>
-                  <div className="select-wrapper">
-                    <select defaultValue="" required>
-                      <option value="" disabled hidden>Type of Clean</option>
-                      <option value="iso-5">ISO 5</option>
-                      <option value="iso-7">ISO 7</option>
-                      <option value="general">General Lab</option>
-                    </select>
-                    <span className="select-arrow">▼</span>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="select-wrapper">
-                    <select defaultValue="" required>
-                      <option value="" disabled hidden>Total Floor Area (sq ft)</option>
-                      <option value="small">&lt; 500 sq ft</option>
-                      <option value="medium">500 - 2000 sq ft</option>
-                      <option value="large">&gt; 2000 sq ft</option>
-                    </select>
-                    <span className="select-arrow">▼</span>
-                  </div>
-                  <div className="input-wrapper">
-                    <input type="text" placeholder="Your Name" required />
-                  </div>
-                </div>
-
-                <div className="form-row form-row-bottom">
-                  <div className="input-wrapper">
-                    <input type="email" placeholder="Email Address" required />
-                  </div>
-                  <div className="form-helper-text">
-                    <i>Share your requirements and our experts will guide you with the right layout, products, and cost estimation.</i>
-                  </div>
-                </div>
-
-                <div className="form-submit-wrapper">
-                  <button type="submit" className="form-submit-btn">
-                    Get Consultation
-                    <span className="submit-arrow">→</span>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="serve-section" aria-label="What We Serve">
-        <div className="serve-header">
-          <h2 className="serve-heading">What We Serve</h2>
-          <p className="serve-subheading">
-            Precision-engineered components built to withstand rigorous scientific environments.
-          </p>
-        </div>
-
-        <div className="serve-grid">
-          {serveCards.map((card, index) => (
-            <article className="serve-card" key={index}>
-              <div className="serve-card-icon-main">
-                <ServeIcon type={card.icon} />
-              </div>
-              <div className="serve-card-icon-watermark">
-                <ServeIcon type={card.icon} />
-              </div>
-
-              <h3 className="serve-card-title">{card.title}</h3>
-
-              <div className="serve-card-texts">
-                {card.texts.map((text, i) => (
-                  <p key={i}>{text}</p>
-                ))}
-              </div>
-
-              <div className="serve-card-image-wrap">
-                {index === 0 && (
-                  <div className="serve-hexagon">
-                    <span className="hexagon-plus">+</span>
-                  </div>
-                )}
-                <div
-                  className="serve-card-image"
-                  style={{ backgroundImage: `url(${card.image})` }}
-                />
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="serve-slider-dots">
-          <span className="serve-dot active"></span>
-          <span className="serve-dot"></span>
-        </div>
       </section>
 
       <section className="client-section" aria-label="Our Clients">
         <div className="client-bg-watermark">
-          <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(200, 200) rotate(15) translate(-200, -200)">
-              <path d="M180 80h40v60l60 140c5 15-5 30-20 30H140c-15 0-25-15-20-30l60-140V80z" stroke="currentColor" strokeWidth="8" strokeLinejoin="round" />
-              <path d="M160 80h80" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
-              <path d="M145 250h110" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10" />
+            <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100" />
+            <g transform="rotate(-15, 50, 50)">
+              <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+              <path d="M38 36 L62 36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </g>
-            <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(-30 200 200)" stroke="currentColor" strokeWidth="4" />
-            <ellipse cx="200" cy="200" rx="160" ry="60" transform="rotate(30 200 200)" stroke="currentColor" strokeWidth="4" />
+            <circle cx="48" cy="24" r="4" fill="currentColor" />
+            <circle cx="60" cy="16" r="2.5" fill="currentColor" />
+            <circle cx="44" cy="12" r="1.5" fill="currentColor" />
           </svg>
         </div>
 
@@ -769,21 +663,21 @@ function App() {
           <h2>Our Blogs</h2>
           <p>Precision-engineered components built to withstand rigorous scientific environments.</p>
         </div>
-        
+
         <div className="blog-container">
           {/* Left Large Card */}
           <div className="blog-card-large">
-            <div className="blog-card-large-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80)` }}></div>
+            <div className="blog-card-large-image" style={{ backgroundImage: `url(${scientistImage})` }}></div>
             <div className="blog-card-large-content">
               <div className="blog-meta">
                 <span className="blog-date">4 NOV, 2024</span>
                 <span className="blog-divider">/</span>
                 <span className="blog-category">CHEMISTRY</span>
               </div>
-              <h3 className="blog-title-large">Hospital Labs Focused On<br/>Patients Begin Here.</h3>
+              <h3 className="blog-title-large">Hospital Labs Focused On<br />Patients Begin Here.</h3>
               <div className="blog-content-divider"></div>
-              <p className="blog-excerpt">Most laboratory is a facility that provides controlled<br/>conditions in which...</p>
-              
+              <p className="blog-excerpt">Most laboratory is a facility that provides controlled<br />conditions in which...</p>
+
               <div className="blog-read-more-wrapper">
                 <a href="#" className="blog-read-more">
                   Read More <span>→</span>
@@ -795,46 +689,47 @@ function App() {
           {/* Right Small Cards List */}
           <div className="blog-list">
             <div className="blog-card-small">
-              <div className="blog-card-small-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=300&q=80)` }}></div>
+              <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog1})` }}></div>
               <div className="blog-card-small-content">
                 <div className="blog-meta-small">
                   <span><CalendarIcon /> NOVEMBER 04, 2024</span>
                   <span><UserIcon /> BY XLEBPBM</span>
                 </div>
-                <h4 className="blog-title-small">Hospital Labs Focused On<br/>Patients Begin Here.</h4>
-              </div>
-            </div>
-            <div className="blog-list-divider"></div>
-            
-            <div className="blog-card-small">
-              <div className="blog-card-small-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=300&q=80)` }}></div>
-              <div className="blog-card-small-content">
-                <div className="blog-meta-small">
-                  <span><CalendarIcon /> NOVEMBER 04, 2024</span>
-                  <span><UserIcon /> BY XLEBPBM</span>
-                </div>
-                <h4 className="blog-title-small">Exploring Anatomy Methods In<br/>The Lab</h4>
+                <h4 className="blog-title-small">Hospital Labs Focused On<br />Patients Begin Here.</h4>
               </div>
             </div>
             <div className="blog-list-divider"></div>
 
             <div className="blog-card-small">
-              <div className="blog-card-small-image" style={{ backgroundImage: `url(https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=300&q=80)` }}></div>
+              <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog2})` }}></div>
               <div className="blog-card-small-content">
                 <div className="blog-meta-small">
                   <span><CalendarIcon /> NOVEMBER 04, 2024</span>
                   <span><UserIcon /> BY XLEBPBM</span>
                 </div>
-                <h4 className="blog-title-small">A Laboratory Manual For<br/>Contemporary Specimen...</h4>
+                <h4 className="blog-title-small">Exploring Anatomy Methods In<br />The Lab</h4>
+              </div>
+            </div>
+            <div className="blog-list-divider"></div>
+
+            <div className="blog-card-small">
+              <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog3})` }}></div>
+              <div className="blog-card-small-content">
+                <div className="blog-meta-small">
+                  <span><CalendarIcon /> NOVEMBER 04, 2024</span>
+                  <span><UserIcon /> BY XLEBPBM</span>
+                </div>
+                <h4 className="blog-title-small">A Laboratory Manual For<br />Contemporary Specimen...</h4>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+
       <footer className="new-footer" aria-label="Site footer">
         <div className="new-footer-bg">RAYON</div>
-        
+
         <div className="new-footer-top">
           <div className="new-footer-left">
             <div className="new-footer-logo-area">
@@ -844,35 +739,35 @@ function App() {
                 <span>Always There...</span>
               </div>
             </div>
-            
+
             <p className="new-footer-desc">
-              Pioneering precision laboratory manufacturing for global<br/>
+              Pioneering precision laboratory manufacturing for global<br />
               scientific excellence since 2008.
             </p>
-            
+
             <div className="new-footer-actions">
-              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
-              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg></span>
+              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg></span>
               <a href="#" className="nf-whatsapp-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
                 WhatsApp Expert
               </a>
             </div>
           </div>
-          
+
           <div className="new-footer-right">
             <div className="nf-newsletter-row">
               <div className="nf-newsletter-text">
-                <h3>Subscribe to Our<br/>Newsletter</h3>
+                <h3>Subscribe to Our<br />Newsletter</h3>
               </div>
               <div className="nf-newsletter-form">
                 <input type="email" placeholder="Enter Your Email Address" />
                 <button type="button">Subscribe Now <span>→</span></button>
               </div>
             </div>
-            
+
             <div className="nf-divider"></div>
-            
+
             <div className="nf-links-row">
               <div className="nf-col">
                 <h4>Useful Link</h4>
@@ -889,7 +784,7 @@ function App() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="nf-col">
                 <h4>Working Time</h4>
                 <ul className="nf-info-list">
@@ -898,16 +793,16 @@ function App() {
                   <li>Sunday Closed</li>
                 </ul>
               </div>
-              
+
               <div className="nf-col">
                 <h4>Say Hello</h4>
                 <ul className="nf-info-list nf-contact-list">
                   <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                     no-reply@pbrinfotech.com
                   </li>
                   <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                     +1-800123-456-789
                   </li>
                 </ul>
@@ -915,7 +810,7 @@ function App() {
             </div>
           </div>
         </div>
-        
+
         <div className="new-footer-bottom">
           <div className="nfb-left">Copyright © 2024 Xieb All Rights Reserved.</div>
           <div className="nfb-right">
