@@ -1,7 +1,13 @@
 import React from 'react';
 import './why-choose-us.css';
+import './why-rayon.css';
 import './stats-row.css';
+import './industries-serve.css';
 import scientistImage from './assets/scientist.png';
+import showcase1 from './assets/showcase-1.png';
+import showcase2 from './assets/showcase-2.png';
+import showcase3 from './assets/showcase-3.png';
+import heroMain from './assets/hero-main.png';
 import serveNew1 from './assets/serve-new-1.png';
 import serveNew2 from './assets/serve-new-2.png';
 import serveNew3 from './assets/serve-new-3.png';
@@ -12,6 +18,10 @@ import icon4 from './assets/icon-4.png';
 import blog1 from './assets/blog-1.png';
 import blog2 from './assets/blog-2.png';
 import blog3 from './assets/blog-3.png';
+import whyCenter from './assets/why-center.png';
+import industryColleges from './assets/industries/colleges.png';
+import industryChemical from './assets/industries/chemical.png';
+import industryLabs from './assets/industries/labs.png';
 
 function HeaderLogo() {
   return (
@@ -58,38 +68,43 @@ const showcaseCards = [
   {
     title: 'Sentinel Fume Hoods',
     description: 'Variable air volume (VAV) containment for high-toxicity environments.',
-    image:
-      'https://images.unsplash.com/photo-1581092918364-26e7d222d6f2?auto=format&fit=crop&w=1200&q=80',
+    image: showcase1,
   },
   {
     title: 'Monolith Workstations',
     description: 'Heavy-duty, vibration-isolated benches for precision instrumentation.',
-    image:
-      'https://images.unsplash.com/photo-1573497163129-6d6f7fab817f?auto=format&fit=crop&w=1200&q=80',
+    image: showcase2,
   },
   {
     title: 'Secure Storage Vaults',
     description: 'Corrosive and flammable material storage with passive venting.',
-    image:
-      'https://images.unsplash.com/photo-1581093448791-7a9c6dd68f3e?auto=format&fit=crop&w=1200&q=80',
+    image: showcase3,
   },
 ];
 
 const showcaseLabels = ['CONSECTE', 'IMMUNOLOGY', 'EQUIPMENT'];
 
 const whyChooseUsCards = [
-  'Precision Manufacturing',
-  'Chemical & Heat Resistant Materials',
-  'Custom Layout Planning',
-  'On-Time Delivery & Installation',
-  'Long-Term Durability',
-];
-
-const whyChooseUsPoints = [
-  'Access Expert Advice For A Thriving Life',
-  'Benefits Of Health Conscious Living',
-  'Benefits Of Proactive Health Management',
-  'Countless Benefits Of Prioritizing Health',
+  {
+    title: 'Precision Build',
+    desc: 'High-accuracy components for critical lab workflows.',
+    icon: 'target'
+  },
+  {
+    title: 'Modular Design',
+    desc: 'Scalable systems that grow with your research needs.',
+    icon: 'grid'
+  },
+  {
+    title: 'Safety Certified',
+    desc: 'Strict compliance with SEFA & international standards.',
+    icon: 'shield'
+  },
+  {
+    title: 'Expert Support',
+    desc: 'Seamless on-site installation and maintenance.',
+    icon: 'support'
+  }
 ];
 
 const statsData = [
@@ -130,6 +145,46 @@ const serveCards = [
     icon: 'manufacturing',
     image: serveNew3
   }
+];
+
+const industryData = [
+  {
+    title: 'Colleges',
+    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
+    image: industryColleges
+  },
+  {
+    title: 'Chemical Industry',
+    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
+    image: industryChemical
+  },
+  {
+    title: 'Labs',
+    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
+    image: industryLabs
+  }
+];
+
+const whyPills = [
+  'Precision Manufacturing',
+  'Chemical & Heat Resistant Materials',
+  'Custom Layout Planning',
+  'On-Time Delivery & Installation',
+  'Long-Term Durability'
+];
+
+const whyBenefits = [
+  'Access Expert Advice For A Thriving Life',
+  'Benefits Of Health Conscious Living',
+  'Benefits Of Proactive Health Management',
+  'Countless Benefits Of Prioritizing Health'
+];
+
+const funFacts = [
+  { num: '250+', text: 'Projects Delivered' },
+  { num: '14+', text: 'Years Industry Experience' },
+  { num: '400+', text: 'Lab Installations' },
+  { num: '10000+', text: 'Precision Components Manufactured' }
 ];
 
 function ServeIcon({ type }) {
@@ -220,6 +275,38 @@ function FeatureIcon({ type }) {
   }
 }
 
+function WhyIcon({ type }) {
+  switch (type) {
+    case 'target':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
+        </svg>
+      );
+    case 'grid':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
+        </svg>
+      );
+    case 'shield':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+      );
+    case 'support':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 function CalendarIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
@@ -257,6 +344,7 @@ function FooterLogo() {
 }
 
 function App() {
+  const [activeShowcase, setActiveShowcase] = React.useState(0);
   return (
     <div className="page-shell">
       <header className="topbar">
@@ -299,57 +387,74 @@ function App() {
       </header>
 
 
-      <section className="feature-grid" aria-label="Product advantages">
+
+      <section className="feature-grid-v2" aria-label="Product advantages">
         {featureCards.map(({ title, description, icon }) => (
-          <article className="feature-card" key={title}>
-            <div className="card-top">
-              <div className="icon-circle">
+          <article className="feature-card-v2" key={title}>
+            <div className="f-card-header">
+              <div className="f-icon-wrap">
                 <FeatureIcon type={icon} />
               </div>
-              <h3>{title}</h3>
+              <h3 className="f-title">{title}</h3>
             </div>
-            <div className="card-divider" aria-hidden="true" />
-            <p className="card-copy">{description}</p>
-            <div className="card-btn-wrapper">
-              <button className="card-action" type="button" aria-label={`Explore ${title}`}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="19" x2="19" y2="5"></line><polyline points="10 5 19 5 19 14"></polyline></svg>
+            <div className="f-divider"></div>
+            <p className="f-desc">{description}</p>
+            <div className="f-btn-tab">
+              <button className="f-action-btn" type="button" aria-label={`Explore ${title}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
               </button>
             </div>
           </article>
         ))}
       </section>
 
-      <section className="showcase-section" aria-label="Laboratory showcase">
-        <div className="showcase-header">
-          <div className="showcase-copy">
-            <h2>Laboratory Infrastructure Solutions</h2>
-            <p>Modular systems engineered for adaptability and stringent safety protocols.</p>
+      <section className="showcase-section-v2" aria-label="Laboratory showcase">
+        <div className="showcase-v2-header">
+          <div className="showcase-v2-text">
+            <h2 className="showcase-v2-title">Laboratory Infrastructure Solutions</h2>
+            <p className="showcase-v2-subtitle">Modular systems engineered for adaptability and stringent safety protocols.</p>
           </div>
-          <div className="showcase-controls" aria-label="Showcase navigation">
-            <button type="button" className="showcase-arrow" aria-label="Previous showcase">
-              ←
+          <div className="showcase-v2-controls">
+            <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev > 0 ? prev - 1 : 2))}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
             </button>
-            <button type="button" className="showcase-arrow" aria-label="Next showcase">
-              →
+            <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev < 2 ? prev + 1 : 0))}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </button>
           </div>
         </div>
 
-        <div className="showcase-grid">
-          {showcaseCards.map(({ title, description, image }) => (
-            <article className="showcase-card" key={title}>
-              <div className="showcase-media" style={{ backgroundImage: `url(${image})` }} />
-              <div className="showcase-meta">
-                <h3>{title}</h3>
-                <p>{description}</p>
+        <div className="showcase-v2-grid">
+          {showcaseCards.map((card, idx) => (
+            <article
+              className={`showcase-v2-card ${activeShowcase === idx ? 'is-active' : ''}`}
+              key={card.title}
+              onMouseEnter={() => setActiveShowcase(idx)}
+              onClick={() => setActiveShowcase(idx)}
+            >
+              <div className="showcase-v2-media-wrap">
+                <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
+              </div>
+              <div className="showcase-v2-meta">
+                <h3 className="showcase-v2-card-title">{card.title}</h3>
+                <p className="showcase-v2-card-desc">{card.description}</p>
               </div>
             </article>
           ))}
         </div>
-        <div className="showcase-indicator" aria-hidden="true">
-          <span className="showcase-dot active" />
-          <span className="showcase-dot" />
-          <span className="showcase-dot" />
+
+        <div className="showcase-v2-dots">
+          {[0, 1, 2].map((i) => (
+            <button
+              key={i}
+              className={`showcase-v2-dot ${activeShowcase === i ? 'active' : ''}`}
+              onClick={() => setActiveShowcase(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
         </div>
 
         <div className="showcase-marquee-wrapper">
@@ -370,122 +475,125 @@ function App() {
 
       {/* New "What We Serve" Section */}
 
+      <section className="hero-v2-section" aria-label="Hero">
+        <div className="hero-v2-watermark">RAYON</div>
+        <div className="hero-v2-pattern">
+          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="150" cy="80" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="280" cy="40" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="380" cy="110" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="450" cy="50" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="200" cy="180" r="2.5" fill="white" fillOpacity="0.15" />
+            <circle cx="320" cy="220" r="2.5" fill="white" fillOpacity="0.15" />
 
-      <section className="hero-section" aria-label="Laboratory hero">
-        <div className="hero-watermark">RAYON</div>
-        <div className="hero-content">
-          <h2 className="hero-heading">
-            Manufacturer Of Premium Laboratory Furniture & Equipment In Ahmedabad For Your Lab Needs
-          </h2>
-          <p className="hero-description">
-            Trusted by institutions and industries, Rayon Lab Tech delivers reliable, durable, and fully customized laboratory solutions built to perform in demanding environments.
-          </p>
-          <div className="hero-actions">
-            <a className="hero-btn hero-btn-primary" href="#products">
-              Our Products
-              <span aria-hidden="true">→</span>
-            </a>
-            <a className="hero-btn hero-btn-secondary" href="#services">
-              Our Services
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
+            <line x1="50" y1="50" x2="150" y2="80" stroke="white" strokeOpacity="0.08" />
+            <line x1="150" y1="80" x2="280" y2="40" stroke="white" strokeOpacity="0.08" />
+            <line x1="280" y1="40" x2="380" y2="110" stroke="white" strokeOpacity="0.08" />
+            <line x1="380" y1="110" x2="450" y2="50" stroke="white" strokeOpacity="0.08" />
+            <line x1="150" y1="80" x2="200" y2="180" stroke="white" strokeOpacity="0.08" />
+            <line x1="200" y1="180" x2="320" y2="220" stroke="white" strokeOpacity="0.08" />
+            <line x1="380" y1="110" x2="320" y2="220" stroke="white" strokeOpacity="0.08" />
+          </svg>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-image-frame">
-            <div
-              className="hero-image"
-              style={{
-                backgroundImage:
-                  'url(https://images.unsplash.com/photo-1581092918364-26e7d222d6f2?auto=format&fit=crop&w=1200&q=80)',
-              }}
-            />
+        <div className="hero-v2-container">
+          <div className="hero-v2-content">
+            <h1 className="hero-v2-title">
+              Manufacturer Of Premium Laboratory Furniture & Equipment In Ahmedabad For Your Lab Needs
+            </h1>
+            <p className="hero-v2-description">
+              Trusted by institutions and industries, Rayon Lab Tech delivers reliable, durable, and fully customized laboratory solutions built to perform in demanding environments.
+            </p>
+            <div className="hero-v2-actions">
+              <a href="#" className="hero-v2-btn hero-v2-btn-primary">
+                Our Products
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="#" className="hero-v2-btn hero-v2-btn-outline">
+                Our Services
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div className="hero-v2-visual">
+            <div className="hero-v2-image-curve">
+              <img src={heroMain} alt="Rayon Lab Workstation" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Our Clients Section */}
 
+      <section className="why-rayon-section">
+        <div className="why-rayon-container">
+          <div className="why-rayon-header">
+            <h2 className="why-rayon-title">Why Industry Leaders Choose Rayon</h2>
+          </div>
 
-      <section className="why-choose-us-section">
-        <div className="why-top-badge">WHY CHOOSE US?</div>
-        <h2 className="why-main-heading">Why Industry Leaders Choose Rayon</h2>
+          <div className="why-rayon-content">
+            <div className="why-left-list">
+              {whyPills.map((pill, idx) => (
+                <div className="why-pill" key={idx}>
+                  <span>{pill}</span>
+                  <div className="why-pill-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-        <div className="why-container">
-          {/* Left: Cards */}
-          <div className="why-left-cards">
-            {whyChooseUsCards.map((card, index) => (
-              <div key={index} className={`why-pill ${index === 0 ? 'active' : ''}`}>
-                <span className="why-pill-text">{card}</span>
-                <div className="why-pill-icon">
-                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.5 11.5L11.5 4.5M11.5 4.5H5.5M11.5 4.5V10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+            <div className="why-middle-circle">
+              <div className="circle-ring">
+                {[1, 2, 3, 4, 5, 6].map(i => (
+                  <div key={i} className={`circle-dot dot-${i}`}></div>
+                ))}
+                <div className="circle-img-wrap">
+                  <img src={industryLabs} alt="Lab Interior" className="circle-img" />
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Center: Circular Image */}
-          <div className="why-center-wrapper">
-            <div className="why-orbit">
-              <span className="orbit-dot dot-1"></span>
-              <span className="orbit-dot dot-2"></span>
-              <span className="orbit-dot dot-3"></span>
-              <span className="orbit-dot dot-4"></span>
             </div>
-            <div className="why-image-circle">
-              <div
-                className="why-image"
-                style={{
-                  backgroundImage:
-                    'url(https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80)',
-                }}
-              />
-              <div className="why-center-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12C20 12.3387 19.979 12.6724 19.9381 13" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M12 18C14.2091 18 16 16.2091 16 14C16 11.7909 14.2091 10 12 10C9.79086 10 8 11.7909 8 14C8 16.2091 9.79086 18 12 18Z" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M13.5 12.5L17.5 8.5" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M8 18H16" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+
+            <div className="why-right-benefits">
+              <h2>Well Ensure You Always Covid 19 Vaccine.</h2>
+              <p>We help ambitious businesses like yours generate more profits by building awareness.</p>
+
+              <div className="benefit-list">
+                <div className="benefit-connector"></div>
+                {whyBenefits.map((benefit, idx) => (
+                  <div className="benefit-item" key={idx}>
+                    <div className="benefit-icon-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <span className="benefit-text">{benefit}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="why-right-content">
-            <h3 className="why-right-heading">Well Ensure You Always Covid 19 Vaccine.</h3>
-            <p className="why-right-text">
-              We help ambitious businesses like yours generate more profits by building awareness.
-            </p>
-            <p className="why-right-text">
-              We help ambitious businesses like yours generate more profits by building awareness.
-            </p>
-
-            <div className="why-checklist-container">
-              <div className="why-checklist-line"></div>
-              <ul className="why-checklist">
-                {whyChooseUsPoints.map((point, index) => (
-                  <li key={index} className="why-check-item">
-                    <div className="why-check-icon">
-                      <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 7L5.5 9.5L11 4" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="fun-facts">
+            <div className="fun-facts-label">FUN AND FACTS</div>
+            <div className="facts-grid">
+              {funFacts.map((fact, idx) => (
+                <div className="fact-item" key={idx}>
+                  <span className="fact-number">{fact.num}</span>
+                  <p className="fact-text">{fact.text}</p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-
-        <div className="why-fun-facts">
-          <div className="fact-line"></div>
-          <span>FUN AND FACTS</span>
-          <div className="fact-line"></div>
         </div>
       </section>
 
@@ -494,7 +602,7 @@ function App() {
           <div className="consultation-image-box">
             <img src={scientistImage} alt="Scientist performing laboratory research" />
           </div>
-          
+
           <div className="consultation-form-card">
             <div className="consult-hex-overlay">
               <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
@@ -508,7 +616,7 @@ function App() {
             <div className="consult-content">
               <div className="consult-badge">CONTACT US</div>
               <h2 className="consult-title">Let's Design Your Laboratory Setup</h2>
-              
+
               <form className="consult-grid-form" onSubmit={(e) => e.preventDefault()}>
                 <div className="consult-row">
                   <div className="consult-field">
@@ -565,6 +673,7 @@ function App() {
         </div>
       </section>
 
+
       <section className="serve-section-final" aria-label="What We Serve">
         <div className="serve-header-final">
           <h2 className="serve-heading-final">What We Serve</h2>
@@ -579,7 +688,7 @@ function App() {
               <div className="serve-card-bg-icon">
                 <ServeIcon type={card.icon} />
               </div>
-              
+
               <div className="serve-card-header">
                 <div className="serve-card-main-icon">
                   <ServeIcon type={card.icon} />
@@ -609,19 +718,7 @@ function App() {
         </div>
       </section>
 
-      <section className="stats-section" aria-label="Key Statistics">
-        <div className="stats-row">
-          {statsData.map((stat, index) => (
-            <div key={index} className="stat-item">
-              <div className="stat-number-wrap">
-                <span className="stat-number">{stat.value}</span>
-                <span className="stat-plus">+</span>
-              </div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       <section className="client-section" aria-label="Our Clients">
         <div className="client-bg-watermark">
@@ -777,6 +874,45 @@ function App() {
         </div>
       </section>
 
+      <section className="industries-section" aria-label="Industries We Serve">
+        <div className="industries-header">
+          <span className="industries-badge">INDUSTRIES WE SERVE</span>
+          <h2 className="industries-title">Industries We Serve</h2>
+          <p className="industries-subtitle">
+            Precision-engineered components built to withstand rigorous scientific environments.
+          </p>
+        </div>
+
+        <div className="industries-grid">
+          {industryData.map((item, idx) => (
+            <div className="industry-card" key={idx}>
+              <img src={item.image} alt={item.title} className="industry-card-img" />
+              <div className="industry-info-card">
+                <h3>{item.title}</h3>
+                <div className="card-line"></div>
+                <p>{item.desc}</p>
+                <div className="industry-action-btn-circle">
+                  <div className="industry-action-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="industry-all-btn-wrap">
+          <div className="industry-btn-container">
+            <a href="#" className="industry-all-btn">
+              All Projects <span>→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Our Blogs Section */}
       <section className="blog-section" aria-label="Our Blogs">
         <div className="blog-header">
@@ -845,100 +981,113 @@ function App() {
           </div>
         </div>
       </section>
+      {/* Redesigned Footer V2 */}
+      <footer className="footer-v2">
+        <div className="footer-v2-watermark">RAYON</div>
 
-
-      <footer className="new-footer" aria-label="Site footer">
-        <div className="new-footer-bg">RAYON</div>
-
-        <div className="new-footer-top">
-          <div className="new-footer-left">
-            <div className="new-footer-logo-area">
-              <FooterLogo />
-              <div className="new-footer-brand">
-                <h3>Rayon Lab Tech</h3>
-                <span>Always There...</span>
+        <div className="footer-v2-container">
+          <div className="footer-v2-top-row">
+            {/* Left: Logo & Brand */}
+            <div className="footer-v2-brand-area">
+              <div className="footer-v2-logo">
+                <FooterLogo />
+                <div className="footer-v2-brand-text">
+                  <h3>Rayon Lab Tech</h3>
+                  <p>Always There...</p>
+                </div>
               </div>
             </div>
 
-            <p className="new-footer-desc">
-              Pioneering precision laboratory manufacturing for global<br />
-              scientific excellence since 2008.
-            </p>
-
-            <div className="new-footer-actions">
-              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg></span>
-              <span className="nf-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="M9 12l2 2 4-4" /></svg></span>
-              <a href="#" className="nf-whatsapp-btn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
-                WhatsApp Expert
-              </a>
-            </div>
-          </div>
-
-          <div className="new-footer-right">
-            <div className="nf-newsletter-row">
-              <div className="nf-newsletter-text">
-                <h3>Subscribe to Our<br />Newsletter</h3>
-              </div>
-              <div className="nf-newsletter-form">
+            {/* Right: Newsletter */}
+            <div className="footer-v2-newsletter">
+              <h3>Subscribe to Our<br />Newsletter</h3>
+              <div className="newsletter-v2-form">
                 <input type="email" placeholder="Enter Your Email Address" />
                 <button type="button">Subscribe Now <span>→</span></button>
               </div>
             </div>
+          </div>
 
-            <div className="nf-divider"></div>
+          <div className="footer-v2-divider"></div>
 
-            <div className="nf-links-row">
-              <div className="nf-col">
-                <h4>Useful Link</h4>
-                <div className="nf-2col-links">
-                  <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="#">Blog</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
+          <div className="footer-v2-links-grid">
+            {/* Column 1: Description & Socials */}
+            <div className="footer-v2-col">
+              <p className="footer-v2-desc">
+                Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+              </p>
+              <div className="footer-v2-social">
+                <div className="social-icons-row">
+                  <a href="#" className="social-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  </a>
+                  <a href="#" className="social-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  </a>
                 </div>
+                <a href="https://wa.me/yournumber" className="footer-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                  WhatsApp Expert
+                </a>
               </div>
+            </div>
 
-              <div className="nf-col">
-                <h4>Working Time</h4>
-                <ul className="nf-info-list">
-                  <li>Mon - Fri: 9.00am - 5.00pm</li>
-                  <li>Saturday: 10.00am - 6.00pm</li>
-                  <li>Sunday Closed</li>
+            {/* Column 2: Useful Links */}
+            <div className="footer-v2-col">
+              <h4>Useful Link</h4>
+              <div className="footer-v2-dual-links">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Service</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
+                <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Pricing</a></li>
+                  <li><a href="#">Contact</a></li>
                 </ul>
               </div>
+            </div>
 
-              <div className="nf-col">
-                <h4>Say Hello</h4>
-                <ul className="nf-info-list nf-contact-list">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                    no-reply@pbrinfotech.com
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                    +1-800123-456-789
-                  </li>
-                </ul>
-              </div>
+            {/* Column 3: Working Time */}
+            <div className="footer-v2-col">
+              <h4>Working Time</h4>
+              <ul className="footer-v2-info-list">
+                <li>Mon - Fri: 9.00am - 5.00pm</li>
+                <li>Saturday: 10.00am - 6.00pm</li>
+                <li>Sunday Closed</li>
+              </ul>
+            </div>
+
+            {/* Column 4: Say Hello */}
+            <div className="footer-v2-col">
+              <h4>Say Hello</h4>
+              <ul className="footer-v2-info-list footer-v2-contact">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  no-reply@pbminfotech.com
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  +1-800123-456-789
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div className="new-footer-bottom">
-          <div className="nfb-left">Copyright © 2024 Xieb All Rights Reserved.</div>
-          <div className="nfb-right">
-            <a href="#">Privacy Policy</a>
-            <span className="nfb-sep">|</span>
-            <a href="#">Term And Condition</a>
-            <span className="nfb-sep">|</span>
-            <a href="#">FAQ</a>
+        <div className="footer-v2-bottom">
+          <div className="footer-v2-bottom-container">
+            <div className="footer-v2-copyright">
+              Copyright © 2024 Xieb All Rights Reserved.
+            </div>
+            <div className="footer-v2-bottom-links">
+              <a href="#">Privacy Policy</a>
+              <span className="footer-v2-sep">|</span>
+              <a href="#">Term And Condition</a>
+              <span className="footer-v2-sep">|</span>
+              <a href="#">FAQ</a>
+            </div>
           </div>
         </div>
       </footer>
