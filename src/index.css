@@ -1,5 +1,5 @@
 :root {
-  --page-bg: #eef4ff;
+  --page-bg: #EAF1FF;
   --surface: #ffffff;
   --text: #0f1f3f;
   --muted: #5f6f8e;
@@ -31,7 +31,7 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: radial-gradient(circle at top left, rgba(13, 33, 73, 0.08), transparent 28%),
-    linear-gradient(180deg, #f5f8ff 0%, #eef4ff 100%);
+    linear-gradient(180deg, #f5f8ff 0%, #EAF1FF 100%);
   color: var(--text);
 }
 
@@ -406,7 +406,7 @@ body {
   width: 100%;
   margin-top: 80px;
   padding: 80px 40px;
-  background: #f9fbff;
+  background: #EAF1FF;
   border-radius: 48px;
 }
 

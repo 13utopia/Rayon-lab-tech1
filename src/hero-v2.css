@@ -1,0 +1,235 @@
+/* Hero V2 Section (Advanced UI) */
+.hero-v2-section {
+  position: relative;
+  width: 100%;
+  min-height: 40px;
+  background-color: #0D1E44;
+  border-radius: 40px;
+  margin: 20px auto;
+  width: calc(100% - 40px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', 'Manrope', sans-serif;
+}
+
+.hero-v2-watermark {
+  position: absolute;
+  bottom: -40px;
+  left: 40px;
+  font-size: 10rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: 15px;
+}
+
+.hero-v2-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-v2-pattern-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-v2-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 80px;
+}
+
+.hero-v2-content {
+  flex: 1;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 9000px;
+}
+
+.hero-v2-title {
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  letter-spacing: -0.02em;
+}
+
+.hero-v2-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.hero-v2-actions {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-v2-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-v2-btn-primary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-v2-btn-primary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.hero-v2-btn-outline {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hero-v2-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.hero-v2-visual {
+  flex: 1.2;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  height: 650px;
+}
+
+.hero-v2-image-curve {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+  /* Complex shape: curved inner edge */
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%, 15% 50%);
+  /* More accurate curve implementation */
+  mask-image: radial-gradient(circle at 0% 50%, transparent 25%, black 25.1%);
+  -webkit-mask-image: radial-gradient(circle at 0% 50%, transparent 25%, black 25.1%);
+}
+
+/* Redoing the curve properly with SVG mask if needed, but let's try clip-path + border radius trick */
+.hero-v2-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #0D1E44;
+  z-index: 10;
+  border-top-right-radius: 300px;
+  border-bottom-right-radius: 300px;
+  transform: translateX(-100px);
+}
+
+.hero-v2-image-wrapper {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 300px;
+  border-bottom-left-radius: 300px;
+  overflow: hidden;
+  margin-left: -100px;
+  background: #ffffff;
+}
+
+.hero-v2-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+  .hero-v2-container {
+    padding: 0 0 0 40px;
+  }
+
+  .hero-v2-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-v2-section {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .hero-v2-container {
+    padding: 60px 40px;
+    flex-direction: column;
+  }
+
+  .hero-v2-visual {
+    width: 100%;
+    height: 400px;
+    order: 2;
+  }
+
+  .hero-v2-content {
+    order: 1;
+    max-width: 100%;
+    padding: 40px 0;
+  }
+
+  .hero-v2-image-wrapper {
+    margin-left: 0;
+    border-radius: 40px;
+  }
+
+  .hero-v2-visual::before {
+    display: none;
+  }
+
+  .hero-v2-watermark {
+    font-size: 8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-v2-container {
+    padding: 40px 20px;
+  }
+
+  .hero-v2-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-v2-actions {
+    flex-direction: column;
+  }
+
+  .hero-v2-btn {
+    justify-content: center;
+  }
+}

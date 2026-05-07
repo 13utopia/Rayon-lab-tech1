@@ -4,12 +4,17 @@ import './why-rayon.css';
 import './stats-row.css';
 import './industries-serve.css';
 import './product-page.css';
+import './hero-v2.css';
+import './footer.css';
 import AboutUs from './AboutUs';
+import './quote-modal.css';
+import './manufacturer-section.css';
 import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
 import showcase3 from './assets/showcase-3.png';
 import heroMain from './assets/hero-v2-final.png';
+import labInterior from './assets/hero-v3.png';
 import serveNew1 from './assets/serve-new-1.png';
 import serveNew2 from './assets/serve-new-2.png';
 import serveNew3 from './assets/serve-new-3.png';
@@ -25,6 +30,7 @@ import industryColleges from './assets/industries/colleges.png';
 import industryChemical from './assets/industries/chemical.png';
 import industryLabs from './assets/industries/labs.png';
 import whyV3Center from './assets/why-v3-center.png';
+import whyChooseUsCenter from './assets/why-choose-us-center.png';
 import labIslandTable from './assets/laboratory-island-table.png';
 import thumbMan from './assets/thumb-man.png';
 import thumbLike from './assets/thumb-like.png';
@@ -354,105 +360,117 @@ function FooterLogo() {
   );
 }
 
+
+
 function QuoteModal({ isOpen, onClose }) {
+  const [phone, setPhone] = React.useState('');
+  const [isVerified, setIsVerified] = React.useState(false);
+
   if (!isOpen) return null;
 
-  const [phone, setPhone] = React.useState('');
-
   const handlePhoneChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ''); // Keep only digits
+    // Only allow digits and limit to 10
+    const value = e.target.value.replace(/\D/g, '');
     if (value.length <= 10) {
       setPhone(value);
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (phone.length === 10 && isVerified) {
+      alert('Technical Quote Protocol Submitted Successfully!');
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" /></svg>
-        </button>
-
-        <div className="modal-left">
-          <h2>Technical Quote Request</h2>
-          <p className="modal-left-desc">
-            Provide your project specifications below. Our precision engineering team will review your requirements and provide a calibrated proposal within 24 hours.
-          </p>
-
-          <div className="modal-feature">
-            <svg className="modal-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            <div className="modal-feature-text">
-              <h4>CALIBRATED ASSESSMENT</h4>
-              <p>Exact matching of hardware to procedural needs.</p>
-            </div>
-          </div>
-
-          <div className="modal-feature">
-            <svg className="modal-feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            <div className="modal-feature-text">
-              <h4>EXPERT REVIEW</h4>
-              <p>Analysis by certified laboratory technicians.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="modal-right">
-          <h3>Client Data</h3>
-          <div className="form-divider"></div>
-
-          <form className="modal-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Full Name</label>
-                <input type="text" placeholder="Dr. Jane Doe" />
-              </div>
-              <div className="form-group">
-                <label>Institutional E-mail</label>
-                <input type="email" placeholder="j.doe@institute.edu" />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label>Direct Line</label>
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  placeholder="+1 (555) 012-3456"
-                />
-              </div>
-              <div className="form-group">
-                <label>Facility Location (City)</label>
-                <input type="text" placeholder="Cambridge, MA" />
-              </div>
-            </div>
-
-            <h3>Technical Requirements</h3>
-            <div className="form-divider"></div>
-
-            <div className="form-group">
-              <label>Equipment Specifications & Usage Context</label>
-              <textarea placeholder="Describe the required parameters, throughput needs, and integration environment..."></textarea>
-            </div>
-
-            <div className="verification-box">
-              <div className="verification-content">
-                <div className="verification-check"></div>
-                <div className="verification-text">
-                  <p>Human Verification</p>
-                  <span>Please confirm you are a human operator.</span>
+    <div className="quote-modal-overlay" onClick={onClose}>
+      <div className="quote-modal-content" onClick={e => e.stopPropagation()}>
+        <button className="quote-modal-close" onClick={onClose}>&times;</button>
+        <div className="quote-modal-grid">
+          <div className="quote-modal-left">
+            <h2 className="quote-modal-title">Technical Quote Request</h2>
+            <p className="quote-modal-desc">
+              Provide your project specifications below. Our precision engineering team will review your requirements and provide a calibrated proposal within 24 hours.
+            </p>
+            <div className="quote-feature-list">
+              <div className="quote-feature">
+                <div className="quote-feature-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                </div>
+                <div className="quote-feature-text">
+                  <strong>CALIBRATED ASSESSMENT</strong>
+                  <p>Exact matching of hardware to procedural needs.</p>
                 </div>
               </div>
-              <svg viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" strokeWidth="2" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <div className="quote-feature">
+                <div className="quote-feature-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                </div>
+                <div className="quote-feature-text">
+                  <strong>EXPERT REVIEW</strong>
+                  <p>Analysis by certified laboratory technicians.</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className="quote-modal-right">
+            <form className="quote-form" onSubmit={handleSubmit}>
+              <h3 className="form-section-title">Client Data</h3>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Full Name</label>
+                  <input type="text" placeholder="Dr. Jane Doe" required />
+                </div>
+                <div className="form-group">
+                  <label>Institutional E-mail</label>
+                  <input type="email" placeholder="j.doe@institute.edu" required />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Direct Line</label>
+                  <input
+                    type="text"
+                    placeholder="+1 (555) 012-3456"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Facility Location (City)</label>
+                  <input type="text" placeholder="Cambridge, MA" required />
+                </div>
+              </div>
 
-            <div className="submit-btn-wrap">
-              <button type="submit" className="submit-protocol-btn">
-                Submit Protocol <span className="arrow">→</span>
+              <h3 className="form-section-title">Technical Requirements</h3>
+              <div className="form-group">
+                <label>Equipment Specifications & Usage Context</label>
+                <textarea placeholder="Describe the required parameters, throughput needs, and integration environment..." required></textarea>
+              </div>
+
+              <div className="human-verification">
+                <div className="hv-left">
+                  <div className={`hv-check-box ${isVerified ? 'checked' : ''}`} onClick={() => setIsVerified(!isVerified)}>
+                    {isVerified && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>}
+                  </div>
+                  <div className="hv-text">
+                    <strong>Human Verification</strong>
+                    <span>Please confirm you are a human operator.</span>
+                  </div>
+                </div>
+                <div className="hv-shield">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+              </div>
+
+              <button type="submit" className="submit-protocol-btn" disabled={phone.length !== 10 || !isVerified}>
+                Submit Protocol →
               </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -618,6 +636,101 @@ function ProductPage({ product, onGetQuote }) {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="footer-section">
+      <div className="footer-watermark">RAYON</div>
+      <div className="footer-container">
+        <div className="footer-main-row">
+          <div className="footer-branding">
+            <div className="footer-logo-wrap">
+              <img src={productNavLogo} alt="Rayon Lab Tech" className="footer-logo-img" />
+            </div>
+            <p className="footer-desc">
+              Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+            </p>
+            <div className="footer-social-actions">
+              <div className="social-icons-group">
+                <a href="#" className="social-circle" aria-label="Globe">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </a>
+                <a href="#" className="social-circle" aria-label="Verified">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                </a>
+              </div>
+              <a href="https://wa.me/1800123456" className="whatsapp-btn">
+                <div className="wa-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+                </div>
+                WhatsApp Expert
+              </a>
+            </div>
+          </div>
+          <div className="footer-content-right">
+            <div className="footer-newsletter-box">
+              <h3 className="newsletter-title">Subscribe to Our<br />Newsletter</h3>
+              <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+                <input type="email" placeholder="Enter Your Email Address" className="newsletter-input" />
+                <button type="submit" className="newsletter-btn">
+                  Subscribe Now <span className="btn-arrow">→</span>
+                </button>
+              </form>
+            </div>
+            <div className="footer-links-grid">
+              <div className="footer-col">
+                <h4 className="footer-col-title">Useful Link</h4>
+                <ul className="footer-links-list">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Service</a></li>
+                  <li><a href="#">Pricing</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </div>
+              <div className="footer-col">
+                <h4 className="footer-col-title">Working Time</h4>
+                <div className="footer-info-item">
+                  <p className="footer-info-text">Mon - Fri: 9.00am - 5.00pm</p>
+                  <p className="footer-info-text">Saturday: 10.00am - 6.00pm</p>
+                  <p className="footer-info-text">Sunday Closed</p>
+                </div>
+              </div>
+              <div className="footer-col">
+                <h4 className="footer-col-title">Say Hello</h4>
+                <div className="footer-info-item">
+                  <div className="footer-contact-row">
+                    <span className="contact-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </span>
+                    <a href="mailto:no-reply@pbminfotech.com" className="contact-link">no-reply@pbminfotech.com</a>
+                  </div>
+                  <div className="footer-contact-row">
+                    <span className="contact-icon">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </span>
+                    <a href="tel:+1800123456789" className="contact-link">+1-800123-456-789</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer-bottom-wrap">
+        <div className="footer-bottom-pill">
+          <p className="copyright-text">Copyright © 2024 Xleb All Rights Reserved.</p>
+          <div className="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Term And Condition</a>
+            <a href="#">FAQ</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 function App() {
   const [activeShowcase, setActiveShowcase] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState('home');
@@ -655,19 +768,49 @@ function App() {
 
                 return (
                   <React.Fragment key={item}>
-                    <a
-                      href="#"
-                      className={currentPage === pageId ? 'active' : ''}
-                      onClick={(e) => {
-                        if (isHome || isAbout || isProducts) {
-                          handleNavClick(e, pageId);
-                        } else {
-                          e.preventDefault();
-                        }
-                      }}
-                    >
-                      {item.toUpperCase()}
-                    </a>
+                    {isProducts ? (
+                      <div
+                        className="nav-dropdown-wrapper"
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                      >
+                        <a
+                          href="#"
+                          className={currentPage === 'products' ? 'active' : ''}
+                          onClick={(e) => {
+                            handleNavClick(e, 'products');
+                            setIsDropdownOpen(!isDropdownOpen);
+                          }}
+                        >
+                          {item.toUpperCase()}
+                        </a>
+                        <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
+                          {products.map((p) => (
+                            <div
+                              key={p.id}
+                              className="dropdown-item"
+                              onClick={(e) => handleNavClick(e, 'products', p)}
+                            >
+                              {p.title}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <a
+                        href="#"
+                        className={currentPage === pageId ? 'active' : ''}
+                        onClick={(e) => {
+                          if (isHome || isAbout || isProducts) {
+                            handleNavClick(e, pageId);
+                          } else {
+                            e.preventDefault();
+                          }
+                        }}
+                      >
+                        {item.toUpperCase()}
+                      </a>
+                    )}
                     {index < navItems.length - 1 && <span className="nav-dot">•</span>}
                   </React.Fragment>
                 );
@@ -882,13 +1025,53 @@ function App() {
             </div>
           </section>
 
+          <section className="manufacturer-section" aria-label="Our Expertise">
+            <div className="manufacturer-watermark">RAYON</div>
+            <div className="manufacturer-circuit-pattern">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+                <path d="M100 20 L80 20 L70 40 L40 40 L30 60 L0 60" stroke="white" fill="none" strokeWidth="0.5" />
+                <path d="M100 50 L90 50 L80 70 L50 70 L40 90 L10 90" stroke="white" fill="none" strokeWidth="0.5" />
+                <circle cx="80" cy="20" r="1.5" fill="white" />
+                <circle cx="70" cy="40" r="1.5" fill="white" />
+                <circle cx="40" cy="40" r="1.5" fill="white" />
+                <circle cx="30" cy="60" r="1.5" fill="white" />
+              </svg>
+            </div>
+            <div className="manufacturer-container">
+              <div className="manufacturer-content">
+                <h2 className="manufacturer-title">
+                  Manufacturer Of Premium Laboratory<br />
+                  Furniture & Equipment In Ahmedabad<br />
+                  For Your Lab Needs
+                </h2>
+                <p className="manufacturer-desc">
+                  Trusted by institutions and industries, Rayon Lab Tech delivers reliable,
+                  durable, and fully customized laboratory solutions built to perform in
+                  demanding environments.
+                </p>
+                <div className="manufacturer-actions">
+                  <button className="m-btn-primary" onClick={(e) => handleNavClick(e, 'products')}>
+                    Our Products <span className="m-btn-arrow">→</span>
+                  </button>
+                  <button className="m-btn-outline">
+                    Our Services <span className="m-btn-arrow">→</span>
+                  </button>
+                </div>
+              </div>
+              <div className="manufacturer-image-wrap">
+                <div className="manufacturer-image-mask">
+                  <img src={labIslandTable} alt="Premium Laboratory Furniture" />
+                </div>
+              </div>
+            </div>
+          </section>
+
           <section className="why-rayon-section">
             <div className="why-rayon-container">
               <div className="why-rayon-header">
                 <div className="why-badge">WHY CHOOSE US?</div>
                 <h2 className="why-rayon-title">Why Industry Leaders Choose Rayon</h2>
               </div>
-
               <div className="why-rayon-content">
                 <div className="why-left-list">
                   {whyPills.map((pill, idx) => (
@@ -903,14 +1086,13 @@ function App() {
                     </div>
                   ))}
                 </div>
-
                 <div className="why-middle-circle">
                   <div className="circle-ring">
-                    {[1, 2, 3, 4, 5, 6].map(i => (
+                    {[1, 2, 3, 4, 5].map(i => (
                       <div key={i} className={`circle-dot dot-${i}`}></div>
                     ))}
                     <div className="circle-img-wrap">
-                      <img src={whyV3Center} alt="Lab Interior" className="circle-img" />
+                      <img src={whyChooseUsCenter} alt="Lab Interior" className="circle-img" />
                       <div className="circle-overlay-icon">
                         <div className="speed-icon-wrap">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -923,12 +1105,10 @@ function App() {
                     </div>
                   </div>
                 </div>
-
                 <div className="why-right-benefits">
                   <h2 className="benefit-main-title">Well Ensure You Always Covid 19 Vaccine.</h2>
                   <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
                   <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
-
                   <div className="benefit-list">
                     <div className="benefit-connector"></div>
                     {whyBenefits.map((benefit, idx) => (
@@ -944,7 +1124,6 @@ function App() {
                   </div>
                 </div>
               </div>
-
               <div className="fun-facts-divider">
                 <div className="fun-facts-line"></div>
                 <span className="fun-facts-text">FUN AND FACTS</span>
@@ -952,6 +1131,7 @@ function App() {
               </div>
             </div>
           </section>
+
           <section className="stats-row-section">
             <div className="stats-row-container">
               {funFacts.map((fact, idx) => {
@@ -1358,111 +1538,6 @@ function App() {
       )}
 
       <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
-
-      {/* Redesigned Footer V2 */}
-      {currentPage !== 'products' && (
-        <footer className="footer-v2">
-          <div className="footer-v2-watermark">RAYON</div>
-
-          <div className="footer-v2-container">
-            <div className="footer-v2-top-row">
-              {/* Left: Logo & Brand */}
-              <div className="footer-v2-brand-area">
-                <div className="footer-v2-logo">
-                  <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '70px', width: 'auto' }} />
-                </div>
-                <p className="footer-v2-desc">
-                  Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
-                </p>
-                <div className="footer-v2-social">
-                  <div className="social-icons-row">
-                    <a href="#" className="social-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    </a>
-                    <a href="#" className="social-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </a>
-                    <a href="https://wa.me/yournumber" className="footer-whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                      WhatsApp Expert
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Newsletter */}
-              <div className="footer-v2-newsletter">
-                <h3>Subscribe to Our<br />Newsletter</h3>
-                <div className="newsletter-v2-form">
-                  <input type="email" placeholder="Enter Your Email Address" />
-                  <button type="button">Subscribe Now <span>→</span></button>
-                </div>
-              </div>
-            </div>
-
-            <div className="footer-v2-divider"></div>
-
-            <div className="footer-v2-links-grid">
-              {/* Column 1: Useful Links */}
-              <div className="footer-v2-col">
-                <h4>Useful Link</h4>
-                <div className="footer-v2-dual-links">
-                  <ul>
-                    <li><a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="#">Blog</a></li>
-                  </ul>
-                  <ul>
-                    <li><a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Column 2: Working Time */}
-              <div className="footer-v2-col">
-                <h4>Working Time</h4>
-                <ul className="footer-v2-info-list">
-                  <li>Mon - Fri: 9.00am - 5.00pm</li>
-                  <li>Saturday: 10.00am - 6.00pm</li>
-                  <li>Sunday Closed</li>
-                </ul>
-              </div>
-
-              {/* Column 3: Say Hello */}
-              <div className="footer-v2-col">
-                <h4>Say Hello</h4>
-                <ul className="footer-v2-info-list footer-v2-contact">
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                    no-reply@pbminfotech.com
-                  </li>
-                  <li>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                    +1-800123-456-789
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="footer-v2-bottom">
-            <div className="footer-v2-bottom-container">
-              <div className="footer-v2-copyright">
-                Copyright © 2024 Xieb All Rights Reserved.
-              </div>
-              <div className="footer-v2-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <span className="footer-v2-sep">|</span>
-                <a href="#">Term And Condition</a>
-                <span className="footer-v2-sep">|</span>
-                <a href="#">FAQ</a>
-              </div>
-            </div>
-          </div>
-        </footer>
-      )}
     </div>
 
   );

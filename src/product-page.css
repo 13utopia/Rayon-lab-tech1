@@ -81,16 +81,16 @@
 
 .premium-nav-bar {
   background: #ffffff;
-  width: 100%;
-  max-width: 1200px;
+  width: 95%;
+  max-width: 1300px;
   margin: 0 auto;
-  border-radius: 15px; /* Reduced from 100px */
-  padding: 10px 25px;
+  border-radius: 15px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 10px 35px rgba(13, 30, 68, 0.08);
-  gap: 22px;
+  gap: 15px;
 }
 
 .premium-nav-logo {
@@ -109,7 +109,7 @@
 .premium-nav-links {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .premium-nav-links a {
@@ -136,7 +136,7 @@
 .premium-nav-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .nav-phone-group {
@@ -1172,269 +1172,253 @@
 }
 
 /* ============================================
-   RESPONSIVE — TABLET (max-width: 1024px)
+   RESPONSIVE DESIGN (Media Queries)
    ============================================ */
-@media (max-width: 1024px) {
+
+/* Large Tablets & Medium Screens */
+@media (max-width: 1100px) {
+  .product-details-container {
+    max-width: 950px;
+  }
+  
   .product-details-grid {
-    grid-template-columns: 1fr;
     gap: 40px;
   }
 
+  .premium-nav-bar {
+    max-width: 95%;
+  }
+}
+
+/* Tablets (iPad/Portrait) */
+@media (max-width: 992px) {
+  .product-details {
+    padding: 60px 24px;
+  }
+
+  .product-details-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .product-gallery, .product-info {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Hide nav items on all mobile/tablet devices */
+  .premium-nav-links {
+    display: none !important;
+  }
+
+  .nav-phone-num {
+    display: none;
+  }
+
+  .product-cta-container {
+    gap: 40px;
+    padding: 0 30px;
+  }
+
+  .premium-nav-bar {
+    justify-content: space-between;
+  }
+}
+
+/* Mobile Screens (Large) */
+@media (max-width: 768px) {
+  .product-hero {
+    min-height: 300px;
+    padding: 60px 20px;
+  }
+
+  .product-hero-title {
+    font-size: 2.2rem;
+  }
+
   .product-details-header {
-    align-items: center;
-    text-align: center;
+    margin-bottom: 40px;
   }
 
   .product-details-main-title {
-    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .premium-nav-bar {
+    padding: 8px 15px;
+    border-radius: 12px;
+  }
+
+  .premium-nav-links {
+    display: none; 
+  }
+
+  .premium-nav-logo {
+    height: 45px;
+  }
+
+  .nav-appointment-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+  .nav-appointment-btn .btn-arrow {
+    display: none;
+  }
+
+  .gallery-main {
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-features {
+    padding: 40px 20px;
+  }
+
+  .features-card {
+    padding: 25px;
+  }
+
+  .get-quote-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-dropdown {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    width: 90%;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  /* CTA Section Mobile Fix */
+  .product-cta {
+    padding: 60px 20px;
   }
 
   .product-cta-container {
     flex-direction: column;
     text-align: center;
-    gap: 40px;
-    padding: 0 20px;
+    gap: 30px;
+    padding: 0;
   }
 
   .product-cta-left {
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
   }
 
-  .product-cta-watermark {
-    font-size: 20vw;
-    bottom: -10%;
+  .cta-visual-col {
+    display: none; 
   }
 
-  .cta-subtext {
-    font-size: 1rem;
+  .cta-text-col {
+    gap: 10px;
   }
 
-  .cta-main-title {
+  .cta-text-row {
     font-size: 1.1rem;
-  }
-}
-
-/* ============================================
-   RESPONSIVE — MOBILE (max-width: 768px)
-   ============================================ */
-@media (max-width: 768px) {
-
-  /* Hero */
-  .product-hero {
-    min-height: 120px;
-    padding: 60px 16px;
-  }
-
-  .product-hero-title {
-    font-size: clamp(1.5rem, 7vw, 2.2rem);
-    margin-bottom: 12px;
-  }
-
-  .product-hero-subtitle {
-    font-size: 0.9rem;
     line-height: 1.4;
   }
 
-  /* Navbar — keep horizontal row, just reduce font/padding */
-  .topbar.product-header-minimal {
-    padding: 8px 14px;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-
-  .topbar.product-header-minimal .main-nav {
-    gap: 5px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .topbar.product-header-minimal .main-nav a {
-    font-size: 0.75rem;
-    white-space: nowrap;
-  }
-
-  .nav-divider {
-    font-size: 0.75rem;
-    margin: 0;
-  }
-
-  /* Product Details */
-  .product-details {
-    padding: 40px 16px;
-  }
-
-  .product-details-header {
-    margin-bottom: 32px;
-  }
-
-  .product-details-main-title {
-    font-size: clamp(1.3rem, 5vw, 1.8rem);
-  }
-
-  /* Gallery */
-  .gallery-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 1.3rem;
-  }
-
-  .gallery-nav.prev {
-    left: 10px;
-  }
-
-  .gallery-nav.next {
-    right: 10px;
-  }
-
-  .thumb {
-    width: 64px;
-    height: 64px;
-    min-width: 64px;
-  }
-
-  /* Specs */
-  .specs-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .spec-item-card {
-    padding: 16px;
-  }
-
-  /* Get Quote Button */
-  .get-quote-btn {
+  .product-cta-right {
     width: 100%;
-    justify-content: center;
-    padding: 14px 20px;
-  }
-
-  /* Features */
-  .product-features {
-    padding: 40px 16px 40px 16px;
-  }
-
-  .features-card {
-    padding: 24px 16px;
-  }
-
-  .features-title {
-    font-size: 1.2rem;
-  }
-
-  .features-list p {
-    font-size: 0.95rem;
-  }
-
-  /* CTA Section */
-  .product-cta {
-    padding: 48px 16px;
-  }
-
-  .product-cta-title {
-    font-size: 1.3rem;
+    gap: 12px;
   }
 
   .product-cta-btn {
     width: 100%;
-    justify-content: center;
+    min-width: unset;
     padding: 14px 20px;
-  }
-
-  /* Modal */
-  .modal-container {
-    grid-template-columns: 1fr;
-    max-height: 92vh;
-    overflow-y: auto;
-  }
-
-  .modal-left {
-    padding: 24px 20px;
-    gap: 12px;
-  }
-
-  .modal-left h2 {
-    font-size: 1.3rem;
-  }
-
-  .modal-right {
-    padding: 20px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .submit-btn-wrap {
-    justify-content: stretch;
-  }
-
-  .submit-protocol-btn {
-    width: 100%;
-    justify-content: center;
   }
 }
 
-/* ============================================
-   RESPONSIVE — SMALL MOBILE (max-width: 480px)
-   ============================================ */
+/* Mobile Screens (Small) */
 @media (max-width: 480px) {
-  .product-hero {
-    padding: 50px 12px;
+  .product-hero-title {
+    font-size: 1.7rem;
   }
 
+  .product-hero-subtitle {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .product-details {
+    padding: 40px 15px;
+  }
+
+  .product-details-main-title {
+    font-size: 1.4rem;
+  }
+
+  .tech-specs-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .spec-item-card {
+    padding: 15px;
+  }
+
+  .thumb {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+  }
+
+  .gallery-nav {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .nav-icon-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nav-appointment-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .product-features-header {
+    margin-bottom: 25px;
+  }
+
+  .features-title {
+    font-size: 1.3rem;
+  }
+
+  .cta-text-row {
+    font-size: 1rem;
+  }
+}
+
+/* Ultra Small Devices */
+@media (max-width: 360px) {
   .product-hero-title {
     font-size: 1.5rem;
   }
 
-  .topbar.product-header-minimal {
-    padding: 8px 12px;
+  .premium-nav-bar {
+    padding: 6px 10px;
+    gap: 10px;
   }
 
-  .topbar.product-header-minimal .main-nav {
-    font-size: 0.8rem;
-    gap: 6px;
+  .premium-nav-logo {
+    height: 38px;
   }
 
-  .product-details {
-    padding: 32px 12px;
-  }
-
-  .product-features {
-    padding: 32px 12px 0 12px;
-  }
-
-  .features-card {
-    padding: 20px 12px;
-  }
-
-  .product-cta {
-    padding: 40px 12px;
-  }
-
-  .product-cta-title {
-    font-size: 1.2rem;
-  }
-
-  .modal-overlay {
-    padding: 10px;
-  }
-
-  .modal-left {
-    padding: 20px 14px;
-  }
-
-  .modal-right {
-    padding: 16px 14px;
-  }
-
-  .thumb {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
+  .nav-appointment-btn {
+    font-size: 0.7rem;
+    padding: 6px 10px;
   }
 }
