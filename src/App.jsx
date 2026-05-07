@@ -9,7 +9,7 @@ import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
 import showcase3 from './assets/showcase-3.png';
-import heroMain from './assets/hero-main.png';
+import heroMain from './assets/hero-v2-final.png';
 import serveNew1 from './assets/serve-new-1.png';
 import serveNew2 from './assets/serve-new-2.png';
 import serveNew3 from './assets/serve-new-3.png';
@@ -29,6 +29,8 @@ import labIslandTable from './assets/laboratory-island-table.png';
 import thumbMan from './assets/thumb-man.png';
 import thumbLike from './assets/thumb-like.png';
 import thumbCircle from './assets/thumb-circle.png';
+import productHeroBg from './assets/product-hero-bg.png';
+import productNavLogo from './assets/product-nav-logo.png';
 import { products } from './data/products';
 
 function HeaderLogo() {
@@ -413,11 +415,11 @@ function QuoteModal({ isOpen, onClose }) {
             <div className="form-row">
               <div className="form-group">
                 <label>Direct Line</label>
-                <input 
-                  type="tel" 
-                  value={phone} 
-                  onChange={handlePhoneChange} 
-                  placeholder="+1 (555) 012-3456" 
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  placeholder="+1 (555) 012-3456"
                 />
               </div>
               <div className="form-group">
@@ -476,7 +478,12 @@ function ProductPage({ product, onGetQuote }) {
 
   return (
     <div className="product-page-container">
-      <section className="product-hero" aria-label="Product Hero">
+      <section className="product-hero" aria-label="Product Hero" style={{
+        backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.6), rgba(13, 30, 68, 0.6)), url(${productHeroBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '400px'
+      }}>
         <div className="product-hero-bg-text">RAYON</div>
         <div className="product-hero-content">
           <h1 className="product-hero-title">{product.heroTitle}</h1>
@@ -503,8 +510,8 @@ function ProductPage({ product, onGetQuote }) {
               </div>
               <div className="gallery-thumbs">
                 {images.map((img, idx) => (
-                  <div 
-                    className={`thumb ${activeImageIndex === idx ? 'active' : ''}`} 
+                  <div
+                    className={`thumb ${activeImageIndex === idx ? 'active' : ''}`}
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
                   >
@@ -522,8 +529,8 @@ function ProductPage({ product, onGetQuote }) {
 
               <div className="tech-specs-header">
                 <svg className="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+                  <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
                 </svg>
                 <h3>TECHNICAL SPECIFICATIONS</h3>
               </div>
@@ -537,7 +544,7 @@ function ProductPage({ product, onGetQuote }) {
                       {spec.items.map((item, idx) => (
                         <li key={idx}>
                           <div className="spec-check">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M8 12l3 3 5-5" /></svg>
                           </div>
                           {item}
                         </li>
@@ -584,14 +591,27 @@ function ProductPage({ product, onGetQuote }) {
       </section>
 
       <section className="product-cta" aria-label="Request a Quote">
+        <div className="product-cta-watermark">RAYON</div>
         <div className="product-cta-container">
-          <h2 className="product-cta-title">
-            Transform Your Laboratory With High-Quality<br />
-            Modular Furniture
-          </h2>
-          <button className="product-cta-btn" onClick={() => onGetQuote()}>
-            Request A Quote <span className="arrow">→</span>
-          </button>
+          <div className="product-cta-left">
+            <div className="cta-visual-col">
+              <div className="cta-point"><div className="cta-check">✓</div></div>
+              <div className="cta-line"></div>
+              <div className="cta-point"><div className="cta-check">✓</div></div>
+            </div>
+            <div className="cta-text-col">
+              <div className="cta-text-row">Transform Your Laboratory With High-Quality Modular Furniture</div>
+              <div className="cta-text-row bold">Transform Your Laboratory With High-Quality Modular Furniture</div>
+            </div>
+          </div>
+          <div className="product-cta-right">
+            <button className="product-cta-btn outline" onClick={() => onGetQuote()}>
+              Request A Quote <span className="arrow">→</span>
+            </button>
+            <button className="product-cta-btn solid" onClick={() => onGetQuote()}>
+              Request A Quote <span className="arrow">→</span>
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -619,93 +639,140 @@ function App() {
 
   return (
     <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
-      <header className={`topbar ${currentPage === 'products' ? 'product-header-minimal' : ''}`}>
-        <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
-          <div className="brand-mark">
-            <HeaderLogo />
-          </div>
-          <div className="brand-copy">
-            <div className="brand-title">Rayon Lab Tech</div>
-            <div className="brand-subtitle">Always There...</div>
-          </div>
-        </div>
+      <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us') ? 'product-header-premium' : ''}`}>
+        {(currentPage === 'products' || currentPage === 'about-us') ? (
+          <div className="premium-nav-bar">
+            <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
+              <img src={productNavLogo} alt="Rayon Lab Tech" />
+            </div>
 
-        <nav className="main-nav" aria-label="Primary navigation">
-          {navItems.map((item, index) => {
-            const pageId = item.toLowerCase().replace(/\s+/g, '-');
-            const isHome = pageId === 'home';
-            const isAbout = pageId === 'about-us';
-            const isProducts = pageId === 'products';
+            <nav className="premium-nav-links">
+              {navItems.map((item, index) => {
+                const pageId = item.toLowerCase().replace(/\s+/g, '-');
+                const isProducts = pageId === 'products';
+                const isHome = pageId === 'home';
+                const isAbout = pageId === 'about-us';
 
-            return (
-              <React.Fragment key={item}>
-                {isProducts ? (
-                  <div 
-                    className="nav-dropdown-wrapper"
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
-                  >
+                return (
+                  <React.Fragment key={item}>
                     <a
                       href="#"
-                      className={currentPage === 'products' ? 'active' : ''}
+                      className={currentPage === pageId ? 'active' : ''}
                       onClick={(e) => {
-                        handleNavClick(e, 'products');
-                        setIsDropdownOpen(!isDropdownOpen);
+                        if (isHome || isAbout || isProducts) {
+                          handleNavClick(e, pageId);
+                        } else {
+                          e.preventDefault();
+                        }
                       }}
                     >
                       {item.toUpperCase()}
                     </a>
-                    <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
-                      {products.map((p) => (
-                        <div 
-                          key={p.id} 
-                          className="dropdown-item"
-                          onClick={(e) => handleNavClick(e, 'products', p)}
-                        >
-                          {p.title}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <a
-                    href="#"
-                    style={{ cursor: (isHome || isAbout) ? 'pointer' : 'default' }}
-                    className={((isHome && currentPage === 'home') || (isAbout && currentPage === 'about-us')) ? 'active' : ''}
-                    onClick={(e) => {
-                      if (isHome || isAbout) {
-                        handleNavClick(e, isHome ? 'home' : 'about-us');
-                      } else {
-                        e.preventDefault();
-                      }
-                    }}
-                  >
-                    {item.toUpperCase()}
-                  </a>
-                )}
-                {index < navItems.length - 1 ? <span className="nav-divider">•</span> : null}
-              </React.Fragment>
-            );
-          })}
-        </nav>
+                    {index < navItems.length - 1 && <span className="nav-dot">•</span>}
+                  </React.Fragment>
+                );
+              })}
+            </nav>
 
-        {currentPage !== 'products' && (
-          <div className="header-actions">
-            <div className="phone-action">
-              <div className="phone-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            <div className="premium-nav-right">
+              <div className="nav-phone-group">
+                <div className="nav-icon-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <span className="nav-phone-num">+1(212)-255-511</span>
               </div>
-              <span className="phone-text">+1(212)-255-511</span>
+              <div className="nav-icon-circle search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <button className="nav-appointment-btn" onClick={() => setShowQuoteModal(true)}>
+                Appointment <span className="btn-arrow">→</span>
+              </button>
             </div>
-
-            <div className="search-circle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </div>
-
-            <button className="appointment-pill">
-              Appointment <span className="arrow">→</span>
-            </button>
           </div>
+        ) : (
+          <>
+            <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
+              <div className="brand-mark">
+                <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
+              </div>
+            </div>
+
+            <nav className="main-nav" aria-label="Primary navigation">
+              {navItems.map((item, index) => {
+                const pageId = item.toLowerCase().replace(/\s+/g, '-');
+                const isHome = pageId === 'home';
+                const isAbout = pageId === 'about-us';
+                const isProducts = pageId === 'products';
+
+                return (
+                  <React.Fragment key={item}>
+                    {isProducts ? (
+                      <div
+                        className="nav-dropdown-wrapper"
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
+                      >
+                        <a
+                          href="#"
+                          className={currentPage === 'products' ? 'active' : ''}
+                          onClick={(e) => {
+                            handleNavClick(e, 'products');
+                            setIsDropdownOpen(!isDropdownOpen);
+                          }}
+                        >
+                          {item.toUpperCase()}
+                        </a>
+                        <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
+                          {products.map((p) => (
+                            <div
+                              key={p.id}
+                              className="dropdown-item"
+                              onClick={(e) => handleNavClick(e, 'products', p)}
+                            >
+                              {p.title}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <a
+                        href="#"
+                        style={{ cursor: (isHome || isAbout) ? 'pointer' : 'default' }}
+                        className={((isHome && currentPage === 'home') || (isAbout && currentPage === 'about-us')) ? 'active' : ''}
+                        onClick={(e) => {
+                          if (isHome || isAbout) {
+                            handleNavClick(e, isHome ? 'home' : 'about-us');
+                          } else {
+                            e.preventDefault();
+                          }
+                        }}
+                      >
+                        {item.toUpperCase()}
+                      </a>
+                    )}
+                    {index < navItems.length - 1 ? <span className="nav-divider">•</span> : null}
+                  </React.Fragment>
+                );
+              })}
+            </nav>
+
+            <div className="header-actions">
+              <div className="phone-action">
+                <div className="phone-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                </div>
+                <span className="phone-text">+1(212)-255-511</span>
+              </div>
+
+              <div className="search-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+
+              <button className="appointment-pill" onClick={() => setShowQuoteModal(true)}>
+                Appointment <span className="arrow">→</span>
+              </button>
+            </div>
+          </>
         )}
       </header>
 
@@ -714,7 +781,6 @@ function App() {
       ) : currentPage === 'home' ? (
         <>
           <section className="hero-custom-section" aria-label="Hero Section">
-            <div className="hero-custom-bg-text">RAYON</div>
             <div className="hero-custom-content">
               <h1 className="hero-custom-title">
                 Manufacturer Of Premium Laboratory<br />
@@ -723,10 +789,7 @@ function App() {
               </h1>
             </div>
             <div className="hero-custom-images">
-              <img src={heroMain} alt="Robotic Arm" className="hero-custom-main-img" />
-              <div className="hero-custom-inset">
-                <img src={heroMain} alt="Robotic Gripper" className="hero-custom-inset-img" />
-              </div>
+              <img src={heroMain} alt="Rayon Lab Tech Hero" className="hero-custom-full-banner" />
             </div>
           </section>
 
@@ -818,60 +881,6 @@ function App() {
               </div>
             </div>
           </section>
-
-          <section className="hero-v2-section" aria-label="Hero">
-            <div className="hero-v2-watermark">RAYON</div>
-            <div className="hero-v2-pattern">
-              <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" className="hero-v2-pattern-svg">
-                <circle cx="450" cy="50" r="3" fill="white" fillOpacity="0.2" />
-                <circle cx="400" cy="120" r="3" fill="white" fillOpacity="0.2" />
-                <circle cx="480" cy="150" r="3" fill="white" fillOpacity="0.2" />
-                <circle cx="350" cy="80" r="3" fill="white" fillOpacity="0.2" />
-                <circle cx="420" cy="200" r="3" fill="white" fillOpacity="0.2" />
-                <line x1="450" y1="50" x2="400" y2="120" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                <line x1="400" y1="120" x2="480" y2="150" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                <line x1="400" y1="120" x2="350" y2="80" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                <line x1="400" y1="120" x2="420" y2="200" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                <line x1="480" y1="150" x2="420" y2="200" stroke="white" strokeOpacity="0.1" strokeWidth="1" />
-                <path d="M300,0 L350,80 L400,120 L450,50" fill="none" stroke="white" strokeOpacity="0.05" strokeWidth="1" />
-              </svg>
-            </div>
-
-            <div className="hero-v2-container">
-              <div className="hero-v2-content">
-                <h1 className="hero-v2-title">
-                  Manufacturer Of Premium Laboratory<br />
-                  Furniture & Equipment In Ahmedabad<br />
-                  For Your Lab Needs
-                </h1>
-                <p className="hero-v2-description">
-                  Trusted by institutions and industries, Rayon Lab Tech delivers reliable, durable, and fully customized laboratory solutions built to perform in demanding environments.
-                </p>
-                <div className="hero-v2-actions">
-                  <a href="#" className="hero-v2-btn hero-v2-btn-primary">
-                    Our Products
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                  <a href="#" className="hero-v2-btn hero-v2-btn-outline">
-                    Our Services
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-              <div className="hero-v2-visual">
-                <div className="hero-v2-image-curve">
-                  <img src={heroMain} alt="Rayon Lab Workstation" />
-                </div>
-              </div>
-            </div>
-          </section>
-
 
           <section className="why-rayon-section">
             <div className="why-rayon-container">
@@ -1351,7 +1360,7 @@ function App() {
       <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
 
       {/* Redesigned Footer V2 */}
-      {currentPage !== 'products' && currentPage !== 'about-us' && (
+      {currentPage !== 'products' && (
         <footer className="footer-v2">
           <div className="footer-v2-watermark">RAYON</div>
 
@@ -1360,10 +1369,23 @@ function App() {
               {/* Left: Logo & Brand */}
               <div className="footer-v2-brand-area">
                 <div className="footer-v2-logo">
-                  <FooterLogo />
-                  <div className="footer-v2-brand-text">
-                    <h3>Rayon Lab Tech</h3>
-                    <p>Always There...</p>
+                  <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '70px', width: 'auto' }} />
+                </div>
+                <p className="footer-v2-desc">
+                  Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+                </p>
+                <div className="footer-v2-social">
+                  <div className="social-icons-row">
+                    <a href="#" className="social-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </a>
+                    <a href="#" className="social-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </a>
+                    <a href="https://wa.me/yournumber" className="footer-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                      WhatsApp Expert
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1381,45 +1403,24 @@ function App() {
             <div className="footer-v2-divider"></div>
 
             <div className="footer-v2-links-grid">
-              {/* Column 1: Description & Socials */}
-              <div className="footer-v2-col">
-                <p className="footer-v2-desc">
-                  Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
-                </p>
-                <div className="footer-v2-social">
-                  <div className="social-icons-row">
-                    <a href="#" className="social-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    </a>
-                    <a href="#" className="social-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </a>
-                  </div>
-                  <a href="https://wa.me/yournumber" className="footer-whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                    WhatsApp Expert
-                  </a>
-                </div>
-              </div>
-
-              {/* Column 2: Useful Links */}
+              {/* Column 1: Useful Links */}
               <div className="footer-v2-col">
                 <h4>Useful Link</h4>
                 <div className="footer-v2-dual-links">
                   <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a></li>
                     <li><a href="#">Service</a></li>
                     <li><a href="#">Blog</a></li>
                   </ul>
                   <ul>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a></li>
                     <li><a href="#">Pricing</a></li>
                     <li><a href="#">Contact</a></li>
                   </ul>
                 </div>
               </div>
 
-              {/* Column 3: Working Time */}
+              {/* Column 2: Working Time */}
               <div className="footer-v2-col">
                 <h4>Working Time</h4>
                 <ul className="footer-v2-info-list">
@@ -1429,7 +1430,7 @@ function App() {
                 </ul>
               </div>
 
-              {/* Column 4: Say Hello */}
+              {/* Column 3: Say Hello */}
               <div className="footer-v2-col">
                 <h4>Say Hello</h4>
                 <ul className="footer-v2-info-list footer-v2-contact">
