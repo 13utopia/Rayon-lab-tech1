@@ -25,12 +25,14 @@ import icon4 from './assets/feature-icon-4.png';
 import blog1 from './assets/blog-1.png';
 import blog2 from './assets/blog-2.png';
 import blog3 from './assets/blog-3.png';
+import labimage from './assets/labimage.png';
+import Logo from './assets/icon.png';
 import whyCenter from './assets/why-center.png';
 import industryColleges from './assets/industries/colleges.png';
 import industryChemical from './assets/industries/chemical.png';
 import industryLabs from './assets/industries/labs.png';
 import whyV3Center from './assets/why-v3-center.png';
-import whyChooseUsCenter from './assets/why-choose-us-center.png';
+import whyChooseUsCenter from './assets/why-choose-us-final.png';
 import labIslandTable from './assets/laboratory-island-table.png';
 import thumbMan from './assets/thumb-man.png';
 import thumbLike from './assets/thumb-like.png';
@@ -640,89 +642,128 @@ function Footer() {
   return (
     <footer className="footer-section">
       <div className="footer-watermark">RAYON</div>
-      <div className="footer-container">
-        <div className="footer-main-row">
-          <div className="footer-branding">
-            <div className="footer-logo-wrap">
-              <img src={productNavLogo} alt="Rayon Lab Tech" className="footer-logo-img" />
-            </div>
-            <p className="footer-desc">
-              Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
-            </p>
-            <div className="footer-social-actions">
-              <div className="social-icons-group">
-                <a href="#" className="social-circle" aria-label="Globe">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                </a>
-                <a href="#" className="social-circle" aria-label="Verified">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
-                </a>
-              </div>
-              <a href="https://wa.me/1800123456" className="whatsapp-btn">
-                <div className="wa-icon-box">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
-                </div>
-                WhatsApp Expert
-              </a>
-            </div>
+
+      {/* Newsletter Banner */}
+      <div className="footer-newsletter-banner">
+        <div className="footer-newsletter-card">
+          <div className="footer-nl-text">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get the latest updates on lab solutions, product launches &amp; industry news.</p>
           </div>
-          <div className="footer-content-right">
-            <div className="footer-newsletter-box">
-              <h3 className="newsletter-title">Subscribe to Our<br />Newsletter</h3>
-              <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-                <input type="email" placeholder="Enter Your Email Address" className="newsletter-input" />
-                <button type="submit" className="newsletter-btn">
-                  Subscribe Now <span className="btn-arrow">→</span>
-                </button>
-              </form>
-            </div>
-            <div className="footer-links-grid">
-              <div className="footer-col">
-                <h4 className="footer-col-title">Useful Link</h4>
-                <ul className="footer-links-list">
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Service</a></li>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </div>
-              <div className="footer-col">
-                <h4 className="footer-col-title">Working Time</h4>
-                <div className="footer-info-item">
-                  <p className="footer-info-text">Mon - Fri: 9.00am - 5.00pm</p>
-                  <p className="footer-info-text">Saturday: 10.00am - 6.00pm</p>
-                  <p className="footer-info-text">Sunday Closed</p>
-                </div>
-              </div>
-              <div className="footer-col">
-                <h4 className="footer-col-title">Say Hello</h4>
-                <div className="footer-info-item">
-                  <div className="footer-contact-row">
-                    <span className="contact-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    </span>
-                    <a href="mailto:no-reply@pbminfotech.com" className="contact-link">no-reply@pbminfotech.com</a>
-                  </div>
-                  <div className="footer-contact-row">
-                    <span className="contact-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    </span>
-                    <a href="tel:+1800123456789" className="contact-link">+1-800123-456-789</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <form className="footer-nl-form" onSubmit={(e) => e.preventDefault()}>
+            <input type="email" placeholder="Enter your email address" />
+            <button type="submit" className="footer-nl-btn">
+              Subscribe Now
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+            </button>
+          </form>
         </div>
       </div>
-      <div className="footer-bottom-wrap">
-        <div className="footer-bottom-pill">
-          <p className="copyright-text">Copyright © 2024 Xleb All Rights Reserved.</p>
-          <div className="footer-legal-links">
+
+      {/* 4-Column Grid */}
+      <div className="footer-container">
+        <div className="footer-grid">
+
+          {/* Col 1 – Brand */}
+          <div className="footer-brand-col">
+            <img src={productNavLogo} alt="Rayon Lab Tech" className="footer-logo-img" />
+            <p className="footer-desc">
+              Pioneering precision laboratory manufacturing for global scientific excellence since 2008. Trusted by institutions across India.
+            </p>
+            <div className="footer-socials">
+              <a href="#" className="footer-social-btn" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg>
+              </a>
+              <a href="#" className="footer-social-btn" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+              </a>
+              <a href="#" className="footer-social-btn" aria-label="YouTube">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.57 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" /><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" /></svg>
+              </a>
+            </div>
+            <a href="https://wa.me/1800123456" className="footer-wa-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+              WhatsApp Expert
+            </a>
+          </div>
+
+          {/* Col 2 – Useful Links */}
+          <div className="footer-links-col">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+
+          {/* Col 3 – Our Services */}
+          <div className="footer-links-col">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Lab Furniture</a></li>
+              <li><a href="#">Fume Hoods</a></li>
+              <li><a href="#">Storage Cabinets</a></li>
+              <li><a href="#">Exhaust Systems</a></li>
+              <li><a href="#">Lab Planning</a></li>
+              <li><a href="#">Installation</a></li>
+            </ul>
+          </div>
+
+          {/* Col 4 – Contact */}
+          <div className="footer-contact-col">
+            <h4>Get In Touch</h4>
+            <div className="footer-contact-item">
+              <div className="footer-contact-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              </div>
+              <div className="footer-contact-info">
+                <span>Phone</span>
+                <a href="tel:+1800123456789">+1-800123-456-789</a>
+              </div>
+            </div>
+            <div className="footer-contact-item">
+              <div className="footer-contact-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+              </div>
+              <div className="footer-contact-info">
+                <span>Email</span>
+                <a href="mailto:info@rayonlabtech.com">info@rayonlabtech.com</a>
+              </div>
+            </div>
+            <div className="footer-contact-item">
+              <div className="footer-contact-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+              </div>
+              <div className="footer-contact-info">
+                <span>Address</span>
+                <p>Ahmedabad, Gujarat, India</p>
+              </div>
+            </div>
+            <div className="footer-contact-item">
+              <div className="footer-contact-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+              </div>
+              <div className="footer-contact-info">
+                <span>Working Hours</span>
+                <p>Mon–Sat: 9:00am – 6:00pm</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            Copyright © 2024 <span>Rayon Lab Tech</span>. All Rights Reserved.
+          </p>
+          <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
-            <a href="#">Term And Condition</a>
+            <a href="#">Terms &amp; Conditions</a>
             <a href="#">FAQ</a>
           </div>
         </div>
@@ -1025,46 +1066,39 @@ function App() {
             </div>
           </section>
 
-          <section className="manufacturer-section" aria-label="Our Expertise">
-            <div className="manufacturer-watermark">RAYON</div>
-            <div className="manufacturer-circuit-pattern">
-              <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
-                <path d="M100 20 L80 20 L70 40 L40 40 L30 60 L0 60" stroke="white" fill="none" strokeWidth="0.5" />
-                <path d="M100 50 L90 50 L80 70 L50 70 L40 90 L10 90" stroke="white" fill="none" strokeWidth="0.5" />
-                <circle cx="80" cy="20" r="1.5" fill="white" />
-                <circle cx="70" cy="40" r="1.5" fill="white" />
-                <circle cx="40" cy="40" r="1.5" fill="white" />
-                <circle cx="30" cy="60" r="1.5" fill="white" />
-              </svg>
-            </div>
-            <div className="manufacturer-container">
-              <div className="manufacturer-content">
-                <h2 className="manufacturer-title">
-                  Manufacturer Of Premium Laboratory<br />
-                  Furniture & Equipment In Ahmedabad<br />
+          <section className="hero-container">
+            {/* Background Watermark */}
+            <div className="hero-watermark">RAYON</div>
+
+            <div className="hero-content">
+              <div className="text-side">
+                <h1 className="hero-title">
+                  Manufacturer Of Premium Laboratory <br />
+                  Furniture & Equipment In Ahmedabad <br />
                   For Your Lab Needs
-                </h2>
-                <p className="manufacturer-desc">
+                </h1>
+                <p className="hero-subtitle">
                   Trusted by institutions and industries, Rayon Lab Tech delivers reliable,
                   durable, and fully customized laboratory solutions built to perform in
                   demanding environments.
                 </p>
-                <div className="manufacturer-actions">
-                  <button className="m-btn-primary" onClick={(e) => handleNavClick(e, 'products')}>
-                    Our Products <span className="m-btn-arrow">→</span>
+
+                <div className="hero-buttons">
+                  <button className="btn-primary">
+                    Our Products <span>&rarr;</span>
                   </button>
-                  <button className="m-btn-outline">
-                    Our Services <span className="m-btn-arrow">→</span>
+                  <button className="btn-outline">
+                    Our Services <span>&rarr;</span>
                   </button>
                 </div>
               </div>
-              <div className="manufacturer-image-wrap">
-                <div className="manufacturer-image-mask">
-                  <img src={labIslandTable} alt="Premium Laboratory Furniture" />
-                </div>
+
+              <div className="image-side">
+                <img src={labimage} alt="Laboratory Equipment" className="main-lab-img" />
               </div>
             </div>
           </section>
+
 
           <section className="why-rayon-section">
             <div className="why-rayon-container">
@@ -1093,15 +1127,6 @@ function App() {
                     ))}
                     <div className="circle-img-wrap">
                       <img src={whyChooseUsCenter} alt="Lab Interior" className="circle-img" />
-                      <div className="circle-overlay-icon">
-                        <div className="speed-icon-wrap">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                            <path d="M12 12L16 10" />
-                            <circle cx="12" cy="12" r="3" />
-                          </svg>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1538,6 +1563,68 @@ function App() {
       )}
 
       <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
+      <footer className="footer-container">
+        <div className="footer-main">
+          {/* Watermark Background */}
+          <div className="bg-watermark">RAYON</div>
+
+          <div className="footer-content-wrapper">
+            {/* Left Column: Logo & Description */}
+            <div className="brand-column">
+              <img src={Logo} alt="Rayon Logo" className="footer-logo" />
+              <p className="footer-desc">
+                Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+              </p>
+              <div className="social-row">
+                <i className="fas fa-globe"></i>
+                <i className="fas fa-shield-alt"></i>
+                <button className="whatsapp-btn">WhatsApp Expert</button>
+              </div>
+            </div>
+
+            {/* Middle/Right Column: Newsletter */}
+            <div className="newsletter-column">
+              <h3>Subscribe to Our Newsletter</h3>
+              <div className="subscribe-box">
+                <input type="text" placeholder="Enter Your Email Address" />
+                <button>Subscribe Now &rarr;</button>
+              </div>
+            </div>
+          </div>
+
+          <hr className="footer-divider" />
+
+          {/* Bottom Links Row */}
+          <div className="links-row">
+            <div className="link-group">
+              <h4>Useful Link</h4>
+              <div className="link-columns-inner">
+                <ul><li>Home</li><li>Service</li><li>Blog</li></ul>
+                <ul><li>About</li><li>Pricing</li><li>Contact</li></ul>
+              </div>
+            </div>
+            <div className="link-group">
+              <h4>Working Time</h4>
+              <p>Mon - Fri: 9.00am - 5.00pm</p>
+              <p>Saturday: 10.00am - 6.00pm</p>
+              <p>Sunday: Closed</p>
+            </div>
+            <div className="link-group">
+              <h4>Say Hello</h4>
+              <p><i className="far fa-envelope"></i> no-reply@pbminfotech.com</p>
+              <p><i className="fas fa-phone-alt"></i> +1-800123-456-789</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright Bar */}
+        <div className="copyright-bar">
+          <p>Copyright © 2024 Xlab All Rights Reserved.</p>
+          <div className="legal-links">
+            <span>Privacy Policy</span> | <span>Term And Condition</span> | <span>FAQ</span>
+          </div>
+        </div>
+      </footer>
     </div>
 
   );

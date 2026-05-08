@@ -76,7 +76,8 @@
   padding: 15px 24px;
   box-shadow: none;
   border-bottom: none;
-  margin-bottom: 40px; /* Increased gap as requested */
+  margin-bottom: 40px;
+  /* Increased gap as requested */
 }
 
 .premium-nav-bar {
@@ -94,7 +95,8 @@
 }
 
 .premium-nav-logo {
-  height: 65px; /* Increased to accommodate the new logo text */
+  height: 65px;
+  /* Increased to accommodate the new logo text */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1180,7 +1182,7 @@
   .product-details-container {
     max-width: 950px;
   }
-  
+
   .product-details-grid {
     gap: 40px;
   }
@@ -1201,7 +1203,8 @@
     gap: 60px;
   }
 
-  .product-gallery, .product-info {
+  .product-gallery,
+  .product-info {
     max-width: 800px;
     margin: 0 auto;
     width: 100%;
@@ -1256,7 +1259,7 @@
   }
 
   .premium-nav-links {
-    display: none; 
+    display: none;
   }
 
   .premium-nav-logo {
@@ -1316,7 +1319,7 @@
   }
 
   .cta-visual-col {
-    display: none; 
+    display: none;
   }
 
   .cta-text-col {

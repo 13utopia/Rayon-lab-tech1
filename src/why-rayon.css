@@ -32,6 +32,7 @@
 }
 
 .why-rayon-title {
+  font-family: 'Raleway', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.6rem);
   font-weight: 700;
   color: #0D1E44;
@@ -57,7 +58,7 @@
 
 .why-pill {
   background: #ffffff;
-  border: 1px solid rgba(13, 30, 68, 0.05);
+  border: 1px solid rgba(13, 30, 68, 0.1);
   border-radius: 100px;
   padding: 8px 8px 8px 25px;
   display: flex;
@@ -67,12 +68,44 @@
   cursor: pointer;
   min-width: 280px;
   box-shadow: 0 4px 15px rgba(13, 30, 68, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-pill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+}
+
+.why-pill:not(.active):hover {
+  border-color: rgba(13, 30, 68, 0.2);
+  background: #ffffff;
+}
+
+.why-pill:not(.active):hover .why-pill-arrow {
+  background: #0D1E44;
+  transform: rotate(45deg);
+}
+
+.why-pill:hover::after {
+  left: 150%;
 }
 
 .why-pill.active {
   background: #ffffff;
-  box-shadow: 0 15px 35px rgba(13, 30, 68, 0.08);
-  transform: translateX(5px);
+  box-shadow: 0 10px 25px rgba(13, 30, 68, 0.08);
+  border-color: #0D1E44;
+}
+
+.why-pill.active .why-pill-arrow {
+  background: #0D1E44;
 }
 
 .why-pill:not(.active) {
@@ -116,8 +149,8 @@
 }
 
 .circle-ring {
-  width: 240px;
-  height: 240px;
+  width: 340px;
+  height: 340px;
   border: 1.2px solid rgba(13, 30, 68, 0.1);
   border-radius: 50%;
   position: relative;
@@ -127,8 +160,8 @@
 }
 
 .circle-img-wrap {
-  width: 420px;
-  height: 420px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
@@ -319,13 +352,13 @@
 /* Responsive Optimization */
 @media (max-width: 1400px) {
   .circle-ring {
-    width: 420px;
-    height: 420px;
+    width: 300px;
+    height: 300px;
   }
 
   .circle-img-wrap {
-    width: 360px;
-    height: 360px;
+    width: 240px;
+    height: 240px;
   }
 }
 

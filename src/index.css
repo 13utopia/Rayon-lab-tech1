@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
+
 :root {
   --page-bg: #EAF1FF;
   --surface: #ffffff;
@@ -417,6 +419,7 @@ body {
 }
 
 .showcase-v2-title {
+  font-family: 'Raleway', sans-serif;
   font-size: 2.2rem;
   font-weight: 700;
   color: #111c38;
@@ -1532,6 +1535,7 @@ body {
 }
 
 .client-main-heading {
+  font-family: 'Raleway', sans-serif;
   font-size: 2.6rem;
   font-weight: 800;
   color: #111c38;
@@ -3782,4 +3786,139 @@ body {
   .newsletter-v2-form {
     height: 64px;
   }
+}
+
+.footer-container {
+  background-color: #0d1b40;
+  color: white;
+  border-radius: 30px;
+  width: 98%;
+  /* Very wide */
+  max-width: 1450px;
+  margin: 20px auto;
+  overflow: hidden;
+  font-family: sans-serif;
+  position: relative;
+}
+
+.footer-main {
+  padding: 30px 60px 15px 60px;
+  /* Reduced vertical padding */
+  position: relative;
+}
+
+.bg-watermark {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+/* Slim Layout: Two columns at the top */
+.footer-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Vertical center alignment */
+  margin-bottom: 20px;
+}
+
+.brand-column {
+  width: 35%;
+}
+
+.footer-logo {
+  width: 160px;
+  margin-bottom: 10px;
+}
+
+.footer-desc {
+  font-size: 12px;
+  color: #cbd5e0;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.newsletter-column {
+  width: 50%;
+}
+
+.newsletter-column h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* The Search/Subscribe Bar */
+.subscribe-box {
+  background: white;
+  border-radius: 50px;
+  display: flex;
+  padding: 4px;
+}
+
+.subscribe-box input {
+  flex: 1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  outline: none;
+}
+
+.subscribe-box button {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Links Section */
+.links-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.link-group h4 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.link-columns-inner {
+  display: flex;
+  gap: 40px;
+  color: #a0aec0;
+}
+
+.link-columns-inner ul {
+  list-style: none;
+  padding: 0;
+}
+
+.link-group p {
+  color: #a0aec0;
+  margin: 5px 0;
+}
+
+/* White Copyright Bar */
+.copyright-bar {
+  background: white;
+  color: #666;
+  padding: 12px 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }

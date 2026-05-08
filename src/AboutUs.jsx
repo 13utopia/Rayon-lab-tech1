@@ -37,7 +37,7 @@ const AboutUs = () => {
         justifyContent: 'center',
         overflow: 'hidden'
       }}>
-        <div className="about-hero-bg-text">ABOUT US</div>
+
         <div className="about-hero-content">
 
         </div>

@@ -1,8 +1,60 @@
-/* Why Choose Us V3 Section Styles */
+.fixed-action-bar {
+  /* CRITICAL: This keeps it fixed in place during scroll */
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  /* Stays above every other section */
+
+  /* Dimensions and Visuals */
+  width: 80px;
+  background: linear-gradient(to bottom, #2b3a5a, #4e5d77);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.bar-item {
+  width: 65px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 2px 0;
+  border-radius: 8px;
+}
+
+.bar-item i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.bar-item span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* HOVER EFFECT: Changes to the dark navy only when cursor is over it */
+.bar-item:hover {
+  background-color: #031533;
+  transform: scale(1.05);
+}
+
 .why-v3-section {
   width: 100%;
   padding: 80px 0;
-  background: #f0f5ff; /* Light bluish-grey background from image */
+  background: #f0f5ff;
+  /* Light bluish-grey background from image */
   font-family: 'Inter', sans-serif;
   overflow: hidden;
   position: relative;
@@ -251,6 +303,7 @@
 .fact-divider:first-child {
   margin-left: 100px;
 }
+
 .fact-divider:last-child {
   margin-right: 100px;
 }
@@ -270,18 +323,18 @@
     gap: 50px;
     justify-items: center;
   }
-  
+
   .why-v3-left {
     align-items: center;
     width: 100%;
   }
-  
+
   .why-v3-right {
     text-align: center;
     padding-left: 0;
     align-items: center;
   }
-  
+
   .why-v3-checklist {
     align-items: flex-start;
     text-align: left;
@@ -296,12 +349,13 @@
   .why-v3-main-title {
     font-size: 2.2rem;
   }
-  
-  .why-v3-circle-outer, .why-v3-image-wrap {
+
+  .why-v3-circle-outer,
+  .why-v3-image-wrap {
     width: 320px;
     height: 320px;
   }
-  
+
   .why-v3-right-heading {
     font-size: 1.8rem;
   }

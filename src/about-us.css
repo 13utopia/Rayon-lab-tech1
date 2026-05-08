@@ -6,12 +6,12 @@
 /* Top Intro Section (New) */
 .about-intro-top {
   background-color: #EAF1FF;
-  padding: 60px 0;
+  padding: 90px 0;
   width: 100%;
 }
 
 .about-intro-container {
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -21,7 +21,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 50px;
   align-items: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .about-intro-image img {
