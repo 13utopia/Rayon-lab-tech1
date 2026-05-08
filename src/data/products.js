@@ -27,6 +27,22 @@ import fumeExtractor2 from '../assets/fume-extractor-2.jpg';
 import blower1 from '../assets/exhaust-blower-1.png';
 import blower2 from '../assets/exhaust-blower-2.png';
 import blower3 from '../assets/exhaust-blower-3.png';
+import workTable1 from '../assets/lab-working-table/working-table-1.png';
+import workTable2 from '../assets/lab-working-table/working-table-2.png';
+import workTable3 from '../assets/lab-working-table/working-table-3.png';
+import workTable4 from '../assets/lab-working-table/working-table-4.png';
+import islandTable1 from '../assets/island-table/island-table-1.png';
+import islandTable2 from '../assets/island-table/island-table-2.jpg';
+import islandTable3 from '../assets/island-table/island-table-3.png';
+import overhead1 from '../assets/overhead-storage/overhead-1.jpg';
+import overhead2 from '../assets/overhead-storage/overhead-2.jpg';
+import overhead3 from '../assets/overhead-storage/overhead-3.jpg';
+import overhead4 from '../assets/overhead-storage/overhead-4.jpg';
+import glassware1 from '../assets/glassware-storage/glassware-1.png';
+import glassware2 from '../assets/glassware-storage/glassware-2.jpg';
+import glassware3 from '../assets/glassware-storage/glassware-3.jpg';
+import glassware4 from '../assets/glassware-storage/glassware-4.jpg';
+import chemical1 from '../assets/chemical-storage/chemical-storage-1.jpg';
 
 export const products = [
   {
@@ -62,6 +78,73 @@ export const products = [
       "Centrally mounted reagent rack with power connections for easy access and flexibility to work.",
       "Users can get the benefit of a side mounted washing facility, like sink & multi nozzle faucet to wash glassware & get tapping water for process.",
       "Offer an eye shower for eye safety near the sink."
+    ],
+    subProducts: [
+      {
+        id: "lab-working-table",
+        title: "Lab Working Table",
+        heroTitle: "Lab Working Table",
+        heroSubtitle: "Engineered for central lab space optimization and collaborative workflows.",
+        images: [workTable1, workTable2, workTable3, workTable4],
+        description: "Our Island Workbenches provide a central hub for laboratory operations. Designed for accessibility from all sides, these units feature integrated utility systems and modular storage to enhance research productivity.",
+        specs: [
+          { heading: "Configuration", items: ["Double-sided access", "Centrally mounted reagent racks", "Integrated power channels"] }
+        ],
+        notes: ["Available in various lengths from 1200mm to 3600mm.", "Customizable drawer and cabinet configurations."],
+        features: ["Heavy-duty C-frame support", "Chemical resistant worktops", "Adjustable shelving"]
+      },
+      {
+        id: "island-table",
+        title: "Island Table",
+        heroTitle: "Island Table",
+        heroSubtitle: "High-performance central workstations designed for multi-user collaboration.",
+        images: [islandTable1, islandTable2, islandTable3],
+        description: "Our Island Tables are engineered to be the functional centerpiece of any laboratory, providing ample workspace and integrated utility access from all sides.",
+        specs: [
+          { heading: "Mounting", items: ["Floor mounted pedestals", "Suspended cabinet systems", "Cantilevered worktops"] }
+        ],
+        notes: ["Standard depth: 750mm or 900mm.", "Height options for sitting or standing work."],
+        features: ["Backsplash for wall protection", "Easy-to-clean smooth surfaces", "Integrated cable management"]
+      },
+      {
+        id: "overhead-storage-cabinet",
+        title: "overhead Storage Cabinet",
+        heroTitle: "Overhead Storage Cabinet",
+        heroSubtitle: "Space-saving wall-mounted storage solutions for laboratory essentials.",
+        images: [overhead1, overhead2, overhead3, overhead4],
+        description: "Our Overhead Storage Cabinets are designed to maximize vertical space in the laboratory. Featuring transparent glass panels for easy inventory visibility and secure locking mechanisms, these units provide safe and organized storage for glassware, reagents, and documentation.",
+        specs: [
+          { heading: "Material", items: ["Powder-coated GI", "Stainless Steel 304", "Heavy-duty tempered glass"] }
+        ],
+        notes: ["Multiple tier levels available.", "Adjustable height for large bottles."],
+        features: ["Chemical spill containment lips", "Integrated electrical sockets", "Modular add-on capability"]
+      },
+      {
+        id: "glassware-storage-cabinet",
+        title: "Glassware Storage Cabinet",
+        heroTitle: "Glassware Storage Cabinet",
+        heroSubtitle: "Premium high-capacity storage for laboratory glassware and precision instruments.",
+        images: [glassware1, glassware2, glassware3, glassware4],
+        description: "Our Glassware Storage Cabinets are designed for high-capacity organization of laboratory glass and supplies. Featuring full-height glass doors and adjustable shelving, these units provide clear visibility and easy access while protecting delicate items from dust and contamination.",
+        specs: [
+          { heading: "Type", items: ["Mobile under-bench cabinets", "Fixed pedestal units", "Wall-mounted overheads"] }
+        ],
+        notes: ["Soft-close hinges and drawer slides.", "Chemical resistant internal lining."],
+        features: ["Lockable doors for security", "Adjustable internal shelving", "Ventilation options for chemical storage"]
+      },
+      {
+        id: "chemical-storage-cabinet",
+        title: "Chemical Storage Cabinet",
+        heroTitle: "Chemical Storage Cabinet",
+        heroSubtitle: "Safe and ventilated containment systems for hazardous laboratory chemicals.",
+        images: [chemical1],
+        description: "Our Chemical Storage Cabinets are purpose-built for the secure containment of hazardous substances. Featuring integrated ventilation ports, chemical-resistant internal surfaces, and reinforced locking mechanisms, these units ensure laboratory safety by preventing the buildup of toxic fumes and unauthorized access.",
+        specs: [
+          { heading: "Safety Features", items: ["Integrated ventilation port", "Chemical-resistant G.I. construction", "Multi-point locking system"] }
+        ],
+        notes: ["Available in various RAL colors.", "Optional fire-rated construction."],
+        features: ["Spill containment shelves", "Hazard identification labeling", "Adjustable ventilation airflow"]
+      }
     ]
   },
   {

@@ -185,6 +185,20 @@
   cursor: pointer;
 }
 
+.premium-mobile-sublink.sub-item {
+  padding-left: 32px;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+  background: #fafbfc;
+}
+
+.premium-mobile-sublink.sub-item::before {
+  content: "—";
+  margin-right: 8px;
+  color: #cbd5e1;
+}
+
 .premium-mobile-sublink.active {
   background: rgba(13, 30, 68, 0.08);
   border-color: rgba(13, 30, 68, 0.18);
@@ -340,6 +354,10 @@
   transform: translateX(-50%) translateY(0);
 }
 
+.dropdown-item-container {
+  position: relative;
+}
+
 .dropdown-item {
   padding: 12px 24px;
   color: #1e293b;
@@ -351,16 +369,68 @@
   white-space: normal;
   line-height: 1.4;
   border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flyout-arrow {
+  font-size: 1.2rem;
+  color: #64748b;
+  line-height: 1;
+  margin-left: 10px;
+}
+
+.flyout-submenu {
+  position: absolute;
+  left: calc(100% - 5px);
+  top: -3px;
+  background: #ffffff;
+  min-width: 260px;
+  box-shadow: 15px 10px 40px rgba(13, 30, 68, 0.12);
+  border-radius: 12px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  border: 1px solid rgba(13, 30, 68, 0.08);
+  border-top: 3px solid #0D1E44;
+}
+
+.dropdown-item-container:hover > .flyout-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.dropdown-item-container:hover > .dropdown-item {
+  background: #f8fafc;
+  color: #0D1E44;
+}
+
+.dropdown-item-container:hover .flyout-arrow {
+  color: #0D1E44;
+  transform: translateX(2px);
+}
+
+.dropdown-item.sub-item {
+  padding-left: 20px;
+  font-size: 0.85rem;
+  color: #64748b;
+  background: transparent;
+  border-bottom: none;
+}
+
+.dropdown-item.sub-item:hover {
+  background: #f1f5f9;
+  color: #0D1E44;
+  padding-left: 24px;
 }
 
 .dropdown-item:last-child {
   border-bottom: none;
-}
-
-.dropdown-item:hover {
-  background: #f8fafc;
-  color: #0D1E44;
-  padding-left: 28px;
 }
 
 /* Mobile Dropdown refinement */

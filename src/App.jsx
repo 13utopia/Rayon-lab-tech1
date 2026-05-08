@@ -9,6 +9,7 @@ import './footer.css';
 import AboutUs from './AboutUs';
 import './quote-modal.css';
 import './manufacturer-section.css';
+import './sub-products.css';
 import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
@@ -479,7 +480,7 @@ function QuoteModal({ isOpen, onClose }) {
   );
 }
 
-function ProductPage({ product, onGetQuote }) {
+function ProductPage({ product, onGetQuote, onProductSelect }) {
   const [activeImageIndex, setActiveImageIndex] = React.useState(0);
   const images = product.images;
 
@@ -609,6 +610,38 @@ function ProductPage({ product, onGetQuote }) {
           </div>
         </div>
       </section>
+
+      {product.subProducts && (
+        <section className="sub-products-section">
+          <div className="sub-products-container">
+            <div className="sub-products-header">
+              <h2 className="sub-products-title">EXPLORE OUR RANGE</h2>
+              <div className="sub-products-underline"></div>
+            </div>
+            <div className="sub-products-grid">
+              {product.subProducts.map((sub) => (
+                <div 
+                  key={sub.id} 
+                  className="sub-product-card"
+                  onClick={(e) => {
+                    onProductSelect(sub);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                >
+                  <div className="sub-product-image">
+                    <img src={sub.images[0]} alt={sub.title} />
+                  </div>
+                  <div className="sub-product-info">
+                    <h3>{sub.title}</h3>
+                    <p>{sub.heroSubtitle}</p>
+                    <button className="view-details-btn">View Details →</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="product-cta" aria-label="Request a Quote">
         <div className="product-cta-watermark">RAYON</div>
@@ -854,12 +887,27 @@ function App() {
                         </a>
                         <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
                           {products.map((p) => (
-                            <div
-                              key={p.id}
-                              className="dropdown-item"
-                              onClick={(e) => handleNavClick(e, 'products', p)}
-                            >
-                              {p.title}
+                            <div key={p.id} className="dropdown-item-container">
+                              <div
+                                className="dropdown-item"
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                                {p.subProducts && <span className="flyout-arrow">›</span>}
+                              </div>
+                              {p.subProducts && (
+                                <div className="flyout-submenu">
+                                  {p.subProducts.map((sub) => (
+                                    <div
+                                      key={sub.id}
+                                      className="dropdown-item sub-item"
+                                      onClick={(e) => handleNavClick(e, 'products', sub)}
+                                    >
+                                      {sub.title}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -920,14 +968,25 @@ function App() {
                         </button>
                         <div className="premium-mobile-sublist">
                           {products.map((p) => (
-                            <button
-                              key={p.id}
-                              type="button"
-                              className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                              onClick={(e) => handleNavClick(e, 'products', p)}
-                            >
-                              {p.title}
-                            </button>
+                            <React.Fragment key={p.id}>
+                              <button
+                                type="button"
+                                className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                              </button>
+                              {p.subProducts && p.subProducts.map((sub) => (
+                                <button
+                                  key={sub.id}
+                                  type="button"
+                                  className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                  onClick={(e) => handleNavClick(e, 'products', sub)}
+                                >
+                                  {sub.title}
+                                </button>
+                              ))}
+                            </React.Fragment>
                           ))}
                         </div>
                       </div>
@@ -1008,12 +1067,27 @@ function App() {
                         </a>
                         <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
                           {products.map((p) => (
-                            <div
-                              key={p.id}
-                              className="dropdown-item"
-                              onClick={(e) => handleNavClick(e, 'products', p)}
-                            >
-                              {p.title}
+                            <div key={p.id} className="dropdown-item-container">
+                              <div
+                                className="dropdown-item"
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                                {p.subProducts && <span className="flyout-arrow">›</span>}
+                              </div>
+                              {p.subProducts && (
+                                <div className="flyout-submenu">
+                                  {p.subProducts.map((sub) => (
+                                    <div
+                                      key={sub.id}
+                                      className="dropdown-item sub-item"
+                                      onClick={(e) => handleNavClick(e, 'products', sub)}
+                                    >
+                                      {sub.title}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>
@@ -1077,14 +1151,25 @@ function App() {
                         </button>
                         <div className="main-mobile-sublist">
                           {products.map((p) => (
-                            <button
-                              key={p.id}
-                              type="button"
-                              className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                              onClick={(e) => handleNavClick(e, 'products', p)}
-                            >
-                              {p.title}
-                            </button>
+                            <React.Fragment key={p.id}>
+                              <button
+                                type="button"
+                                className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                              </button>
+                              {p.subProducts && p.subProducts.map((sub) => (
+                                <button
+                                  key={sub.id}
+                                  type="button"
+                                  className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                  onClick={(e) => handleNavClick(e, 'products', sub)}
+                                >
+                                  {sub.title}
+                                </button>
+                              ))}
+                            </React.Fragment>
                           ))}
                         </div>
                       </div>
@@ -1713,7 +1798,11 @@ function App() {
           </section>
         </>
       ) : (
-        <ProductPage product={selectedProduct} onGetQuote={() => setShowQuoteModal(true)} />
+        <ProductPage 
+          product={selectedProduct} 
+          onGetQuote={() => setShowQuoteModal(true)} 
+          onProductSelect={(p) => setSelectedProduct(p)}
+        />
       )}
 
       <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />

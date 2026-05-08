@@ -23,6 +23,7 @@
   /* Chrome, Safari and Opera */
 }
 
+
 html,
 body,
 #root {
@@ -2872,6 +2873,20 @@ body {
   font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
+}
+
+.main-mobile-sublink.sub-item {
+  padding-left: 32px;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+  background: #fafbfc;
+}
+
+.main-mobile-sublink.sub-item::before {
+  content: "—";
+  margin-right: 8px;
+  color: #cbd5e1;
 }
 
 .main-mobile-sublink.active {
