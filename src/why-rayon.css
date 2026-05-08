@@ -157,6 +157,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: rotateRing 20s linear infinite, pulseRing 4s ease-in-out infinite;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseRing {
+
+  0%,
+  100% {
+    border-color: rgba(13, 30, 68, 0.1);
+    box-shadow: 0 0 0 0 rgba(13, 30, 68, 0.05);
+  }
+
+  50% {
+    border-color: rgba(13, 30, 68, 0.3);
+    box-shadow: 0 0 0 15px rgba(13, 30, 68, 0);
+  }
 }
 
 .circle-img-wrap {
@@ -167,6 +192,7 @@
   position: relative;
   border: 1.5px solid #0D1E44;
   box-shadow: 0 30px 80px rgba(13, 30, 68, 0.15);
+  animation: rotateRing 20s linear infinite reverse;
 }
 
 .circle-img {
@@ -205,6 +231,14 @@
   border-radius: 50%;
   border: 3px solid #f0f7ff;
   z-index: 5;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.circle-dot:hover {
+  transform: scale(2);
+  box-shadow: 0 0 15px rgba(13, 30, 68, 0.2);
+  z-index: 15;
 }
 
 .dot-1 {
@@ -213,9 +247,8 @@
 }
 
 .dot-2 {
-  top: 50%;
+  top: calc(50% - 7px);
   right: -7px;
-  transform: translateY(-50%);
 }
 
 .dot-3 {
@@ -270,14 +303,21 @@
 .benefit-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   position: relative;
   z-index: 2;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.benefit-item:hover {
+  transform: translateX(8px);
 }
 
 .benefit-icon-wrap {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   background: #0D1E44;
   border-radius: 50%;
   display: flex;
@@ -285,22 +325,46 @@
   justify-content: center;
   color: #ffffff;
   flex-shrink: 0;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(13, 30, 68, 0.15);
+  border: 2px solid #ffffff;
+}
+
+.benefit-item:hover .benefit-icon-wrap {
+  transform: scale(1.4) rotate(5deg);
+  background: #585f6d;
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
+  z-index: 10;
 }
 
 .benefit-icon-wrap svg {
   width: 14px;
   height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon-wrap svg {
+  transform: scale(1.1);
 }
 
 .benefit-text {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #0D1E44;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: left center;
+  display: inline-block;
+}
+
+.benefit-item:hover .benefit-text {
+  transform: scale(1.1) translateY(-3px);
+  color: #0D1E44;
+  text-shadow: 1px 4px 12px rgba(13, 30, 68, 0.18);
 }
 
 .benefit-connector {
   position: absolute;
-  left: 13px;
+  left: 14px;
   /* Center of icon */
   top: 25px;
   bottom: 25px;

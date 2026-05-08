@@ -9,7 +9,7 @@
 
 .serve-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .serve-title {
@@ -178,6 +178,7 @@
   .serve-grid {
     grid-template-columns: 1fr;
   }
+
   .serve-section {
     padding: 60px 20px;
   }

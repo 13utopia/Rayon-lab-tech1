@@ -10,6 +10,7 @@ import AboutUs from './AboutUs';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
+import './what-we-serve-premium.css';
 import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
@@ -212,39 +213,40 @@ function ServeIcon({ type }) {
   switch (type) {
     case 'analysis':
       return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 8V19C5 20.1046 5.89543 21 7 21H10C11.1046 21 12 20.1046 12 19V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M4 8H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8.5 3V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M6.5 3H10.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M16 12V20C16 20.5523 16.4477 21 17 21H19C19.5523 21 20 20.5523 20 20V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M15 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M17 12V9C17 8.44772 17.4477 8 18 8C18.5523 8 19 8.44772 19 9V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          {/* Syringe */}
+          <path d="M35 15 L45 15 L45 22 L55 22 L55 65 L45 65 L45 80 L35 80 L35 65 L25 65 L25 22 L35 22 Z" />
+          <path d="M40 80 L40 95 L37 98 L37 80 Z" />
+          <rect x="28" y="30" width="18" height="4" fill="white" opacity="0.4" />
+          <rect x="28" y="40" width="18" height="4" fill="white" opacity="0.4" />
+          <rect x="28" y="50" width="18" height="4" fill="white" opacity="0.4" />
+          {/* Vial */}
+          <path d="M60 30 H85 V40 Q90 40 90 45 V85 Q90 90 85 90 H60 Q55 90 55 85 V45 Q55 40 60 40 Z" />
+          <rect x="62" y="65" width="22" height="6" fill="white" opacity="0.4" />
+          <rect x="62" y="75" width="22" height="6" fill="white" opacity="0.4" />
         </svg>
       );
     case 'design':
       return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 7C14 4.79086 12.2091 3 10 3C7.79086 3 6 4.79086 6 7V14C6 16.2091 7.79086 18 10 18H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M10 7H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8 11H12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M10 14H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M5 21H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M12 21V18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          <path d="M20 70 Q20 40 50 35 L50 25 L65 25 L65 15 L80 15 L80 40 L65 40 L65 35 Q35 40 35 70 Z" />
+          <rect x="30" y="70" width="50" height="8" />
+          <rect x="15" y="85" width="70" height="10" />
+          <rect x="45" y="78" width="10" height="8" />
+          <path d="M55 35 L75 15 L85 25 L65 45 Z" fill="white" opacity="0.2" />
         </svg>
       );
     case 'manufacturing':
       return (
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 14C14.7614 14 17 11.7614 17 9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9C7 11.7614 9.23858 14 12 14Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M21 21C21 16.5817 16.9706 13 12 13C7.02944 13 3 16.5817 3 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M19.5 8C19.5 8.82843 18.8284 9.5 18 9.5C17.1716 9.5 16.5 8.82843 16.5 8C16.5 7.17157 17.1716 6.5 18 6.5C18.8284 6.5 19.5 7.17157 19.5 8Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M18 5V6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M18 9.5V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M20.1213 5.87868L19.0607 6.93934" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M16.9393 9.06066L15.8787 10.1213" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M20.1213 10.1213L19.0607 9.06066" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M16.9393 6.93934L15.8787 5.87868" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg viewBox="0 0 100 100" fill="currentColor">
+          {/* Person with Helmet */}
+          <path d="M50 25 C62 25 72 35 72 48 V58 H28 V48 C28 35 38 25 50 25 Z" />
+          <path d="M25 55 Q25 45 50 45 Q75 45 75 55 L78 58 H22 Z" />
+          <path d="M15 85 Q15 65 50 65 Q85 65 85 85 V95 H15 Z" />
+          <rect x="42" y="22" width="16" height="6" rx="2" />
+          {/* Gears */}
+          <path d="M80 25 L83 20 L87 22 L85 27 L90 29 L92 25 L96 27 L94 32 Q98 35 98 40 L94 48 L90 46 L92 41 L87 43 L83 45 L80 40 Q78 35 80 30 Z" />
+          <path d="M70 45 L73 40 L77 42 L75 47 L80 49 L82 45 L86 47 L84 52 Q88 55 88 60 L84 68 L80 66 L82 61 L77 63 L73 65 L70 60 Q68 55 70 50 Z" />
         </svg>
       );
     default:
@@ -620,8 +622,8 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
             </div>
             <div className="sub-products-grid">
               {product.subProducts.map((sub) => (
-                <div 
-                  key={sub.id} 
+                <div
+                  key={sub.id}
                   className="sub-product-card"
                   onClick={(e) => {
                     onProductSelect(sub);
@@ -1415,71 +1417,67 @@ function App() {
 
           <section className="consultation-section" aria-label="Get Consultation">
             <div className="consultation-container">
+              {/* Left Side: Scientist Image */}
               <div className="consultation-image-box">
                 <img src={scientistImage} alt="Scientist performing laboratory research" />
               </div>
 
+              {/* Right Side: Dark Form Card */}
               <div className="consultation-form-card">
-                <div className="consult-hex-overlay">
-                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 0 L186.6 50 L186.6 150 L100 200 L13.4 150 L13.4 50 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
-                    <path d="M186.6 50 L273.2 100 L273.2 200 L186.6 250 L100 200 L100 100 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
-                    <path d="M13.4 50 L100 100 L100 200 L13.4 150 L-73.2 100 L-73.2 0 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
-                    <path d="M100 -100 L186.6 -50 L186.6 50 L100 100 L13.4 50 L13.4 -50 Z" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.05" />
+                {/* Background Pattern */}
+                <div className="consult-pattern-overlay">
+                  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.08">
+                      <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
+                      <path d="M150 0 L200 25 L200 75 L150 100 L100 75 L100 25 Z" />
+                      <path d="M250 0 L300 25 L300 75 L250 100 L200 75 L200 25 Z" />
+                      <path d="M50 100 L100 125 L100 175 L50 200 L0 175 L0 125 Z" />
+                      <path d="M150 100 L200 125 L200 175 L150 200 L100 175 L100 125 Z" />
+                      <path d="M250 100 L300 125 L300 175 L250 200 L200 175 L200 125 Z" />
+                    </g>
                   </svg>
                 </div>
 
                 <div className="consult-content">
-                  <div className="consult-badge">CONTACT US</div>
-                  <h2 className="consult-title">Let's Design Your Laboratory Setup</h2>
+                  <div className="consult-badge-pill">CONTACT US</div>
+                  <h2 className="consult-main-title">Get your free estimate!</h2>
 
-                  <form className="consult-grid-form" onSubmit={(e) => e.preventDefault()}>
-                    <div className="consult-row">
-                      <div className="consult-field">
-                        <select className="consult-input" defaultValue="">
+                  <form className="consult-modern-form" onSubmit={(e) => e.preventDefault()}>
+                    <div className="consult-form-grid">
+                      <div className="consult-input-group">
+                        <select className="consult-glass-input" defaultValue="">
                           <option value="" disabled>Choose a Service</option>
                           <option value="planning">Lab Planning</option>
                           <option value="furniture">Lab Furniture</option>
                           <option value="exhaust">Exhaust System</option>
                         </select>
                       </div>
-                      <div className="consult-field">
-                        <select className="consult-input" defaultValue="">
+                      <div className="consult-input-group">
+                        <select className="consult-glass-input" defaultValue="">
                           <option value="" disabled>Type of Clean</option>
                           <option value="class100">Class 100</option>
                           <option value="class1000">Class 1000</option>
                           <option value="class10000">Class 10000</option>
                         </select>
                       </div>
-                    </div>
-
-                    <div className="consult-row">
-                      <div className="consult-field">
-                        <input type="text" className="consult-input" placeholder="Total Floor Area (sq ft)" />
+                      <div className="consult-input-group">
+                        <input type="text" className="consult-glass-input" placeholder="Total Floor Area (sq ft)" />
                       </div>
-                      <div className="consult-field">
-                        <input type="text" className="consult-input" placeholder="Your Name" />
+                      <div className="consult-input-group">
+                        <input type="text" className="consult-glass-input" placeholder="Your Name" />
                       </div>
-                    </div>
-
-                    <div className="consult-row full">
-                      <div className="consult-field">
-                        <input type="email" className="consult-input" placeholder="Email Address" />
+                      <div className="consult-input-group full-width">
+                        <input type="email" className="consult-glass-input" placeholder="Email Address" />
                       </div>
                     </div>
 
-                    <p className="consult-disclaimer">
-                      Share your requirements and our experts will guide you with the right layout, products, and cost estimation.
-                    </p>
-
-                    <div className="consult-submit-wrap">
-                      <div className="consult-btn-pill">
-                        <button type="submit" className="consult-main-btn">
-                          Get Consultation
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                          </svg>
+                    <div className="consult-footer-row">
+                      <p className="consult-helper-text">
+                        Submit this information and we will send you the cost for the service.
+                      </p>
+                      <div className="consult-submit-btn-wrap">
+                        <button type="submit" className="consult-premium-btn">
+                          Get Consultation <span>&rarr;</span>
                         </button>
                       </div>
                     </div>
@@ -1490,46 +1488,56 @@ function App() {
           </section>
 
           <section className="serve-section-final" aria-label="What We Serve">
-            <div className="serve-header-final">
-              <h2 className="serve-heading-final">What We Serve</h2>
-              <p className="serve-subheading-final">
-                Precision-engineered components built to withstand rigorous scientific environments.
-              </p>
-            </div>
+            <div className="serve-container-final">
+              <div className="serve-header-final">
+                <span className="serve-badge-final">OUR SERVICES</span>
+                <h2 className="serve-heading-final">What We Serve</h2>
+                <p className="serve-subheading-final">
+                  Precision-engineered components built to withstand rigorous scientific environments.
+                </p>
+              </div>
 
-            <div className="serve-grid-final">
-              {serveCards.map((card, index) => (
-                <article className="serve-card-final" key={index}>
-                  <div className="serve-card-bg-icon">
-                    <ServeIcon type={card.icon} />
-                  </div>
-
-                  <div className="serve-card-header">
-                    <div className="serve-card-main-icon">
+              <div className="serve-grid-final">
+                {serveCards.map((card, index) => (
+                  <article className="serve-card-final" key={index}>
+                    {/* Background Icon */}
+                    <div className="serve-card-bg-icon">
                       <ServeIcon type={card.icon} />
                     </div>
-                    <h3 className="serve-card-title-final">{card.title}</h3>
-                  </div>
 
-                  <div className="serve-card-body-final">
-                    {card.texts.map((text, tIndex) => (
-                      <p key={tIndex} className="serve-card-text-final">{text}</p>
-                    ))}
-                  </div>
+                    <div className="serve-card-top">
+                      <div className="serve-card-main-icon">
+                        <ServeIcon type={card.icon} />
+                      </div>
+                      <h3 className="serve-card-title-final">{card.title}</h3>
+                    </div>
 
-                  <div className="serve-card-image-final-wrap">
-                    <div className="serve-plus-hexagon-outer">
-                      <div className="serve-plus-hexagon-inner">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="12" y1="5" x2="12" y2="19"></line>
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                        </svg>
+                    <div className="serve-card-content">
+                      <p className="serve-card-desc-final">{card.texts[0]}</p>
+                      <p className="serve-card-desc-final" style={{ opacity: 0.7 }}>{card.texts[1]}</p>
+                      <p className="serve-card-desc-final" style={{ opacity: 0.5 }}>{card.texts[2]}</p>
+                    </div>
+
+                    <div className="serve-card-image-final-wrap">
+                      <img src={card.image} alt={card.title} className="serve-card-image-final" />
+                      {/* Hover Overlay Symbol */}
+                      <div className="serve-hover-symbol-overlay">
+                        <div className="serve-symbol-circle">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                    <img src={card.image} alt={card.title} className="serve-card-image-final" />
-                  </div>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
+
+              <div className="serve-dots-final">
+                <div className="serve-dot active"></div>
+                <div className="serve-dot"></div>
+              </div>
             </div>
           </section>
 
@@ -1537,16 +1545,19 @@ function App() {
 
           <section className="client-section" aria-label="Our Clients">
             <div className="client-bg-watermark">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(-25, 50, 55)" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="150 50" strokeDashoffset="10" />
-                <ellipse cx="50" cy="55" rx="38" ry="14" transform="rotate(35, 50, 55)" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="170 50" strokeDashoffset="100" />
-                <g transform="rotate(-15, 50, 50)">
-                  <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                  <path d="M38 36 L62 36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </g>
-                <circle cx="48" cy="24" r="4" fill="currentColor" />
-                <circle cx="60" cy="16" r="2.5" fill="currentColor" />
-                <circle cx="44" cy="12" r="1.5" fill="currentColor" />
+              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Orbital Rings */}
+                <ellipse cx="100" cy="110" rx="90" ry="35" transform="rotate(-25, 100, 110)" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" opacity="0.6" />
+                <ellipse cx="100" cy="110" rx="95" ry="40" transform="rotate(20, 100, 110)" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+                
+                {/* Erlenmeyer Flask */}
+                <path d="M85 45h30M92 45v45l-35 85a8 8 0 0 0 7 12h72a8 8 0 0 0 7-12l-35-85V45" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />
+                <path d="M72 155h56" stroke="currentColor" strokeWidth="2" opacity="0.3" />
+                
+                {/* Rising Bubbles */}
+                <circle cx="85" cy="35" r="8" fill="currentColor" opacity="0.5" />
+                <circle cx="105" cy="15" r="5" fill="currentColor" opacity="0.3" />
+                <circle cx="120" cy="40" r="4" fill="currentColor" opacity="0.4" />
               </svg>
             </div>
 
@@ -1554,69 +1565,70 @@ function App() {
 
             <div className="client-marquee-container">
               <div className="client-divider"></div>
-
               <div className="client-logo-row">
+                {/* Logo 1: LAB with Dots */}
                 <div className="cl-logo">
-                  <span className="cl-logo-text">L</span>
-                  <div className="cl-icon-a">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#0D1E44">
-                      <path d="M12 4 L4 20 H7 L9 15 H15 L17 20 H20 L12 4 Z M10 12 L12 7 L14 12 H10 Z" />
-                      <circle cx="12" cy="1" r="1.5" />
-                      <circle cx="16" cy="3" r="1" />
-                      <circle cx="8" cy="3" r="1" />
+                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>L</span>
+                  <div className="cl-icon-mini">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="12" cy="12" r="3" />
+                      <circle cx="12" cy="5" r="1.5" />
+                      <circle cx="12" cy="19" r="1.5" />
+                      <circle cx="5" cy="12" r="1.5" />
+                      <circle cx="19" cy="12" r="1.5" />
                     </svg>
                   </div>
-                  <span className="cl-logo-text">B</span>
+                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>B</span>
                 </div>
 
+                {/* Logo 2: SCIENCE in Circle */}
                 <div className="cl-logo">
-                  <div className="cl-logo-sc">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                      <circle cx="20" cy="20" r="16" stroke="#0D1E44" strokeWidth="1" strokeDasharray="4 2" />
-                      <ellipse cx="20" cy="20" rx="18" ry="8" transform="rotate(45 20 20)" stroke="#0D1E44" strokeWidth="1" />
-                      <text x="20" y="25" fontSize="14" fontWeight="800" textAnchor="middle" fill="#0D1E44">SC</text>
-                    </svg>
+                  <div className="cl-icon-mini" style={{ width: '30px', height: '30px', border: '1px dashed #111c38', borderRadius: '50%' }}>
+                    <span style={{ fontSize: '0.6rem', fontWeight: '900' }}>SC</span>
                   </div>
-                  <span className="cl-logo-text">IENCE</span>
+                  <span className="cl-logo-text" style={{ fontSize: '1.2rem' }}>IENCE</span>
                 </div>
 
+                {/* Logo 3: BIOLAB */}
                 <div className="cl-logo">
-                  <span className="cl-logo-text">BIOLAB</span>
+                  <span className="cl-logo-text" style={{ fontWeight: '800' }}>BIOLAB</span>
                 </div>
 
+                {/* Logo 4: LABORA with Flask */}
                 <div className="cl-logo">
                   <span className="cl-logo-text">LAB</span>
-                  <svg width="18" height="22" viewBox="0 0 20 24" fill="none">
-                    <path d="M10 2L10 8L4 18C3.5 19 4 21 5.5 21H14.5C16 21 16.5 19 16 18L10 8" stroke="#0D1E44" strokeWidth="2" strokeLinejoin="round" />
-                    <circle cx="10" cy="17" r="2" fill="#0D1E44" />
-                    <path d="M13 14 Q15 10 18 11" stroke="#0D1E44" strokeWidth="1.5" strokeDasharray="2 2" />
-                  </svg>
+                  <div className="cl-icon-mini" style={{ margin: '0 -2px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M10 2v6L5 21h14L14 8V2" />
+                      <path d="M8 14h8" opacity="0.5" />
+                    </svg>
+                  </div>
                   <span className="cl-logo-text">RA</span>
                 </div>
 
-                <div className="cl-logo" style={{ gap: '6px' }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#0D1E44" />
-                    <path d="M8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12Z" fill="#0D1E44" />
-                    <path d="M12 8V4 M12 20V16 M4 12H8 M20 12H16" stroke="#0D1E44" strokeWidth="1.5" />
-                  </svg>
-                  <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', alignItems: 'flex-start' }}>
-                    <span className="cl-logo-text" style={{ fontSize: '0.65rem', fontWeight: '800' }}>BIOLOGY</span>
-                    <span className="cl-logo-text" style={{ fontSize: '0.65rem', fontWeight: '800' }}>CENTER</span>
+                {/* Logo 5: BIOLOGY CENTER */}
+                <div className="cl-logo" style={{ flexDirection: 'column', gap: '0' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div className="cl-icon-mini">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <span className="cl-logo-text" style={{ fontSize: '0.8rem' }}>BIOLOGY</span>
                   </div>
+                  <span className="cl-logo-text" style={{ fontSize: '0.8rem', marginLeft: '28px' }}>CENTER</span>
                 </div>
 
+                {/* Logo 6: ECOLAB with Microscope */}
                 <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ marginRight: '4px' }}>EC</span>
-                  <svg width="18" height="22" viewBox="0 0 20 24" fill="none">
-                    <path d="M10 16L14 10" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M12 14L16 8" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="15" cy="9" r="1.5" fill="#0D1E44" />
-                    <path d="M6 20L14 20" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M10 20V16" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M7 16H13" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                  <span className="cl-logo-text" style={{ marginLeft: '4px' }}>LAB</span>
+                  <span className="cl-logo-text">EC</span>
+                  <div className="cl-icon-mini" style={{ margin: '0 -1px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M6 18h12M12 18v-4M9 14h6M12 14l3-6M10 8h4" />
+                      <circle cx="12" cy="5" r="2" />
+                    </svg>
+                  </div>
+                  <span className="cl-logo-text">LAB</span>
                 </div>
               </div>
 
@@ -1624,66 +1636,62 @@ function App() {
 
               <div className="client-logo-row">
                 <div className="cl-logo">
-                  <span className="cl-logo-text">L</span>
-                  <div className="cl-icon-a">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#0D1E44">
-                      <path d="M12 4 L4 20 H7 L9 15 H15 L17 20 H20 L12 4 Z M10 12 L12 7 L14 12 H10 Z" />
-                      <circle cx="12" cy="1" r="1.5" />
-                      <circle cx="16" cy="3" r="1" />
-                      <circle cx="8" cy="3" r="1" />
+                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>L</span>
+                  <div className="cl-icon-mini">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="12" cy="12" r="3" />
+                      <circle cx="12" cy="5" r="1.5" />
+                      <circle cx="12" cy="19" r="1.5" />
+                      <circle cx="5" cy="12" r="1.5" />
+                      <circle cx="19" cy="12" r="1.5" />
                     </svg>
                   </div>
-                  <span className="cl-logo-text">B</span>
+                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>B</span>
                 </div>
 
                 <div className="cl-logo">
-                  <div className="cl-logo-sc">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                      <circle cx="20" cy="20" r="16" stroke="#0D1E44" strokeWidth="1" strokeDasharray="4 2" />
-                      <ellipse cx="20" cy="20" rx="18" ry="8" transform="rotate(45 20 20)" stroke="#0D1E44" strokeWidth="1" />
-                      <text x="20" y="25" fontSize="14" fontWeight="800" textAnchor="middle" fill="#0D1E44">SC</text>
-                    </svg>
+                  <div className="cl-icon-mini" style={{ width: '30px', height: '30px', border: '1px dashed #111c38', borderRadius: '50%' }}>
+                    <span style={{ fontSize: '0.6rem', fontWeight: '900' }}>SC</span>
                   </div>
-                  <span className="cl-logo-text">IENCE</span>
+                  <span className="cl-logo-text" style={{ fontSize: '1.2rem' }}>IENCE</span>
                 </div>
 
                 <div className="cl-logo">
-                  <span className="cl-logo-text">BIOLAB</span>
+                  <span className="cl-logo-text" style={{ fontWeight: '800' }}>BIOLAB</span>
                 </div>
 
                 <div className="cl-logo">
                   <span className="cl-logo-text">LAB</span>
-                  <svg width="18" height="22" viewBox="0 0 20 24" fill="none">
-                    <path d="M10 2L10 8L4 18C3.5 19 4 21 5.5 21H14.5C16 21 16.5 19 16 18L10 8" stroke="#0D1E44" strokeWidth="2" strokeLinejoin="round" />
-                    <circle cx="10" cy="17" r="2" fill="#0D1E44" />
-                    <path d="M13 14 Q15 10 18 11" stroke="#0D1E44" strokeWidth="1.5" strokeDasharray="2 2" />
-                  </svg>
+                  <div className="cl-icon-mini" style={{ margin: '0 -2px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M10 2v6L5 21h14L14 8V2" />
+                      <path d="M8 14h8" opacity="0.5" />
+                    </svg>
+                  </div>
                   <span className="cl-logo-text">RA</span>
                 </div>
 
-                <div className="cl-logo" style={{ gap: '6px' }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#0D1E44" />
-                    <path d="M8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12Z" fill="#0D1E44" />
-                    <path d="M12 8V4 M12 20V16 M4 12H8 M20 12H16" stroke="#0D1E44" strokeWidth="1.5" />
-                  </svg>
-                  <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', alignItems: 'flex-start' }}>
-                    <span className="cl-logo-text" style={{ fontSize: '0.65rem', fontWeight: '800' }}>BIOLOGY</span>
-                    <span className="cl-logo-text" style={{ fontSize: '0.65rem', fontWeight: '800' }}>CENTER</span>
+                <div className="cl-logo" style={{ flexDirection: 'column', gap: '0' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <div className="cl-icon-mini">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <span className="cl-logo-text" style={{ fontSize: '0.8rem' }}>BIOLOGY</span>
                   </div>
+                  <span className="cl-logo-text" style={{ fontSize: '0.8rem', marginLeft: '28px' }}>CENTER</span>
                 </div>
 
                 <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ marginRight: '4px' }}>EC</span>
-                  <svg width="18" height="22" viewBox="0 0 20 24" fill="none">
-                    <path d="M10 16L14 10" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M12 14L16 8" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <circle cx="15" cy="9" r="1.5" fill="#0D1E44" />
-                    <path d="M6 20L14 20" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M10 20V16" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M7 16H13" stroke="#0D1E44" strokeWidth="2" strokeLinecap="round" />
-                  </svg>
-                  <span className="cl-logo-text" style={{ marginLeft: '4px' }}>LAB</span>
+                  <span className="cl-logo-text">EC</span>
+                  <div className="cl-icon-mini" style={{ margin: '0 -1px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M6 18h12M12 18v-4M9 14h6M12 14l3-6M10 8h4" />
+                      <circle cx="12" cy="5" r="2" />
+                    </svg>
+                  </div>
+                  <span className="cl-logo-text">LAB</span>
                 </div>
               </div>
             </div>
@@ -1798,9 +1806,9 @@ function App() {
           </section>
         </>
       ) : (
-        <ProductPage 
-          product={selectedProduct} 
-          onGetQuote={() => setShowQuoteModal(true)} 
+        <ProductPage
+          product={selectedProduct}
+          onGetQuote={() => setShowQuoteModal(true)}
           onProductSelect={(p) => setSelectedProduct(p)}
         />
       )}
@@ -1815,13 +1823,21 @@ function App() {
             {/* Left Column: Logo & Description */}
             <div className="brand-column">
               <img src={Logo} alt="Rayon Logo" className="footer-logo" />
+
               <p className="footer-desc">
                 Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
               </p>
               <div className="social-row">
-                <i className="fas fa-globe"></i>
-                <i className="fas fa-shield-alt"></i>
-                <button className="whatsapp-btn">WhatsApp Expert</button>
+                <div className="social-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                </div>
+                <div className="social-icon-box">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                </div>
+                <button className="whatsapp-expert-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><line x1="9" y1="9" x2="15" y2="9" /><line x1="9" y1="13" x2="15" y2="13" /></svg>
+                  WhatsApp Expert
+                </button>
               </div>
             </div>
 
@@ -1869,7 +1885,6 @@ function App() {
         </div>
       </footer>
     </div>
-
   );
 }
 
