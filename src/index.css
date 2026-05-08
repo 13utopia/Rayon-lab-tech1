@@ -47,6 +47,17 @@ body {
   padding: 28px 24px 48px;
 }
 
+/* Global mobile spacing (fix squeezed layouts on 320–430px) */
+@media (max-width: 520px) {
+  .page-shell {
+    padding: 16px 12px 32px;
+  }
+
+  .topbar {
+    padding: 10px 12px;
+  }
+}
+
 .topbar {
   width: 100%;
   display: flex;
@@ -214,6 +225,35 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .feature-grid-v2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-grid-v2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .feature-card-v2 {
+    padding: 22px 18px 34px;
+    border-radius: 18px;
+  }
+
+  .f-card-header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .f-title {
+    font-size: 1.02rem;
+  }
 }
 
 .feature-card-v2 {
@@ -685,6 +725,7 @@ body {
 
   .hero-custom-content {
     max-width: 100%;
+    margin-top: 0;
     margin-bottom: 40px;
     z-index: 4;
   }
@@ -733,6 +774,26 @@ body {
 
   .hero-custom-bg-text {
     font-size: 35vw;
+  }
+}
+
+@media (max-width: 640px) {
+  .showcase-section-v2 {
+    padding: 56px 20px;
+    border-radius: 32px;
+    margin-top: 56px;
+  }
+
+  .showcase-v2-meta {
+    padding: 22px 18px;
+  }
+
+  .showcase-v2-card-title {
+    font-size: 1.15rem;
+  }
+
+  .showcase-v2-card-desc {
+    font-size: 0.9rem;
   }
 }
 
@@ -1583,6 +1644,13 @@ body {
 }
 
 @media (max-width: 1024px) {
+  .client-section {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 80px 20px 70px;
+  }
+
   .client-logo-row {
     flex-wrap: wrap;
     justify-content: center;
@@ -1592,12 +1660,17 @@ body {
 
 @media (max-width: 600px) {
   .client-section {
-    padding: 60px 0;
+    padding: 60px 20px;
   }
 
   .client-bg-watermark {
     width: 400px;
     height: 400px;
+  }
+
+  .client-main-heading {
+    font-size: 2.1rem;
+    margin-bottom: 36px;
   }
 
   .client-logo-row {
@@ -2593,6 +2666,7 @@ body {
   justify-content: space-between;
   margin: 0 auto;
   box-shadow: 0 10px 30px rgba(17, 28, 56, 0.05);
+  position: relative;
 }
 
 .brand-group {
@@ -2708,6 +2782,134 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.main-nav-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.12);
+  background: #ffffff;
+  color: #0D1E44;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(13, 30, 68, 0.06);
+}
+
+.main-nav-menu-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.main-mobile-menu {
+  display: none;
+}
+
+.main-mobile-menu.is-open {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 10px);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(13, 30, 68, 0.10);
+  box-shadow: 0 25px 55px rgba(13, 30, 68, 0.18);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.main-mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+}
+
+.main-mobile-link {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.08);
+  background: #f6f8ff;
+  color: #0D1E44;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.main-mobile-link.active {
+  background: #0D1E44;
+  color: #ffffff;
+  border-color: #0D1E44;
+}
+
+.main-mobile-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.main-mobile-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 2px 2px 2px;
+}
+
+.main-mobile-sublink {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.08);
+  background: #ffffff;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.main-mobile-sublink.active {
+  background: rgba(13, 30, 68, 0.08);
+  border-color: rgba(13, 30, 68, 0.18);
+  color: #0D1E44;
+}
+
+.main-mobile-cta {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: #0D1E44;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    max-height: none;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .main-nav-menu-btn {
+    display: inline-flex;
+  }
 }
 
 .main-nav a {
@@ -2979,7 +3181,7 @@ body {
 
 @media (max-width: 1024px) {
   .serve-grid-final {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -2989,11 +3191,42 @@ body {
   }
 
   .serve-heading-final {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
+    margin-top: 0;
   }
 
   .serve-section-final {
     padding: 80px 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .serve-card-final {
+    border-radius: 20px;
+  }
+
+  .serve-card-header,
+  .serve-card-body-final {
+    padding: 0 18px;
+  }
+
+  .serve-card-title-final {
+    font-size: 1.25rem;
+  }
+
+  .serve-card-image-final {
+    height: 260px;
+  }
+
+  .serve-plus-hexagon-outer {
+    width: 64px;
+    height: 64px;
+    top: -26px;
+  }
+
+  .serve-plus-hexagon-inner {
+    width: 54px;
+    height: 54px;
   }
 }
 
@@ -3165,6 +3398,54 @@ body {
 .consult-main-btn:hover svg {
   background: #111c38;
   color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .consultation-container {
+    flex-direction: column;
+  }
+
+  .consultation-image-box img {
+    min-height: 260px;
+  }
+
+  .consult-title {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .consultation-section {
+    padding: 24px 16px;
+  }
+
+  .consultation-image-box,
+  .consultation-form-card {
+    border-radius: 24px;
+  }
+
+  .consultation-form-card {
+    padding: 22px 18px;
+  }
+
+  .consult-row {
+    flex-direction: column;
+  }
+
+  .consult-input {
+    padding: 12px 16px;
+    border-radius: 18px;
+  }
+
+  .consult-submit-wrap {
+    justify-content: stretch;
+  }
+
+  .consult-btn-pill {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 10px 10px 16px;
+  }
 }
 
 /* Blog V2 Section Styles - Refined */

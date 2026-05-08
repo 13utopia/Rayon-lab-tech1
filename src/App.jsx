@@ -778,11 +778,15 @@ function App() {
   const [selectedProduct, setSelectedProduct] = React.useState(products[0]);
   const [showQuoteModal, setShowQuoteModal] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
+  const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
 
   const handleNavClick = (e, page, product = null) => {
     e.preventDefault();
     setCurrentPage(page);
     setIsDropdownOpen(false); // Close dropdown on any nav click
+    setIsPremiumMobileMenuOpen(false);
+    setIsMainMobileMenuOpen(false);
     if (product) {
       setSelectedProduct(product);
     } else if (page === 'products' && !product) {
@@ -799,6 +803,29 @@ function App() {
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
               <img src={productNavLogo} alt="Rayon Lab Tech" />
             </div>
+
+            <button
+              type="button"
+              className="premium-nav-menu-btn"
+              aria-label={isPremiumMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isPremiumMobileMenuOpen}
+              onClick={() => setIsPremiumMobileMenuOpen((v) => !v)}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {isPremiumMobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </>
+                ) : (
+                  <>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </>
+                )}
+              </svg>
+            </button>
 
             <nav className="premium-nav-links">
               {navItems.map((item, index) => {
@@ -872,6 +899,56 @@ function App() {
                 Appointment <span className="btn-arrow">→</span>
               </button>
             </div>
+
+            <div className={`premium-mobile-menu ${isPremiumMobileMenuOpen ? 'is-open' : ''}`}>
+              <div className="premium-mobile-menu-inner">
+                {navItems.map((item) => {
+                  const pageId = item.toLowerCase().replace(/\s+/g, '-');
+                  const isProducts = pageId === 'products';
+                  const isHome = pageId === 'home';
+                  const isAbout = pageId === 'about-us';
+
+                  if (isProducts) {
+                    return (
+                      <div className="premium-mobile-group" key={item}>
+                        <button
+                          type="button"
+                          className={`premium-mobile-link ${currentPage === 'products' ? 'active' : ''}`}
+                          onClick={(e) => handleNavClick(e, 'products')}
+                        >
+                          {item.toUpperCase()}
+                        </button>
+                        <div className="premium-mobile-sublist">
+                          {products.map((p) => (
+                            <button
+                              key={p.id}
+                              type="button"
+                              className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                              onClick={(e) => handleNavClick(e, 'products', p)}
+                            >
+                              {p.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <button
+                      type="button"
+                      key={item}
+                      className={`premium-mobile-link ${currentPage === pageId ? 'active' : ''}`}
+                      onClick={(e) => {
+                        if (isHome || isAbout) handleNavClick(e, pageId);
+                      }}
+                    >
+                      {item.toUpperCase()}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         ) : (
           <>
@@ -880,6 +957,29 @@ function App() {
                 <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
               </div>
             </div>
+
+            <button
+              type="button"
+              className="main-nav-menu-btn"
+              aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMainMobileMenuOpen}
+              onClick={() => setIsMainMobileMenuOpen((v) => !v)}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {isMainMobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </>
+                ) : (
+                  <>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </>
+                )}
+              </svg>
+            </button>
 
             <nav className="main-nav" aria-label="Primary navigation">
               {navItems.map((item, index) => {
@@ -955,6 +1055,60 @@ function App() {
               <button className="appointment-pill" onClick={() => setShowQuoteModal(true)}>
                 Appointment <span className="arrow">→</span>
               </button>
+            </div>
+
+            <div className={`main-mobile-menu ${isMainMobileMenuOpen ? 'is-open' : ''}`}>
+              <div className="main-mobile-menu-inner">
+                {navItems.map((item) => {
+                  const pageId = item.toLowerCase().replace(/\\s+/g, '-');
+                  const isProducts = pageId === 'products';
+                  const isHome = pageId === 'home';
+                  const isAbout = pageId === 'about-us';
+
+                  if (isProducts) {
+                    return (
+                      <div className="main-mobile-group" key={item}>
+                        <button
+                          type="button"
+                          className={`main-mobile-link ${currentPage === 'products' ? 'active' : ''}`}
+                          onClick={(e) => handleNavClick(e, 'products')}
+                        >
+                          {item.toUpperCase()}
+                        </button>
+                        <div className="main-mobile-sublist">
+                          {products.map((p) => (
+                            <button
+                              key={p.id}
+                              type="button"
+                              className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                              onClick={(e) => handleNavClick(e, 'products', p)}
+                            >
+                              {p.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <button
+                      type="button"
+                      key={item}
+                      className={`main-mobile-link ${currentPage === pageId ? 'active' : ''}`}
+                      onClick={(e) => {
+                        if (isHome || isAbout) handleNavClick(e, pageId);
+                      }}
+                    >
+                      {item.toUpperCase()}
+                    </button>
+                  );
+                })}
+
+                <button type="button" className="main-mobile-cta" onClick={() => { setIsMainMobileMenuOpen(false); setShowQuoteModal(true); }}>
+                  Appointment
+                </button>
+              </div>
             </div>
           </>
         )}

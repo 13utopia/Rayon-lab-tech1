@@ -92,8 +92,104 @@
   justify-content: space-between;
   box-shadow: 0 10px 35px rgba(13, 30, 68, 0.08);
   gap: 15px;
+  position: relative;
 }
 
+.premium-nav-menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.12);
+  background: #ffffff;
+  color: #0D1E44;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(13, 30, 68, 0.06);
+}
+
+.premium-nav-menu-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.premium-mobile-menu {
+  display: none;
+}
+
+.premium-mobile-menu.is-open {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 10px);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(13, 30, 68, 0.10);
+  box-shadow: 0 25px 55px rgba(13, 30, 68, 0.18);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.premium-mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 8px;
+}
+
+.premium-mobile-link {
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.08);
+  background: #f6f8ff;
+  color: #0D1E44;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.premium-mobile-link.active {
+  background: #0D1E44;
+  color: #ffffff;
+  border-color: #0D1E44;
+}
+
+.premium-mobile-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.premium-mobile-sublist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 2px 2px 2px;
+}
+
+.premium-mobile-sublink {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(13, 30, 68, 0.08);
+  background: #ffffff;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.premium-mobile-sublink.active {
+  background: rgba(13, 30, 68, 0.08);
+  border-color: rgba(13, 30, 68, 0.18);
+  color: #0D1E44;
+}
 .premium-nav-logo {
   height: 65px;
   /* Increased to accommodate the new logo text */
@@ -1210,9 +1306,12 @@
     width: 100%;
   }
 
-  /* Hide nav items on all mobile/tablet devices */
   .premium-nav-links {
     display: none !important;
+  }
+
+  .premium-nav-menu-btn {
+    display: inline-flex;
   }
 
   .nav-phone-num {
@@ -1340,6 +1439,60 @@
     width: 100%;
     min-width: unset;
     padding: 14px 20px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 520px) {
+  .topbar.product-header-premium {
+    padding: 10px 12px;
+    margin-bottom: 18px;
+  }
+
+  .premium-nav-bar {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .premium-nav-logo {
+    height: 44px;
+  }
+
+  .premium-nav-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-phone-group {
+    gap: 8px;
+  }
+
+  .nav-icon-circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav-appointment-btn {
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .premium-nav-right {
+    justify-content: center;
+  }
+
+  .nav-appointment-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

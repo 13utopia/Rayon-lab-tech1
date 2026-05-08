@@ -84,11 +84,20 @@
     gap: 40px;
   }
 
+  .stat-item-final {
+    margin-top: 0;
+  }
+
   .stat-num-outlined {
     font-size: 4rem;
   }
 
   .stat-plus-solid {
     font-size: 3rem;
+  }
+
+  .stat-label-final {
+    margin-bottom: 0;
+    max-width: 220px;
   }
 }

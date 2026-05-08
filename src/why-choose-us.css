@@ -19,6 +19,12 @@
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px) {
+  .fixed-action-bar {
+    display: none;
+  }
+}
+
 .bar-item {
   width: 65px;
   height: 75px;
@@ -358,5 +364,31 @@
 
   .why-v3-right-heading {
     font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-v3-section {
+    padding: 64px 0;
+  }
+
+  .why-v3-container {
+    padding: 0 20px;
+    gap: 40px;
+  }
+
+  .why-v3-circle-outer,
+  .why-v3-image-wrap {
+    width: 260px;
+    height: 260px;
+  }
+
+  .why-v3-main-title {
+    font-size: 1.9rem;
+    margin-bottom: 40px;
+  }
+
+  .why-v3-right-heading {
+    font-size: 1.6rem;
   }
 }
