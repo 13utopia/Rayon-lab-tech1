@@ -327,7 +327,7 @@
     align-items: flex-start;
     gap: 40px;
   }
-  
+
   .newsletter-form {
     max-width: 100%;
     width: 100%;
@@ -369,11 +369,11 @@
     padding: 35px 25px;
     border-radius: 20px 20px 0 0;
   }
-  
+
   .footer-logo-img {
     height: 75px;
   }
-  
+
   .newsletter-title {
     font-size: 1.8rem;
   }
