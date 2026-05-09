@@ -1,304 +1,302 @@
-/* What We Serve - Premium Design Matching Screenshot */
-.serve-section-final {
-  width: 100%;
-  padding: 140px 40px;
+.serve-section-premium {
+  padding: 100px 0;
   background: #f8fbff;
-  position: relative;
+  font-family: 'Manrope', sans-serif;
   overflow: hidden;
+
 }
 
-.serve-container-final {
-  width: 100%;
-  max-width: 1550px;
+.serve-container-premium {
+  max-width: 1300px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 
-.serve-header-final {
+.serve-header-premium {
   text-align: center;
-  margin-bottom: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 70px;
+  font-weight: 500px;
 }
 
-.serve-heading-final {
-  font-size: 4rem;
-  font-weight: 850;
-  color: #111c38;
+.serve-header-premium h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0D1E44;
   margin-bottom: 15px;
-  letter-spacing: -0.03em;
 }
 
-.serve-subheading-final {
-  font-size: 1.15rem;
+.serve-header-premium p {
   color: #5f6f8e;
-  max-width: 750px;
+  font-size: 1.1rem;
+  max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
 }
 
-.serve-grid-final {
+.serve-grid-premium {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 45px;
-  perspective: 2000px;
-  /* Enable 3D space */
+  gap: 30px;
 }
 
-.serve-card-final {
+.serve-card-premium {
   background: #ffffff;
-  border-radius: 50px;
-  padding: 70px 45px 0 45px;
+  border-radius: 30px;
   position: relative;
-  overflow: visible;
-  height: 700px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 45px rgba(11, 22, 48, 0.04);
-  transition: all 0.8s cubic-bezier(0.2, 1, 0.22, 1);
-  border: 1px solid rgba(13, 30, 68, 0.02);
-  transform-style: preserve-3d;
+  box-shadow: 0 10px 40px rgba(13, 30, 68, 0.05);
+  border: 1px solid rgba(13, 30, 68, 0.03);
+  height: 100%;
 }
 
-.serve-card-final:hover {
-  transform: translateY(-25px) rotateX(6deg) rotateY(2deg);
-  box-shadow: 0 50px 110px rgba(11, 22, 48, 0.14);
-  z-index: 10;
+.serve-card-premium:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(13, 30, 68, 0.12);
 }
 
-/* Faint Background Icon - Large Watermark Positioned Exactly */
-.serve-card-bg-icon {
+/* Watermark Background Icon */
+.serve-card-watermark {
   position: absolute;
   top: -15px;
-  right: -90px;
-  width: 200px;
-  height: 200px;
-  color: rgba(13, 30, 68, 0.015);
-  z-index: 1;
+  right: -15px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.04;
   pointer-events: none;
-  transition: all 0.8s ease;
+  color: #0D1E44;
+  z-index: 0;
 }
 
-.serve-card-final:hover .serve-card-bg-icon {
-  transform: translateZ(60px) scale(1.08) translateX(-15px);
-  color: rgba(13, 30, 68, 0.03);
+.serve-card-content-wrap {
+  padding: 40px 35px 20px;
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
 }
 
 .serve-card-top {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 35px;
-  transform: translateZ(30px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 25px;
 }
 
-.serve-card-main-icon {
-  width: 60px;
-  height: 60px;
-  color: #1b2a49;
-  margin-bottom: 30px;
+.serve-card-icon-box {
+  width: 48px;
+  height: 48px;
+  color: #0D1E44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.serve-card-main-icon svg {
-  width: 100%;
-  height: 100%;
+.serve-card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0D1E44;
+  margin: 0;
 }
 
-.serve-card-title-final {
-  font-size: 1.7rem;
-  font-weight: 750;
-  color: #111c38;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-
-.serve-card-divider {
+.serve-card-line {
   width: 100%;
   height: 1px;
-  background: rgba(13, 30, 68, 0.05);
-  margin-top: 25px;
-  margin-bottom: 35px;
-  position: relative;
-  z-index: 2;
+  background: rgba(13, 30, 68, 0.08);
+  margin-bottom: 25px;
 }
 
-.serve-card-content {
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  transform: translateZ(20px);
+.serve-card-desc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.serve-card-desc-final {
-  font-size: 0.90rem;
+.serve-card-desc-list p {
+  font-size: 0.98rem;
+  line-height: 1.6;
   color: #5f6f8e;
-  line-height: 1.60;
-  margin-bottom: 20px;
-  opacity: 0.85;
+  margin: 0;
+  transition: color 0.3s ease;
 }
 
-/* Peaked Image Layout - Exact Pentagonal Pattern */
-.serve-card-image-final-wrap {
+.serve-card-premium:hover .serve-card-desc-list p {
+  color: #2b3a5a;
+}
+
+/* Hexagon-Top Image Section */
+.serve-card-image-section {
+  position: relative;
   margin-top: auto;
+  padding: 0 10px 10px;
+}
+
+.serve-card-image-box {
   position: relative;
   width: 100%;
-  height: 890px;
-  overflow: visible;
-  clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%);
-  border-radius: 40px;
-  /* Base rounding */
-  transform: translateZ(40px);
+  height: 320px;
+  overflow: hidden;
+  clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+  transition: all 0.5s ease;
 }
 
-.serve-card-image-final {
+.serve-card-image-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: all 1s cubic-bezier(0.2, 1, 0.22, 1);
+  transition: transform 0.8s ease;
 }
 
-.serve-card-final:hover .serve-card-image-final {
-  transform: scale(1.15);
+.serve-card-premium:hover .serve-card-image-box img {
+  transform: scale(1.1);
 }
 
-/* Hexagon Hover Symbol - Centered at bottom of image */
-.serve-hover-symbol-overlay {
+/* Hover Hexagon Pattern Overlay */
+.serve-hover-hexagon-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(13, 30, 68, 0.25);
+  background: rgba(13, 30, 68, 0.4);
   display: flex;
   align-items: flex-end;
-  /* Position at bottom */
   justify-content: center;
-  padding-bottom: 20px;
+  padding-bottom: 0;
   opacity: 0;
   transition: all 0.5s ease;
-  z-index: 5;
+  z-index: 3;
 }
 
-.serve-card-final:hover .serve-hover-symbol-overlay {
+.serve-card-premium:hover .serve-hover-hexagon-overlay {
   opacity: 1;
 }
 
-.serve-plus-hexagon-outer {
-  width: 100px;
-  height: 110px;
-  background: transparent;
-  border: 2px solid #ffffff;
-  /* White outline */
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%) scale(0.5);
-  /* Start from below */
-  opacity: 0;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-}
-
-.serve-plus-hexagon-inner {
-  width: 82px;
-  height: 92px;
+.serve-hexagon-center-btn {
+  width: 90px;
+  height: 100px;
   background: #0D1E44;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transform: scale(0.8);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Specific chemical structure pattern on the right side */
-.serve-plus-hexagon-inner::before {
-  content: '';
+.serve-card-premium:hover .serve-hexagon-center-btn {
+  transform: scale(1);
+}
+
+/* Subtle Hexagon Pattern inside the button */
+.serve-hexagon-center-btn::before {
+  content: "";
   position: absolute;
   top: 0;
-  right: -20px;
-  /* Offset to the right */
+  left: 0;
   width: 100%;
   height: 100%;
-  background-image:
-    linear-gradient(30deg, transparent 50%, rgba(255, 255, 255, 0.08) 50.5%, transparent 51%),
-    linear-gradient(-30deg, transparent 50%, rgba(255, 255, 255, 0.08) 50.5%, transparent 51%);
-  background-size: 15px 26px;
-  opacity: 0.6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 L18.66 5 L18.66 15 L10 20 L1.34 15 L1.34 5 Z' fill='none' stroke='white' stroke-opacity='0.1' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 15px;
+  opacity: 0.5;
 }
 
-.serve-card-final:hover .serve-plus-hexagon-outer {
-  transform: translateX(-50%) translateY(50%) scale(1);
-  /* Centers exactly on the bottom edge */
-  opacity: 1;
-}
-
-.serve-plus-hexagon-inner svg {
-  width: 26px;
-  height: 26px;
+.serve-hexagon-center-btn .plus-icon {
   color: #ffffff;
+  font-size: 2rem;
   position: relative;
   z-index: 2;
 }
 
-/* Pagination Dots */
-.serve-dots-final {
+/* Dots Navigation */
+.serve-dots-premium {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 80px;
+  gap: 12px;
+  margin-top: 50px;
 }
 
-.serve-dot {
-  width: 12px;
-  height: 12px;
+.serve-dot-premium {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: rgba(13, 30, 68, 0.1);
+  background: rgba(13, 30, 68, 0.2);
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
-.serve-dot.active {
+.serve-dot-premium.active {
   background: #0D1E44;
-  width: 32px;
-  border-radius: 15px;
+  width: 30px;
+  border-radius: 100px;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .serve-grid-final {
+  .serve-container-premium {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .serve-grid-premium {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 25px;
   }
 }
 
 @media (max-width: 768px) {
-  .serve-section-final {
-    padding: 80px 20px;
+  .serve-section-premium {
+    padding: 60px 0;
   }
 
-  .serve-heading-final {
-    font-size: 3rem;
+  .serve-header-premium {
+    margin-bottom: 40px;
+    padding: 0 20px;
   }
 
-  .serve-grid-final {
+  .serve-grid-premium {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .serve-card-final {
-    height: auto;
-    min-height: 700px;
-    padding: 50px 35px 0 35px;
+  .serve-header-premium h2 {
+    font-size: 2.2rem;
   }
 
-  .serve-card-image-final-wrap {
-    width: calc(100% + 70px);
-    margin-left: -35px;
+  .serve-card-premium {
+    border-radius: 24px;
+  }
+
+  .serve-card-content-wrap {
+    padding: 30px 25px 15px;
+  }
+
+  .serve-card-title {
+    font-size: 1.4rem;
+  }
+
+  .serve-card-image-box {
     height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .serve-header-premium h2 {
+    font-size: 1.8rem;
+  }
+
+  .serve-card-content-wrap {
+    padding: 25px 20px 10px;
+  }
+
+  .serve-card-top {
+    gap: 12px;
+  }
+
+  .serve-card-image-box {
+    height: 240px;
   }
 }

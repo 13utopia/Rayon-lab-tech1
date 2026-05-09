@@ -17,10 +17,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  opacity: 0.12;
-  /* Increased from 0.04 for better visibility */
+  width: 900px;
+  height: 900px;
+  opacity: 0.1;
   pointer-events: none;
   z-index: 0;
   color: #0d1e44;
@@ -30,8 +29,8 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
+  max-width: 1300px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,49 +39,48 @@
 .client-main-heading-centered {
   font-family: 'Raleway', sans-serif;
   font-size: 2.8rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #0d1e44;
   text-align: center;
   margin-bottom: 50px;
   letter-spacing: -1px;
+  margin-top: 0;
+  margin-top: -40px;
 }
 
 .client-divider-v2 {
   width: 100%;
   height: 1px;
-  background-color: rgba(13, 30, 68, 0.08);
+  background-color: rgba(13, 30, 68, 0.06);
   margin: 0;
 }
 
 .client-logo-grid-v2 {
   display: flex;
   flex-direction: column;
-  gap: 0;
   width: 100%;
 }
 
 .client-logo-row-v2 {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 50px 0;
+  padding: 60px 0;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px 70px;
+  /* Consistent gaps for rows and columns */
 }
 
 .client-logo-item-v2 {
-  flex: 1;
-  min-width: 150px;
+  flex: 0 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #0d1e44;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  min-height: 60px;
 }
 
-.client-logo-item-v2:hover {
-  transform: translateY(-5px);
-}
 
 /* Logo Specific Styles to match image sequence */
 
@@ -231,47 +229,83 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .client-container-v2 {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 992px) {
   .client-logo-row-v2 {
     justify-content: center;
-    gap: 40px;
+    /* Center for better balance when wrapping */
+    gap: 40px 60px;
   }
 
   .client-logo-item-v2 {
-    flex: 0 0 calc(33.33% - 40px);
+    flex: 0 1 calc(33.33% - 40px);
   }
 }
 
 @media (max-width: 768px) {
   .client-section-v2 {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 
-  .client-title-v2 {
-    font-size: 2rem;
+  .client-container-v2 {
+    padding: 0 24px;
+  }
+
+  .client-main-heading-centered {
+    font-size: 2.2rem;
     margin-bottom: 30px;
+    margin-top: 0;
+  }
+
+  .client-logo-row-v2 {
+    padding: 40px 0;
+    gap: 40px 30px;
+    justify-content: center;
   }
 
   .client-logo-item-v2 {
-    flex: 0 0 calc(50% - 40px);
+    flex: 0 1 calc(50% - 20px);
+    min-width: 120px;
+  }
+
+  .client-watermark-v2 {
+    width: 400px;
+    height: 400px;
+    opacity: 0.08;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-section-v2 {
+    padding: 60px 0;
+  }
+
+  .client-container-v2 {
+    padding: 0 16px;
+  }
+
+  .client-main-heading-centered {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
   }
 
   .client-logo-row-v2 {
     padding: 30px 0;
+    gap: 40px 20px;
+  }
+
+  .client-logo-item-v2 {
+    flex: 0 1 100%;
+    max-width: 280px;
   }
 
   .client-watermark-v2 {
     width: 300px;
     height: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  .client-logo-item-v2 {
-    flex: 0 0 100%;
-  }
-
-  .client-logo-row-v2 {
-    gap: 50px;
   }
 }

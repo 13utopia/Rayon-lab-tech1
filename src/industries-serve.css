@@ -106,6 +106,17 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
+  background: #ffffff;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.industry-card:hover .industry-action-btn-circle {
+  transform: translateY(-5px) scale(1.1);
+  background: #0D1E44;
 }
 
 .industry-action-btn {
@@ -120,7 +131,7 @@
 }
 
 .industry-card:hover .industry-action-btn {
-  transform: scale(1.2);
+  color: #ffffff;
 }
 
 .industry-action-btn svg {

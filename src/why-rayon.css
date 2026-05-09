@@ -456,28 +456,125 @@
 }
 
 @media (max-width: 768px) {
+  .why-rayon-section {
+    padding: 60px 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .why-rayon-container {
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .why-rayon-content {
     grid-template-columns: 1fr;
-    text-align: center;
+    gap: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .why-left-list {
+    order: 2;
+    width: 100%;
+    gap: 12px;
   }
 
   .why-pill {
-    padding-left: 20px;
+    min-width: 100%;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+  }
+
+  .why-middle-circle {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .circle-ring {
+    width: 260px;
+    height: 260px;
+  }
+
+  .circle-img-wrap {
+    width: 200px;
+    height: 200px;
+  }
+
+  .why-right-benefits {
+    order: 3;
+    width: 100%;
+    align-items: flex-start; /* CRITICAL: keep left aligned for connector */
+    padding: 0 10px;
+  }
+
+  .benefit-list {
+    margin-top: 20px;
+    width: 100%;
+    padding-left: 0;
+    position: relative;
   }
 
   .benefit-item {
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 12px 0;
+    gap: 15px;
+    width: 100%;
   }
 
   .benefit-connector {
-    display: none;
-  }
-
-  .why-rayon-title {
-    font-size: 2rem;
+    display: block !important;
+    left: 13px; /* Precise center of the 28px icon */
+    top: 25px;
+    bottom: 25px;
+    width: 2px;
+    opacity: 1;
+    background: #0D1E44;
   }
 
   .benefit-main-title {
+    font-size: 1.6rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .benefit-desc {
+    text-align: left;
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .why-rayon-title {
     font-size: 1.8rem;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-rayon-section {
+    padding: 50px 0;
+  }
+
+  .why-rayon-title {
+    font-size: 1.6rem;
+  }
+
+  .benefit-main-title {
+    font-size: 1.4rem;
+  }
+
+  .circle-ring {
+    width: 240px;
+    height: 240px;
+  }
+
+  .circle-img-wrap {
+    width: 180px;
+    height: 180px;
   }
 }
