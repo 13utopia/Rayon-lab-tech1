@@ -65,26 +65,47 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 8px 40px;
-  background: #ffffff;
+  padding: 12px 30px;
+  background: var(--surface);
   border-radius: 100px;
-  box-shadow: 0 10px 30px rgba(13, 33, 73, 0.03);
+  border: 1px solid rgba(13, 33, 73, 0.05);
+  box-shadow: 0 10px 30px rgba(13, 33, 73, 0.04);
   position: relative;
   z-index: 1000;
-  margin-bottom: 20px;
 }
 
 .brand-group {
   display: flex;
   align-items: center;
-  gap: 15px;
-  min-width: 180px;
+  gap: 10px;
+  min-width: 210px;
 }
 
-.brand-mark img {
-  height: 52px;
-  width: auto;
-  display: block;
+.brand-mark {
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0D1E44;
+  line-height: 1;
+}
+
+.brand-subtitle {
+  font-size: 0.7rem;
+  color: #5f6f8e;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .main-nav {
@@ -92,18 +113,18 @@ body {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  flex-wrap: nowrap;
 }
 
 .main-nav a {
   color: #0D1E44;
   text-decoration: none;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-  padding: 10px 5px;
-  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .main-nav a:hover,
@@ -111,103 +132,92 @@ body {
   color: #2563eb;
 }
 
-.nav-divider {
+.nav-dot {
   color: #0D1E44;
-  font-size: 1.4rem;
-  opacity: 1;
+  font-size: 1.2rem;
+  line-height: 1;
+  opacity: 0.8;
   display: flex;
   align-items: center;
-  margin-top: -2px;
 }
 
-.header-actions {
+.main-nav .divider {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.actions {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
-.phone-action {
-  display: flex;
+.phone-pill {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #ffffff;
   text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-.phone-circle, 
-.search-circle {
-  width: 40px;
-  height: 40px;
-  background: #0D1E44;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
+.phone-icon,
+.search-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--accent);
+  font-size: 1rem;
 }
 
-.phone-circle svg,
-.search-circle svg {
-  width: 18px;
-  height: 18px;
-}
-
-.phone-circle:hover,
-.search-circle:hover {
-  background: #2563eb;
-  transform: translateY(-2px);
-}
-
-.phone-text {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #0D1E44;
-  letter-spacing: -0.01em;
-}
-
-.appointment-pill {
-  background: #0D1E44;
-  color: #ffffff;
+.icon-btn {
+  width: 48px;
+  height: 48px;
   border: none;
-  padding: 12px 30px;
-  border-radius: 100px;
-  font-size: 0.9rem;
-  font-weight: 700;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1.05rem;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  display: flex;
+  transition: transform 0.2s ease;
+}
+
+.icon-btn:hover,
+.cta-btn:hover,
+.card-action:hover {
+  transform: translateY(-1px);
+}
+
+.cta-btn {
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-  box-shadow: 0 4px 15px rgba(13, 30, 68, 0.15);
-}
-
-.appointment-pill:hover {
-  background: #1a2c5a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(13, 30, 68, 0.25);
-}
-
-.appointment-pill .arrow {
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.appointment-pill:hover .arrow {
-  transform: translateX(4px);
-}
-
-.main-nav-menu-btn {
-  display: none;
-  width: 40px;
-  height: 40px;
-  background: #0D1E44;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--accent);
   color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: 0 18px 36px rgba(13, 33, 73, 0.16);
+}
+
+.arrow {
+  display: inline-block;
+  font-size: 1.05rem;
 }
 
 .feature-grid-v2 {
@@ -378,87 +388,60 @@ body {
   height: 16px;
 }
 
-
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
   .topbar {
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-    border-radius: 40px;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-
-  .header-main-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-
-  .main-nav {
-    display: none;
-  }
-
-  .header-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    align-items: center;
-  }
-
-  .header-actions-icons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-  }
-
-  .phone-text {
-    display: none;
-  }
-
-  .appointment-pill {
-    width: 100%;
-    justify-content: center;
-    padding: 14px;
-    font-size: 1rem;
-  }
-
-  .main-nav-menu-btn {
-    display: flex;
-    background: #ffffff;
-    color: #0D1E44;
-    border: 1px solid rgba(13, 30, 68, 0.1);
-    border-radius: 18px;
-    width: 54px;
-    height: 54px;
-    z-index: 1001;
+    padding: 10px 15px;
+    gap: 10px;
+    border-radius: 20px;
   }
 
   .brand-group {
     min-width: auto;
   }
 
-  .brand-mark img {
-    height: 48px;
+  .main-nav {
+    gap: 8px;
+    overflow-x: auto;
+    padding: 5px 0;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .main-nav a {
+    font-size: 0.75rem;
+  }
+
+  .nav-dot {
+    font-size: 0.9rem;
+  }
+
+  .actions {
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .topbar {
-    padding: 15px;
-    border-radius: 32px;
-  }
-  
-  .brand-mark img {
-    height: 42px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px 10px;
   }
 
-  .main-nav-menu-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
+  .brand-group {
+    margin-bottom: 10px;
+  }
+
+  .main-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .nav-dot {
+    display: none;
   }
 }
 
@@ -2858,13 +2841,10 @@ body {
   border: 1px solid rgba(13, 30, 68, 0.08);
   background: #f6f8ff;
   color: #0D1E44;
-  font-weight: 600; /* Semi-bold as requested */
-  letter-spacing: 0.05em;
-  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .main-mobile-link.active {
@@ -2894,46 +2874,9 @@ body {
   border: 1px solid rgba(13, 30, 68, 0.08);
   background: #ffffff;
   color: #334155;
-  font-weight: 600; /* Semi-bold */
+  font-weight: 700;
   font-size: 0.85rem;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mobile-product-toggle-group {
-  width: 100%;
-}
-
-.mobile-toggle-arrow {
-  display: flex;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.mobile-toggle-arrow.expanded {
-  transform: rotate(180deg);
-}
-
-.mobile-toggle-arrow svg {
-  width: 16px;
-  height: 16px;
-}
-
-.mobile-sub-accordion {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.mobile-sub-accordion.is-open {
-  max-height: 800px;
-  margin-top: 5px;
-  padding-bottom: 5px;
 }
 
 .main-mobile-sublink.sub-item {
@@ -2942,8 +2885,6 @@ body {
   color: #64748b;
   font-weight: 500;
   background: #fafbfc;
-  margin-left: 10px;
-  width: calc(100% - 10px);
 }
 
 .main-mobile-sublink.sub-item::before {
@@ -2965,7 +2906,7 @@ body {
   border: none;
   background: #0D1E44;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 800;
   font-size: 0.95rem;
   cursor: pointer;
 }
@@ -3630,90 +3571,51 @@ select.consult-glass-input {
   line-height: 1;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .consultation-container {
-    grid-template-columns: 1fr;
-    max-width: 900px;
-  }
-  
-  .consultation-image-box {
-    height: 450px;
-  }
-}
-
-@media (max-width: 768px) {
-  .consultation-section {
-    padding: 40px 15px;
-  }
-  
-  .consultation-form-card {
-    padding: 35px 25px;
-    border-radius: 28px;
-  }
-
-  .consultation-image-box {
-    height: 350px;
-    border-radius: 28px;
-  }
-
-  .consult-main-title {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
-  .consult-badge-pill {
-    display: block;
-    margin: 0 auto 15px;
-    width: fit-content;
-  }
-
-  .consult-form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .consult-input-group.full-width {
-    grid-column: span 1;
-  }
-
-  .consult-footer-row {
     flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    text-align: center;
   }
 
-  .consult-premium-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 16px;
+  .consultation-image-box img {
+    min-height: 260px;
   }
 
-  .consult-helper-text {
+  .consult-title {
     max-width: 100%;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 520px) {
   .consultation-section {
-    padding: 30px 10px;
+    padding: 24px 16px;
   }
 
-  .consultation-image-box {
-    height: 280px;
-  }
-
+  .consultation-image-box,
   .consultation-form-card {
-    padding: 25px 20px;
     border-radius: 24px;
   }
 
-  .consult-main-title {
-    font-size: 1.6rem;
+  .consultation-form-card {
+    padding: 22px 18px;
   }
 
-  .consult-glass-input {
-    padding: 12px 20px;
-    font-size: 0.9rem;
+  .consult-row {
+    flex-direction: column;
+  }
+
+  .consult-input {
+    padding: 12px 16px;
+    border-radius: 18px;
+  }
+
+  .consult-submit-wrap {
+    justify-content: stretch;
+  }
+
+  .consult-btn-pill {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 10px 10px 16px;
   }
 }
 

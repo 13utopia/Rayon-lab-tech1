@@ -816,7 +816,6 @@ function App() {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
-  const [expandedProduct, setExpandedProduct] = React.useState(null);
 
   const handleNavClick = (e, page, product = null) => {
     e.preventDefault();
@@ -973,40 +972,23 @@ function App() {
                         <div className="premium-mobile-sublist">
                           {products.map((p) => (
                             <React.Fragment key={p.id}>
-                              <div className="mobile-product-toggle-group">
+                              <button
+                                type="button"
+                                className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                              </button>
+                              {p.subProducts && p.subProducts.map((sub) => (
                                 <button
+                                  key={sub.id}
                                   type="button"
-                                  className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                  onClick={(e) => {
-                                    if (p.subProducts) {
-                                      setExpandedProduct(expandedProduct === p.id ? null : p.id);
-                                    } else {
-                                      handleNavClick(e, 'products', p);
-                                    }
-                                  }}
+                                  className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                  onClick={(e) => handleNavClick(e, 'products', sub)}
                                 >
-                                  {p.title}
-                                  {p.subProducts && (
-                                    <span className={`mobile-toggle-arrow ${expandedProduct === p.id ? 'expanded' : ''}`}>
-                                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                    </span>
-                                  )}
+                                  {sub.title}
                                 </button>
-                                {p.subProducts && (
-                                  <div className={`mobile-sub-accordion ${expandedProduct === p.id ? 'is-open' : ''}`}>
-                                    {p.subProducts.map((sub) => (
-                                      <button
-                                        key={sub.id}
-                                        type="button"
-                                        className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                        onClick={(e) => handleNavClick(e, 'products', sub)}
-                                      >
-                                        {sub.title}
-                                      </button>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
+                              ))}
                             </React.Fragment>
                           ))}
                         </div>
@@ -1032,36 +1014,34 @@ function App() {
           </div>
         ) : (
           <>
-            <div className="header-main-flex">
-              <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
-                <div className="brand-mark">
-                  <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
-                </div>
+            <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
+              <div className="brand-mark">
+                <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
               </div>
-
-              <button
-                type="button"
-                className="main-nav-menu-btn"
-                aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
-                aria-expanded={isMainMobileMenuOpen}
-                onClick={() => setIsMainMobileMenuOpen((v) => !v)}
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  {isMainMobileMenuOpen ? (
-                    <>
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </>
-                  ) : (
-                    <>
-                      <line x1="4" y1="6" x2="20" y2="6"></line>
-                      <line x1="4" y1="12" x2="20" y2="12"></line>
-                      <line x1="4" y1="18" x2="20" y2="18"></line>
-                    </>
-                  )}
-                </svg>
-              </button>
             </div>
+
+            <button
+              type="button"
+              className="main-nav-menu-btn"
+              aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMainMobileMenuOpen}
+              onClick={() => setIsMainMobileMenuOpen((v) => !v)}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {isMainMobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </>
+                ) : (
+                  <>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                  </>
+                )}
+              </svg>
+            </button>
 
             <nav className="main-nav" aria-label="Primary navigation">
               {navItems.map((item, index) => {
@@ -1138,17 +1118,15 @@ function App() {
             </nav>
 
             <div className="header-actions">
-              <div className="header-actions-icons">
-                <div className="phone-action">
-                  <div className="phone-circle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                  </div>
-                  <span className="phone-text">+1(212)-255-511</span>
+              <div className="phone-action">
+                <div className="phone-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                 </div>
+                <span className="phone-text">+1(212)-255-511</span>
+              </div>
 
-                <div className="search-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                </div>
+              <div className="search-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               </div>
 
               <button className="appointment-pill" onClick={() => setShowQuoteModal(true)}>
@@ -1177,40 +1155,23 @@ function App() {
                         <div className="main-mobile-sublist">
                           {products.map((p) => (
                             <React.Fragment key={p.id}>
-                              <div className="mobile-product-toggle-group">
+                              <button
+                                type="button"
+                                className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                onClick={(e) => handleNavClick(e, 'products', p)}
+                              >
+                                {p.title}
+                              </button>
+                              {p.subProducts && p.subProducts.map((sub) => (
                                 <button
+                                  key={sub.id}
                                   type="button"
-                                  className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                  onClick={(e) => {
-                                    if (p.subProducts) {
-                                      setExpandedProduct(expandedProduct === p.id ? null : p.id);
-                                    } else {
-                                      handleNavClick(e, 'products', p);
-                                    }
-                                  }}
+                                  className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                  onClick={(e) => handleNavClick(e, 'products', sub)}
                                 >
-                                  {p.title}
-                                  {p.subProducts && (
-                                    <span className={`mobile-toggle-arrow ${expandedProduct === p.id ? 'expanded' : ''}`}>
-                                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                                    </span>
-                                  )}
+                                  {sub.title}
                                 </button>
-                                {p.subProducts && (
-                                  <div className={`mobile-sub-accordion ${expandedProduct === p.id ? 'is-open' : ''}`}>
-                                    {p.subProducts.map((sub) => (
-                                      <button
-                                        key={sub.id}
-                                        type="button"
-                                        className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                        onClick={(e) => handleNavClick(e, 'products', sub)}
-                                      >
-                                        {sub.title}
-                                      </button>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
+                              ))}
                             </React.Fragment>
                           ))}
                         </div>
