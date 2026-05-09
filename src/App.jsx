@@ -11,6 +11,7 @@ import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
 import './what-we-serve-premium.css';
+import './our-clients.css';
 import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
@@ -815,6 +816,7 @@ function App() {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
+  const [expandedProduct, setExpandedProduct] = React.useState(null);
 
   const handleNavClick = (e, page, product = null) => {
     e.preventDefault();
@@ -971,23 +973,40 @@ function App() {
                         <div className="premium-mobile-sublist">
                           {products.map((p) => (
                             <React.Fragment key={p.id}>
-                              <button
-                                type="button"
-                                className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick(e, 'products', p)}
-                              >
-                                {p.title}
-                              </button>
-                              {p.subProducts && p.subProducts.map((sub) => (
+                              <div className="mobile-product-toggle-group">
                                 <button
-                                  key={sub.id}
                                   type="button"
-                                  className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                  onClick={(e) => handleNavClick(e, 'products', sub)}
+                                  className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                  onClick={(e) => {
+                                    if (p.subProducts) {
+                                      setExpandedProduct(expandedProduct === p.id ? null : p.id);
+                                    } else {
+                                      handleNavClick(e, 'products', p);
+                                    }
+                                  }}
                                 >
-                                  {sub.title}
+                                  {p.title}
+                                  {p.subProducts && (
+                                    <span className={`mobile-toggle-arrow ${expandedProduct === p.id ? 'expanded' : ''}`}>
+                                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    </span>
+                                  )}
                                 </button>
-                              ))}
+                                {p.subProducts && (
+                                  <div className={`mobile-sub-accordion ${expandedProduct === p.id ? 'is-open' : ''}`}>
+                                    {p.subProducts.map((sub) => (
+                                      <button
+                                        key={sub.id}
+                                        type="button"
+                                        className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                        onClick={(e) => handleNavClick(e, 'products', sub)}
+                                      >
+                                        {sub.title}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
                             </React.Fragment>
                           ))}
                         </div>
@@ -1013,34 +1032,36 @@ function App() {
           </div>
         ) : (
           <>
-            <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
-              <div className="brand-mark">
-                <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
+            <div className="header-main-flex">
+              <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
+                <div className="brand-mark">
+                  <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
+                </div>
               </div>
-            </div>
 
-            <button
-              type="button"
-              className="main-nav-menu-btn"
-              aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMainMobileMenuOpen}
-              onClick={() => setIsMainMobileMenuOpen((v) => !v)}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                {isMainMobileMenuOpen ? (
-                  <>
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </>
-                ) : (
-                  <>
-                    <line x1="4" y1="6" x2="20" y2="6"></line>
-                    <line x1="4" y1="12" x2="20" y2="12"></line>
-                    <line x1="4" y1="18" x2="20" y2="18"></line>
-                  </>
-                )}
-              </svg>
-            </button>
+              <button
+                type="button"
+                className="main-nav-menu-btn"
+                aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMainMobileMenuOpen}
+                onClick={() => setIsMainMobileMenuOpen((v) => !v)}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  {isMainMobileMenuOpen ? (
+                    <>
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </>
+                  ) : (
+                    <>
+                      <line x1="4" y1="6" x2="20" y2="6"></line>
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </>
+                  )}
+                </svg>
+              </button>
+            </div>
 
             <nav className="main-nav" aria-label="Primary navigation">
               {navItems.map((item, index) => {
@@ -1117,15 +1138,17 @@ function App() {
             </nav>
 
             <div className="header-actions">
-              <div className="phone-action">
-                <div className="phone-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <div className="header-actions-icons">
+                <div className="phone-action">
+                  <div className="phone-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  </div>
+                  <span className="phone-text">+1(212)-255-511</span>
                 </div>
-                <span className="phone-text">+1(212)-255-511</span>
-              </div>
 
-              <div className="search-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <div className="search-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </div>
               </div>
 
               <button className="appointment-pill" onClick={() => setShowQuoteModal(true)}>
@@ -1154,23 +1177,40 @@ function App() {
                         <div className="main-mobile-sublist">
                           {products.map((p) => (
                             <React.Fragment key={p.id}>
-                              <button
-                                type="button"
-                                className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick(e, 'products', p)}
-                              >
-                                {p.title}
-                              </button>
-                              {p.subProducts && p.subProducts.map((sub) => (
+                              <div className="mobile-product-toggle-group">
                                 <button
-                                  key={sub.id}
                                   type="button"
-                                  className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                  onClick={(e) => handleNavClick(e, 'products', sub)}
+                                  className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                  onClick={(e) => {
+                                    if (p.subProducts) {
+                                      setExpandedProduct(expandedProduct === p.id ? null : p.id);
+                                    } else {
+                                      handleNavClick(e, 'products', p);
+                                    }
+                                  }}
                                 >
-                                  {sub.title}
+                                  {p.title}
+                                  {p.subProducts && (
+                                    <span className={`mobile-toggle-arrow ${expandedProduct === p.id ? 'expanded' : ''}`}>
+                                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                    </span>
+                                  )}
                                 </button>
-                              ))}
+                                {p.subProducts && (
+                                  <div className={`mobile-sub-accordion ${expandedProduct === p.id ? 'is-open' : ''}`}>
+                                    {p.subProducts.map((sub) => (
+                                      <button
+                                        key={sub.id}
+                                        type="button"
+                                        className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                        onClick={(e) => handleNavClick(e, 'products', sub)}
+                                      >
+                                        {sub.title}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
                             </React.Fragment>
                           ))}
                         </div>
@@ -1487,10 +1527,10 @@ function App() {
             </div>
           </section>
 
+
           <section className="serve-section-final" aria-label="What We Serve">
             <div className="serve-container-final">
               <div className="serve-header-final">
-                <span className="serve-badge-final">OUR SERVICES</span>
                 <h2 className="serve-heading-final">What We Serve</h2>
                 <p className="serve-subheading-final">
                   Precision-engineered components built to withstand rigorous scientific environments.
@@ -1500,7 +1540,7 @@ function App() {
               <div className="serve-grid-final">
                 {serveCards.map((card, index) => (
                   <article className="serve-card-final" key={index}>
-                    {/* Background Icon */}
+                    {/* Background Icon Watermark */}
                     <div className="serve-card-bg-icon">
                       <ServeIcon type={card.icon} />
                     </div>
@@ -1512,6 +1552,8 @@ function App() {
                       <h3 className="serve-card-title-final">{card.title}</h3>
                     </div>
 
+                    <div className="serve-card-divider"></div>
+
                     <div className="serve-card-content">
                       <p className="serve-card-desc-final">{card.texts[0]}</p>
                       <p className="serve-card-desc-final" style={{ opacity: 0.7 }}>{card.texts[1]}</p>
@@ -1520,13 +1562,15 @@ function App() {
 
                     <div className="serve-card-image-final-wrap">
                       <img src={card.image} alt={card.title} className="serve-card-image-final" />
-                      {/* Hover Overlay Symbol */}
+                      {/* Hover Overlay Symbol - Double Hexagon */}
                       <div className="serve-hover-symbol-overlay">
-                        <div className="serve-symbol-circle">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="12" y1="5" x2="12" y2="19"></line>
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                          </svg>
+                        <div className="serve-plus-hexagon-outer">
+                          <div className="serve-plus-hexagon-inner">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                              <line x1="12" y1="5" x2="12" y2="19"></line>
+                              <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1541,158 +1585,195 @@ function App() {
             </div>
           </section>
 
-
-
-          <section className="client-section" aria-label="Our Clients">
-            <div className="client-bg-watermark">
-              <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Orbital Rings */}
-                <ellipse cx="100" cy="110" rx="90" ry="35" transform="rotate(-25, 100, 110)" stroke="currentColor" strokeWidth="2" strokeDasharray="10 5" opacity="0.6" />
-                <ellipse cx="100" cy="110" rx="95" ry="40" transform="rotate(20, 100, 110)" stroke="currentColor" strokeWidth="2" opacity="0.4" />
+          <section className="client-section-v2" aria-label="Our Clients">
+            <div className="client-watermark-v2">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* Dark Navy Swoosh (behind) */}
+                <path d="M30 75 C20 60 25 35 55 25 C85 15 95 35 90 55" stroke="#0d1e44" strokeWidth="4.5" strokeLinecap="round" opacity="0.35" />
                 
-                {/* Erlenmeyer Flask */}
-                <path d="M85 45h30M92 45v45l-35 85a8 8 0 0 0 7 12h72a8 8 0 0 0 7-12l-35-85V45" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />
-                <path d="M72 155h56" stroke="currentColor" strokeWidth="2" opacity="0.3" />
-                
-                {/* Rising Bubbles */}
-                <circle cx="85" cy="35" r="8" fill="currentColor" opacity="0.5" />
-                <circle cx="105" cy="15" r="5" fill="currentColor" opacity="0.3" />
-                <circle cx="120" cy="40" r="4" fill="currentColor" opacity="0.4" />
+                {/* Gray Swoosh (front) */}
+                <path d="M75 25 C90 40 85 75 55 85 C25 95 10 75 15 55" stroke="#777" strokeWidth="4.5" strokeLinecap="round" opacity="0.3" />
+
+                {/* Refined Central Flask - Filled with subtle white to match image */}
+                <g transform="translate(40, 38) scale(0.95)">
+                  {/* Flask Fill */}
+                  <path d="M6 0 L18 0 L18 5 L28 35 A 8 8 0 0 1 20 45 L4 45 A 8 8 0 0 1 -4 35 L6 5 Z" fill="#ffffff" opacity="0.4" />
+                  {/* Flask Outline */}
+                  <path d="M6 0 L18 0 L18 5 L28 35 A 8 8 0 0 1 20 45 L4 45 A 8 8 0 0 1 -4 35 L6 5 Z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" opacity="0.3" />
+                  {/* Top Rim */}
+                  <path d="M4 0 L20 0" stroke="currentColor" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
+                </g>
+
+                {/* Brand Bubbles Cluster */}
+                <circle cx="38" cy="18" r="4.5" fill="#0d1e44" opacity="0.35" />
+                <circle cx="32" cy="28" r="2.8" fill="#0d1e44" opacity="0.25" />
+                <circle cx="36" cy="34" r="2.2" fill="#0d1e44" opacity="0.3" />
               </svg>
             </div>
 
-            <h2 className="client-main-heading">Our Clients</h2>
-
-            <div className="client-marquee-container">
-              <div className="client-divider"></div>
-              <div className="client-logo-row">
-                {/* Logo 1: LAB with Dots */}
-                <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>L</span>
-                  <div className="cl-icon-mini">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <circle cx="12" cy="12" r="3" />
-                      <circle cx="12" cy="5" r="1.5" />
-                      <circle cx="12" cy="19" r="1.5" />
-                      <circle cx="5" cy="12" r="1.5" />
-                      <circle cx="19" cy="12" r="1.5" />
-                    </svg>
-                  </div>
-                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>B</span>
-                </div>
-
-                {/* Logo 2: SCIENCE in Circle */}
-                <div className="cl-logo">
-                  <div className="cl-icon-mini" style={{ width: '30px', height: '30px', border: '1px dashed #111c38', borderRadius: '50%' }}>
-                    <span style={{ fontSize: '0.6rem', fontWeight: '900' }}>SC</span>
-                  </div>
-                  <span className="cl-logo-text" style={{ fontSize: '1.2rem' }}>IENCE</span>
-                </div>
-
-                {/* Logo 3: BIOLAB */}
-                <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ fontWeight: '800' }}>BIOLAB</span>
-                </div>
-
-                {/* Logo 4: LABORA with Flask */}
-                <div className="cl-logo">
-                  <span className="cl-logo-text">LAB</span>
-                  <div className="cl-icon-mini" style={{ margin: '0 -2px' }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M10 2v6L5 21h14L14 8V2" />
-                      <path d="M8 14h8" opacity="0.5" />
-                    </svg>
-                  </div>
-                  <span className="cl-logo-text">RA</span>
-                </div>
-
-                {/* Logo 5: BIOLOGY CENTER */}
-                <div className="cl-logo" style={{ flexDirection: 'column', gap: '0' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div className="cl-icon-mini">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                      </svg>
+            <div className="client-container-v2">
+              <h2 className="client-main-heading-centered">Our Clients</h2>
+              
+              <div className="client-logo-grid-v2">
+                <div className="client-divider-v2"></div>
+                
+                {/* Row 1 */}
+                <div className="client-logo-row-v2">
+                  {/* LAB Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-lab">
+                      <div className="lab-text-wrap">
+                        <span className="l-char">L</span>
+                        <div className="lab-dots-diamond">
+                          <div className="d-dot"></div>
+                          <div className="d-mid">
+                            <div className="d-dot"></div>
+                            <div className="d-dot"></div>
+                          </div>
+                          <div className="d-dot"></div>
+                        </div>
+                        <span className="a-char-tri"></span>
+                        <span className="b-char">B</span>
+                      </div>
                     </div>
-                    <span className="cl-logo-text" style={{ fontSize: '0.8rem' }}>BIOLOGY</span>
                   </div>
-                  <span className="cl-logo-text" style={{ fontSize: '0.8rem', marginLeft: '28px' }}>CENTER</span>
-                </div>
 
-                {/* Logo 6: ECOLAB with Microscope */}
-                <div className="cl-logo">
-                  <span className="cl-logo-text">EC</span>
-                  <div className="cl-icon-mini" style={{ margin: '0 -1px' }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M6 18h12M12 18v-4M9 14h6M12 14l3-6M10 8h4" />
-                      <circle cx="12" cy="5" r="2" />
-                    </svg>
-                  </div>
-                  <span className="cl-logo-text">LAB</span>
-                </div>
-              </div>
-
-              <div className="client-divider"></div>
-
-              <div className="client-logo-row">
-                <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>L</span>
-                  <div className="cl-icon-mini">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <circle cx="12" cy="12" r="3" />
-                      <circle cx="12" cy="5" r="1.5" />
-                      <circle cx="12" cy="19" r="1.5" />
-                      <circle cx="5" cy="12" r="1.5" />
-                      <circle cx="19" cy="12" r="1.5" />
-                    </svg>
-                  </div>
-                  <span className="cl-logo-text" style={{ letterSpacing: '0.1em' }}>B</span>
-                </div>
-
-                <div className="cl-logo">
-                  <div className="cl-icon-mini" style={{ width: '30px', height: '30px', border: '1px dashed #111c38', borderRadius: '50%' }}>
-                    <span style={{ fontSize: '0.6rem', fontWeight: '900' }}>SC</span>
-                  </div>
-                  <span className="cl-logo-text" style={{ fontSize: '1.2rem' }}>IENCE</span>
-                </div>
-
-                <div className="cl-logo">
-                  <span className="cl-logo-text" style={{ fontWeight: '800' }}>BIOLAB</span>
-                </div>
-
-                <div className="cl-logo">
-                  <span className="cl-logo-text">LAB</span>
-                  <div className="cl-icon-mini" style={{ margin: '0 -2px' }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M10 2v6L5 21h14L14 8V2" />
-                      <path d="M8 14h8" opacity="0.5" />
-                    </svg>
-                  </div>
-                  <span className="cl-logo-text">RA</span>
-                </div>
-
-                <div className="cl-logo" style={{ flexDirection: 'column', gap: '0' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div className="cl-icon-mini">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                      </svg>
+                  {/* SCIENCE Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-science-v2">
+                      <div className="sc-orb-container">
+                        <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                          <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                        </svg>
+                      </div>
+                      <span className="science-text-v2">IENCE</span>
                     </div>
-                    <span className="cl-logo-text" style={{ fontSize: '0.8rem' }}>BIOLOGY</span>
                   </div>
-                  <span className="cl-logo-text" style={{ fontSize: '0.8rem', marginLeft: '28px' }}>CENTER</span>
+
+                  {/* BIOLAB Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-biolab-v2">BIOLAB</div>
+                  </div>
+
+                  {/* LABORA Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-labora-v2">
+                      <span className="lab-txt">LAB</span>
+                      <div className="flask-o">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M10 2v6L5 21h14L14 8V2" />
+                          <circle cx="12" cy="14" r="2" fill="currentColor" />
+                          <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
+                        </svg>
+                      </div>
+                      <span className="ra-txt">RA</span>
+                    </div>
+                  </div>
+
+                  {/* BIOLOGY CENTER Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-biology-v2">
+                      <div className="bio-square-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <rect x="2" y="2" width="20" height="20" rx="4" />
+                          <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      <div className="bio-text-stack">
+                        <span className="bio-top">BIOLOGY</span>
+                        <span className="bio-bot">CENTER</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ECO LAB Logo */}
+                  <div className="client-logo-item-v2">
+                    <div className="logo-ecolab-v2">
+                      <span className="ec-txt">EC</span>
+                      <div className="micro-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                        </svg>
+                      </div>
+                      <span className="lab-txt">LAB</span>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="cl-logo">
-                  <span className="cl-logo-text">EC</span>
-                  <div className="cl-icon-mini" style={{ margin: '0 -1px' }}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M6 18h12M12 18v-4M9 14h6M12 14l3-6M10 8h4" />
-                      <circle cx="12" cy="5" r="2" />
-                    </svg>
+                <div className="client-divider-v2"></div>
+
+                {/* Row 2 (Repeated Sequence) */}
+                <div className="client-logo-row-v2">
+                  <div className="client-logo-item-v2">
+                    <div className="logo-lab">
+                      <div className="lab-text-wrap">
+                        <span className="l-char">L</span>
+                        <div className="lab-dots-diamond">
+                          <div className="d-dot"></div>
+                          <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
+                          <div className="d-dot"></div>
+                        </div>
+                        <span className="a-char-tri"></span>
+                        <span className="b-char">B</span>
+                      </div>
+                    </div>
                   </div>
-                  <span className="cl-logo-text">LAB</span>
+                  <div className="client-logo-item-v2">
+                    <div className="logo-science-v2">
+                      <div className="sc-orb-container">
+                        <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                          <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                        </svg>
+                      </div>
+                      <span className="science-text-v2">IENCE</span>
+                    </div>
+                  </div>
+                  <div className="client-logo-item-v2">
+                    <div className="logo-biolab-v2">BIOLAB</div>
+                  </div>
+                  <div className="client-logo-item-v2">
+                    <div className="logo-labora-v2">
+                      <span className="lab-txt">LAB</span>
+                      <div className="flask-o">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M10 2v6L5 21h14L14 8V2" />
+                          <circle cx="12" cy="14" r="2" fill="currentColor" />
+                          <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
+                        </svg>
+                      </div>
+                      <span className="ra-txt">RA</span>
+                    </div>
+                  </div>
+                  <div className="client-logo-item-v2">
+                    <div className="logo-biology-v2">
+                      <div className="bio-square-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <rect x="2" y="2" width="20" height="20" rx="4" />
+                          <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      <div className="bio-text-stack">
+                        <span className="bio-top">BIOLOGY</span>
+                        <span className="bio-bot">CENTER</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="client-logo-item-v2">
+                    <div className="logo-ecolab-v2">
+                      <span className="ec-txt">EC</span>
+                      <div className="micro-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                        </svg>
+                      </div>
+                      <span className="lab-txt">LAB</span>
+                    </div>
+                  </div>
                 </div>
+
+                <div className="client-divider-v2"></div>
               </div>
             </div>
           </section>

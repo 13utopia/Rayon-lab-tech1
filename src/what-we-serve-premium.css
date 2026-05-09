@@ -1,34 +1,38 @@
 /* What We Serve - Premium Design Matching Screenshot */
 .serve-section-final {
   width: 100%;
-  padding: 100px 40px;
+  padding: 140px 40px;
   background: #f8fbff;
   position: relative;
   overflow: hidden;
 }
 
 .serve-container-final {
-  width: 95%;
-  max-width: 1490px;
+  width: 100%;
+  max-width: 1550px;
   margin: 0 auto;
 }
 
 .serve-header-final {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .serve-heading-final {
-  font-size: 3.5rem;
-  font-weight: 800;
+  font-size: 4rem;
+  font-weight: 850;
   color: #111c38;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  letter-spacing: -0.03em;
 }
 
 .serve-subheading-final {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #5f6f8e;
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -36,57 +40,62 @@
 .serve-grid-final {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 45px;
+  perspective: 2000px;
+  /* Enable 3D space */
 }
 
 .serve-card-final {
   background: #ffffff;
-  border-radius: 40px;
-  padding: 40px 35px 0 35px;
+  border-radius: 50px;
+  padding: 70px 45px 0 45px;
   position: relative;
-  overflow: hidden;
-  height: 640px; /* Reduced and optimized height */
+  overflow: visible;
+  height: 700px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 15px 40px rgba(11, 22, 48, 0.03);
-  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 10px 45px rgba(11, 22, 48, 0.04);
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.22, 1);
   border: 1px solid rgba(13, 30, 68, 0.02);
+  transform-style: preserve-3d;
 }
 
 .serve-card-final:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 40px 70px rgba(11, 22, 48, 0.1);
+  transform: translateY(-25px) rotateX(6deg) rotateY(2deg);
+  box-shadow: 0 50px 110px rgba(11, 22, 48, 0.14);
   z-index: 10;
 }
 
-/* Faint Background Icon */
+/* Faint Background Icon - Large Watermark Positioned Exactly */
 .serve-card-bg-icon {
   position: absolute;
-  top: 10px;
-  right: -30px;
-  width: 280px;
-  height: 280px;
-  color: rgba(13, 30, 68, 0.02);
+  top: -15px;
+  right: -90px;
+  width: 200px;
+  height: 200px;
+  color: rgba(13, 30, 68, 0.015);
   z-index: 1;
   pointer-events: none;
   transition: all 0.8s ease;
 }
 
 .serve-card-final:hover .serve-card-bg-icon {
-  transform: scale(1.1) translateX(-30px);
+  transform: translateZ(60px) scale(1.08) translateX(-15px);
+  color: rgba(13, 30, 68, 0.03);
 }
 
 .serve-card-top {
   position: relative;
   z-index: 2;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
+  transform: translateZ(30px);
 }
 
 .serve-card-main-icon {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   color: #1b2a49;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .serve-card-main-icon svg {
@@ -95,35 +104,49 @@
 }
 
 .serve-card-title-final {
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 1.7rem;
+  font-weight: 750;
   color: #111c38;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.serve-card-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(13, 30, 68, 0.05);
+  margin-top: 25px;
+  margin-bottom: 35px;
+  position: relative;
+  z-index: 2;
 }
 
 .serve-card-content {
   position: relative;
   z-index: 2;
   flex: 1;
-  overflow: hidden;
+  transform: translateZ(20px);
 }
 
 .serve-card-desc-final {
-  font-size: 0.92rem;
+  font-size: 0.90rem;
   color: #5f6f8e;
-  line-height: 1.6;
-  margin-bottom: 12px;
+  line-height: 1.60;
+  margin-bottom: 20px;
   opacity: 0.85;
 }
 
-/* Peaked Image Layout */
+/* Peaked Image Layout - Exact Pentagonal Pattern */
 .serve-card-image-final-wrap {
   margin-top: auto;
   position: relative;
-  width: calc(100% + 70px);
-  margin-left: -35px;
-  height: 260px; /* Reduced image height */
+  width: 100%;
+  height: 890px;
   overflow: visible;
-  clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 25%, 50% 0%, 100% 25%, 100% 100%, 0% 100%);
+  border-radius: 40px;
+  /* Base rounding */
+  transform: translateZ(40px);
 }
 
 .serve-card-image-final {
@@ -131,27 +154,28 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 1s cubic-bezier(0.2, 1, 0.22, 1);
 }
 
 .serve-card-final:hover .serve-card-image-final {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
-/* Hexagon Hover Symbol */
+/* Hexagon Hover Symbol - Centered at bottom of image */
 .serve-hover-symbol-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(13, 30, 68, 0.2);
+  background: rgba(13, 30, 68, 0.25);
   display: flex;
   align-items: flex-end;
+  /* Position at bottom */
   justify-content: center;
   padding-bottom: 20px;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
   z-index: 5;
 }
 
@@ -159,64 +183,107 @@
   opacity: 1;
 }
 
-.serve-symbol-circle {
-  width: 80px;
-  height: 90px;
+.serve-plus-hexagon-outer {
+  width: 100px;
+  height: 110px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  /* White outline */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%) scale(0.5);
+  /* Start from below */
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.serve-plus-hexagon-inner {
+  width: 82px;
+  height: 92px;
   background: #0D1E44;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(20px) scale(0.8);
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
 }
 
-.serve-card-final:hover .serve-symbol-circle {
-  transform: translateY(0) scale(1);
+/* Specific chemical structure pattern on the right side */
+.serve-plus-hexagon-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -20px;
+  /* Offset to the right */
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(30deg, transparent 50%, rgba(255, 255, 255, 0.08) 50.5%, transparent 51%),
+    linear-gradient(-30deg, transparent 50%, rgba(255, 255, 255, 0.08) 50.5%, transparent 51%);
+  background-size: 15px 26px;
+  opacity: 0.6;
 }
 
-.serve-symbol-circle svg {
-  width: 22px;
-  height: 22px;
+.serve-card-final:hover .serve-plus-hexagon-outer {
+  transform: translateX(-50%) translateY(50%) scale(1);
+  /* Centers exactly on the bottom edge */
+  opacity: 1;
+}
+
+.serve-plus-hexagon-inner svg {
+  width: 26px;
+  height: 26px;
   color: #ffffff;
+  position: relative;
+  z-index: 2;
 }
 
 /* Pagination Dots */
 .serve-dots-final {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 50px;
+  gap: 15px;
+  margin-top: 80px;
 }
 
 .serve-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: rgba(13, 30, 68, 0.15);
+  background: rgba(13, 30, 68, 0.1);
   cursor: pointer;
+  transition: all 0.4s ease;
 }
 
 .serve-dot.active {
   background: #0D1E44;
-  width: 28px;
-  border-radius: 10px;
+  width: 32px;
+  border-radius: 15px;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
   .serve-grid-final {
     grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .serve-section-final {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .serve-heading-final {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 
   .serve-grid-final {
@@ -225,13 +292,13 @@
 
   .serve-card-final {
     height: auto;
-    min-height: 600px;
-    padding: 40px 30px 0 30px;
+    min-height: 700px;
+    padding: 50px 35px 0 35px;
   }
 
   .serve-card-image-final-wrap {
-    width: calc(100% + 60px);
-    margin-left: -30px;
-    height: 240px;
+    width: calc(100% + 70px);
+    margin-left: -35px;
+    height: 280px;
   }
 }
