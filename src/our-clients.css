@@ -17,11 +17,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
-  opacity: 0.1;
+  width: 750px;
+  height: 750px;
+  opacity: 0.04;
   pointer-events: none;
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #0d1e44;
 }
 

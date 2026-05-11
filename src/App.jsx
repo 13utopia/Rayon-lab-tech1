@@ -25,6 +25,9 @@ import icon1 from './assets/feature-icon-1.png';
 import icon2 from './assets/feature-icon-2.png';
 import icon3 from './assets/feature-icon-3.png';
 import icon4 from './assets/feature-icon-4.png';
+import serveIcon1 from './assets/serve-icon-1.png';
+import serveIcon2 from './assets/serve-icon-2.png';
+import serveIcon3 from './assets/serve-icon-3.png';
 import blog1 from './assets/blog-1.png';
 import blog2 from './assets/blog-2.png';
 import blog3 from './assets/blog-3.png';
@@ -42,6 +45,7 @@ import thumbLike from './assets/thumb-like.png';
 import thumbCircle from './assets/thumb-circle.png';
 import productHeroBg from './assets/product-hero-bg.png';
 import productNavLogo from './assets/product-nav-logo.png';
+import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
 
 function HeaderLogo() {
@@ -257,42 +261,11 @@ const funFacts = [
 function ServeIcon({ type }) {
   switch (type) {
     case 'analysis':
-      return (
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          {/* Syringe Body */}
-          <path d="M40 10 H60 V15 H55 V22 H65 V55 L50 75 L35 55 V22 H45 V15 H40 Z" />
-          <path d="M50 75 L50 85 L47 88 L47 75 Z" />
-          <rect x="42" y="30" width="16" height="4" fill="white" opacity="0.4" />
-          <rect x="42" y="40" width="16" height="4" fill="white" opacity="0.4" />
-          {/* Vial */}
-          <path d="M65 35 H85 V40 L90 45 V85 Q90 90 85 90 H65 Q60 90 60 85 V45 L65 40 Z" />
-          <rect x="62" y="65" width="26" height="5" fill="white" opacity="0.4" />
-          <rect x="62" y="75" width="26" height="5" fill="white" opacity="0.4" />
-        </svg>
-      );
+      return <img src={serveIcon1} alt="Requirement Analysis" className="serve-icon-png" />;
     case 'design':
-      return (
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <rect x="15" y="85" width="70" height="8" />
-          <path d="M50 85 V75 H60 V85 Z" />
-          <path d="M55 75 Q55 35 25 35 V25 Q65 25 65 75 Z" />
-          <path d="M35 30 L65 10 L80 25 L50 45 Z" />
-          <rect x="60" y="8" width="15" height="5" transform="rotate(-35 60 8)" />
-          <circle cx="50" cy="85" r="3" fill="white" opacity="0.5" />
-        </svg>
-      );
+      return <img src={serveIcon2} alt="Design & Planning" className="serve-icon-png" />;
     case 'manufacturing':
-      return (
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50 20 C62 20 72 30 72 45 V55 H28 V45 C28 30 38 20 50 20 Z" />
-          <path d="M30 25 L70 25" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
-          <path d="M15 90 Q15 70 50 70 Q85 70 85 90 V95 H15 Z" />
-          {/* Gear 1 */}
-          <path d="M75 35 L78 30 L82 32 L80 37 L85 39 L87 35 L91 37 L89 42 Q93 45 93 50 L89 58 L85 56 L87 51 L82 53 L78 55 L75 50 Q73 45 75 40 Z" />
-          {/* Gear 2 */}
-          <path d="M60 55 L63 50 L67 52 L65 57 L70 59 L72 55 L76 57 L74 62 Q78 65 78 70 L74 78 L70 76 L72 71 L67 73 L63 75 L60 70 Q58 65 60 60 Z" />
-        </svg>
-      );
+      return <img src={serveIcon3} alt="Manufacturing & Installation" className="serve-icon-png" />;
     default:
       return null;
   }
@@ -724,7 +697,7 @@ function Footer() {
 
       {/* Newsletter Banner */}
       <div className="footer-newsletter-banner">
-        <div className="footer-newsletter-card">
+        <div className="footer-newsletter-v2">
           <div className="footer-nl-text">
             <h3>Subscribe to Our Newsletter</h3>
             <p>Get the latest updates on lab solutions, product launches &amp; industry news.</p>
@@ -900,8 +873,7 @@ function App() {
     <>
       <FixedSidebar />
       <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
-      <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us') ? 'product-header-premium' : ''}`}>
-        {(currentPage === 'products' || currentPage === 'about-us') ? (
+        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
               <img src={productNavLogo} alt="Rayon Lab Tech" />
@@ -1018,6 +990,7 @@ function App() {
               </button>
             </div>
 
+
             <div className={`premium-mobile-menu ${isPremiumMobileMenuOpen ? 'is-open' : ''}`}>
               <div className="premium-mobile-menu-inner">
                 {navItems.map((item) => {
@@ -1047,7 +1020,7 @@ function App() {
                                 {p.title}
                                 {p.subProducts && <span className="mobile-expand-icon">›</span>}
                               </button>
-                              
+
                               {p.subProducts && (
                                 <div className="premium-mobile-sub-expand">
                                   {p.subProducts.map((sub) => (
@@ -1082,923 +1055,753 @@ function App() {
                     </button>
                   );
                 })}
+
+                <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowQuoteModal(true); }}>
+                  Appointment <span className="btn-arrow">→</span>
+                </button>
               </div>
             </div>
           </div>
-        ) : (
+        </header>
+
+        {currentPage === 'about-us' ? (
+          <AboutUs />
+        ) : currentPage === 'home' ? (
           <>
-            <div className="brand-group" onClick={(e) => handleNavClick(e, 'home')} style={{ cursor: 'pointer' }}>
-              <div className="brand-mark">
-                <img src={productNavLogo} alt="Rayon Lab Tech" style={{ height: '55px', width: 'auto' }} />
+            <section className="hero-custom-section" aria-label="Hero Section">
+              <div className="hero-custom-bg-text">RAYON</div>
+              <div className="hero-custom-content">
+                <h1 className="hero-custom-title">
+                  Manufacturer Of Premium Laboratory<br />
+                  Furniture & Equipment In <strong>Ahmedabad</strong><br />
+                  For Your Lab Needs :
+                </h1>
               </div>
-            </div>
-
-            <button
-              type="button"
-              className="main-nav-menu-btn"
-              aria-label={isMainMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMainMobileMenuOpen}
-              onClick={() => setIsMainMobileMenuOpen((v) => !v)}
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                {isMainMobileMenuOpen ? (
-                  <>
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                  </>
-                ) : (
-                  <>
-                    <line x1="4" y1="6" x2="20" y2="6"></line>
-                    <line x1="4" y1="12" x2="20" y2="12"></line>
-                    <line x1="4" y1="18" x2="20" y2="18"></line>
-                  </>
-                )}
-              </svg>
-            </button>
-
-            <nav className="main-nav" aria-label="Primary navigation">
-              {navItems.map((item, index) => {
-                const pageId = item.toLowerCase().replace(/\s+/g, '-');
-                const isHome = pageId === 'home';
-                const isAbout = pageId === 'about-us';
-                const isProducts = pageId === 'products';
-
-                return (
-                  <React.Fragment key={item}>
-                    {isProducts ? (
-                      <div
-                        className="nav-dropdown-wrapper"
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
-                      >
-                        <a
-                          href="#"
-                          className={currentPage === 'products' ? 'active' : ''}
-                          onClick={(e) => {
-                            handleNavClick(e, 'products');
-                            setIsDropdownOpen(!isDropdownOpen);
-                          }}
-                        >
-                          {item.toUpperCase()}
-                        </a>
-                        <div className={`nav-dropdown ${isDropdownOpen ? 'is-open' : ''}`}>
-                          {products.map((p) => (
-                            <div key={p.id} className="dropdown-item-container">
-                              <div
-                                className="dropdown-item"
-                                onClick={(e) => handleNavClick(e, 'products', p)}
-                              >
-                                {p.title}
-                                {p.subProducts && <span className="flyout-arrow">›</span>}
-                              </div>
-                              {p.subProducts && (
-                                <div className="flyout-submenu">
-                                  {p.subProducts.map((sub) => (
-                                    <div
-                                      key={sub.id}
-                                      className="dropdown-item sub-item"
-                                      onClick={(e) => handleNavClick(e, 'products', sub)}
-                                    >
-                                      {sub.title}
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ) : (
-                      <a
-                        href="#"
-                        style={{ cursor: (isHome || isAbout) ? 'pointer' : 'default' }}
-                        className={((isHome && currentPage === 'home') || (isAbout && currentPage === 'about-us')) ? 'active' : ''}
-                        onClick={(e) => {
-                          if (isHome || isAbout) {
-                            handleNavClick(e, isHome ? 'home' : 'about-us');
-                          } else {
-                            e.preventDefault();
-                          }
-                        }}
-                      >
-                        {item.toUpperCase()}
-                      </a>
-                    )}
-                    {index < navItems.length - 1 ? <span className="nav-divider">•</span> : null}
-                  </React.Fragment>
-                );
-              })}
-            </nav>
-
-            <div className="header-actions">
-              <div className="phone-action">
-                <div className="phone-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
-                </div>
-                <span className="phone-text">+1(212)-255-511</span>
+              <div className="hero-custom-images">
+                <img src={heroMain} alt="Rayon Lab Tech Hero" className="hero-custom-full-banner" />
               </div>
+            </section>
 
-              <div className="search-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              </div>
-
-              <button className="appointment-pill" onClick={() => setShowQuoteModal(true)}>
-                Appointment <span className="arrow">→</span>
-              </button>
-            </div>
-
-            <div className={`main-mobile-menu ${isMainMobileMenuOpen ? 'is-open' : ''}`}>
-              <div className="main-mobile-menu-inner">
-                {navItems.map((item) => {
-                  const pageId = item.toLowerCase().replace(/\\s+/g, '-');
-                  const isProducts = pageId === 'products';
-                  const isHome = pageId === 'home';
-                  const isAbout = pageId === 'about-us';
-
-                  if (isProducts) {
-                    return (
-                      <div className="main-mobile-group" key={item}>
-                        <button
-                          type="button"
-                          className={`main-mobile-link ${currentPage === 'products' ? 'active' : ''}`}
-                          onClick={(e) => handleNavClick(e, 'products')}
-                        >
-                          {item.toUpperCase()}
-                        </button>
-                        <div className="main-mobile-sublist">
-                          {products.map((p) => (
-                            <React.Fragment key={p.id}>
-                              <button
-                                type="button"
-                                className={`main-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick(e, 'products', p)}
-                              >
-                                {p.title}
-                              </button>
-                              {p.subProducts && p.subProducts.map((sub) => (
-                                <button
-                                  key={sub.id}
-                                  type="button"
-                                  className={`main-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                  onClick={(e) => handleNavClick(e, 'products', sub)}
-                                >
-                                  {sub.title}
-                                </button>
-                              ))}
-                            </React.Fragment>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <button
-                      type="button"
-                      key={item}
-                      className={`main-mobile-link ${currentPage === pageId ? 'active' : ''}`}
-                      onClick={(e) => {
-                        if (isHome || isAbout) handleNavClick(e, pageId);
-                      }}
-                    >
-                      {item.toUpperCase()}
+            <section className="feature-grid-v2" aria-label="Product advantages">
+              {featureCards.map(({ title, description, image }) => (
+                <article className="feature-card-v2" key={title}>
+                  <div className="f-card-header">
+                    <div className="f-icon-wrap">
+                      <img src={image} alt={title} className="f-icon-img" />
+                    </div>
+                    <h3 className="f-title">{title}</h3>
+                  </div>
+                  <div className="f-divider"></div>
+                  <p className="f-desc">{description}</p>
+                  <div className="f-btn-tab">
+                    <button className="f-action-btn" type="button" aria-label={`Explore ${title}`}>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
                     </button>
-                  );
-                })}
-
-                <button type="button" className="main-mobile-cta" onClick={() => { setIsMainMobileMenuOpen(false); setShowQuoteModal(true); }}>
-                  Appointment
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-      </header>
-
-      {currentPage === 'about-us' ? (
-        <AboutUs />
-      ) : currentPage === 'home' ? (
-        <>
-          <section className="hero-custom-section" aria-label="Hero Section">
-            <div className="hero-custom-content">
-              <h1 className="hero-custom-title">
-                Manufacturer Of Premium Laboratory<br />
-                Furniture & Equipment In Ahmedabad<br />
-                For Your Lab Needs
-              </h1>
-            </div>
-            <div className="hero-custom-images">
-              <img src={heroMain} alt="Rayon Lab Tech Hero" className="hero-custom-full-banner" />
-            </div>
-          </section>
-
-          <section className="feature-grid-v2" aria-label="Product advantages">
-            {featureCards.map(({ title, description, image }) => (
-              <article className="feature-card-v2" key={title}>
-                <div className="f-card-header">
-                  <div className="f-icon-wrap">
-                    <img src={image} alt={title} className="f-icon-img" />
-                  </div>
-                  <h3 className="f-title">{title}</h3>
-                </div>
-                <div className="f-divider"></div>
-                <p className="f-desc">{description}</p>
-                <div className="f-btn-tab">
-                  <button className="f-action-btn" type="button" aria-label={`Explore ${title}`}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </button>
-                </div>
-              </article>
-            ))}
-          </section>
-
-          <section className="showcase-section-v2" aria-label="Laboratory showcase">
-            <div className="showcase-v2-header">
-              <div className="showcase-v2-text">
-                <h2 className="showcase-v2-title">Laboratory Infrastructure Solutions</h2>
-                <p className="showcase-v2-subtitle">Modular systems engineered for adaptability and stringent safety protocols.</p>
-              </div>
-              <div className="showcase-v2-controls">
-                <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev > 0 ? prev - 1 : 2))}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
-                </button>
-                <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev < 2 ? prev + 1 : 0))}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="showcase-v2-grid">
-              {showcaseCards.map((card, idx) => (
-                <article
-                  className={`showcase-v2-card ${activeShowcase === idx ? 'is-active' : ''}`}
-                  key={card.title}
-                  onMouseEnter={() => setActiveShowcase(idx)}
-                  onClick={(e) => {
-                    setActiveShowcase(idx);
-                    const prod = products.find(p => p.id === card.productId);
-                    if (prod) handleNavClick(e, 'products', prod);
-                  }}
-                >
-                  <div className="showcase-v2-media-wrap">
-                    <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
-                  </div>
-                  <div className="showcase-v2-meta">
-                    <h3 className="showcase-v2-card-title">{card.title}</h3>
-                    <p className="showcase-v2-card-desc">{card.description}</p>
                   </div>
                 </article>
               ))}
-            </div>
+            </section>
 
-            <div className="showcase-v2-dots">
-              {[0, 1, 2].map((i) => (
-                <button
-                  key={i}
-                  className={`showcase-v2-dot ${activeShowcase === i ? 'active' : ''}`}
-                  onClick={() => setActiveShowcase(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
-
-            <div className="showcase-marquee-wrapper">
-              <div className="showcase-marquee-content">
-                {[...Array(4)].map((_, i) => (
-                  <React.Fragment key={i}>
-                    {showcaseLabels.map((label) => (
-                      <React.Fragment key={`${i}-${label}`}>
-                        <span className="marquee-text">{label}</span>
-                        <span className="marquee-plus">+</span>
-                      </React.Fragment>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="hero-container">
-            {/* Background Watermark */}
-            <div className="hero-watermark">RAYON</div>
-
-            <div className="hero-content">
-              <div className="text-side">
-                <h1 className="hero-title">
-                  Manufacturer Of Premium Laboratory <br />
-                  Furniture & Equipment In Ahmedabad <br />
-                  For Your Lab Needs
-                </h1>
-                <p className="hero-subtitle">
-                  Trusted by institutions and industries, Rayon Lab Tech delivers reliable,
-                  durable, and fully customized laboratory solutions built to perform in
-                  demanding environments.
-                </p>
-
-                <div className="hero-buttons">
-                  <button className="btn-primary" onClick={(e) => handleNavClick(e, 'products')}>
-                    Our Products <span>&rarr;</span>
+            <section className="showcase-section-v2" aria-label="Laboratory showcase">
+              <div className="showcase-v2-header">
+                <div className="showcase-v2-text">
+                  <h2 className="showcase-v2-title">Laboratory Infrastructure Solutions</h2>
+                  <p className="showcase-v2-subtitle">Modular systems engineered for adaptability and stringent safety protocols.</p>
+                </div>
+                <div className="showcase-v2-controls">
+                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev > 0 ? prev - 1 : 2))}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
                   </button>
-                  <button className="btn-outline" onClick={scrollToConsultation}>
-                    Get Consultation <span>&rarr;</span>
+                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev < 2 ? prev + 1 : 0))}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
                 </div>
               </div>
 
-              <div className="image-side">
-                <img src={labimage} alt="Laboratory Equipment" className="main-lab-img" />
-              </div>
-            </div>
-          </section>
-
-          <section className="why-rayon-section">
-            <div className="why-rayon-container">
-              <div className="why-rayon-header">
-                <div className="why-badge">WHY CHOOSE US?</div>
-                <h2 className="why-rayon-title">Why Industry Leaders Choose Rayon</h2>
-              </div>
-              <div className="why-rayon-content">
-                <div className="why-left-list">
-                  {whyPills.map((pill, idx) => (
-                    <div className={`why-pill ${idx === 0 ? 'active' : ''}`} key={idx}>
-                      <span>{pill}</span>
-                      <div className="why-pill-arrow">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="7" y1="17" x2="17" y2="7"></line>
-                          <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                      </div>
+              <div className="showcase-v2-grid">
+                {showcaseCards.map((card, idx) => (
+                  <article
+                    className={`showcase-v2-card ${activeShowcase === idx ? 'is-active' : ''}`}
+                    key={card.title}
+                    onMouseEnter={() => setActiveShowcase(idx)}
+                    onClick={(e) => {
+                      setActiveShowcase(idx);
+                      const prod = products.find(p => p.id === card.productId);
+                      if (prod) handleNavClick(e, 'products', prod);
+                    }}
+                  >
+                    <div className="showcase-v2-media-wrap">
+                      <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
                     </div>
-                  ))}
-                </div>
-                <div className="why-middle-circle">
-                  <div className="circle-ring">
-                    {[1, 2, 3, 4, 5].map(i => (
-                      <div key={i} className={`circle-dot dot-${i}`}></div>
-                    ))}
-                    <div className="circle-img-wrap">
-                      <img src={whyChooseUsCenter} alt="Lab Interior" className="circle-img" />
-                    </div>
-                  </div>
-                </div>
-                <div className="why-right-benefits">
-                  <h2 className="benefit-main-title">Well Ensure You Always Covid 19 Vaccine.</h2>
-                  <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
-                  <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
-                  <div className="benefit-list">
-                    <div className="benefit-connector"></div>
-                    {whyBenefits.map((benefit, idx) => (
-                      <div className="benefit-item" key={idx}>
-                        <div className="benefit-icon-wrap">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                          </svg>
-                        </div>
-                        <span className="benefit-text">{benefit}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="fun-facts-divider">
-                <div className="fun-facts-line"></div>
-                <span className="fun-facts-text">FUN AND FACTS</span>
-                <div className="fun-facts-line"></div>
-              </div>
-            </div>
-          </section>
-
-          <section className="stats-row-section">
-            <div className="stats-row-container">
-              {funFacts.map((fact, idx) => {
-                const numPart = fact.num.replace('+', '');
-                return (
-                  <div className="stat-item-final" key={idx}>
-                    <div className="stat-num-box">
-                      <span className="stat-num-outlined">{numPart}</span>
-                      <span className="stat-plus-solid">+</span>
-                    </div>
-                    <p className="stat-label-final">{fact.text}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-
-          <section className="consultation-section" id="consultation-form" aria-label="Get Consultation">
-            <div className="consultation-container">
-              {/* Left Side: Scientist Image */}
-              <div className="consultation-image-box">
-                <img src={scientistImage} alt="Scientist performing laboratory research" />
-              </div>
-
-              {/* Right Side: Dark Form Card */}
-              <div className="consultation-form-card">
-                {/* Background Pattern */}
-                <div className="consult-pattern-overlay">
-                  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.08">
-                      <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
-                      <path d="M150 0 L200 25 L200 75 L150 100 L100 75 L100 25 Z" />
-                      <path d="M250 0 L300 25 L300 75 L250 100 L200 75 L200 25 Z" />
-                      <path d="M50 100 L100 125 L100 175 L50 200 L0 175 L0 125 Z" />
-                      <path d="M150 100 L200 125 L200 175 L150 200 L100 175 L100 125 Z" />
-                      <path d="M250 100 L300 125 L300 175 L250 200 L200 175 L200 125 Z" />
-                    </g>
-                  </svg>
-                </div>
-
-                <div className="consult-content">
-                  <div className="consult-badge-pill">CONTACT US</div>
-                  <h2 className="consult-main-title">Get your free estimate!</h2>
-
-                  <form className="consult-modern-form" onSubmit={(e) => e.preventDefault()}>
-                    <div className="consult-form-grid">
-                      <div className="consult-input-group">
-                        <select className="consult-glass-input" defaultValue="">
-                          <option value="" disabled>Choose a Service</option>
-                          <option value="planning">Lab Planning</option>
-                          <option value="furniture">Lab Furniture</option>
-                          <option value="exhaust">Exhaust System</option>
-                        </select>
-                      </div>
-                      <div className="consult-input-group">
-                        <select className="consult-glass-input" defaultValue="">
-                          <option value="" disabled>Type of Clean</option>
-                          <option value="class100">Class 100</option>
-                          <option value="class1000">Class 1000</option>
-                          <option value="class10000">Class 10000</option>
-                        </select>
-                      </div>
-                      <div className="consult-input-group">
-                        <input type="text" className="consult-glass-input" placeholder="Total Floor Area (sq ft)" />
-                      </div>
-                      <div className="consult-input-group">
-                        <input type="text" className="consult-glass-input" placeholder="Your Name" />
-                      </div>
-                      <div className="consult-input-group full-width">
-                        <input type="email" className="consult-glass-input" placeholder="Email Address" />
-                      </div>
-                    </div>
-
-                    <div className="consult-footer-row">
-                      <p className="consult-helper-text">
-                        Submit this information and we will send you the cost for the service.
-                      </p>
-                      <div className="consult-submit-btn-wrap">
-                        <button type="submit" className="consult-premium-btn">
-                          Get Consultation <span>&rarr;</span>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="serve-section-premium" aria-label="What We Serve">
-            <div className="serve-container-premium">
-              <div className="serve-header-premium">
-                <h2>What We Serve</h2>
-                <p>
-                  Precision-engineered components built to withstand rigorous scientific environments.
-                </p>
-              </div>
-
-              <div className="serve-grid-premium">
-                {serveCards.map((card, index) => (
-                  <article className="serve-card-premium" key={index}>
-                    {/* Background Icon Watermark */}
-                    <div className="serve-card-watermark">
-                      <ServeIcon type={card.icon} />
-                    </div>
-
-                    <div className="serve-card-content-wrap">
-                      <div className="serve-card-top">
-                        <div className="serve-card-icon-box">
-                          <ServeIcon type={card.icon} />
-                        </div>
-                        <h3 className="serve-card-title">{card.title}</h3>
-                      </div>
-
-                      <div className="serve-card-line"></div>
-
-                      <div className="serve-card-desc-list">
-                        {card.texts.map((t, idx) => (
-                          <p key={idx}>{t}</p>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="serve-card-image-section">
-                      <div className="serve-card-image-box">
-                        <img src={card.image} alt={card.title} />
-                        <div className="serve-hover-hexagon-overlay">
-                          <div className="serve-hexagon-center-btn">
-                            <span className="plus-icon">+</span>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="showcase-v2-meta">
+                      <h3 className="showcase-v2-card-title">{card.title}</h3>
+                      <p className="showcase-v2-card-desc">{card.description}</p>
                     </div>
                   </article>
                 ))}
               </div>
 
-              <div className="serve-dots-premium">
-                <div className="serve-dot-premium active"></div>
-                <div className="serve-dot-premium"></div>
-              </div>
-            </div>
-          </section>
-
-          <section className="client-section-v2" aria-label="Our Clients">
-            <div className="client-watermark-v2">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Tapered Swoosh - Reflecting the Rayon branding */}
-                <path
-                  d="M28 72 C18 55 35 22 72 32 C85 35 82 65 58 78 C42 85 22 75 28 55"
-                  stroke="#0d1e44"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  opacity="0.12"
-                />
-
-                {/* Tilted Laboratory Flask */}
-                <g transform="translate(44, 38) rotate(12)">
-                  <path
-                    d="M3 0 H13 V4 L19 28 A 6 6 0 0 1 13 36 H1 A 6 6 0 0 1 -5 28 L1 4 Z"
-                    fill="#0d1e44"
-                    opacity="0.1"
+              <div className="showcase-v2-dots">
+                {[0, 1, 2].map((i) => (
+                  <button
+                    key={i}
+                    className={`showcase-v2-dot ${activeShowcase === i ? 'active' : ''}`}
+                    onClick={() => setActiveShowcase(i)}
+                    aria-label={`Go to slide ${i + 1}`}
                   />
-                  <rect x="1" y="0" width="14" height="2.5" rx="1.2" fill="#0d1e44" opacity="0.15" />
-                </g>
+                ))}
+              </div>
 
-                {/* Bubble Cluster */}
-                <circle cx="36" cy="18" r="4.2" fill="#0d1e44" opacity="0.12" />
-                <circle cx="28" cy="26" r="2.8" fill="#0d1e44" opacity="0.1" />
-                <circle cx="33" cy="34" r="2.2" fill="#0d1e44" opacity="0.08" />
-              </svg>
-            </div>
+              <div className="showcase-marquee-wrapper">
+                <div className="showcase-marquee-content">
+                  {[...Array(4)].map((_, i) => (
+                    <React.Fragment key={i}>
+                      {showcaseLabels.map((label) => (
+                        <React.Fragment key={`${i}-${label}`}>
+                          <span className="marquee-text">{label}</span>
+                          <span className="marquee-plus">+</span>
+                        </React.Fragment>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            </section>
 
-            <div className="client-container-v2">
-              <h2 className="client-main-heading-centered">Our Clients</h2>
+            <section className="hero-container">
+              {/* Background Watermark */}
+              <div className="hero-watermark">RAYON</div>
 
-              <div className="client-logo-grid-v2">
-                <div className="client-divider-v2"></div>
+              <div className="hero-content">
+                <div className="text-side">
+                  <h1 className="hero-title">
+                    Manufacturer Of Premium Laboratory <br />
+                    Furniture & Equipment In Ahmedabad <br />
+                    For Your Lab Needs
+                  </h1>
+                  <p className="hero-subtitle">
+                    Trusted by institutions and industries, Rayon Lab Tech delivers reliable,
+                    durable, and fully customized laboratory solutions built to perform in
+                    demanding environments.
+                  </p>
 
-                {/* Row 1 */}
-                <div className="client-logo-row-v2">
-                  {/* LAB Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-lab">
-                      <div className="lab-text-wrap">
-                        <span className="l-char">L</span>
-                        <div className="lab-dots-diamond">
-                          <div className="d-dot"></div>
-                          <div className="d-mid">
+                  <div className="hero-buttons">
+                    <button className="btn-primary" onClick={(e) => handleNavClick(e, 'products')}>
+                      Our Products <span>&rarr;</span>
+                    </button>
+                    <button className="btn-outline" onClick={scrollToConsultation}>
+                      Get Consultation <span>&rarr;</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="image-side">
+                  <img src={labimage} alt="Laboratory Equipment" className="main-lab-img" />
+                </div>
+              </div>
+            </section>
+
+            <section className="why-rayon-section">
+              <div className="why-rayon-container">
+                <div className="why-rayon-header">
+                  <div className="why-badge">WHY CHOOSE US?</div>
+                  <h2 className="why-rayon-title">Why Industry Leaders Choose Rayon</h2>
+                </div>
+                <div className="why-rayon-content">
+                  <div className="why-left-list">
+                    {whyPills.map((pill, idx) => (
+                      <div className={`why-pill ${idx === 0 ? 'active' : ''}`} key={idx}>
+                        <span>{pill}</span>
+                        <div className="why-pill-arrow">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                          </svg>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="why-middle-circle">
+                    <div className="circle-ring">
+                      {[1, 2, 3, 4, 5].map(i => (
+                        <div key={i} className={`circle-dot dot-${i}`}></div>
+                      ))}
+                      <div className="circle-img-wrap">
+                        <img src={whyChooseUsCenter} alt="Lab Interior" className="circle-img" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="why-right-benefits">
+                    <h2 className="benefit-main-title">Well Ensure You Always Covid 19 Vaccine.</h2>
+                    <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
+                    <p className="benefit-desc">We help ambitious businesses like yours generate more profits by building awareness.</p>
+                    <div className="benefit-list">
+                      <div className="benefit-connector"></div>
+                      {whyBenefits.map((benefit, idx) => (
+                        <div className="benefit-item" key={idx}>
+                          <div className="benefit-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                              <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                          </div>
+                          <span className="benefit-text">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="fun-facts-divider">
+                  <div className="fun-facts-line"></div>
+                  <span className="fun-facts-text">FUN AND FACTS</span>
+                  <div className="fun-facts-line"></div>
+                </div>
+              </div>
+            </section>
+
+            <section className="stats-row-section">
+              <div className="stats-row-container">
+                {funFacts.map((fact, idx) => {
+                  const numPart = fact.num.replace('+', '');
+                  return (
+                    <div className="stat-item-final" key={idx}>
+                      <div className="stat-num-box">
+                        <span className="stat-num-outlined">{numPart}</span>
+                        <span className="stat-plus-solid">+</span>
+                      </div>
+                      <p className="stat-label-final">{fact.text}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section className="consultation-section" id="consultation-form" aria-label="Get Consultation">
+              <div className="consultation-container">
+                {/* Left Side: Scientist Image */}
+                <div className="consultation-image-box">
+                  <img src={scientistImage} alt="Scientist performing laboratory research" />
+                </div>
+
+                {/* Right Side: Dark Form Card */}
+                <div className="consultation-form-card">
+                  {/* Background Pattern */}
+                  <div className="consult-pattern-overlay">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                      <g fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.08">
+                        <path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" />
+                        <path d="M150 0 L200 25 L200 75 L150 100 L100 75 L100 25 Z" />
+                        <path d="M250 0 L300 25 L300 75 L250 100 L200 75 L200 25 Z" />
+                        <path d="M50 100 L100 125 L100 175 L50 200 L0 175 L0 125 Z" />
+                        <path d="M150 100 L200 125 L200 175 L150 200 L100 175 L100 125 Z" />
+                        <path d="M250 100 L300 125 L300 175 L250 200 L200 175 L200 125 Z" />
+                      </g>
+                    </svg>
+                  </div>
+
+                  <div className="consult-content">
+                    <div className="consult-badge-pill">CONTACT US</div>
+                    <h2 className="consult-main-title">Get your free estimate!</h2>
+
+                    <form className="consult-modern-form" onSubmit={(e) => e.preventDefault()}>
+                      <div className="consult-form-grid">
+                        <div className="consult-input-group">
+                          <select className="consult-glass-input" defaultValue="">
+                            <option value="" disabled>Choose a Service</option>
+                            <option value="planning">Lab Planning</option>
+                            <option value="furniture">Lab Furniture</option>
+                            <option value="exhaust">Exhaust System</option>
+                          </select>
+                        </div>
+                        <div className="consult-input-group">
+                          <select className="consult-glass-input" defaultValue="">
+                            <option value="" disabled>Type of Clean</option>
+                            <option value="class100">Class 100</option>
+                            <option value="class1000">Class 1000</option>
+                            <option value="class10000">Class 10000</option>
+                          </select>
+                        </div>
+                        <div className="consult-input-group">
+                          <input type="text" className="consult-glass-input" placeholder="Total Floor Area (sq ft)" />
+                        </div>
+                        <div className="consult-input-group">
+                          <input type="text" className="consult-glass-input" placeholder="Your Name" />
+                        </div>
+                        <div className="consult-input-group full-width">
+                          <input type="email" className="consult-glass-input" placeholder="Email Address" />
+                        </div>
+                      </div>
+
+                      <div className="consult-footer-row">
+                        <p className="consult-helper-text">
+                          Submit this information and we will send you the cost for the service.
+                        </p>
+                        <div className="consult-submit-btn-wrap">
+                          <button type="submit" className="consult-premium-btn">
+                            Get Consultation <span>&rarr;</span>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="serve-section-premium" aria-label="What We Serve">
+              <div className="serve-container-premium">
+                <div className="serve-header-premium">
+                  <h2>What We Serve</h2>
+                  <p>
+                    Precision-engineered components built to withstand rigorous scientific environments.
+                  </p>
+                </div>
+
+                <div className="serve-grid-premium">
+                  {serveCards.map((card, index) => (
+                    <article className="serve-card-premium" key={index}>
+                      {/* Background Icon Watermark */}
+                      <div className="serve-card-watermark">
+                        <ServeIcon type={card.icon} />
+                      </div>
+
+                      <div className="serve-card-content-wrap">
+                        <div className="serve-card-top">
+                          <div className="serve-card-icon-box">
+                            <ServeIcon type={card.icon} />
+                          </div>
+                          <h3 className="serve-card-title">{card.title}</h3>
+                        </div>
+
+                        <div className="serve-card-line"></div>
+
+                        <div className="serve-card-desc-list">
+                          {card.texts.map((t, idx) => (
+                            <p key={idx}>{t}</p>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="serve-card-image-section">
+                        <div className="serve-card-image-box">
+                          <img src={card.image} alt={card.title} />
+                          <div className="serve-hover-hexagon-overlay">
+                            <div className="serve-hexagon-center-btn">
+                              <span className="plus-icon">+</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="serve-dots-premium">
+                  <div className="serve-dot-premium active"></div>
+                  <div className="serve-dot-premium"></div>
+                </div>
+              </div>
+            </section>
+
+            <section className="client-section-v2" aria-label="Our Clients">
+              <div className="client-watermark-v2">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="50" cy="55" rx="42" ry="16" transform="rotate(-30, 50, 55)" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <g transform="rotate(-15, 50, 55)">
+                    <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
+                    <path d="M38 36 L62 36" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  </g>
+                  <circle cx="42" cy="22" r="5" fill="currentColor" />
+                  <circle cx="56" cy="14" r="3" fill="currentColor" />
+                  <circle cx="38" cy="12" r="2" fill="currentColor" />
+                </svg>
+              </div>
+
+              <div className="client-container-v2">
+                <h2 className="client-main-heading-centered">Our Clients</h2>
+
+                <div className="client-logo-grid-v2">
+                  <div className="client-divider-v2"></div>
+
+                  {/* Row 1 */}
+                  <div className="client-logo-row-v2">
+                    {/* LAB Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-lab">
+                        <div className="lab-text-wrap">
+                          <span className="l-char">L</span>
+                          <div className="lab-dots-diamond">
                             <div className="d-dot"></div>
+                            <div className="d-mid">
+                              <div className="d-dot"></div>
+                              <div className="d-dot"></div>
+                            </div>
                             <div className="d-dot"></div>
                           </div>
-                          <div className="d-dot"></div>
+                          <span className="a-char-tri"></span>
+                          <span className="b-char">B</span>
                         </div>
-                        <span className="a-char-tri"></span>
-                        <span className="b-char">B</span>
                       </div>
                     </div>
-                  </div>
 
-                  {/* SCIENCE Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-science-v2">
-                      <div className="sc-orb-container">
-                        <svg viewBox="0 0 40 40" className="sc-orb-svg">
-                          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
-                          <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
-                        </svg>
-                      </div>
-                      <span className="science-text-v2">IENCE</span>
-                    </div>
-                  </div>
-
-                  {/* BIOLAB Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-biolab-v2">BIOLAB</div>
-                  </div>
-
-                  {/* LABORA Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-labora-v2">
-                      <span className="lab-txt">LAB</span>
-                      <div className="flask-o">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M10 2v6L5 21h14L14 8V2" />
-                          <circle cx="12" cy="14" r="2" fill="currentColor" />
-                          <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
-                        </svg>
-                      </div>
-                      <span className="ra-txt">RA</span>
-                    </div>
-                  </div>
-
-                  {/* BIOLOGY CENTER Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-biology-v2">
-                      <div className="bio-square-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                          <rect x="2" y="2" width="20" height="20" rx="4" />
-                          <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      </div>
-                      <div className="bio-text-stack">
-                        <span className="bio-top">BIOLOGY</span>
-                        <span className="bio-bot">CENTER</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ECO LAB Logo */}
-                  <div className="client-logo-item-v2">
-                    <div className="logo-ecolab-v2">
-                      <span className="ec-txt">EC</span>
-                      <div className="micro-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
-                        </svg>
-                      </div>
-                      <span className="lab-txt">LAB</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="client-divider-v2"></div>
-
-                {/* Row 2 (Repeated Sequence) */}
-                <div className="client-logo-row-v2">
-                  <div className="client-logo-item-v2">
-                    <div className="logo-lab">
-                      <div className="lab-text-wrap">
-                        <span className="l-char">L</span>
-                        <div className="lab-dots-diamond">
-                          <div className="d-dot"></div>
-                          <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
-                          <div className="d-dot"></div>
+                    {/* SCIENCE Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-science-v2">
+                        <div className="sc-orb-container">
+                          <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                          </svg>
                         </div>
-                        <span className="a-char-tri"></span>
-                        <span className="b-char">B</span>
+                        <span className="science-text-v2">IENCE</span>
+                      </div>
+                    </div>
+
+                    {/* BIOLAB Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-biolab-v2">BIOLAB</div>
+                    </div>
+
+                    {/* LABORA Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-labora-v2">
+                        <span className="lab-txt">LAB</span>
+                        <div className="flask-o">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <path d="M10 2v6L5 21h14L14 8V2" />
+                            <circle cx="12" cy="14" r="2" fill="currentColor" />
+                            <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
+                          </svg>
+                        </div>
+                        <span className="ra-txt">RA</span>
+                      </div>
+                    </div>
+
+                    {/* BIOLOGY CENTER Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-biology-v2">
+                        <div className="bio-square-icon">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="4" />
+                            <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        </div>
+                        <div className="bio-text-stack">
+                          <span className="bio-top">BIOLOGY</span>
+                          <span className="bio-bot">CENTER</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ECO LAB Logo */}
+                    <div className="client-logo-item-v2">
+                      <div className="logo-ecolab-v2">
+                        <span className="ec-txt">EC</span>
+                        <div className="micro-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                          </svg>
+                        </div>
+                        <span className="lab-txt">LAB</span>
                       </div>
                     </div>
                   </div>
-                  <div className="client-logo-item-v2">
-                    <div className="logo-science-v2">
-                      <div className="sc-orb-container">
-                        <svg viewBox="0 0 40 40" className="sc-orb-svg">
-                          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
-                          <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
-                        </svg>
-                      </div>
-                      <span className="science-text-v2">IENCE</span>
-                    </div>
-                  </div>
-                  <div className="client-logo-item-v2">
-                    <div className="logo-biolab-v2">BIOLAB</div>
-                  </div>
-                  <div className="client-logo-item-v2">
-                    <div className="logo-labora-v2">
-                      <span className="lab-txt">LAB</span>
-                      <div className="flask-o">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                          <path d="M10 2v6L5 21h14L14 8V2" />
-                          <circle cx="12" cy="14" r="2" fill="currentColor" />
-                          <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
-                        </svg>
-                      </div>
-                      <span className="ra-txt">RA</span>
-                    </div>
-                  </div>
-                  <div className="client-logo-item-v2">
-                    <div className="logo-biology-v2">
-                      <div className="bio-square-icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                          <rect x="2" y="2" width="20" height="20" rx="4" />
-                          <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      </div>
-                      <div className="bio-text-stack">
-                        <span className="bio-top">BIOLOGY</span>
-                        <span className="bio-bot">CENTER</span>
+
+                  <div className="client-divider-v2"></div>
+
+                  {/* Row 2 (Repeated Sequence) */}
+                  <div className="client-logo-row-v2">
+                    <div className="client-logo-item-v2">
+                      <div className="logo-lab">
+                        <div className="lab-text-wrap">
+                          <span className="l-char">L</span>
+                          <div className="lab-dots-diamond">
+                            <div className="d-dot"></div>
+                            <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
+                            <div className="d-dot"></div>
+                          </div>
+                          <span className="a-char-tri"></span>
+                          <span className="b-char">B</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="client-logo-item-v2">
-                    <div className="logo-ecolab-v2">
-                      <span className="ec-txt">EC</span>
-                      <div className="micro-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
-                        </svg>
+                    <div className="client-logo-item-v2">
+                      <div className="logo-science-v2">
+                        <div className="sc-orb-container">
+                          <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                          </svg>
+                        </div>
+                        <span className="science-text-v2">IENCE</span>
                       </div>
-                      <span className="lab-txt">LAB</span>
+                    </div>
+                    <div className="client-logo-item-v2">
+                      <div className="logo-biolab-v2">BIOLAB</div>
+                    </div>
+                    <div className="client-logo-item-v2">
+                      <div className="logo-labora-v2">
+                        <span className="lab-txt">LAB</span>
+                        <div className="flask-o">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                            <path d="M10 2v6L5 21h14L14 8V2" />
+                            <circle cx="12" cy="14" r="2" fill="currentColor" />
+                            <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
+                          </svg>
+                        </div>
+                        <span className="ra-txt">RA</span>
+                      </div>
+                    </div>
+                    <div className="client-logo-item-v2">
+                      <div className="logo-biology-v2">
+                        <div className="bio-square-icon">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="4" />
+                            <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        </div>
+                        <div className="bio-text-stack">
+                          <span className="bio-top">BIOLOGY</span>
+                          <span className="bio-bot">CENTER</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="client-logo-item-v2">
+                      <div className="logo-ecolab-v2">
+                        <span className="ec-txt">EC</span>
+                        <div className="micro-icon">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                          </svg>
+                        </div>
+                        <span className="lab-txt">LAB</span>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="client-divider-v2"></div>
                 </div>
-
-                <div className="client-divider-v2"></div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section className="industries-section" aria-label="Industries We Serve">
-            <div className="industries-header">
-              <span className="industries-badge">INDUSTRIES WE SERVE</span>
-              <h2 className="industries-title">Industries We Serve</h2>
-              <p className="industries-subtitle">
-                Precision-engineered components built to withstand rigorous scientific environments.
-              </p>
-            </div>
-
-            <div className="industries-grid">
-              {industryData.map((item, idx) => (
-                <div className="industry-card" key={idx}>
-                  <img src={item.image} alt={item.title} className="industry-card-img" />
-                  <div className="industry-info-card">
-                    <h3>{item.title}</h3>
-                    <div className="card-line"></div>
-                    <p>{item.desc}</p>
-                    <div className="industry-action-btn-circle">
-                      <div className="industry-action-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="industry-all-btn-wrap">
-              <div className="industry-btn-container">
-                <a href="#" className="industry-all-btn">
-                  All Projects <span>→</span>
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section className="blog-section" aria-label="Our Blogs">
-            <div className="blog-header">
-              <h2>Our Blogs</h2>
-              <p>Precision-engineered components built to withstand rigorous scientific environments.</p>
-            </div>
-
-            <div className="blog-container">
-              {/* Left Large Card */}
-              <div className="blog-card-large">
-                <div className="blog-card-large-image" style={{ backgroundImage: `url(${scientistImage})` }}></div>
-                <div className="blog-card-large-content">
-                  <div className="blog-meta">
-                    <span className="blog-date">4 NOV, 2024</span>
-                    <span className="blog-divider">/</span>
-                    <span className="blog-category">CHEMISTRY</span>
-                  </div>
-                  <h3 className="blog-title-large">Hospital Labs Focused On<br />Patients Begin Here.</h3>
-                  <div className="blog-content-divider"></div>
-                  <p className="blog-excerpt">Most laboratory is a facility that provides controlled<br />conditions in which...</p>
-
-                  <div className="blog-read-more-wrapper">
-                    <a href="#" className="blog-read-more">
-                      Read More <span>→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Small Cards List */}
-              <div className="blog-list">
-                <article className="blog-card-small">
-                  <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog1})` }}></div>
-                  <div className="blog-card-small-content">
-                    <div className="blog-meta-small">
-                      <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
-                      <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
-                    </div>
-                    <h4 className="blog-title-small">Hospital Labs Focused On<br />Patients Begin Here.</h4>
-                  </div>
-                </article>
-                <div className="blog-list-divider"></div>
-
-                <article className="blog-card-small">
-                  <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog2})` }}></div>
-                  <div className="blog-card-small-content">
-                    <div className="blog-meta-small">
-                      <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
-                      <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
-                    </div>
-                    <h4 className="blog-title-small">Exploring Anatomy Methods In<br />The Lab</h4>
-                  </div>
-                </article>
-                <div className="blog-list-divider"></div>
-
-                <article className="blog-card-small">
-                  <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog3})` }}></div>
-                  <div className="blog-card-small-content">
-                    <div className="blog-meta-small">
-                      <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
-                      <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
-                    </div>
-                    <h4 className="blog-title-small">A Laboratory Manual For<br />Contemporary Specimen...</h4>
-                  </div>
-                </article>
-              </div>
-            </div>
-
-          </section>
-        </>
-      ) : (
-        <ProductPage
-          product={selectedProduct}
-          onGetQuote={() => setShowQuoteModal(true)}
-          onProductSelect={(p) => setSelectedProduct(p)}
-        />
-      )}
-
-      <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
-      {currentPage !== 'products' && (
-        <footer className="footer-container">
-          <div className="footer-main">
-            {/* Watermark Background */}
-            <div className="bg-watermark">RAYON</div>
-
-            <div className="footer-content-wrapper">
-              {/* Left Column: Logo & Description */}
-              <div className="brand-column">
-                <img src={Logo} alt="Rayon Logo" className="footer-logo" />
-
-                <p className="brand-desc">
-                  Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+            <section className="industries-section" aria-label="Industries We Serve">
+              <div className="industries-header">
+                <span className="industries-badge">INDUSTRIES WE SERVE</span>
+                <h2 className="industries-title">Industries We Serve</h2>
+                <p className="industries-subtitle">
+                  Precision-engineered components built to withstand rigorous scientific environments.
                 </p>
+              </div>
 
-                <div className="social-actions">
-                  <div className="social-icon"><i className="fas fa-globe"></i></div>
-                  <div className="social-icon"><i className="fas fa-shield-alt"></i></div>
-                  <button className="whatsapp-btn">
-                    <i className="fab fa-whatsapp"></i> WhatsApp Expert
-                  </button>
+              <div className="industries-grid">
+                {industryData.map((item, idx) => (
+                  <div className="industry-card" key={idx}>
+                    <img src={item.image} alt={item.title} className="industry-card-img" />
+                    <div className="industry-info-card">
+                      <h3>{item.title}</h3>
+                      <div className="card-line"></div>
+                      <p>{item.desc}</p>
+                      <div className="industry-action-btn-circle">
+                        <div className="industry-action-btn">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="industry-all-btn-wrap">
+                <div className="industry-btn-container">
+                  <a href="#" className="industry-all-btn">
+                    All Projects <span>→</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section className="blog-section" aria-label="Our Blogs">
+              <div className="blog-header">
+                <h2>Our Blogs</h2>
+                <p>Precision-engineered components built to withstand rigorous scientific environments.</p>
+              </div>
+
+              <div className="blog-container">
+                {/* Left Large Card */}
+                <div className="blog-card-large">
+                  <div className="blog-card-large-image" style={{ backgroundImage: `url(${scientistImage})` }}></div>
+                  <div className="blog-card-large-content">
+                    <div className="blog-meta">
+                      <span className="blog-date">4 NOV, 2024</span>
+                      <span className="blog-divider">/</span>
+                      <span className="blog-category">CHEMISTRY</span>
+                    </div>
+                    <h3 className="blog-title-large">Hospital Labs Focused On<br />Patients Begin Here.</h3>
+                    <div className="blog-content-divider"></div>
+                    <p className="blog-excerpt">Most laboratory is a facility that provides controlled<br />conditions in which...</p>
+
+                    <div className="blog-read-more-wrapper">
+                      <a href="#" className="blog-read-more">
+                        Read More <span>→</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Small Cards List */}
+                <div className="blog-list">
+                  <article className="blog-card-small">
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog1})` }}></div>
+                    <div className="blog-card-small-content">
+                      <div className="blog-meta-small">
+                        <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
+                        <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
+                      </div>
+                      <h4 className="blog-title-small">Hospital Labs Focused On<br />Patients Begin Here.</h4>
+                    </div>
+                  </article>
+                  <div className="blog-list-divider"></div>
+
+                  <article className="blog-card-small">
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog2})` }}></div>
+                    <div className="blog-card-small-content">
+                      <div className="blog-meta-small">
+                        <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
+                        <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
+                      </div>
+                      <h4 className="blog-title-small">Exploring Anatomy Methods In<br />The Lab</h4>
+                    </div>
+                  </article>
+                  <div className="blog-list-divider"></div>
+
+                  <article className="blog-card-small">
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog3})` }}></div>
+                    <div className="blog-card-small-content">
+                      <div className="blog-meta-small">
+                        <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
+                        <span className="blog-meta-item"><UserIcon /> BY XLEBPBM</span>
+                      </div>
+                      <h4 className="blog-title-small">A Laboratory Manual For<br />Contemporary Specimen...</h4>
+                    </div>
+                  </article>
                 </div>
               </div>
 
-              {/* Newsletter Banner - Fixed over columns */}
-              <div className="footer-newsletter-card">
-                <h3>Subscribe to Our Newsletter</h3>
-                <div className="newsletter-input-group">
-                  <input type="email" placeholder="Enter Your Email Address" />
-                  <button className="newsletter-submit">Subscribe Now →</button>
+            </section>
+          </>
+        ) : (
+          <ProductPage
+            product={selectedProduct}
+            onGetQuote={() => setShowQuoteModal(true)}
+            onProductSelect={(p) => setSelectedProduct(p)}
+          />
+        )}
+
+        <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
+        {currentPage !== 'products' && (
+          <footer className="footer-premium-v2">
+            {/* Main Footer Body */}
+            <div className="footer-main-v2">
+              {/* Watermark Background */}
+              <div className="bg-watermark-v2">RAYON</div>
+
+              <div className="footer-top-row">
+                {/* Branding Column on the Left */}
+                <div className="footer-col-v2 branding">
+                  <img src={Logo} alt="Rayon Logo" className="footer-logo-v2" />
+                  <p className="footer-tagline-v2">
+                    Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+                  </p>
+                  <div className="footer-social-v2">
+                    <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                    <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                    <button className="whatsapp-pill-v2">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.801.983 3.848 1.503 5.913 1.504h.005c6.554 0 11.89-5.335 11.893-11.893a11.826 11.826 0 00-3.48-8.413z" /></svg>
+                      WhatsApp Expert
+                    </button>
+                  </div>
+                </div>
+
+                {/* Newsletter on the Right */}
+                <div className="footer-newsletter-v2">
+                  <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
+                  <div className="newsletter-form-v2">
+                    <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
+                    <button type="button" className="newsletter-btn-v2">Subscribe Now <span>→</span></button>
+                  </div>
                 </div>
               </div>
 
-              {/* Center: Useful Links */}
-              <div className="link-group">
-                <h4>Useful Link</h4>
-                <div className="link-grid">
-                  <a href="#">Home</a>
-                  <a href="#">About</a>
-                  <a href="#">Service</a>
-                  <a href="#">Pricing</a>
-                  <a href="#">Blog</a>
-                  <a href="#">Contact</a>
-                </div>
-              </div>
+              <div className="footer-divider-v2"></div>
 
-              {/* Right: Working Time & Contact */}
-              <div className="link-group">
-                <h4>Working Time</h4>
-                <p>Mon - Fri: 9.00am - 5.00pm</p>
-                <p>Saturday: 10.00am - 6.00pm</p>
-                <p>Sunday: Closed</p>
-              </div>
-              <div className="link-group">
-                <h4>Say Hello</h4>
-                <p><i className="far fa-envelope"></i> no-reply@pbminfotech.com</p>
-                <p><i className="fas fa-phone-alt"></i> +1-800123-456-789</p>
+              <div className="footer-grid-v2">
+                {/* Useful Link Column */}
+
+                <div className="footer-col-v2">
+                  <h4 className="footer-col-title-v2">Useful Link</h4>
+                  <div className="footer-links-v2 dual-col">
+                    <div className="link-subcol">
+                      <a href="#">Home</a>
+                      <a href="#">Service</a>
+                      <a href="#">Blog</a>
+                    </div>
+                    <div className="link-subcol">
+                      <a href="#">About</a>
+                      <a href="#">Pricing</a>
+                      <a href="#">Contact</a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Working Time Column */}
+                <div className="footer-col-v2">
+                  <h4 className="footer-col-title-v2">Working Time</h4>
+                  <div className="footer-info-v2">
+                    <p>Mon - Fri: 9.00am - 5.00pm</p>
+                    <p>Saturday: 10.00am - 6.00pm</p>
+                    <p>Sunday Closed</p>
+                  </div>
+                </div>
+
+                {/* Say Hello Column */}
+                <div className="footer-col-v2">
+                  <h4 className="footer-col-title-v2">Say Hello</h4>
+                  <div className="footer-info-v2 contact-col">
+                    <div className="contact-item-v2">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                      <span>no-reply@pbminfotech.com</span>
+                    </div>
+                    <div className="contact-item-v2">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                      <span className="phone-v2">+1-800123-456-789</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Copyright Bar */}
-          <div className="copyright-bar">
-            <p>Copyright © 2024 Xlab All Rights Reserved.</p>
-            <div className="legal-links">
-              <span>Privacy Policy</span> | <span>Term And Condition</span> | <span>FAQ</span>
+            {/* Bottom Bar */}
+            <div className="footer-bottom-v2">
+              <div className="footer-bottom-inner-v2">
+                <p className="copyright-v2">Copyright © 2024 Xleb All Rights Reserved.</p>
+                <div className="bottom-links-v2">
+                  <a href="#">Privacy Policy</a>
+                  <span className="sep-v2">|</span>
+                  <a href="#">Term And Condition</a>
+                  <span className="sep-v2">|</span>
+                  <a href="#">FAQ</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </footer>
-      )}
-    </div>
+          </footer>
+        )}
+
+      </div>
     </>
   );
 }
