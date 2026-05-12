@@ -11,16 +11,17 @@
 }
 
 .about-intro-container {
-  max-width: 1300px;
+  max-width: 1550px;
+  /* Increased for PC */
   margin: 0 auto;
   padding: 0 40px;
 }
 
 .about-intro-content-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: flex-start;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -99,13 +100,50 @@
 @media (max-width: 992px) {
   .about-intro-content-row {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
   }
 
-  .about-intro-image img {
-    height: 300px;
+  .about-intro-container {
+    padding: 0 20px;
+  }
+
+  .intro-badge {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .intro-main-title {
+    text-align: center;
+  }
+
+  .intro-desc {
+    text-align: center;
+  }
+
+  .mission-title {
+    font-size: 1.6rem;
+    text-align: center;
   }
 }
+
+@media (max-width: 600px) {
+  .about-intro-top {
+    padding: 50px 0;
+  }
+
+  .intro-badge {
+    font-size: 1.6rem;
+  }
+
+  .mission-bullet-list li {
+    font-size: 0.9rem;
+  }
+}
+
+.about-intro-image img {
+  height: 300px;
+}
+
 
 @media (max-width: 520px) {
   .about-intro-top {

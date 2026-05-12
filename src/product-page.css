@@ -82,18 +82,18 @@
 
 .premium-nav-bar {
   background: #ffffff;
-  width: 100%;
+  width: 98%;
   max-width: 1550px;
-  margin: 0 auto;
-  border-radius: 12px;
+  margin: 15px auto;
+  border-radius: 15px; /* Reduced radius as requested */
   padding: 8px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 15px 50px rgba(13, 30, 68, 0.1);
-  gap: 12px;
+  box-shadow: 0 15px 45px rgba(13, 30, 68, 0.08);
+  gap: 15px; /* Reduced gap */
   position: relative;
-  border: 1px solid rgba(13, 30, 68, 0.05);
+  border: 1px solid rgba(13, 30, 68, 0.04);
 }
 
 .premium-nav-menu-btn {
@@ -115,27 +115,32 @@
   height: 22px;
 }
 
-@media (max-width: 1024px) {
-  .premium-nav-bar {
-    width: 98%;
-    padding: 8px 15px;
+@media (max-width: 1200px) {
+  .premium-nav-links a {
+    font-size: 0.72rem;
+    padding: 5px 4px;
   }
+}
 
-  .premium-nav-links {
+@media (max-width: 1100px) {
+  .premium-nav-links,
+  .premium-nav-right {
     display: none;
   }
 
   .premium-nav-menu-btn {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .premium-nav-right .nav-icon-circle.search {
-    display: none;
+  .topbar.product-header-premium {
+    padding: 15px 15px;
   }
 
-  .nav-appointment-btn {
-    padding: 8px 16px;
-    font-size: 0.75rem;
+  .premium-nav-bar {
+    width: 96%;
+    padding: 8px 15px;
   }
 }
 
@@ -279,21 +284,20 @@
 .premium-nav-links {
   display: flex;
   align-items: center;
-  gap: 6px;
-  /* Tightened gap */
+  gap: 4px; /* Reduced gap as requested */
 }
 
 .premium-nav-links a {
-  font-size: 0.76rem;
-  /* Smaller to fit better */
-  font-weight: 700;
-  color: #475569;
+  font-size: 0.74rem; /* Slightly smaller to fit better */
+  font-weight: 800;
+  color: #64748b;
   text-decoration: none;
   transition: all 0.3s ease;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 5px 6px;
+  padding: 5px 8px; /* Reduced padding */
   white-space: nowrap;
+  font-family: 'Raleway', sans-serif;
 }
 
 .premium-nav-links a:hover,
@@ -313,9 +317,8 @@
 .premium-nav-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px; /* Reduced gap */
   flex-shrink: 0;
-  /* Important: prevents the button from being squashed */
 }
 
 .nav-phone-group {
@@ -356,19 +359,19 @@
 }
 
 .nav-appointment-btn {
-  background: #132157;
+  background: #0D1E44; /* Exact dark navy from reference */
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 14px 28px;
+  border-radius: 100px; /* Pill shape */
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 
@@ -668,8 +671,20 @@
 .product-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 70px;
+  gap: 50px;
   align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .product-details-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-gallery {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 }
 
 /* ============================================
@@ -820,8 +835,14 @@
 
 .specs-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .spec-item-card {

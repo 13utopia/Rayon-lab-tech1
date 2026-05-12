@@ -159,7 +159,7 @@
 }
 
 .why-v3-container {
-  max-width: 1300px;
+  max-width: 1550px; /* Increased for PC */
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
@@ -168,6 +168,39 @@
   padding: 0 40px;
   position: relative;
   z-index: 5;
+}
+
+@media (max-width: 1200px) {
+  .why-v3-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .why-v3-center {
+    grid-column: span 2;
+    order: -1; /* Move image to top */
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .why-v3-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .why-v3-left, .why-v3-right {
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .why-v3-card {
+    max-width: 320px;
+  }
+  
+  .why-v3-connections {
+    display: none; /* Hide complex lines on mobile */
+  }
 }
 
 /* Left side: Feature Cards */
@@ -246,8 +279,8 @@
 
 .why-v3-circle-outer {
   position: relative;
-  width: 450px;
-  height: 450px;
+  width: min(450px, 90vw);
+  height: min(450px, 90vw);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,8 +301,8 @@
 }
 
 .why-v3-image-wrap {
-  width: 420px;
-  height: 420px;
+  width: min(420px, 85vw);
+  height: min(420px, 85vw);
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid rgba(11, 22, 48, 0.2);

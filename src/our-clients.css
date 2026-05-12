@@ -1,9 +1,9 @@
 /* Our Clients Section - Premium Design */
 .client-section-v2 {
   position: relative;
-  padding: 80px 0;
-  background-color: #f0f7ff;
-  /* Very light blue background */
+  padding: 100px 0;
+  background-color: #EAF1FF;
+  /* Matches the clean lab-white in the image */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -14,19 +14,25 @@
 /* Background Watermark */
 .client-watermark-v2 {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 750px;
-  height: 750px;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  width: 950px;
+  height: auto;
   opacity: 0.04;
   pointer-events: none;
   z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0d1e44;
+  color: #0d1e44; /* Dark blue color for the watermark */
 }
+
+.client-watermark-svg {
+  width: 100%;
+  height: auto;
+}
+
 
 .client-container-v2 {
   position: relative;
@@ -276,39 +282,57 @@
     min-width: 120px;
   }
 
-  .client-watermark-v2 {
-    width: 400px;
-    height: 400px;
-    opacity: 0.08;
-  }
-}
+  @media (max-width: 991px) {
+    .client-watermark-v2 {
+      width: 600px;
+    }
 
-@media (max-width: 480px) {
-  .client-section-v2 {
-    padding: 60px 0;
+    .client-main-heading-centered {
+      font-size: 2.2rem;
+    }
   }
 
-  .client-container-v2 {
-    padding: 0 16px;
+  @media (max-width: 768px) {
+    .client-section-v2 {
+      padding: 60px 0;
+    }
+
+    .client-logo-row-v2 {
+      padding: 40px 0;
+      gap: 40px 30px;
+    }
+
+    .client-watermark-v2 {
+      width: 450px;
+      opacity: 0.05;
+    }
   }
 
-  .client-main-heading-centered {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
+  @media (max-width: 480px) {
+    .client-container-v2 {
+      padding: 0 20px;
+    }
 
-  .client-logo-row-v2 {
-    padding: 30px 0;
-    gap: 40px 20px;
-  }
+    .client-main-heading-centered {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
 
-  .client-logo-item-v2 {
-    flex: 0 1 100%;
-    max-width: 280px;
-  }
+    .client-logo-row-v2 {
+      padding: 30px 0;
+      gap: 35px 20px;
+    }
 
-  .client-watermark-v2 {
-    width: 300px;
-    height: 300px;
+    .client-logo-item-v2 {
+      flex: 0 1 45%;
+      /* Show 2 per row on small screens */
+      min-width: 130px;
+    }
+
+    .client-watermark-v2 {
+      width: 500px;
+      opacity: 0.06;
+      top: 50%;
+    }
   }
 }

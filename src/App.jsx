@@ -7,6 +7,7 @@ import './product-page.css';
 import './hero-v2.css';
 import './footer.css';
 import AboutUs from './AboutUs';
+import BlogPage from './BlogPage';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
@@ -28,17 +29,17 @@ import icon4 from './assets/feature-icon-4.png';
 import serveIcon1 from './assets/serve-icon-1.png';
 import serveIcon2 from './assets/serve-icon-2.png';
 import serveIcon3 from './assets/serve-icon-3.png';
-import blog1 from './assets/blog-1.png';
-import blog2 from './assets/blog-2.png';
-import blog3 from './assets/blog-3.png';
-import labimage from './assets/labimage.png';
 import Logo from './assets/icon.png';
 import whyCenter from './assets/why-center.png';
-import industryColleges from './assets/industries/colleges.png';
-import industryChemical from './assets/industries/chemical.png';
-import industryLabs from './assets/industries/labs.png';
-import whyV3Center from './assets/why-v3-center.png';
+import labimage from './assets/labimage.png';
+import blogFeatured from './assets/blog-featured.png';
+import blogSide1 from './assets/blog-side-1.png';
+import blogSide2 from './assets/blog-side-2.png';
+import blogSide3 from './assets/blog-side-3.png';
 import whyChooseUsCenter from './assets/why-choose-us-final.png';
+import industryCollegesNew from './assets/serve-actual-1.png';
+import industryChemicalNew from './assets/serve-actual-2.png';
+import industryLabsNew from './assets/serve-actual-3.png';
 import labIslandTable from './assets/laboratory-island-table.png';
 import thumbMan from './assets/thumb-man.png';
 import thumbLike from './assets/thumb-like.png';
@@ -48,37 +49,22 @@ import productNavLogo from './assets/product-nav-logo.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
 
-function HeaderLogo() {
-  return (
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="header-logo-svg">
-      <ellipse cx="50" cy="55" rx="42" ry="16" transform="rotate(-30, 50, 55)" stroke="#0D1E44" strokeWidth="4.5" strokeLinecap="round" />
-      <g transform="rotate(-15, 50, 55)">
-        <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="#ffffff" stroke="#0D1E44" strokeWidth="4.5" strokeLinejoin="round" />
-        <path d="M38 36 L62 36" stroke="#0D1E44" strokeWidth="4.5" strokeLinecap="round" />
-      </g>
-      <circle cx="42" cy="22" r="5" fill="#0D1E44" />
-      <circle cx="56" cy="14" r="3" fill="#0D1E44" />
-      <circle cx="38" cy="12" r="2" fill="#0D1E44" />
-    </svg>
-  );
-}
-
 function FixedSidebar() {
   return (
     <div className="fixed-sidebar-v2">
-      <div className="sidebar-item-v2">
+      <a href="tel:+919909030607" className="sidebar-item-v2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.18-2.18a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
         <span>CALL</span>
-      </div>
+      </a>
 
-      <div className="sidebar-item-v2">
+      <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="sidebar-item-v2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z" />
         </svg>
         <span>WHATSAPP</span>
-      </div>
+      </a>
 
       <div className="sidebar-item-v2 is-quote">
         <div className="quote-box-inner">
@@ -221,18 +207,18 @@ const serveCards = [
 const industryData = [
   {
     title: 'Colleges',
-    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
-    image: industryColleges
+    desc: 'Custom laboratory furniture and workstations designed for academic excellence and durability.',
+    image: industryCollegesNew
   },
   {
     title: 'Chemical Industry',
-    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
-    image: industryChemical
+    desc: 'Chemical-resistant storage systems and specialized equipment for high-performance industrial labs.',
+    image: industryChemicalNew
   },
   {
     title: 'Labs',
-    desc: 'Our clinical pathologists are available seven days a week to render diagnoses.',
-    image: industryLabs
+    desc: 'Advanced research lab environments built for precision, safety, and operational efficiency.',
+    image: industryLabsNew
   }
 ];
 
@@ -381,8 +367,6 @@ function FooterLogo() {
     </svg>
   );
 }
-
-
 
 function QuoteModal({ isOpen, onClose }) {
   const [phone, setPhone] = React.useState('');
@@ -833,6 +817,42 @@ function App() {
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
 
+  const [consultForm, setConsultForm] = useState({
+    service: '',
+    cleanType: '',
+    area: '',
+    name: '',
+    email: ''
+  });
+  const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'submitting', 'success'
+
+  const handleConsultSubmit = (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+
+    // Prepare mailto link
+    const subject = `New Consultation Request from ${consultForm.name}`;
+    const body = `
+      Name: ${consultForm.name}
+      Email: ${consultForm.email}
+      Service: ${consultForm.service}
+      Type of Clean: ${consultForm.cleanType}
+      Total Floor Area: ${consultForm.area} sq ft
+    `.trim();
+
+    const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open mail client
+    window.location.href = mailtoLink;
+
+    // Simulate success
+    setTimeout(() => {
+      setFormStatus('success');
+      setConsultForm({ service: '', cleanType: '', area: '', name: '', email: '' });
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }, 1000);
+  };
+
   const handleNavClick = (e, page, product = null) => {
     e.preventDefault();
     setCurrentPage(page);
@@ -873,7 +893,7 @@ function App() {
     <>
       <FixedSidebar />
       <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
-        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home') ? 'product-header-premium' : ''}`}>
+        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
               <img src={productNavLogo} alt="Rayon Lab Tech" />
@@ -959,7 +979,7 @@ function App() {
                         href="#"
                         className={currentPage === pageId ? 'active' : ''}
                         onClick={(e) => {
-                          if (isHome || isAbout || isProducts) {
+                          if (isHome || isAbout || isProducts || pageId === 'blog') {
                             handleNavClick(e, pageId);
                           } else {
                             e.preventDefault();
@@ -976,14 +996,19 @@ function App() {
             </nav>
 
             <div className="premium-nav-right">
-              <div className="nav-phone-group">
-                <div className="nav-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="tel:+1212255511" className="nav-phone-group">
+                <div className="nav-icon-circle phone">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
                 </div>
                 <span className="nav-phone-num">+1(212)-255-511</span>
-              </div>
+              </a>
               <div className="nav-icon-circle search">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
               </div>
               <button className="nav-appointment-btn" onClick={() => setShowQuoteModal(true)}>
                 Appointment <span className="btn-arrow">→</span>
@@ -1066,6 +1091,15 @@ function App() {
 
         {currentPage === 'about-us' ? (
           <AboutUs />
+        ) : currentPage === 'blog' ? (
+          <BlogPage
+            blogFeatured={blogFeatured}
+            blogSide1={blogSide1}
+            blogSide2={blogSide2}
+            blogSide3={blogSide3}
+            CalendarIcon={CalendarIcon}
+            UserIcon={UserIcon}
+          />
         ) : currentPage === 'home' ? (
           <>
             <section className="hero-custom-section" aria-label="Hero Section">
@@ -1305,46 +1339,89 @@ function App() {
                     <div className="consult-badge-pill">CONTACT US</div>
                     <h2 className="consult-main-title">Get your free estimate!</h2>
 
-                    <form className="consult-modern-form" onSubmit={(e) => e.preventDefault()}>
-                      <div className="consult-form-grid">
-                        <div className="consult-input-group">
-                          <select className="consult-glass-input" defaultValue="">
-                            <option value="" disabled>Choose a Service</option>
-                            <option value="planning">Lab Planning</option>
-                            <option value="furniture">Lab Furniture</option>
-                            <option value="exhaust">Exhaust System</option>
-                          </select>
-                        </div>
-                        <div className="consult-input-group">
-                          <select className="consult-glass-input" defaultValue="">
-                            <option value="" disabled>Type of Clean</option>
-                            <option value="class100">Class 100</option>
-                            <option value="class1000">Class 1000</option>
-                            <option value="class10000">Class 10000</option>
-                          </select>
-                        </div>
-                        <div className="consult-input-group">
-                          <input type="text" className="consult-glass-input" placeholder="Total Floor Area (sq ft)" />
-                        </div>
-                        <div className="consult-input-group">
-                          <input type="text" className="consult-glass-input" placeholder="Your Name" />
-                        </div>
-                        <div className="consult-input-group full-width">
-                          <input type="email" className="consult-glass-input" placeholder="Email Address" />
-                        </div>
+                    {formStatus === 'success' ? (
+                      <div className="consult-success-message">
+                        <div className="success-icon">✓</div>
+                        <h3>Thank you!</h3>
+                        <p>Your consultation request has been sent to our sales team.</p>
                       </div>
+                    ) : (
+                      <form className="consult-modern-form" onSubmit={handleConsultSubmit}>
+                        <div className="consult-form-grid">
+                          <div className="consult-input-group">
+                            <select
+                              className="consult-glass-input"
+                              value={consultForm.service}
+                              onChange={(e) => setConsultForm({ ...consultForm, service: e.target.value })}
+                              required
+                            >
+                              <option value="" disabled>Choose a Service</option>
+                              <option value="planning">Lab Planning</option>
+                              <option value="furniture">Lab Furniture</option>
+                              <option value="exhaust">Exhaust System</option>
+                            </select>
+                          </div>
+                          <div className="consult-input-group">
+                            <select
+                              className="consult-glass-input"
+                              value={consultForm.cleanType}
+                              onChange={(e) => setConsultForm({ ...consultForm, cleanType: e.target.value })}
+                              required
+                            >
+                              <option value="" disabled>Type of Clean</option>
+                              <option value="class100">Class 100</option>
+                              <option value="class1000">Class 1000</option>
+                              <option value="class10000">Class 10000</option>
+                            </select>
+                          </div>
+                          <div className="consult-input-group">
+                            <input
+                              type="text"
+                              className="consult-glass-input"
+                              placeholder="Total Floor Area (sq ft)"
+                              value={consultForm.area}
+                              onChange={(e) => setConsultForm({ ...consultForm, area: e.target.value })}
+                              required
+                            />
+                          </div>
+                          <div className="consult-input-group">
+                            <input
+                              type="text"
+                              className="consult-glass-input"
+                              placeholder="Your Name"
+                              value={consultForm.name}
+                              onChange={(e) => setConsultForm({ ...consultForm, name: e.target.value })}
+                              required
+                            />
+                          </div>
+                          <div className="consult-input-group full-width">
+                            <input
+                              type="email"
+                              className="consult-glass-input"
+                              placeholder="Email Address"
+                              value={consultForm.email}
+                              onChange={(e) => setConsultForm({ ...consultForm, email: e.target.value })}
+                              required
+                            />
+                          </div>
+                        </div>
 
-                      <div className="consult-footer-row">
-                        <p className="consult-helper-text">
-                          Submit this information and we will send you the cost for the service.
-                        </p>
-                        <div className="consult-submit-btn-wrap">
-                          <button type="submit" className="consult-premium-btn">
-                            Get Consultation <span>&rarr;</span>
-                          </button>
+                        <div className="consult-footer-row">
+                          <p className="consult-helper-text">
+                            Submit this information and we will send you the cost for the service.
+                          </p>
+                          <div className="consult-submit-btn-wrap">
+                            <button
+                              type="submit"
+                              className="consult-premium-btn"
+                              disabled={formStatus === 'submitting'}
+                            >
+                              {formStatus === 'submitting' ? 'Sending...' : 'Get Consultation'} <span>&rarr;</span>
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    </form>
+                      </form>
+                    )}
                   </div>
                 </div>
               </div>
@@ -1387,7 +1464,9 @@ function App() {
                       <div className="serve-card-image-section">
                         <div className="serve-card-image-box">
                           <img src={card.image} alt={card.title} />
-                          <div className="serve-hover-hexagon-overlay">
+                        </div>
+                        <div className="serve-hover-hexagon-overlay">
+                          <div className="serve-hexagon-outer-white">
                             <div className="serve-hexagon-center-btn">
                               <span className="plus-icon">+</span>
                             </div>
@@ -1407,15 +1486,18 @@ function App() {
 
             <section className="client-section-v2" aria-label="Our Clients">
               <div className="client-watermark-v2">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <ellipse cx="50" cy="55" rx="42" ry="16" transform="rotate(-30, 50, 55)" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                  <g transform="rotate(-15, 50, 55)">
-                    <path d="M42 36 L58 36 L58 44 L70 72 A 6 6 0 0 1 65 80 L35 80 A 6 6 0 0 1 30 72 L42 44 Z" fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
-                    <path d="M38 36 L62 36" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                  </g>
-                  <circle cx="42" cy="22" r="5" fill="currentColor" />
-                  <circle cx="56" cy="14" r="3" fill="currentColor" />
-                  <circle cx="38" cy="12" r="2" fill="currentColor" />
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="client-watermark-svg">
+                  {/* The Beaker/Flask */}
+                  <path d="M42 30 L58 30 L58 38 L72 75 A 8 8 0 0 1 65 85 L35 85 A 8 8 0 0 1 28 75 L42 38 Z" fill="currentColor" />
+                  <path d="M38 30 L62 30" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+
+                  {/* The Swoosh/Orbit */}
+                  <ellipse cx="50" cy="58" rx="45" ry="18" transform="rotate(-25, 50, 58)" stroke="currentColor" strokeWidth="5" strokeLinecap="round" opacity="0.6" />
+
+                  {/* The Bubbles */}
+                  <circle cx="42" cy="18" r="4" fill="currentColor" />
+                  <circle cx="56" cy="10" r="2.5" fill="currentColor" />
+                  <circle cx="38" cy="8" r="1.5" fill="currentColor" />
                 </svg>
               </div>
 
@@ -1627,14 +1709,14 @@ function App() {
 
             <section className="blog-section" aria-label="Our Blogs">
               <div className="blog-header">
-                <h2>Our Blogs</h2>
-                <p>Precision-engineered components built to withstand rigorous scientific environments.</p>
+                <h2 className="blog-main-title">Our Blogs</h2>
+                <p className="blog-main-subtitle">Precision-engineered components built to withstand rigorous scientific environments.</p>
               </div>
 
               <div className="blog-container">
                 {/* Left Large Card */}
                 <div className="blog-card-large">
-                  <div className="blog-card-large-image" style={{ backgroundImage: `url(${scientistImage})` }}></div>
+                  <div className="blog-card-large-image" style={{ backgroundImage: `url(${blogFeatured})` }}></div>
                   <div className="blog-card-large-content">
                     <div className="blog-meta">
                       <span className="blog-date">4 NOV, 2024</span>
@@ -1656,7 +1738,7 @@ function App() {
                 {/* Right Small Cards List */}
                 <div className="blog-list">
                   <article className="blog-card-small">
-                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog1})` }}></div>
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blogSide1})` }}></div>
                     <div className="blog-card-small-content">
                       <div className="blog-meta-small">
                         <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
@@ -1668,7 +1750,7 @@ function App() {
                   <div className="blog-list-divider"></div>
 
                   <article className="blog-card-small">
-                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog2})` }}></div>
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blogSide2})` }}></div>
                     <div className="blog-card-small-content">
                       <div className="blog-meta-small">
                         <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
@@ -1680,7 +1762,7 @@ function App() {
                   <div className="blog-list-divider"></div>
 
                   <article className="blog-card-small">
-                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blog3})` }}></div>
+                    <div className="blog-card-small-image" style={{ backgroundImage: `url(${blogSide3})` }}></div>
                     <div className="blog-card-small-content">
                       <div className="blog-meta-small">
                         <span className="blog-meta-item"><CalendarIcon /> NOVEMBER 04, 2024</span>
@@ -1720,10 +1802,10 @@ function App() {
                   <div className="footer-social-v2">
                     <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
                     <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-                    <button className="whatsapp-pill-v2">
+                    <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="whatsapp-pill-v2">
                       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.801.983 3.848 1.503 5.913 1.504h.005c6.554 0 11.89-5.335 11.893-11.893a11.826 11.826 0 00-3.48-8.413z" /></svg>
                       WhatsApp Expert
-                    </button>
+                    </a>
                   </div>
                 </div>
 
@@ -1774,12 +1856,12 @@ function App() {
                   <div className="footer-info-v2 contact-col">
                     <div className="contact-item-v2">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                      <span>no-reply@pbminfotech.com</span>
+                      <span>Rltsales@rayonlabtech.in</span>
                     </div>
-                    <div className="contact-item-v2">
+                    <a href="tel:+919909030607" className="contact-item-v2">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                      <span className="phone-v2">+1-800123-456-789</span>
-                    </div>
+                      <span className="phone-v2">+91 9909030607</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1788,7 +1870,7 @@ function App() {
             {/* Bottom Bar */}
             <div className="footer-bottom-v2">
               <div className="footer-bottom-inner-v2">
-                <p className="copyright-v2">Copyright © 2024 Xleb All Rights Reserved.</p>
+                <p className="copyright-v2">Copyright © 2026 RayonLabTech All Rights Reserved.</p>
                 <div className="bottom-links-v2">
                   <a href="#">Privacy Policy</a>
                   <span className="sep-v2">|</span>
