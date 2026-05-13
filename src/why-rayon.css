@@ -478,7 +478,7 @@
   }
 
   .why-left-list {
-    order: 2;
+    order: 1;
     width: 100%;
     gap: 12px;
   }
@@ -490,7 +490,7 @@
   }
 
   .why-middle-circle {
-    order: 1;
+    order: 2;
     width: 100%;
     justify-content: center;
     margin-bottom: 20px;

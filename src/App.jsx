@@ -50,6 +50,7 @@ import thumbLike from './assets/thumb-like.png';
 import thumbCircle from './assets/thumb-circle.png';
 import productHeroBg from './assets/product-hero-bg.png';
 import productNavLogo from './assets/product-nav-logo.png';
+import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
 
@@ -407,7 +408,27 @@ function QuoteModal({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (phone.length === 10 && isVerified) {
-      alert('Technical Quote Protocol Submitted Successfully!');
+      const formData = new FormData(e.target);
+      const name = formData.get('fullName');
+      const email = formData.get('email');
+      const city = formData.get('city');
+      const requirements = formData.get('requirements');
+
+      const subject = `Technical Quote Request from ${name}`;
+      const body = `
+Full Name: ${name}
+Institutional E-mail: ${email}
+Direct Line: +91 ${phone}
+Facility Location: ${city}
+
+Technical Requirements:
+${requirements}
+      `.trim();
+
+      const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+
+      alert('Technical Quote Protocol Initiated! Opening your mail client...');
       onClose();
     }
   };
@@ -449,34 +470,38 @@ function QuoteModal({ isOpen, onClose }) {
               <div className="form-row">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" placeholder="Dr. Jane Doe" required />
+                  <input type="text" name="fullName" placeholder="Rajesh Kumar" required />
                 </div>
                 <div className="form-group">
                   <label>Institutional E-mail</label>
-                  <input type="email" placeholder="j.doe@institute.edu" required />
+                  <input type="email" name="email" placeholder="rajesh@company.in" required />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group">
                   <label>Direct Line</label>
-                  <input
-                    type="text"
-                    placeholder="+1 (555) 012-3456"
-                    value={phone}
-                    onChange={handlePhoneChange}
-                    required
-                  />
+                  <div className="phone-input-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                    <span style={{ position: 'absolute', left: '12px', color: '#1a2b56', fontWeight: '600' }}>+91</span>
+                    <input
+                      type="text"
+                      placeholder="99090 30607"
+                      value={phone}
+                      onChange={handlePhoneChange}
+                      style={{ paddingLeft: '45px' }}
+                      required
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
                   <label>Facility Location (City)</label>
-                  <input type="text" placeholder="Cambridge, MA" required />
+                  <input type="text" name="city" placeholder="Ahmedabad, Gujarat" required />
                 </div>
               </div>
 
               <h3 className="form-section-title">Technical Requirements</h3>
               <div className="form-group">
                 <label>Equipment Specifications & Usage Context</label>
-                <textarea placeholder="Describe the required parameters, throughput needs, and integration environment..." required></textarea>
+                <textarea name="requirements" placeholder="Describe the required parameters, throughput needs, and integration environment..." required></textarea>
               </div>
 
               <div className="human-verification">
@@ -500,6 +525,69 @@ function QuoteModal({ isOpen, onClose }) {
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function AppointmentModal({ isOpen, onClose }) {
+  const [phone, setPhone] = React.useState('');
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('fullName');
+    const email = formData.get('email');
+
+    const subject = `New Appointment Request from ${name}`;
+    const body = `
+Full Name: ${name}
+E-mail: ${email}
+Phone: +91 ${phone}
+    `.trim();
+
+    const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+    onClose();
+  };
+
+  return (
+    <div className="quote-modal-overlay" onClick={onClose}>
+      <div className="quote-modal-content appointment-modal-content" onClick={e => e.stopPropagation()}>
+        <button className="quote-modal-close" onClick={onClose}>&times;</button>
+        <div className="appointment-modal-header">
+          <h2 className="quote-modal-title">Book an Appointment</h2>
+          <p className="quote-modal-desc">Fill in your details and our team will get back to you shortly.</p>
+        </div>
+        <form className="quote-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input type="text" name="fullName" placeholder="Rajesh Kumar" required />
+          </div>
+          <div className="form-group">
+            <label>E-mail Address</label>
+            <input type="email" name="email" placeholder="rajesh@company.in" required />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <div className="phone-input-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+              <span style={{ position: 'absolute', left: '12px', color: '#1a2b56', fontWeight: '600' }}>+91</span>
+              <input
+                type="tel"
+                placeholder="99090 30607"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                style={{ paddingLeft: '45px' }}
+                required
+              />
+            </div>
+          </div>
+          <button type="submit" className="submit-protocol-btn" style={{ width: '100%', marginTop: '10px' }}>
+            Book Now →
+          </button>
+        </form>
       </div>
     </div>
   );
@@ -550,7 +638,12 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
             {/* Left: Gallery */}
             <div className="product-gallery">
               <div className="gallery-main">
-                <img src={images[activeImageIndex]} alt={product.title} />
+                <img
+                  key={activeImageIndex}
+                  src={images[activeImageIndex]}
+                  alt={product.title}
+                  className="gallery-slide-in"
+                />
                 <button className="gallery-nav prev" onClick={handlePrev} aria-label="Previous image">‹</button>
                 <button className="gallery-nav next" onClick={handleNext} aria-label="Next image">›</button>
               </div>
@@ -833,10 +926,23 @@ function App() {
   const [currentPage, setCurrentPage] = React.useState('home');
   const [selectedProduct, setSelectedProduct] = React.useState(products[0]);
   const [showQuoteModal, setShowQuoteModal] = React.useState(false);
+  const [showAppointmentModal, setShowAppointmentModal] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = React.useState(false);
+
+  // Auto-slide effect for showcase section (Home Page)
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveShowcase((prev) => {
+        const totalSlides = Math.ceil(showcaseCards.length / 3);
+        if (totalSlides <= 1) return 0;
+        return prev < totalSlides - 1 ? prev + 1 : 0;
+      });
+    }, 5000); // Auto-slide every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
 
   const [consultForm, setConsultForm] = useState({
     service: '',
@@ -1038,7 +1144,7 @@ function App() {
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
               </div>
-              <button className="nav-appointment-btn" onClick={() => setShowQuoteModal(true)}>
+              <button className="nav-appointment-btn" onClick={() => setShowAppointmentModal(true)}>
                 Appointment
                 <span className="btn-arrow">
                   <svg width="18" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1135,7 +1241,7 @@ function App() {
                   </a>
                 </div>
 
-                <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowQuoteModal(true); }}>
+                <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowAppointmentModal(true); }}>
                   Appointment <span className="btn-arrow">→</span>
                 </button>
               </div>
@@ -1144,7 +1250,7 @@ function App() {
         </header>
 
         {currentPage === 'about-us' ? (
-          <AboutUs />
+          <AboutUs onGetQuote={() => setShowQuoteModal(true)} />
         ) : currentPage === 'blog' ? (
           <BlogPage />
         ) : currentPage === 'contact-us' ? (
@@ -1208,7 +1314,7 @@ function App() {
                 {showcaseCards.slice(activeShowcase * 3, (activeShowcase + 1) * 3).map((card, idx) => (
                   <article
                     className="showcase-v2-card is-active"
-                    key={card.title}
+                    key={`${activeShowcase}-${card.title}`}
                     onClick={(e) => {
                       const prod = products.find(p => p.id === card.productId);
                       if (prod) handleNavClick(e, 'products', prod);
@@ -1274,7 +1380,7 @@ function App() {
                       Our Products <span>&rarr;</span>
                     </button>
                     <button className="btn-outline" onClick={scrollToConsultation}>
-                      Get Consultation <span>&rarr;</span>
+                      Our Services <span>&rarr;</span>
                     </button>
                   </div>
                 </div>
@@ -1523,15 +1629,10 @@ function App() {
                     </article>
                   ))}
                 </div>
-
-                <div className="serve-dots-premium">
-                  <div className="serve-dot-premium active"></div>
-                  <div className="serve-dot-premium"></div>
-                </div>
               </div>
             </section>
 
-            <section className="client-section-v2" aria-label="Our Clients">
+            {/* <section className="client-section-v2" aria-label="Our Clients">
 
 
               <div className="client-container-v2">
@@ -1539,174 +1640,164 @@ function App() {
 
                 <div className="client-logo-grid-v2">
                   <div className="client-divider-v2"></div>
-
-                  {/* Row 1 */}
-                  <div className="client-logo-row-v2">
-                    {/* LAB Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-lab">
-                        <div className="lab-text-wrap">
-                          <span className="l-char">L</span>
-                          <div className="lab-dots-diamond">
-                            <div className="d-dot"></div>
-                            <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
-                            <div className="d-dot"></div>
-                          </div>
-                          <div className="a-char-stylized">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
-                              <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
-                            </svg>
-                          </div>
-                          <span className="b-char">B</span>
-                        </div>
-                      </div>
+            <div className="client-logo-row-v2"> 
+              <div className="client-logo-item-v2">
+                <div className="logo-lab">
+                  <div className="lab-text-wrap">
+                    <span className="l-char">L</span>
+                    <div className="lab-dots-diamond">
+                      <div className="d-dot"></div>
+                      <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
+                      <div className="d-dot"></div>
                     </div>
-
-                    {/* SCIENCE Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-science-v2">
-                        <div className="sc-orb-container">
-                          <svg viewBox="0 0 40 40" className="sc-orb-svg">
-                            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
-                            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
-                          </svg>
-                        </div>
-                        <span className="science-text-v2">IENCE</span>
-                      </div>
+                    <div className="a-char-stylized">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
+                        <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
+                      </svg>
                     </div>
-
-                    {/* BIOLAB Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-biolab-v2">BIOLAB</div>
-                    </div>
-
-                    {/* LABORA Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-labora-v2">
-                        <span className="lab-txt">LAB</span>
-                        <div className="flask-o-stylized">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
-                            <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
-                            <circle cx="12" cy="14" r="2" fill="currentColor" />
-                          </svg>
-                        </div>
-                        <span className="ra-txt">RA</span>
-                      </div>
-                    </div>
-
-                    {/* BIOLOGY CENTER Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-biology-v2">
-                        <div className="bio-square-icon">
-                          <svg viewBox="0 0 24 24" fill="currentColor">
-                            <rect x="2" y="2" width="20" height="20" rx="4" />
-                            <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
-                        </div>
-                        <div className="bio-text-stack">
-                          <span className="bio-top">BIOLOGY</span>
-                          <span className="bio-bot">CENTER</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* ECO LAB Logo */}
-                    <div className="client-logo-item-v2">
-                      <div className="logo-ecolab-v2">
-                        <span className="ec-txt">EC</span>
-                        <div className="micro-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
-                          </svg>
-                        </div>
-                        <span className="lab-txt">LAB</span>
-                      </div>
-                    </div>
+                    <span className="b-char">B</span>
                   </div>
-
-                  <div className="client-divider-v2"></div>
-
-                  {/* Row 2 (Repeated Sequence) */}
-                  <div className="client-logo-row-v2">
-                    <div className="client-logo-item-v2">
-                      <div className="logo-lab">
-                        <div className="lab-text-wrap">
-                          <span className="l-char">L</span>
-                          <div className="lab-dots-diamond">
-                            <div className="d-dot"></div>
-                            <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
-                            <div className="d-dot"></div>
-                          </div>
-                          <div className="a-char-stylized">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
-                              <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
-                            </svg>
-                          </div>
-                          <span className="b-char">B</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="client-logo-item-v2">
-                      <div className="logo-science-v2">
-                        <div className="sc-orb-container">
-                          <svg viewBox="0 0 40 40" className="sc-orb-svg">
-                            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
-                            <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
-                          </svg>
-                        </div>
-                        <span className="science-text-v2">IENCE</span>
-                      </div>
-                    </div>
-                    <div className="client-logo-item-v2">
-                      <div className="logo-biolab-v2">BIOLAB</div>
-                    </div>
-                    <div className="client-logo-item-v2">
-                      <div className="logo-labora-v2">
-                        <span className="lab-txt">LAB</span>
-                        <div className="flask-o-stylized">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
-                            <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
-                            <circle cx="12" cy="14" r="2" fill="currentColor" />
-                          </svg>
-                        </div>
-                        <span className="ra-txt">RA</span>
-                      </div>
-                    </div>
-                    <div className="client-logo-item-v2">
-                      <div className="logo-biology-v2">
-                        <div className="bio-square-icon">
-                          <svg viewBox="0 0 24 24" fill="currentColor">
-                            <rect x="2" y="2" width="20" height="20" rx="4" />
-                            <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
-                          </svg>
-                        </div>
-                        <div className="bio-text-stack">
-                          <span className="bio-top">BIOLOGY</span>
-                          <span className="bio-bot">CENTER</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="client-logo-item-v2">
-                      <div className="logo-ecolab-v2">
-                        <span className="ec-txt">EC</span>
-                        <div className="micro-icon">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
-                          </svg>
-                        </div>
-                        <span className="lab-txt">LAB</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="client-divider-v2"></div>
                 </div>
               </div>
-            </section>
+
+              <div className="client-logo-item-v2">
+                <div className="logo-science-v2">
+                  <div className="sc-orb-container">
+                    <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                      <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                      <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                    </svg>
+                  </div>
+                  <span className="science-text-v2">IENCE</span>
+                </div>
+              </div>
+
+              <div className="client-logo-item-v2">
+                <div className="logo-biolab-v2">BIOLAB</div>
+              </div>
+
+                <div className="client-logo-item-v2">
+                <div className="logo-labora-v2">
+                  <span className="lab-txt">LAB</span>
+                  <div className="flask-o-stylized">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
+                      <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
+                      <circle cx="12" cy="14" r="2" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <span className="ra-txt">RA</span>
+                </div>
+              </div>
+
+              <div className="client-logo-item-v2">
+                <div className="logo-biology-v2">
+                  <div className="bio-square-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="2" y="2" width="20" height="20" rx="4" />
+                      <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <div className="bio-text-stack">
+                    <span className="bio-top">BIOLOGY</span>
+                    <span className="bio-bot">CENTER</span>
+                  </div>
+                </div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-ecolab-v2">
+                  <span className="ec-txt">EC</span>
+                  <div className="micro-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                    </svg>
+                  </div>
+                  <span className="lab-txt">LAB</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="client-divider-v2"></div>
+            <div className="client-logo-row-v2">
+              <div className="client-logo-item-v2">
+                <div className="logo-lab">
+                  <div className="lab-text-wrap">
+                    <span className="l-char">L</span>
+                    <div className="lab-dots-diamond">
+                      <div className="d-dot"></div>
+                      <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
+                      <div className="d-dot"></div>
+                    </div>
+                    <div className="a-char-stylized">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
+                        <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
+                      </svg>
+                    </div>
+                    <span className="b-char">B</span>
+                  </div>
+                </div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-science-v2">
+                  <div className="sc-orb-container">
+                    <svg viewBox="0 0 40 40" className="sc-orb-svg">
+                      <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeDasharray="80 33" />
+                      <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" className="sc-text-inner">SC</text>
+                    </svg>
+                  </div>
+                  <span className="science-text-v2">IENCE</span>
+                </div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-biolab-v2">BIOLAB</div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-labora-v2">
+                  <span className="lab-txt">LAB</span>
+                  <div className="flask-o-stylized">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
+                      <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
+                      <circle cx="12" cy="14" r="2" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <span className="ra-txt">RA</span>
+                </div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-biology-v2">
+                  <div className="bio-square-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <rect x="2" y="2" width="20" height="20" rx="4" />
+                      <path d="M8 7c0 0 4 2 4 5s-4 5-4 5M16 7c0 0-4 2-4 5s4 5 4 5" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <div className="bio-text-stack">
+                    <span className="bio-top">BIOLOGY</span>
+                    <span className="bio-bot">CENTER</span>
+                  </div>
+                </div>
+              </div>
+              <div className="client-logo-item-v2">
+                <div className="logo-ecolab-v2">
+                  <span className="ec-txt">EC</span>
+                  <div className="micro-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M6 18h8M10 18v3M9 21h2M7 14c0-3.3 2.7-6 6-6h1V4h2v4h1c1.1 0 2 .9 2 2v4M12 11c-1.1 0-2 .9-2 2v1M14 11c1.1 0 2 .9 2 2v1" />
+                    </svg>
+                  </div>
+                  <span className="lab-txt">LAB</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="client-divider-v2"></div>
+          </div>
+      </div>
+    </section > */
+            }
 
             <section className="industries-section" aria-label="Industries We Serve">
               <div className="industries-header">
@@ -1818,6 +1909,7 @@ function App() {
         )}
 
         <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
+        <AppointmentModal isOpen={showAppointmentModal} onClose={() => setShowAppointmentModal(false)} />
         <footer className="footer-premium-v2">
           {/* Main Footer Body */}
           <div className="footer-main-v2">
@@ -1827,7 +1919,7 @@ function App() {
             <div className="footer-top-row">
               {/* Branding Column on the Left */}
               <div className="footer-col-v2 branding">
-                <img src={productNavLogo} alt="Rayon Logo" className="footer-logo-v2" />
+                <img src={logoWhite} alt="Rayon Logo" className="footer-logo-v2" />
                 <p className="footer-tagline-v2">
                   Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
                 </p>
@@ -1852,22 +1944,19 @@ function App() {
             </div>
 
             <div className="footer-divider-v2"></div>
-
             <div className="footer-grid-v2">
               {/* Useful Link Column */}
-
               <div className="footer-col-v2">
                 <h4 className="footer-col-title-v2">Useful Link</h4>
                 <div className="footer-links-v2 dual-col">
                   <div className="link-subcol">
-                    <a href="#">Home</a>
-                    <a href="#">Service</a>
-                    <a href="#">Blog</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'contact-us')}>Contact</a>
                   </div>
                   <div className="link-subcol">
-                    <a href="#">About</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a>
                     <a href="#">Portfolio</a>
-                    <a href="#">Contact</a>
                   </div>
                 </div>
               </div>

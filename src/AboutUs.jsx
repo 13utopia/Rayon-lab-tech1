@@ -20,7 +20,7 @@ function HeaderLogo() {
   );
 }
 
-const AboutUs = () => {
+const AboutUs = ({ onGetQuote }) => {
   return (
     <div className="about-page">
 
@@ -136,7 +136,7 @@ const AboutUs = () => {
                 </svg>
               </span>
             </h2>
-            <button className="premium-cta-btn" onClick={() => (window.location.href = '#contact')}>
+            <button className="premium-cta-btn" onClick={onGetQuote}>
               Request A Quote
               <span className="btn-icon-circle">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

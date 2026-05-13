@@ -460,9 +460,11 @@ body {
 }
 
 .showcase-v2-header {
-  text-align: center;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 60px;
+  position: relative;
 }
 
 .showcase-v2-title {
@@ -473,45 +475,43 @@ body {
   margin-bottom: 10px;
   letter-spacing: -0.02em;
   margin-top: -40px;
+  margin-left: 240px;
 }
 
 .showcase-v2-subtitle {
   font-size: 1.05rem;
   color: #5f6f8e;
   max-width: 650px;
-  margin: 0 auto;
   line-height: 1.6;
+  text-align: left;
+  margin-left: 220px;
 }
 
 .showcase-v2-controls {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
   display: flex;
   gap: 16px;
+  margin-bottom: 10px;
 }
 
 .showcase-v2-arrow {
-  width: 45px;
-  height: 45px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  border: 1px solid #e2e8f0;
-
+  border: 1px solid rgba(17, 28, 56, 0.2);
+  background: transparent !important;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #111c38;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(13, 33, 73, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: none !important;
 }
 
 .showcase-v2-arrow:hover {
-  background: #111c38;
-  color: #ffffff;
   border-color: #111c38;
-  transform: scale(1.05);
+  color: #111c38;
+  transform: scale(1.1);
 }
 
 .showcase-v2-grid {
@@ -531,6 +531,19 @@ body {
   border: none;
   box-shadow: none;
   cursor: pointer;
+  animation: showcaseSlideIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+@keyframes showcaseSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .showcase-v2-card.is-active {
@@ -543,6 +556,22 @@ body {
   overflow: hidden;
   position: relative;
   border-radius: 24px;
+}
+
+.showcase-v2-media-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(17, 28, 56, 0.05), rgba(17, 28, 56, 0.2));
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.showcase-v2-card:hover .showcase-v2-media-wrap::after {
+  background: rgba(17, 28, 56, 0.3);
 }
 
 .showcase-v2-media {
@@ -573,7 +602,7 @@ body {
   font-size: 0.9rem;
   color: #5f6f8e;
   line-height: 1.6;
-  margin-bottom: -40px;
+  margin-bottom: 0;
 }
 
 .showcase-v2-dots {
