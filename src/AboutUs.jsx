@@ -26,10 +26,9 @@ const AboutUs = () => {
 
       {/* Hero Section */}
       <section className="about-hero" style={{
-        backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.4), rgba(13, 30, 68, 0.4)), url(${heroBg})`,
+        backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.5), rgba(13, 30, 68, 0.5)), url(${heroBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        width: '100%',
         minHeight: '400px',
         position: 'relative',
         display: 'flex',
@@ -37,9 +36,8 @@ const AboutUs = () => {
         justifyContent: 'center',
         overflow: 'hidden'
       }}>
-
         <div className="about-hero-content">
-
+          <h1 className="about-hero-title">About Us</h1>
         </div>
       </section>
 

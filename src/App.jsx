@@ -8,6 +8,7 @@ import './hero-v2.css';
 import './footer.css';
 import AboutUs from './AboutUs';
 import BlogPage from './BlogPage';
+import ContactUs from './ContactUs';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
@@ -17,11 +18,14 @@ import scientistImage from './assets/scientist.png';
 import showcase1 from './assets/showcase-1.png';
 import showcase2 from './assets/showcase-2.png';
 import showcase3 from './assets/showcase-3.png';
+import infra1 from './assets/infra-1.png';
+import infra2 from './assets/infra-2.png';
+import infra3 from './assets/infra-3.jpg';
 import heroMain from './assets/hero-v2-final.png';
 import labInterior from './assets/hero-v3.png';
-import serveNew1 from './assets/serve-new-1.png';
-import serveNew2 from './assets/serve-new-2.png';
-import serveNew3 from './assets/serve-new-3.png';
+import serveNew1 from './assets/serve-v5-1.png';
+import serveNew2 from './assets/serve-v5-2.png';
+import serveNew3 from './assets/serve-v5-3.png';
 import icon1 from './assets/feature-icon-1.png';
 import icon2 from './assets/feature-icon-2.png';
 import icon3 from './assets/feature-icon-3.png';
@@ -49,9 +53,9 @@ import productNavLogo from './assets/product-nav-logo.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
 
-function FixedSidebar() {
+function FixedSidebar({ theme = 'light' }) {
   return (
-    <div className="fixed-sidebar-v2">
+    <div className={`fixed-sidebar-v2 ${theme}-theme`}>
       <a href="tel:+919909030607" className="sidebar-item-v2">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.18-2.18a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -135,6 +139,24 @@ const showcaseCards = [
     title: 'Secure Storage Vaults',
     description: 'Corrosive and flammable material storage with passive venting.',
     image: showcase3,
+    productId: 'chemical-storage-cabinet'
+  },
+  {
+    title: 'Adaptive Lab Benches',
+    description: 'Precision-engineered modular systems for dynamic research spaces.',
+    image: infra1,
+    productId: 'laboratory-island-table'
+  },
+  {
+    title: 'Cleanroom Stations',
+    description: 'Ultra-pure environments designed for sensitive biological analysis.',
+    image: infra2,
+    productId: 'laboratory-island-table'
+  },
+  {
+    title: 'Chemical Flow Modules',
+    description: 'Optimized cabinetry for streamlined chemical and reagent access.',
+    image: infra3,
     productId: 'chemical-storage-cabinet'
   },
 ];
@@ -618,7 +640,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
         <section className="sub-products-section">
           <div className="sub-products-container">
             <div className="sub-products-header">
-              <h2 className="sub-products-title">EXPLORE OUR RANGE</h2>
+              <h2 className="sub-products-title">Explore Our Range</h2>
               <div className="sub-products-underline"></div>
             </div>
             <div className="sub-products-grid">
@@ -652,21 +674,19 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
           <div className="product-cta-left">
             <div className="cta-visual-col">
               <div className="cta-point"><div className="cta-check">✓</div></div>
-              <div className="cta-line"></div>
-              <div className="cta-point"><div className="cta-check">✓</div></div>
+
+
             </div>
             <div className="cta-text-col">
               <div className="cta-text-row">Transform Your Laboratory With High-Quality Modular Furniture</div>
-              <div className="cta-text-row bold">Transform Your Laboratory With High-Quality Modular Furniture</div>
+
             </div>
           </div>
           <div className="product-cta-right">
             <button className="product-cta-btn outline" onClick={() => onGetQuote()}>
               Request A Quote <span className="arrow">→</span>
             </button>
-            <button className="product-cta-btn solid" onClick={() => onGetQuote()}>
-              Request A Quote <span className="arrow">→</span>
-            </button>
+
           </div>
         </div>
       </section>
@@ -727,12 +747,12 @@ function Footer() {
           <div className="footer-links-col">
             <h4>Useful Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">Portfolio</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact Us</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About Us</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'products')}>Products</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'portfolio')}>Portfolio</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick(e, 'contact-us')}>Contact Us</a></li>
             </ul>
           </div>
 
@@ -816,6 +836,7 @@ function App() {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = React.useState(false);
 
   const [consultForm, setConsultForm] = useState({
     service: '',
@@ -891,9 +912,10 @@ function App() {
 
   return (
     <>
-      <FixedSidebar />
+      {currentPage === 'contact-us' && <FixedSidebar theme="light" />}
+      {currentPage === 'blog' && <FixedSidebar theme="blog" />}
       <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
-        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog') ? 'product-header-premium' : ''}`}>
+        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog' || currentPage === 'contact-us') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
               <img src={productNavLogo} alt="Rayon Lab Tech" />
@@ -979,7 +1001,7 @@ function App() {
                         href="#"
                         className={currentPage === pageId ? 'active' : ''}
                         onClick={(e) => {
-                          if (isHome || isAbout || isProducts || pageId === 'blog') {
+                          if (isHome || isAbout || isProducts || pageId === 'blog' || pageId === 'contact-us') {
                             handleNavClick(e, pageId);
                           } else {
                             e.preventDefault();
@@ -989,7 +1011,13 @@ function App() {
                         {item.toUpperCase()}
                       </a>
                     )}
-                    {index < navItems.length - 1 && <span className="nav-dot">•</span>}
+                    {index < navItems.length - 1 && (
+                      <span className="nav-dot">
+                        <svg width="4" height="4" viewBox="0 0 4 4" fill="currentColor">
+                          <circle cx="2" cy="2" r="2" />
+                        </svg>
+                      </span>
+                    )}
                   </React.Fragment>
                 );
               })}
@@ -998,11 +1026,11 @@ function App() {
             <div className="premium-nav-right">
               <a href="tel:+1212255511" className="nav-phone-group">
                 <div className="nav-icon-circle phone">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 </div>
-                <span className="nav-phone-num">+1(212)-255-511</span>
+                <span className="nav-phone-num">+91 9909030607</span>
               </a>
               <div className="nav-icon-circle search">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1011,7 +1039,13 @@ function App() {
                 </svg>
               </div>
               <button className="nav-appointment-btn" onClick={() => setShowQuoteModal(true)}>
-                Appointment <span className="btn-arrow">→</span>
+                Appointment
+                <span className="btn-arrow">
+                  <svg width="18" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </button>
             </div>
 
@@ -1021,8 +1055,6 @@ function App() {
                 {navItems.map((item) => {
                   const pageId = item.toLowerCase().replace(/\s+/g, '-');
                   const isProducts = pageId === 'products';
-                  const isHome = pageId === 'home';
-                  const isAbout = pageId === 'about-us';
 
                   if (isProducts) {
                     return (
@@ -1030,39 +1062,52 @@ function App() {
                         <button
                           type="button"
                           className={`premium-mobile-link ${currentPage === 'products' ? 'active' : ''}`}
-                          onClick={(e) => handleNavClick(e, 'products')}
+                          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsMobileProductsOpen(!isMobileProductsOpen);
+                          }}
                         >
-                          {item.toUpperCase()}
+                          <span>{item.toUpperCase()}</span>
+                          <span className="mobile-expand-icon" style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{isMobileProductsOpen ? '−' : '+'}</span>
                         </button>
-                        <div className="premium-mobile-sublist">
-                          {products.map((p) => (
-                            <div className="premium-mobile-group" key={p.id}>
-                              <button
-                                type="button"
-                                className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick(e, 'products', p)}
-                              >
-                                {p.title}
-                                {p.subProducts && <span className="mobile-expand-icon">›</span>}
-                              </button>
+                        {isMobileProductsOpen && (
+                          <div className="premium-mobile-sublist">
+                            {products.map((p) => (
+                              <div className="premium-mobile-group" key={p.id}>
+                                <button
+                                  type="button"
+                                  className={`premium-mobile-sublink ${selectedProduct?.id === p.id ? 'active' : ''}`}
+                                  onClick={(e) => {
+                                    handleNavClick(e, 'products', p);
+                                    setIsPremiumMobileMenuOpen(false); // Close menu on selection
+                                  }}
+                                >
+                                  {p.title}
+                                  {p.subProducts && <span className="mobile-expand-icon">›</span>}
+                                </button>
 
-                              {p.subProducts && (
-                                <div className="premium-mobile-sub-expand">
-                                  {p.subProducts.map((sub) => (
-                                    <button
-                                      key={sub.id}
-                                      type="button"
-                                      className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
-                                      onClick={(e) => handleNavClick(e, 'products', sub)}
-                                    >
-                                      {sub.title}
-                                    </button>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                                {p.subProducts && (
+                                  <div className="premium-mobile-sub-expand">
+                                    {p.subProducts.map((sub) => (
+                                      <button
+                                        key={sub.id}
+                                        type="button"
+                                        className={`premium-mobile-sublink sub-item ${selectedProduct?.id === sub.id ? 'active' : ''}`}
+                                        onClick={(e) => {
+                                          handleNavClick(e, 'products', sub);
+                                          setIsPremiumMobileMenuOpen(false); // Close menu on selection
+                                        }}
+                                      >
+                                        {sub.title}
+                                      </button>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     );
                   }
@@ -1072,14 +1117,23 @@ function App() {
                       type="button"
                       key={item}
                       className={`premium-mobile-link ${currentPage === pageId ? 'active' : ''}`}
-                      onClick={(e) => {
-                        if (isHome || isAbout) handleNavClick(e, pageId);
-                      }}
+                      onClick={(e) => handleNavClick(e, pageId)}
                     >
                       {item.toUpperCase()}
                     </button>
                   );
                 })}
+
+                <div className="premium-mobile-contact">
+                  <a href="tel:+1212255511" className="nav-phone-group">
+                    <div className="nav-icon-circle phone">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                      </svg>
+                    </div>
+                    <span className="nav-phone-num">+1(212)-255-511</span>
+                  </a>
+                </div>
 
                 <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowQuoteModal(true); }}>
                   Appointment <span className="btn-arrow">→</span>
@@ -1092,14 +1146,9 @@ function App() {
         {currentPage === 'about-us' ? (
           <AboutUs />
         ) : currentPage === 'blog' ? (
-          <BlogPage
-            blogFeatured={blogFeatured}
-            blogSide1={blogSide1}
-            blogSide2={blogSide2}
-            blogSide3={blogSide3}
-            CalendarIcon={CalendarIcon}
-            UserIcon={UserIcon}
-          />
+          <BlogPage />
+        ) : currentPage === 'contact-us' ? (
+          <ContactUs />
         ) : currentPage === 'home' ? (
           <>
             <section className="hero-custom-section" aria-label="Hero Section">
@@ -1146,23 +1195,21 @@ function App() {
                   <p className="showcase-v2-subtitle">Modular systems engineered for adaptability and stringent safety protocols.</p>
                 </div>
                 <div className="showcase-v2-controls">
-                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev > 0 ? prev - 1 : 2))}>
+                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev > 0 ? prev - 1 : Math.ceil(showcaseCards.length / 3) - 1))}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
                   </button>
-                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev < 2 ? prev + 1 : 0))}>
+                  <button type="button" className="showcase-v2-arrow" onClick={() => setActiveShowcase((prev) => (prev < Math.ceil(showcaseCards.length / 3) - 1 ? prev + 1 : 0))}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </button>
                 </div>
               </div>
 
               <div className="showcase-v2-grid">
-                {showcaseCards.map((card, idx) => (
+                {showcaseCards.slice(activeShowcase * 3, (activeShowcase + 1) * 3).map((card, idx) => (
                   <article
-                    className={`showcase-v2-card ${activeShowcase === idx ? 'is-active' : ''}`}
+                    className="showcase-v2-card is-active"
                     key={card.title}
-                    onMouseEnter={() => setActiveShowcase(idx)}
                     onClick={(e) => {
-                      setActiveShowcase(idx);
                       const prod = products.find(p => p.id === card.productId);
                       if (prod) handleNavClick(e, 'products', prod);
                     }}
@@ -1179,7 +1226,7 @@ function App() {
               </div>
 
               <div className="showcase-v2-dots">
-                {[0, 1, 2].map((i) => (
+                {[...Array(Math.ceil(showcaseCards.length / 3))].map((_, i) => (
                   <button
                     key={i}
                     className={`showcase-v2-dot ${activeShowcase === i ? 'active' : ''}`}
@@ -1485,21 +1532,7 @@ function App() {
             </section>
 
             <section className="client-section-v2" aria-label="Our Clients">
-              <div className="client-watermark-v2">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="client-watermark-svg">
-                  {/* The Beaker/Flask */}
-                  <path d="M42 30 L58 30 L58 38 L72 75 A 8 8 0 0 1 65 85 L35 85 A 8 8 0 0 1 28 75 L42 38 Z" fill="currentColor" />
-                  <path d="M38 30 L62 30" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
 
-                  {/* The Swoosh/Orbit */}
-                  <ellipse cx="50" cy="58" rx="45" ry="18" transform="rotate(-25, 50, 58)" stroke="currentColor" strokeWidth="5" strokeLinecap="round" opacity="0.6" />
-
-                  {/* The Bubbles */}
-                  <circle cx="42" cy="18" r="4" fill="currentColor" />
-                  <circle cx="56" cy="10" r="2.5" fill="currentColor" />
-                  <circle cx="38" cy="8" r="1.5" fill="currentColor" />
-                </svg>
-              </div>
 
               <div className="client-container-v2">
                 <h2 className="client-main-heading-centered">Our Clients</h2>
@@ -1516,13 +1549,15 @@ function App() {
                           <span className="l-char">L</span>
                           <div className="lab-dots-diamond">
                             <div className="d-dot"></div>
-                            <div className="d-mid">
-                              <div className="d-dot"></div>
-                              <div className="d-dot"></div>
-                            </div>
+                            <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
                             <div className="d-dot"></div>
                           </div>
-                          <span className="a-char-tri"></span>
+                          <div className="a-char-stylized">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
+                              <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
+                            </svg>
+                          </div>
                           <span className="b-char">B</span>
                         </div>
                       </div>
@@ -1550,11 +1585,11 @@ function App() {
                     <div className="client-logo-item-v2">
                       <div className="logo-labora-v2">
                         <span className="lab-txt">LAB</span>
-                        <div className="flask-o">
+                        <div className="flask-o-stylized">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M10 2v6L5 21h14L14 8V2" />
+                            <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
+                            <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
                             <circle cx="12" cy="14" r="2" fill="currentColor" />
-                            <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
                           </svg>
                         </div>
                         <span className="ra-txt">RA</span>
@@ -1604,7 +1639,12 @@ function App() {
                             <div className="d-mid"><div className="d-dot"></div><div className="d-dot"></div></div>
                             <div className="d-dot"></div>
                           </div>
-                          <span className="a-char-tri"></span>
+                          <div className="a-char-stylized">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2L2 22h4.5L12 9l5.5 13H22L12 2z" />
+                              <path d="M12 14l-2 5h4l-2-5z" opacity="0.5" />
+                            </svg>
+                          </div>
                           <span className="b-char">B</span>
                         </div>
                       </div>
@@ -1626,11 +1666,11 @@ function App() {
                     <div className="client-logo-item-v2">
                       <div className="logo-labora-v2">
                         <span className="lab-txt">LAB</span>
-                        <div className="flask-o">
+                        <div className="flask-o-stylized">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M10 2v6L5 21h14L14 8V2" />
+                            <path d="M9 2h6M10 2v6L5 21h14L14 8V2" />
+                            <path d="M7 16h10" strokeWidth="1" opacity="0.5" />
                             <circle cx="12" cy="14" r="2" fill="currentColor" />
-                            <circle cx="16" cy="6" r="1.5" fill="currentColor" opacity="0.6" />
                           </svg>
                         </div>
                         <span className="ra-txt">RA</span>
@@ -1685,14 +1725,7 @@ function App() {
                       <h3>{item.title}</h3>
                       <div className="card-line"></div>
                       <p>{item.desc}</p>
-                      <div className="industry-action-btn-circle">
-                        <div className="industry-action-btn">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                          </svg>
-                        </div>
-                      </div>
+
                     </div>
                   </div>
                 ))}
@@ -1785,105 +1818,102 @@ function App() {
         )}
 
         <QuoteModal isOpen={showQuoteModal} onClose={() => setShowQuoteModal(false)} />
-        {currentPage !== 'products' && (
-          <footer className="footer-premium-v2">
-            {/* Main Footer Body */}
-            <div className="footer-main-v2">
-              {/* Watermark Background */}
-              <div className="bg-watermark-v2">RAYON</div>
+        <footer className="footer-premium-v2">
+          {/* Main Footer Body */}
+          <div className="footer-main-v2">
+            {/* Watermark Background */}
+            <div className="bg-watermark-v2">RAYON</div>
 
-              <div className="footer-top-row">
-                {/* Branding Column on the Left */}
-                <div className="footer-col-v2 branding">
-                  <img src={Logo} alt="Rayon Logo" className="footer-logo-v2" />
-                  <p className="footer-tagline-v2">
-                    Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
-                  </p>
-                  <div className="footer-social-v2">
-                    <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-                    <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
-                    <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="whatsapp-pill-v2">
-                      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.801.983 3.848 1.503 5.913 1.504h.005c6.554 0 11.89-5.335 11.893-11.893a11.826 11.826 0 00-3.48-8.413z" /></svg>
-                      WhatsApp Expert
-                    </a>
-                  </div>
-                </div>
-
-                {/* Newsletter on the Right */}
-                <div className="footer-newsletter-v2">
-                  <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
-                  <div className="newsletter-form-v2">
-                    <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
-                    <button type="button" className="newsletter-btn-v2">Subscribe Now <span>→</span></button>
-                  </div>
+            <div className="footer-top-row">
+              {/* Branding Column on the Left */}
+              <div className="footer-col-v2 branding">
+                <img src={productNavLogo} alt="Rayon Logo" className="footer-logo-v2" />
+                <p className="footer-tagline-v2">
+                  Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
+                </p>
+                <div className="footer-social-v2">
+                  <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+                  <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                  <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="whatsapp-pill-v2">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.801.983 3.848 1.503 5.913 1.504h.005c6.554 0 11.89-5.335 11.893-11.893a11.826 11.826 0 00-3.48-8.413z" /></svg>
+                    WhatsApp Expert
+                  </a>
                 </div>
               </div>
 
-              <div className="footer-divider-v2"></div>
-
-              <div className="footer-grid-v2">
-                {/* Useful Link Column */}
-
-                <div className="footer-col-v2">
-                  <h4 className="footer-col-title-v2">Useful Link</h4>
-                  <div className="footer-links-v2 dual-col">
-                    <div className="link-subcol">
-                      <a href="#">Home</a>
-                      <a href="#">Service</a>
-                      <a href="#">Blog</a>
-                    </div>
-                    <div className="link-subcol">
-                      <a href="#">About</a>
-                      <a href="#">Pricing</a>
-                      <a href="#">Contact</a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Working Time Column */}
-                <div className="footer-col-v2">
-                  <h4 className="footer-col-title-v2">Working Time</h4>
-                  <div className="footer-info-v2">
-                    <p>Mon - Fri: 9.00am - 5.00pm</p>
-                    <p>Saturday: 10.00am - 6.00pm</p>
-                    <p>Sunday Closed</p>
-                  </div>
-                </div>
-
-                {/* Say Hello Column */}
-                <div className="footer-col-v2">
-                  <h4 className="footer-col-title-v2">Say Hello</h4>
-                  <div className="footer-info-v2 contact-col">
-                    <div className="contact-item-v2">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                      <span>Rltsales@rayonlabtech.in</span>
-                    </div>
-                    <a href="tel:+919909030607" className="contact-item-v2">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                      <span className="phone-v2">+91 9909030607</span>
-                    </a>
-                  </div>
+              {/* Newsletter on the Right */}
+              <div className="footer-newsletter-v2">
+                <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
+                <div className="newsletter-form-v2">
+                  <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
+                  <button type="button" className="newsletter-btn-v2">Subscribe Now <span className="arrow">→</span></button>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Bar */}
-            <div className="footer-bottom-v2">
-              <div className="footer-bottom-inner-v2">
-                <p className="copyright-v2">Copyright © 2026 RayonLabTech All Rights Reserved.</p>
-                <div className="bottom-links-v2">
-                  <a href="#">Privacy Policy</a>
-                  <span className="sep-v2">|</span>
-                  <a href="#">Term And Condition</a>
-                  <span className="sep-v2">|</span>
-                  <a href="#">FAQ</a>
+            <div className="footer-divider-v2"></div>
+
+            <div className="footer-grid-v2">
+              {/* Useful Link Column */}
+
+              <div className="footer-col-v2">
+                <h4 className="footer-col-title-v2">Useful Link</h4>
+                <div className="footer-links-v2 dual-col">
+                  <div className="link-subcol">
+                    <a href="#">Home</a>
+                    <a href="#">Service</a>
+                    <a href="#">Blog</a>
+                  </div>
+                  <div className="link-subcol">
+                    <a href="#">About</a>
+                    <a href="#">Portfolio</a>
+                    <a href="#">Contact</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Working Time Column */}
+              <div className="footer-col-v2">
+                <h4 className="footer-col-title-v2">Working Time</h4>
+                <div className="footer-info-v2">
+                  <p>Mon - Fri: 9.00am - 5.00pm</p>
+                  <p>Saturday: 10.00am - 6.00pm</p>
+                  <p>Sunday Closed</p>
+                </div>
+              </div>
+
+              {/* Say Hello Column */}
+              <div className="footer-col-v2">
+                <h4 className="footer-col-title-v2">Say Hello</h4>
+                <div className="footer-info-v2 contact-col">
+                  <a href="mailto:Rltsales@rayonlabtech.in" className="contact-item-v2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>Rltsales@rayonlabtech.in</span>
+                  </a>
+                  <a href="tel:+919909030607" className="contact-item-v2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span className="phone-v2">+91 9909030607</span>
+                  </a>
                 </div>
               </div>
             </div>
-          </footer>
-        )}
+          </div>
 
-      </div>
+          {/* Bottom Bar */}
+          <div className="footer-bottom-v2">
+            <div className="footer-bottom-inner-v2">
+              <p className="copyright-v2">Copyright © 2026 RayonLabTech All Rights Reserved.</p>
+              <div className="bottom-links-v2">
+                <a href="#">Privacy Policy</a>
+                <span className="sep-v2">|</span>
+                <a href="#">Term And Condition</a>
+                <span className="sep-v2">|</span>
+                <a href="#">FAQ</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div >
     </>
   );
 }

@@ -1,31 +1,35 @@
 /* Our Clients Section - Premium Design */
 .client-section-v2 {
   position: relative;
-  padding: 100px 0;
-  background-color: #EAF1FF;
-  /* Matches the clean lab-white in the image */
+  font-family: Raleway;
+  font-weight: 100;
+  padding: 120px 0;
+  background-color: #f8fbff;
+  /* Lighter clean background */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: -20px;
 }
 
 /* Background Watermark */
 .client-watermark-v2 {
   position: absolute;
-  top: 55%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-15deg);
+  transform: translate(-50%, -50%) rotate(-5deg);
   width: 950px;
   height: auto;
-  opacity: 0.04;
+  opacity: 0.03;
+  /* Very subtle watermark */
   pointer-events: none;
   z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0d1e44; /* Dark blue color for the watermark */
+  color: #0d1e44;
 }
 
 .client-watermark-svg {
@@ -38,7 +42,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1250px;
   padding: 0 40px;
   display: flex;
   flex-direction: column;
@@ -47,14 +51,14 @@
 
 .client-main-heading-centered {
   font-family: 'Raleway', sans-serif;
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-size: 3.2rem;
+  font-weight: 500;
   color: #0d1e44;
   text-align: center;
-  margin-bottom: 50px;
-  letter-spacing: -1px;
-  margin-top: 0;
-  margin-top: -40px;
+  margin-bottom: 30px;
+  letter-spacing: -1.5px;
+  position: relative;
+  margin-top: -20px;
 }
 
 .client-divider-v2 {
@@ -72,12 +76,12 @@
 
 .client-logo-row-v2 {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 60px 0;
+  padding: 80px 0;
   flex-wrap: wrap;
-  gap: 40px 70px;
-  /* Consistent gaps for rows and columns */
+  gap: 30px;
+  width: 100%;
 }
 
 .client-logo-item-v2 {
@@ -87,7 +91,7 @@
   align-items: center;
   color: #0d1e44;
   transition: all 0.3s ease;
-  min-height: 60px;
+  min-height: 40px;
 }
 
 
@@ -130,12 +134,14 @@
   border-radius: 50%;
 }
 
-.a-char-tri {
-  width: 25px;
-  height: 25px;
-  background-color: #0d1e44;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%, 80% 100%, 50% 40%, 20% 100%);
-  margin-top: 5px;
+.a-char-stylized {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d1e44;
+  margin-top: 4px;
 }
 
 /* 2. SCIENCE */
@@ -158,10 +164,11 @@
 }
 
 .science-text-v2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: #0d1e44;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* 3. BIOLAB */
@@ -184,10 +191,11 @@
   color: #0d1e44;
 }
 
-.flask-o {
+.flask-o-stylized {
   width: 28px;
   height: 28px;
-  margin-bottom: -5px;
+  margin-bottom: -4px;
+  color: #0d1e44;
 }
 
 /* 5. BIOLOGY CENTER */
@@ -325,7 +333,6 @@
 
     .client-logo-item-v2 {
       flex: 0 1 45%;
-      /* Show 2 per row on small screens */
       min-width: 130px;
     }
 
