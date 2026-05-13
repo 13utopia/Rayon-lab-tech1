@@ -9,6 +9,7 @@ import './footer.css';
 import AboutUs from './AboutUs';
 import BlogPage from './BlogPage';
 import ContactUs from './ContactUs';
+import PortfolioPage from './PortfolioPage';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
@@ -470,11 +471,11 @@ ${requirements}
               <div className="form-row">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" name="fullName" placeholder="Rajesh Kumar" required />
+                  <input type="text" name="fullName" placeholder="abc" required />
                 </div>
                 <div className="form-group">
                   <label>Institutional E-mail</label>
-                  <input type="email" name="email" placeholder="rajesh@company.in" required />
+                  <input type="email" name="email" placeholder="abc@company.in" required />
                 </div>
               </div>
               <div className="form-row">
@@ -494,7 +495,7 @@ ${requirements}
                 </div>
                 <div className="form-group">
                   <label>Facility Location (City)</label>
-                  <input type="text" name="city" placeholder="Ahmedabad, Gujarat" required />
+                  <input type="text" name="city" placeholder="India" required />
                 </div>
               </div>
 
@@ -564,11 +565,11 @@ Phone: +91 ${phone}
         <form className="quote-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Full Name</label>
-            <input type="text" name="fullName" placeholder="Rajesh Kumar" required />
+            <input type="text" name="fullName" placeholder="abc" required />
           </div>
           <div className="form-group">
             <label>E-mail Address</label>
-            <input type="email" name="email" placeholder="rajesh@company.in" required />
+            <input type="email" name="email" placeholder="abc@company.in" required />
           </div>
           <div className="form-group">
             <label>Phone Number</label>
@@ -871,7 +872,7 @@ function Footer() {
               </div>
               <div className="footer-contact-info">
                 <span>Phone</span>
-                <a href="tel:+1800123456789">+1-800123-456-789</a>
+                <a href="tel:+1800123456789"></a>
               </div>
             </div>
             <div className="footer-contact-item">
@@ -958,13 +959,22 @@ function App() {
     setFormStatus('submitting');
 
     // Prepare mailto link
-    const subject = `New Consultation Request from ${consultForm.name}`;
+    const subject = `Consultation Request: ${consultForm.service} - ${consultForm.name}`;
     const body = `
-      Name: ${consultForm.name}
-      Email: ${consultForm.email}
-      Service: ${consultForm.service}
-      Type of Clean: ${consultForm.cleanType}
-      Total Floor Area: ${consultForm.area} sq ft
+New Consultation Request from Rayon Lab Tech Website
+
+The user has requested a consultation for the following service and section:
+
+Service Requested: ${consultForm.service.toUpperCase()}
+Section/Type: ${consultForm.cleanType}
+Estimated Area: ${consultForm.area} sq ft
+
+Customer Details:
+----------------
+Name: ${consultForm.name}
+Email: ${consultForm.email}
+
+This request was submitted via the "Get your free estimate" section.
     `.trim();
 
     const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -1021,7 +1031,7 @@ function App() {
       {currentPage === 'contact-us' && <FixedSidebar theme="light" />}
       {currentPage === 'blog' && <FixedSidebar theme="blog" />}
       <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
-        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog' || currentPage === 'contact-us') ? 'product-header-premium' : ''}`}>
+        <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog' || currentPage === 'contact-us' || currentPage === 'portfolio') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
               <img src={productNavLogo} alt="Rayon Lab Tech" />
@@ -1107,7 +1117,7 @@ function App() {
                         href="#"
                         className={currentPage === pageId ? 'active' : ''}
                         onClick={(e) => {
-                          if (isHome || isAbout || isProducts || pageId === 'blog' || pageId === 'contact-us') {
+                          if (isHome || isAbout || isProducts || pageId === 'blog' || pageId === 'contact-us' || pageId === 'portfolio') {
                             handleNavClick(e, pageId);
                           } else {
                             e.preventDefault();
@@ -1237,7 +1247,7 @@ function App() {
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                       </svg>
                     </div>
-                    <span className="nav-phone-num">+1(212)-255-511</span>
+                    <span className="nav-phone-num"></span>
                   </a>
                 </div>
 
@@ -1253,6 +1263,8 @@ function App() {
           <AboutUs onGetQuote={() => setShowQuoteModal(true)} />
         ) : currentPage === 'blog' ? (
           <BlogPage />
+        ) : currentPage === 'portfolio' ? (
+          <PortfolioPage onGetQuote={() => setShowQuoteModal(true)} />
         ) : currentPage === 'contact-us' ? (
           <ContactUs />
         ) : currentPage === 'home' ? (
@@ -1956,7 +1968,7 @@ function App() {
                   </div>
                   <div className="link-subcol">
                     <a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a>
-                    <a href="#">Portfolio</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'portfolio')}>Portfolio</a>
                   </div>
                 </div>
               </div>

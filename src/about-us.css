@@ -5,7 +5,7 @@
 
 /* Top Intro Section (New) */
 .about-intro-top {
-  background-color: #EAF1FF;
+  background-color: #F2F6FF;
   padding: 90px 0;
   width: 100%;
 }
@@ -220,7 +220,7 @@
 
 /* Main Content Section */
 .about-main-section {
-  background-color: #EAF1FF;
+  background-color: #F2F6FF;
   padding: 80px 0;
   width: 100%;
   display: flex;

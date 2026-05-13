@@ -1017,6 +1017,7 @@
 .product-features {
   background: #fcfdfe;
   padding: 60px 24px 80px 24px;
+  margin-bottom: 40px; /* Added gap between features and CTA */
 }
 
 .product-features-container {
@@ -1355,6 +1356,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 60px; /* Added gap between CTA and Footer */
 }
 
 .product-cta-watermark {

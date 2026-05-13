@@ -1,8 +1,9 @@
 /* Sub Products Section */
 .sub-products-section {
   padding: 100px 24px;
-  background: #f0f5ff;
+  background: #fefeff;
   /* Light premium blue background */
+  margin-bottom: 40px; /* Added gap */
 }
 
 .sub-products-container {
@@ -47,7 +48,8 @@
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border: none;
   cursor: pointer;
-  width: calc(33.333% - 27px); /* Fixed width for 3 columns with gap */
+  width: calc(33.333% - 27px);
+  /* Fixed width for 3 columns with gap */
   min-width: 320px;
 }
 
@@ -116,7 +118,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: auto; /* Push button to bottom */
+  margin-top: auto;
+  /* Push button to bottom */
 }
 
 .view-details-btn:hover {
