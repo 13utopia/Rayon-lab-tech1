@@ -4,12 +4,17 @@ import microscopeImg from './assets/Microscope.png';
 import portfolio1 from './assets/portfolio-1.png';
 import portfolio2 from './assets/portfolio-2.png';
 import portfolio3 from './assets/portfolio-3.png';
+import portfolio4 from './assets/portfolio-4.png';
+import portfolioItem1 from './assets/portfolio[1].png';
+import portfolioItem2 from './assets/portfolio[2].png';
+import portfolioS1Item1 from './assets/portfolio(1).png';
+import portfolioS1Item2 from './assets/portfolio(2).png';
+import portfolioS1Item3 from './assets/portfolio(3).png';
 
 const PortfolioPage = ({ onGetQuote }) => {
   return (
     <div className="portfolio-page">
       {/* Premium Banner Section */}
-
       <div className="banner-container-v2">
         <div className="banner-card-v2">
           <div className="banner-content-v2">
@@ -24,6 +29,7 @@ const PortfolioPage = ({ onGetQuote }) => {
           </div>
         </div>
       </div>
+
       {/* Section 1: Cureza Health Care (Text Left, Image Grid Right) */}
       <section className="portfolio-installation-section">
         <div className="installation-container">
@@ -41,14 +47,14 @@ const PortfolioPage = ({ onGetQuote }) => {
             </div>
             <div className="installation-image-grid-v1">
               <div className="img-large-top">
-                <img src={portfolio1} alt="Installation 1" />
+                <img src={portfolioS1Item1} alt="Installation 1" />
               </div>
               <div className="img-small-row">
                 <div className="img-small">
-                  <img src={portfolio2} alt="Installation 2" />
+                  <img src={portfolioS1Item2} alt="Installation 2" />
                 </div>
                 <div className="img-small">
-                  <img src={portfolio3} alt="Installation 3" />
+                  <img src={portfolioS1Item3} alt="Installation 3" />
                 </div>
               </div>
             </div>
@@ -61,11 +67,11 @@ const PortfolioPage = ({ onGetQuote }) => {
         <div className="installation-container">
           <div className="installation-grid-v2">
             <div className="installation-image-grid-v2">
-              <div className="img-large-square">
-                <img src={portfolio2} alt="Installation 4" />
+              <div className="img-large-top">
+                <img src={portfolioItem2} alt="Installation 4" />
               </div>
               <div className="img-wide-bottom">
-                <img src={portfolio1} alt="Installation 5" />
+                <img src={portfolioItem1} alt="Installation 5" />
               </div>
             </div>
             <div className="installation-text-card">
@@ -89,10 +95,10 @@ const PortfolioPage = ({ onGetQuote }) => {
           <div className="installation-grid-v3">
             <div className="top-images-row">
               <div className="img-wide">
-                <img src={portfolio3} alt="Installation 6" />
+                <img src={portfolio1} alt="Installation 6" />
               </div>
               <div className="img-wide">
-                <img src={portfolio1} alt="Installation 7" />
+                <img src={portfolio2} alt="Installation 7" />
               </div>
             </div>
             <div className="bottom-mixed-row">
@@ -107,15 +113,16 @@ const PortfolioPage = ({ onGetQuote }) => {
                 </button>
               </div>
               <div className="img-vertical">
-                <img src={portfolio2} alt="Installation 8" />
+                <img src={portfolio3} alt="Installation 8" />
               </div>
               <div className="img-vertical">
-                <img src={portfolio3} alt="Installation 9" />
+                <img src={portfolio4} alt="Installation 9" />
               </div>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 };

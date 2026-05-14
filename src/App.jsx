@@ -54,6 +54,10 @@ import productNavLogo from './assets/product-nav-logo.png';
 import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
+import whyChooseUs1 from './assets/portfolio(1).png';
+import whyChooseUs2 from './assets/portfolio(2).png';
+import whyChooseUs3 from './assets/portfolio(3).png';
+import whyChooseUs4 from './assets/portfolio-4.png';
 
 function FixedSidebar({ theme = 'light' }) {
   return (
@@ -932,6 +936,7 @@ function App() {
   const [isPremiumMobileMenuOpen, setIsPremiumMobileMenuOpen] = React.useState(false);
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = React.useState(false);
+  const [hoveredWhyIdx, setHoveredWhyIdx] = React.useState(0);
 
   // Auto-slide effect for showcase section (Home Page)
   React.useEffect(() => {
@@ -1412,7 +1417,11 @@ This request was submitted via the "Get your free estimate" section.
                 <div className="why-rayon-content">
                   <div className="why-left-list">
                     {whyPills.map((pill, idx) => (
-                      <div className={`why-pill ${idx === 0 ? 'active' : ''}`} key={idx}>
+                      <div 
+                        className={`why-pill ${hoveredWhyIdx === idx ? 'active' : ''}`} 
+                        key={idx}
+                        onMouseEnter={() => setHoveredWhyIdx(idx)}
+                      >
                         <span>{pill}</span>
                         <div className="why-pill-arrow">
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -1429,7 +1438,17 @@ This request was submitted via the "Get your free estimate" section.
                         <div key={i} className={`circle-dot dot-${i}`}></div>
                       ))}
                       <div className="circle-img-wrap">
-                        <img src={whyChooseUsCenter} alt="Lab Interior" className="circle-img" />
+                        <img 
+                          src={
+                            hoveredWhyIdx === 0 ? whyChooseUs1 :
+                            hoveredWhyIdx === 1 ? whyChooseUs2 :
+                            hoveredWhyIdx === 2 ? whyChooseUs3 :
+                            hoveredWhyIdx === 3 ? whyChooseUs4 :
+                            whyChooseUsCenter
+                          } 
+                          alt="Lab Interior" 
+                          className="circle-img hover-transition" 
+                        />
                       </div>
                     </div>
                   </div>

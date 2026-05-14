@@ -468,7 +468,7 @@ body {
 .showcase-v2-title {
   font-family: 'Raleway', sans-serif;
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: #111c38;
   margin-bottom: 10px;
   letter-spacing: -0.02em;
@@ -476,12 +476,13 @@ body {
 }
 
 .showcase-v2-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.09rem;
   color: #5f6f8e;
-  max-width: 650px;
+  max-width: 600px;
   line-height: 1.6;
   text-align: center;
   margin: 0 auto;
+  font-family: Manrope;
 }
 
 .showcase-v2-controls {
@@ -3757,6 +3758,7 @@ select.consult-glass-input {
     padding: 16px 20px;
   }
 }
+
 @media (max-width: 480px) {
   .consultation-section {
     padding: 40px 12px;

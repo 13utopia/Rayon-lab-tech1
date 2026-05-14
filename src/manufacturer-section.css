@@ -43,18 +43,18 @@
 
 .hero-title {
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   margin-bottom: 10px;
   width: auto;
   margin-top: -70px;
-  font-family: Manrope;
+  font-family: Raleway;
 }
 
 .hero-subtitle {
   font-size: 15px;
   color: #cbd5e0;
-  max-width: 500px;
+  max-width: 400px;
   line-height: 1.5;
   margin-bottom: 30px;
   font-family: Open Sans;
@@ -73,7 +73,7 @@
   padding: 14px 28px;
   border-radius: 100px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
   letter-spacing: 0.5px;
   backdrop-filter: blur(12px);
