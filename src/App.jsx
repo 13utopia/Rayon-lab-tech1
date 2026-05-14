@@ -54,9 +54,9 @@ import productNavLogo from './assets/product-nav-logo.png';
 import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
-import whyChooseUs1 from './assets/portfolio(1).png';
-import whyChooseUs2 from './assets/portfolio(2).png';
-import whyChooseUs3 from './assets/portfolio(3).png';
+import whyChooseUs1 from './assets/portfolio-s1-1.png';
+import whyChooseUs2 from './assets/portfolio-s1-2.png';
+import whyChooseUs3 from './assets/portfolio-s1-3.png';
 import whyChooseUs4 from './assets/portfolio-4.png';
 
 function FixedSidebar({ theme = 'light' }) {
@@ -1421,6 +1421,7 @@ This request was submitted via the "Get your free estimate" section.
                         className={`why-pill ${hoveredWhyIdx === idx ? 'active' : ''}`} 
                         key={idx}
                         onMouseEnter={() => setHoveredWhyIdx(idx)}
+                        onClick={() => setHoveredWhyIdx(idx)} // Added for mobile tap support
                       >
                         <span>{pill}</span>
                         <div className="why-pill-arrow">

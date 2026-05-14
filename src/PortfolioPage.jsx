@@ -5,11 +5,11 @@ import portfolio1 from './assets/portfolio-1.png';
 import portfolio2 from './assets/portfolio-2.png';
 import portfolio3 from './assets/portfolio-3.png';
 import portfolio4 from './assets/portfolio-4.png';
-import portfolioItem1 from './assets/portfolio[1].png';
-import portfolioItem2 from './assets/portfolio[2].png';
-import portfolioS1Item1 from './assets/portfolio(1).png';
-import portfolioS1Item2 from './assets/portfolio(2).png';
-import portfolioS1Item3 from './assets/portfolio(3).png';
+import portfolioItem1 from './assets/portfolio-item-1.png';
+import portfolioItem2 from './assets/portfolio-item-2.png';
+import portfolioS1Item1 from './assets/portfolio-s1-1.png';
+import portfolioS1Item2 from './assets/portfolio-s1-2.png';
+import portfolioS1Item3 from './assets/portfolio-s1-3.png';
 
 const PortfolioPage = ({ onGetQuote }) => {
   return (
