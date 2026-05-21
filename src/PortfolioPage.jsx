@@ -45,16 +45,20 @@ const PortfolioPage = ({ onGetQuote }) => {
                 Our Products <span className="arrow-circle">→</span>
               </button>
             </div>
-            <div className="installation-image-grid-v1">
-              <div className="img-large-top">
-                <img src={portfolioS1Item1} alt="Installation 1" />
-              </div>
-              <div className="img-small-row">
-                <div className="img-small">
-                  <img src={portfolioS1Item2} alt="Installation 2" />
+            <div className="portfolio-arch-grid">
+              <div className="arch-card-wrap">
+                <div className="arch-image-card">
+                  <img src={portfolioS1Item1} alt="Lab Installation 1" />
                 </div>
-                <div className="img-small">
-                  <img src={portfolioS1Item3} alt="Installation 3" />
+              </div>
+              <div className="arch-card-wrap">
+                <div className="arch-image-card">
+                  <img src={portfolioS1Item2} alt="Lab Installation 2" />
+                </div>
+              </div>
+              <div className="arch-card-wrap">
+                <div className="arch-image-card">
+                  <img src={portfolioS1Item3} alt="Lab Installation 3" />
                 </div>
               </div>
             </div>

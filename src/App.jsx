@@ -1594,7 +1594,7 @@ This request was submitted via the "Get your free estimate" section.
                         <p>Your consultation request has been sent to our sales team.</p>
                       </div>
                     ) : (
-                      <form className="consult-modern-form" onSubmit={handleConsultSubmit}>
+                      <form id="consult-form" className="consult-modern-form" onSubmit={handleConsultSubmit}>
                         <div className="consult-form-grid">
                           <div className="consult-input-group">
                             <select
@@ -1642,7 +1642,7 @@ This request was submitted via the "Get your free estimate" section.
                               required
                             />
                           </div>
-                          <div className="consult-input-group full-width">
+                          <div className="consult-input-group">
                             <input
                               type="email"
                               className="consult-glass-input"
@@ -1652,30 +1652,42 @@ This request was submitted via the "Get your free estimate" section.
                               required
                             />
                           </div>
-                        </div>
-
-                        <div className="consult-footer-row">
-                          <p className="consult-helper-text">
-                            Submit this information and we will send you the cost for the service.
-                          </p>
-                          <div className="consult-submit-btn-wrap">
-                            <button
-                              type="submit"
-                              className="consult-premium-btn"
-                              disabled={formStatus === 'submitting'}
-                            >
-                              {formStatus === 'submitting' ? 'Sending...' : 'Get Consultation'} <span>&rarr;</span>
-                            </button>
+                          <div className="consult-helper-text-wrap">
+                            <p className="consult-helper-text">
+                              Submit this information and we will send you the cost for the service.
+                            </p>
                           </div>
                         </div>
+
                       </form>
                     )}
                   </div>
+
+                  {/* Button is a direct child of the card (position:relative), NOT inside consult-content (position:relative) */}
+                  {formStatus !== 'success' && (
+                    <div className="consult-form-footer">
+                      <button
+                        type="submit"
+                        form="consult-form"
+                        className="consult-premium-btn"
+                        disabled={formStatus === 'submitting'}
+                      >
+                        {formStatus === 'submitting' ? 'Sending...' : 'Get Cost Estimate'} <span>&rarr;</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </section>
 
             <section className="serve-section-premium" aria-label="What We Serve">
+              <svg className="serve-clip-defs" width="0" height="0" aria-hidden="true">
+                <defs>
+                  <clipPath id="serve-rounded-peak-clip" clipPathUnits="objectBoundingBox">
+                    <path d="M 0.5 0.02 C 0.58 0.07, 0.84 0.12, 0.98 0.14 L 0.98 0.86 C 0.98 0.94, 0.93 0.99, 0.86 1 L 0.14 1 C 0.07 0.99, 0.02 0.94, 0.02 0.86 L 0.02 0.14 C 0.16 0.12, 0.42 0.07, 0.5 0.02 Z" />
+                  </clipPath>
+                </defs>
+              </svg>
               <div className="serve-container-premium">
                 <div className="serve-header-premium">
                   <h2>What We Serve</h2>
@@ -1687,37 +1699,40 @@ This request was submitted via the "Get your free estimate" section.
                 <div className="serve-grid-premium">
                   {serveCards.map((card, index) => (
                     <article className="serve-card-premium" key={index}>
-                      {/* Background Icon Watermark */}
-                      <div className="serve-card-watermark">
-                        <ServeIcon type={card.icon} />
-                      </div>
-
-                      <div className="serve-card-content-wrap">
-                        <div className="serve-card-top">
-                          <div className="serve-card-icon-box">
-                            <ServeIcon type={card.icon} />
-                          </div>
-                          <h3 className="serve-card-title">{card.title}</h3>
+                      <div className="serve-card-inner">
+                        {/* Background Icon Watermark */}
+                        <div className="serve-card-watermark">
+                          <ServeIcon type={card.icon} />
                         </div>
 
-                        <div className="serve-card-line"></div>
-
-                        <div className="serve-card-desc-list">
-                          {card.texts.map((t, idx) => (
-                            <p key={idx}>{t}</p>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="serve-card-image-section">
-                        <div className="serve-card-image-box">
-                          <img src={card.image} alt={card.title} />
-                        </div>
-                        <div className="serve-hover-hexagon-overlay">
-                          <div className="serve-hexagon-outer-white">
-                            <div className="serve-hexagon-center-btn">
-                              <span className="plus-icon">+</span>
+                        <div className="serve-card-content-wrap">
+                          <div className="serve-card-top">
+                            <div className="serve-card-icon-box">
+                              <ServeIcon type={card.icon} />
                             </div>
+                            <h3 className="serve-card-title">{card.title}</h3>
+                          </div>
+
+                          <div className="serve-card-line"></div>
+
+                          <div className="serve-card-desc-list">
+                            {card.texts.map((t, idx) => (
+                              <p key={idx}>{t}</p>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="serve-card-image-section">
+                          <div className="serve-card-image-box">
+                            <img src={card.image} alt={card.title} />
+                          </div>
+                          <div className="serve-hover-hexagon-overlay" aria-hidden="true" />
+                        </div>
+                      </div>
+                      <div className="serve-bottom-hexagon" aria-hidden="true">
+                        <div className="serve-hexagon-outer-white">
+                          <div className="serve-hexagon-center-btn">
+                            <span className="plus-icon">+</span>
                           </div>
                         </div>
                       </div>

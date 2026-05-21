@@ -2,7 +2,7 @@
   padding: 100px 0;
   background: #f8fbff;
   font-family: 'Manrope', sans-serif;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .serve-container-premium {
@@ -39,39 +39,69 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  padding-bottom: 48px;
+}
+
+.serve-clip-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .serve-card-premium {
-  background: #ffffff;
+  background: transparent;
   border-radius: 30px;
   position: relative;
+  overflow: visible;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  margin-bottom: 42px;
+}
+
+.serve-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
   box-shadow: 0 10px 40px rgba(13, 30, 68, 0.05);
   border: 1px solid rgba(13, 30, 68, 0.03);
-  height: 100%;
 }
 
 .serve-card-premium:hover {
   transform: translateY(-12px);
+}
+
+.serve-card-premium:hover .serve-card-inner {
   box-shadow: 0 30px 60px rgba(13, 30, 68, 0.12);
 }
 
-/* Watermark Background Icon */
+/* Watermark Background Icon — fully inside card */
 .serve-card-watermark {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  width: 80px;
-  /* Reduced from 120px */
-  height: 80px;
-  /* Reduced from 120px */
+  top: 18px;
+  right: 18px;
+  width: 120px;
+  height: 120px;
   opacity: 0.06;
   pointer-events: none;
   color: #0D1E44;
   z-index: 0;
-  filter: drop-shadow(0 0 1px rgba(13, 30, 68, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serve-card-watermark .serve-icon-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .serve-card-content-wrap {
@@ -126,14 +156,18 @@
 .serve-card-desc-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
 }
 
 .serve-card-desc-list p {
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-size: 0.68rem;
+  line-height: 1.4;
   color: #5f6f8e;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   transition: color 0.3s ease;
 }
 
@@ -145,7 +179,8 @@
 .serve-card-image-section {
   position: relative;
   margin-top: auto;
-  padding: 0 10px 10px;
+  padding: 0 10px 0;
+  overflow: visible;
 }
 
 .serve-card-image-box {
@@ -153,8 +188,46 @@
   width: 100%;
   height: 300px;
   overflow: hidden;
-  clip-path: polygon(50% 0%, 100% 15%, 100% 100%, 0% 100%, 0% 15%);
+  clip-path: url(#serve-rounded-peak-clip);
+  -webkit-clip-path: url(#serve-rounded-peak-clip);
   transition: all 0.5s ease;
+}
+
+/* Plus hexagon: hidden by default, shows on card hover */
+.serve-bottom-hexagon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.serve-card-premium:hover .serve-bottom-hexagon {
+  opacity: 1;
+  visibility: visible;
+  z-index: 35;
+}
+
+.serve-bottom-hexagon .serve-hexagon-outer-white {
+  width: 72px;
+  height: 82px;
+  margin-bottom: 0;
+  transform: scale(0.4);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 16px rgba(13, 30, 68, 0.18));
+}
+
+.serve-bottom-hexagon .serve-hexagon-center-btn {
+  width: 64px;
+  height: 74px;
+}
+
+.serve-bottom-hexagon .serve-hexagon-center-btn .plus-icon {
+  font-size: 2.2rem;
 }
 
 .serve-card-image-box img {
@@ -168,30 +241,20 @@
   transform: scale(1.1);
 }
 
-/* Hover Hexagon Pattern Overlay */
+/* Hover overlay (tint only — plus stays on serve-bottom-hexagon outside clip) */
 .serve-hover-hexagon-overlay {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 10px;
+  width: calc(100% - 20px);
   height: 100%;
   background: rgba(13, 30, 68, 0.4);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 0px;
-  /* Match image clipping for the overlay background */
-  clip-path: polygon(50% 0%, 100% 15%, 100% 115%, 0% 115%, 0% 15%);
-  width: calc(100% - 20px);
-  /* Account for padding in section */
-  left: 10px;
-  height: calc(100% - 10px);
+  clip-path: url(#serve-rounded-peak-clip);
+  -webkit-clip-path: url(#serve-rounded-peak-clip);
   opacity: 0;
-  transition: all 0.5s ease;
+  transition: opacity 0.5s ease;
   z-index: 10;
-  /* Ensure it stays above everything */
   pointer-events: none;
-  /* Allow hovering through to the card */
 }
 
 .serve-card-premium:hover .serve-hover-hexagon-overlay {
@@ -208,15 +271,14 @@
   justify-content: center;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: translateY(20px) scale(0.3);
-  margin-bottom: 35px;
-  /* Lifted higher up */
+  margin-bottom: 0;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
   pointer-events: auto;
   z-index: 20;
 }
 
-.serve-card-premium:hover .serve-hexagon-outer-white {
-  transform: translateY(0) scale(1);
+.serve-card-premium:hover .serve-bottom-hexagon .serve-hexagon-outer-white {
+  transform: scale(1);
 }
 
 .serve-hexagon-center-btn {
@@ -317,7 +379,8 @@
     font-size: 2.2rem;
   }
 
-  .serve-card-premium {
+  .serve-card-premium,
+  .serve-card-inner {
     border-radius: 24px;
   }
 
@@ -331,6 +394,23 @@
 
   .serve-card-image-box {
     height: 280px;
+  }
+
+  .serve-card-watermark {
+    width: 100px;
+    height: 100px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .serve-bottom-hexagon .serve-hexagon-outer-white {
+    width: 64px;
+    height: 74px;
+  }
+
+  .serve-bottom-hexagon .serve-hexagon-center-btn {
+    width: 58px;
+    height: 68px;
   }
 }
 
