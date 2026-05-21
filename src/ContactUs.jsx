@@ -145,11 +145,9 @@ const ContactUs = () => {
                   </div>
                 </form>
 
-                <div className="qa-card-footer">
-                  <button className="qa-estimate-btn">
-                    Get Cost Estimate <span className="btn-arrow">→</span>
-                  </button>
-                </div>
+                <button className="qa-estimate-btn">
+                  Get Cost Estimate <span className="btn-arrow">→</span>
+                </button>
               </div>
             </div>
           </div>

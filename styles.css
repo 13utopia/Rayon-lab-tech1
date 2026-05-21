@@ -1,10 +1,10 @@
 :root {
-  --page-bg: #eef4ff;
+  --page-bg: #EAF1FF;
   --surface: #ffffff;
   --text: #0f1f3f;
   --muted: #5f6f8e;
   --accent: #0f2f75;
-  --surface-strong: #edf2ff;
+  --surface-strong: #EAF1FF;
   --shadow: 0 24px 70px rgba(15, 47, 117, 0.10);
 }
 

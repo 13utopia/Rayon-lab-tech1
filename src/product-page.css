@@ -121,15 +121,16 @@
 .premium-nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
   flex: 1;
+  margin-left: 60px;
 }
 
 .premium-nav-links a {
   font-family: 'Raleway', sans-serif !important;
-  font-size: 0.9rem;
-  /* Slightly increased font size */
+  font-size: 12px;
+  /* Fixed small size to look like Image 1 */
   font-weight: 700;
   color: #64748b;
   text-decoration: none;
@@ -149,8 +150,10 @@
 
 .nav-dot {
   font-size: 1.2rem;
-  color: #101b32;
-  /* Dark blue dots from image */
+  color: #0D1E44;
+  /* Dark blue/navy dots from image */
+  opacity: 1;
+  /* Full opacity to override washed out gray */
   margin: 0 4px;
   display: flex;
   align-items: center;
@@ -211,7 +214,7 @@
   border: none;
   padding: 10px 25px;
   /* Reduced vertical padding slightly to fit better */
-  border-radius: 10px;
+  border-radius: 50px;
   font-family: 'Raleway', sans-serif !important;
   font-weight: 700;
   font-size: 0.88rem;
@@ -1017,7 +1020,8 @@
 .product-features {
   background: #fcfdfe;
   padding: 60px 24px 80px 24px;
-  margin-bottom: 40px; /* Added gap between features and CTA */
+  margin-bottom: 40px;
+  /* Added gap between features and CTA */
 }
 
 .product-features-container {
@@ -1356,7 +1360,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 60px; /* Added gap between CTA and Footer */
+  margin-bottom: 60px;
+  /* Added gap between CTA and Footer */
 }
 
 .product-cta-watermark {

@@ -1,7 +1,7 @@
 /* Stats Row Section */
 .stats-row-section {
   width: 100%;
-  background-color: #F2F6FF;
+  background-color: #EAF1FF;
   padding: 80px 40px 100px;
   display: flex;
   justify-content: center;
@@ -30,7 +30,8 @@
   justify-content: center;
   line-height: 1;
   margin-bottom: 10px;
-  position: relative; /* For the ring effect */
+  position: relative;
+  /* For the ring effect */
 }
 
 /* Pulsing Ring Effect */
@@ -41,7 +42,8 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
   width: 120%;
-  padding-bottom: 120%; /* Makes it square/circular */
+  padding-bottom: 120%;
+  /* Makes it square/circular */
   height: 0;
   border: 1px solid rgba(148, 163, 184, 0.4);
   border-radius: 50%;
@@ -59,9 +61,11 @@
     transform: translate(-50%, -50%) scale(0.7);
     opacity: 0;
   }
+
   50% {
     opacity: 0.6;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(1.3);
     opacity: 0;

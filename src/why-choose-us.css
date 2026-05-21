@@ -4,7 +4,7 @@
   top: 65% !important;
   transform: translateY(-50%) !important;
   z-index: 2147483647 !important;
-  width: 60px;
+  width: 50px;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -13,17 +13,30 @@
   transition: all 0.3s ease;
 }
 
-/* Light/Contact Theme */
-.fixed-sidebar-v2.light-theme {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(15px) !important;
-  -webkit-backdrop-filter: blur(15px) !important;
-  border: 1px solid rgba(13, 30, 68, 0.08) !important;
+/* Glassmorphic Sidebar Theme */
+.fixed-sidebar-v2.glass-theme {
+  background: rgba(255, 255, 255, 0.432) !important;
+  backdrop-filter: blur(25px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-right: none !important;
-  border-top-left-radius: 12px !important;
-  border-bottom-left-radius: 12px !important;
-  padding: 8px 0 !important;
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.05) !important;
+  border-top-left-radius: 20px !important;
+  border-bottom-left-radius: 20px !important;
+  padding: 15px 0 !important;
+  box-shadow: -10px 0 40px rgba(13, 30, 68, 0.1) !important;
+  width: 63px;
+  border-radius: -60px;
+}
+
+.fixed-sidebar-v2.glass-theme .sidebar-item-v2 {
+  color: #0D1E44 !important;
+  opacity: 0.9;
+}
+
+.fixed-sidebar-v2.glass-theme .sidebar-item-v2:hover {
+  background: rgba(13, 30, 68, 0.08);
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 /* Blog Page Theme - Dusty Blue */
@@ -86,10 +99,11 @@
 }
 
 .sidebar-item-v2 svg {
-  width: 18px;
-  height: 18px;
-  margin-bottom: 3px;
-  opacity: 0.8;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 4px;
+  opacity: 0.75;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-item-v2 span {
@@ -101,7 +115,17 @@
 }
 
 .sidebar-item-v2:hover {
-  background: rgba(13, 30, 68, 0.04);
+  background: rgba(13, 30, 68, 0.05);
+  color: #2563eb;
+}
+
+.sidebar-item-v2:hover svg {
+  transform: scale(1.2) rotate(-5deg);
+  opacity: 1;
+}
+
+.sidebar-item-v2:hover span {
+  opacity: 1;
   color: #2563eb;
 }
 

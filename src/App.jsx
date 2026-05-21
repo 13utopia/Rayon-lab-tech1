@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './why-choose-us.css';
 import './why-rayon.css';
 import './stats-row.css';
@@ -23,7 +23,7 @@ import infra1 from './assets/infra-1.png';
 import infra2 from './assets/infra-2.png';
 import infra3 from './assets/infra-3.jpg';
 import heroMain from './assets/hero-v2-final.png';
-import labInterior from './assets/hero-v3.png';
+import labInterior from './assets/labimage.png';
 import serveNew1 from './assets/serve-v5-1.png';
 import serveNew2 from './assets/serve-v5-2.png';
 import serveNew3 from './assets/serve-v5-3.png';
@@ -50,6 +50,8 @@ import thumbMan from './assets/thumb-man.png';
 import thumbLike from './assets/thumb-like.png';
 import thumbCircle from './assets/thumb-circle.png';
 import productHeroBg from './assets/product-hero-bg.png';
+import heroIslandTable from './assets/hero-island-table.png';
+
 import productNavLogo from './assets/product-nav-logo.png';
 import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
@@ -59,7 +61,7 @@ import whyChooseUs2 from './assets/portfolio-s1-2.png';
 import whyChooseUs3 from './assets/portfolio-s1-3.png';
 import whyChooseUs4 from './assets/portfolio-4.png';
 
-function FixedSidebar({ theme = 'light' }) {
+function FixedSidebar({ theme = 'glass', onGetQuote }) {
   return (
     <div className={`fixed-sidebar-v2 ${theme}-theme`}>
       <a href="tel:+919909030607" className="sidebar-item-v2">
@@ -76,7 +78,7 @@ function FixedSidebar({ theme = 'light' }) {
         <span>WHATSAPP</span>
       </a>
 
-      <div className="sidebar-item-v2 is-quote">
+      <div className="sidebar-item-v2 is-quote" onClick={onGetQuote}>
         <div className="quote-box-inner">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -359,6 +361,42 @@ function WhyIcon({ type }) {
     default:
       return null;
   }
+}
+
+/* Count-up animation component — triggers when scrolled into view */
+function CountUpStat({ target, duration = 2000 }) {
+  const [count, setCount] = React.useState(0);
+  const ref = useRef(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true;
+          const startTime = performance.now();
+          const animate = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease-out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setCount(Math.floor(eased * target));
+            if (progress < 1) requestAnimationFrame(animate);
+            else setCount(target);
+          };
+          requestAnimationFrame(animate);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration]);
+
+  return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
 function CalendarIcon() {
@@ -1033,8 +1071,7 @@ This request was submitted via the "Get your free estimate" section.
 
   return (
     <>
-      {currentPage === 'contact-us' && <FixedSidebar theme="light" />}
-      {currentPage === 'blog' && <FixedSidebar theme="blog" />}
+      <FixedSidebar theme="glass" onGetQuote={() => setShowQuoteModal(true)} />
       <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
         <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog' || currentPage === 'contact-us' || currentPage === 'portfolio') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
@@ -1328,25 +1365,29 @@ This request was submitted via the "Get your free estimate" section.
               </div>
 
               <div className="showcase-v2-grid">
-                {showcaseCards.slice(activeShowcase * 3, (activeShowcase + 1) * 3).map((card, idx) => (
-                  <article
-                    className="showcase-v2-card is-active"
-                    key={`${activeShowcase}-${card.title}`}
-                    onClick={(e) => {
-                      const prod = products.find(p => p.id === card.productId);
-                      if (prod) handleNavClick(e, 'products', prod);
-                    }}
-                  >
-                    <div className="showcase-v2-media-wrap">
-                      <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
-                    </div>
+                {showcaseCards.slice(activeShowcase * 3, (activeShowcase + 1) * 3).map((card, idx) => {
+                  const absoluteIdx = activeShowcase * 3 + idx;
+                  const isExtra = absoluteIdx >= 2;
+                  return (
+                    <article
+                      className="showcase-v2-card is-active"
+                      key={`${activeShowcase}-${card.title}`}
+                      onClick={(e) => {
+                        const prod = products.find(p => p.id === card.productId);
+                        if (prod) handleNavClick(e, 'products', prod);
+                      }}
+                    >
+                      <div className={`showcase-v2-media-wrap ${isExtra ? 'extra-overlay' : ''}`}>
+                        <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
+                      </div>
                     <div className="showcase-v2-meta">
                       <h3 className="showcase-v2-card-title">{card.title}</h3>
                       <p className="showcase-v2-card-desc">{card.description}</p>
                     </div>
                   </article>
-                ))}
-              </div>
+                );
+              })}
+            </div>
 
               <div className="showcase-v2-dots">
                 {[...Array(Math.ceil(showcaseCards.length / 3))].map((_, i) => (
@@ -1375,35 +1416,42 @@ This request was submitted via the "Get your free estimate" section.
               </div>
             </section>
 
-            <section className="hero-container">
-              {/* Background Watermark */}
-              <div className="hero-watermark">RAYON</div>
+            <section className="hero-premium-v3">
+              {/* Technical Pattern Overlay */}
+              <div className="hero-v3-pattern"></div>
+              
+              {/* Large Background Watermark */}
+              <div className="hero-v3-watermark">RAYON</div>
 
-              <div className="hero-content">
-                <div className="text-side">
-                  <h1 className="hero-title">
+              <div className="hero-v3-container">
+                <div className="hero-v3-text-side">
+                  <h1 className="hero-v3-title">
                     Manufacturer Of Premium Laboratory <br />
                     Furniture & Equipment In Ahmedabad <br />
                     For Your Lab Needs
                   </h1>
-                  <p className="hero-subtitle">
+                  <p className="hero-v3-desc">
                     Trusted by institutions and industries, Rayon Lab Tech delivers reliable,
                     durable, and fully customized laboratory solutions built to perform in
                     demanding environments.
                   </p>
 
-                  <div className="hero-buttons">
-                    <button className="btn-primary" onClick={(e) => handleNavClick(e, 'products')}>
-                      Our Products <span>&rarr;</span>
+                  <div className="hero-v3-buttons">
+                    <button className="hero-v3-btn-gradient" onClick={(e) => handleNavClick(e, 'products')}>
+                      <span>Our Products</span>
+                      <span className="hero-v3-arrow">→</span>
                     </button>
-                    <button className="btn-outline" onClick={scrollToConsultation}>
-                      Our Services <span>&rarr;</span>
+                    <button className="hero-v3-btn-outline" onClick={scrollToConsultation}>
+                      <span>Our Services</span>
+                      <span className="hero-v3-arrow">→</span>
                     </button>
                   </div>
                 </div>
 
-                <div className="image-side">
-                  <img src={labimage} alt="Laboratory Equipment" className="main-lab-img" />
+                <div className="hero-v3-visual-side">
+                  <div className="hero-v3-image-mask">
+                    <img src={labInterior} alt="Laboratory Showcase" />
+                  </div>
                 </div>
               </div>
             </section>
@@ -1435,7 +1483,20 @@ This request was submitted via the "Get your free estimate" section.
                   </div>
                   <div className="why-middle-circle">
                     <div className="circle-ring">
-                      {[1, 2, 3, 4, 5].map(i => (
+                      {/* Image-2 style: ~240° arc open at top-right, 3 dots, small L-bracket on right */}
+                      <svg className="circle-ring-svg" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Left Arc: connected at ends back to the inner image border */}
+                        <path d="M 71,71 L 49.8,49.8 A 170,170 0 0,0 49.8,290.2 L 71,269" stroke="#0D1E44" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+
+                        {/* Top Arc: connected at ends back to the inner image border */}
+                        <path d="M 71,71 L 49.8,49.8 A 170,170 0 0,1 290.2,49.8 L 269,71" stroke="#0D1E44" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+
+                        {/* Bottom Arc: connected at ends back to the inner image border */}
+                        <path d="M 71,269 L 49.8,290.2 A 170,170 0 0,0 290.2,290.2 L 269,269" stroke="#0D1E44" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+
+                      {/* 4 dots: top-left, top-right, bottom-left, bottom-right — matching Image 2 */}
+                      {[1, 2, 3, 4].map(i => (
                         <div key={i} className={`circle-dot dot-${i}`}></div>
                       ))}
                       <div className="circle-img-wrap">
@@ -1483,11 +1544,13 @@ This request was submitted via the "Get your free estimate" section.
             <section className="stats-row-section">
               <div className="stats-row-container">
                 {funFacts.map((fact, idx) => {
-                  const numPart = fact.num.replace('+', '');
+                  const numPart = parseInt(fact.num.replace('+', ''), 10);
                   return (
                     <div className="stat-item-final" key={idx}>
                       <div className="stat-num-box">
-                        <span className="stat-num-outlined">{numPart}</span>
+                        <span className="stat-num-outlined">
+                          <CountUpStat target={numPart} duration={2000 + idx * 200} />
+                        </span>
                         <span className="stat-plus-solid">+</span>
                       </div>
                       <p className="stat-label-final">{fact.text}</p>
@@ -1949,7 +2012,20 @@ This request was submitted via the "Get your free estimate" section.
             <div className="bg-watermark-v2">RAYON</div>
 
             <div className="footer-top-row">
-              {/* Branding Column on the Left */}
+              {/* Newsletter Section - Now centered or full width */}
+              <div className="footer-newsletter-v2">
+                <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
+                <div className="newsletter-form-v2">
+                  <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
+                  <button type="button" className="newsletter-btn-v2">Subscribe Now <span className="arrow">→</span></button>
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-divider-v2"></div>
+            
+            <div className="footer-grid-v2">
+              {/* Branding Column - Now part of the grid for perfect alignment */}
               <div className="footer-col-v2 branding">
                 <img src={logoWhite} alt="Rayon Logo" className="footer-logo-v2" />
                 <p className="footer-tagline-v2">
@@ -1965,18 +2041,6 @@ This request was submitted via the "Get your free estimate" section.
                 </div>
               </div>
 
-              {/* Newsletter on the Right */}
-              <div className="footer-newsletter-v2">
-                <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
-                <div className="newsletter-form-v2">
-                  <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
-                  <button type="button" className="newsletter-btn-v2">Subscribe Now <span className="arrow">→</span></button>
-                </div>
-              </div>
-            </div>
-
-            <div className="footer-divider-v2"></div>
-            <div className="footer-grid-v2">
               {/* Useful Link Column */}
               <div className="footer-col-v2">
                 <h4 className="footer-col-title-v2">Useful Link</h4>

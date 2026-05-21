@@ -1,7 +1,7 @@
 .why-rayon-section {
   width: 100%;
   padding: 50px 10px;
-  background: #F2F6FF;
+  background: #EAF1FF;
   position: relative;
   overflow: hidden;
 }
@@ -54,20 +54,24 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-end; /* Align to the right to touch/overlap the circle ring */
+  z-index: 10;
 }
 
 .why-pill {
-  background: #ffffff;
-  border: 1px solid rgba(13, 30, 68, 0.1);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(13, 30, 68, 0.08);
   border-radius: 100px;
-  padding: 8px 8px 8px 25px;
+  padding: 6px 6px 6px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  min-width: 280px;
-  box-shadow: 0 4px 15px rgba(13, 30, 68, 0.03);
+  min-width: 290px;
+  box-shadow: 0 4px 15px rgba(13, 30, 68, 0.02);
   position: relative;
   overflow: hidden;
 }
@@ -84,9 +88,59 @@
   transition: 0.7s;
 }
 
-.why-pill:not(.active):hover {
-  border-color: rgba(13, 30, 68, 0.2);
+.why-pill:hover::after {
+  left: 150%;
+}
+
+.why-pill.active {
   background: #ffffff;
+  box-shadow: 0 10px 25px rgba(13, 30, 68, 0.06);
+  border-color: rgba(13, 30, 68, 0.15);
+}
+
+.why-pill:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.why-pill:not(.active):hover {
+  background: #ffffff;
+  border-color: rgba(13, 30, 68, 0.2);
+  transform: translateX(-5px);
+}
+
+.why-pill span {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0D1E44;
+  transition: color 0.3s ease;
+}
+
+.why-pill:not(.active) span {
+  color: rgba(13, 30, 68, 0.65);
+}
+
+.why-pill.active span {
+  color: #0D1E44;
+}
+
+.why-pill-arrow {
+  width: 38px;
+  height: 38px;
+  background: rgba(13, 30, 68, 0.6); /* Translucent dark navy background */
+  border: 2.5px solid #ffffff; /* Clean white border */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.why-pill.active .why-pill-arrow {
+  background: #0D1E44; /* Solid Navy */
+  border: 2.5px solid #ffffff;
+  transform: rotate(45deg);
 }
 
 .why-pill:not(.active):hover .why-pill-arrow {
@@ -94,50 +148,9 @@
   transform: rotate(45deg);
 }
 
-.why-pill:hover::after {
-  left: 150%;
-}
-
-.why-pill.active {
-  background: #ffffff;
-  box-shadow: 0 10px 25px rgba(13, 30, 68, 0.08);
-  border-color: #0D1E44;
-}
-
-.why-pill.active .why-pill-arrow {
-  background: #0D1E44;
-}
-
-.why-pill:not(.active) {
-  background: #e9f2ff;
-  border-color: rgba(13, 30, 68, 0.03);
-}
-
-.why-pill span {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0D1E44;
-}
-
-.why-pill-arrow {
-  width: 38px;
-  height: 38px;
-  background: #717171;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.why-pill.active .why-pill-arrow {
-  background: #0D1E44;
-}
-
 .why-pill-arrow svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 /* Middle Circle */
@@ -151,38 +164,23 @@
 .circle-ring {
   width: 340px;
   height: 340px;
-  border: 1.2px solid rgba(13, 30, 68, 0.1);
-  border-radius: 50%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: rotateRing 20s linear infinite, pulseRing 4s ease-in-out infinite;
 }
 
-@keyframes rotateRing {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.circle-ring-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
-@keyframes pulseRing {
-
-  0%,
-  100% {
-    border-color: rgba(13, 30, 68, 0.1);
-    box-shadow: 0 0 0 0 rgba(13, 30, 68, 0.05);
-  }
-
-  50% {
-    border-color: rgba(13, 30, 68, 0.3);
-    box-shadow: 0 0 0 15px rgba(13, 30, 68, 0);
-  }
-}
+/* SVG is handling all tech lines and cut ring segments */
 
 .circle-img-wrap {
   width: 280px;
@@ -191,16 +189,17 @@
   overflow: hidden;
   position: relative;
   border: 1.5px solid #0D1E44;
-  background: white; /* Clean background for smaller images */
-  padding: 15px; /* Shrink the image slightly as requested */
+  background: white;
+  /* Clean background for smaller images */
+  padding: 15px;
+  /* Shrink the image slightly as requested */
   box-shadow: 0 30px 80px rgba(13, 30, 68, 0.15);
-  animation: rotateRing 20s linear infinite reverse;
 }
 
 .circle-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Changed to contain for the "small" look */
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -213,6 +212,7 @@
     opacity: 0.3;
     transform: scale(0.9);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
@@ -228,7 +228,7 @@
   height: 90px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 10;
@@ -243,45 +243,43 @@
 
 .circle-dot {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: #0D1E44;
   border-radius: 50%;
-  border: 3px solid #f0f7ff;
+  border: 3px solid #EAF1FF; /* Matches the background color of the section perfectly to mask the ring */
   z-index: 5;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
 }
 
 .circle-dot:hover {
-  transform: scale(2);
-  box-shadow: 0 0 15px rgba(13, 30, 68, 0.2);
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow: 0 0 15px rgba(13, 30, 68, 0.3);
   z-index: 15;
 }
 
+/* 4 dots matching Image-2 diagonal coordinates — center (170,170) R=170 on a 340×340 container */
 .dot-1 {
-  top: 15%;
-  right: 12%;
+  top: 50px;
+  left: 50px;
 }
 
 .dot-2 {
-  top: calc(50% - 7px);
-  right: -7px;
+  top: 50px;
+  left: 290px;
 }
 
 .dot-3 {
-  bottom: 15%;
-  right: 12%;
+  top: 290px;
+  left: 50px;
 }
 
 .dot-4 {
-  bottom: 15%;
-  left: 12%;
-}
-
-.dot-5 {
-  top: 30%;
-  left: -7px;
+  top: 290px;
+  left: 290px;
 }
 
 /* Right Side - Benefits */
@@ -304,8 +302,8 @@
 .benefit-desc {
   font-size: 0.80rem;
   color: #64748b;
-  line-height: 1.7;
-  margin-bottom: 10px;
+  line-height: 1.5;
+  margin-bottom: 5px;
   opacity: 0.8;
 }
 
@@ -346,6 +344,7 @@
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 4px 10px rgba(13, 30, 68, 0.15);
   border: 2px solid #ffffff;
+  transform-origin: center center;
 }
 
 .benefit-item:hover .benefit-icon-wrap {
@@ -527,7 +526,8 @@
   .why-right-benefits {
     order: 3;
     width: 100%;
-    align-items: flex-start; /* CRITICAL: keep left aligned for connector */
+    align-items: flex-start;
+    /* CRITICAL: keep left aligned for connector */
     padding: 0 10px;
   }
 
@@ -547,7 +547,8 @@
 
   .benefit-connector {
     display: block !important;
-    left: 13px; /* Precise center of the 28px icon */
+    left: 13px;
+    /* Precise center of the 28px icon */
     top: 25px;
     bottom: 25px;
     width: 2px;

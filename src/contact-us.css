@@ -18,7 +18,7 @@
   justify-content: center;
   margin-top: 0;
   margin-bottom: 20px;
-  background-color: #F2F6FF;
+  background-color: #EAF1FF;
 }
 
 .contact-banner-overlay {
@@ -92,7 +92,7 @@
   box-shadow: 0 10px 40px rgba(13, 30, 68, 0.05);
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow: hidden;
-  border: 1px solid rgba(13, 30, 68, 0.05);
+
 }
 
 /* Hover State - Applies to all cards */
@@ -354,7 +354,7 @@
 }
 
 .qa-more-btn {
-  background-color: #2e3648;
+  background-color: #0D1E44;
   color: #ffffff;
   border: none;
   padding: 14px 30px;
@@ -370,7 +370,7 @@
 }
 
 .qa-more-btn:hover {
-  background-color: #0D1E44;
+  background-color: #222d45;
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(13, 30, 68, 0.15);
 }
@@ -455,62 +455,25 @@
   line-height: 1.5;
 }
 
-/* Card Footer Notch & Button */
-.qa-card-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 250px;
-  height: 80px;
-  background-color: #F2F6FF;
-  /* Matching page bg */
-  border-top-right-radius: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-/* Concave corners for the notch */
-.qa-card-footer::before {
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  background-color: transparent;
-  border-bottom-left-radius: 25px;
-  box-shadow: -10px 10px 0 10px #F2F6FF;
-}
-
-.qa-card-footer::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: -25px;
-  width: 25px;
-  height: 25px;
-  background-color: transparent;
-  border-bottom-left-radius: 25px;
-  box-shadow: -10px 10px 0 10px #F2F6FF;
-}
-
+/* Estimate Button Styles */
 .qa-estimate-btn {
-  background-color: #ffffff;
+  margin-top: -20px;
+  background-color: #0D1E44;
+  /* Branded color for better visibility */
   border: none;
-  padding: 16px 35px;
+  padding: 16px 40px;
   border-radius: 100px;
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 15px;
-  color: #0D1E44;
+  color: #ffffff;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
-  box-shadow: 0 5px 15px rgba(13, 30, 68, 0.05);
+  box-shadow: 0 10px 30px rgba(13, 30, 68, 0.15);
   transition: all 0.3s ease;
+  width: fit-content;
 }
 
 .qa-estimate-btn:hover {
