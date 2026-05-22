@@ -1,6 +1,6 @@
 .serve-section-premium {
   padding: 100px 0;
-  background: #f8fbff;
+  background: #EAF1FF;
   font-family: 'Manrope', sans-serif;
   overflow: visible;
 }
@@ -175,11 +175,10 @@
   color: #2b3a5a;
 }
 
-/* Hexagon-Top Image Section */
 .serve-card-image-section {
   position: relative;
   margin-top: auto;
-  padding: 0 10px 0;
+  padding: 0;
   overflow: visible;
 }
 
@@ -241,12 +240,11 @@
   transform: scale(1.1);
 }
 
-/* Hover overlay (tint only — plus stays on serve-bottom-hexagon outside clip) */
 .serve-hover-hexagon-overlay {
   position: absolute;
   top: 0;
-  left: 10px;
-  width: calc(100% - 20px);
+  left: 0;
+  width: 100%;
   height: 100%;
   background: rgba(13, 30, 68, 0.4);
   clip-path: url(#serve-rounded-peak-clip);

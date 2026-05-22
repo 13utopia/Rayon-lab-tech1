@@ -64,13 +64,14 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(13, 30, 68, 0.08);
   border-radius: 100px;
-  padding: 6px 6px 6px 25px;
+  padding: 6px 6px 6px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   min-width: 290px;
+  height: 46px; /* Fixed height — all pills identical size */
   box-shadow: 0 4px 15px rgba(13, 30, 68, 0.02);
   position: relative;
   overflow: hidden;
@@ -109,10 +110,15 @@
 }
 
 .why-pill span {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 0.8rem;          /* Smaller text to keep all pills uniform */
+  font-weight: 600;
   color: #0D1E44;
   transition: color 0.3s ease;
+  white-space: nowrap;        /* Prevent text wrapping to a second line */
+  overflow: hidden;
+  text-overflow: ellipsis;    /* Show … if text is still too long */
+  flex: 1;
+  min-width: 0;
 }
 
 .why-pill:not(.active) span {
@@ -124,10 +130,11 @@
 }
 
 .why-pill-arrow {
-  width: 38px;
-  height: 38px;
-  background: rgba(13, 30, 68, 0.6); /* Translucent dark navy background */
-  border: 2.5px solid #ffffff; /* Clean white border */
+  width: 32px;
+  height: 32px;
+  min-width: 32px;  /* Prevent shrinking */
+  background: rgba(13, 30, 68, 0.55);
+  border: 2px solid #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -149,8 +156,8 @@
 }
 
 .why-pill-arrow svg {
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
 }
 
 /* Middle Circle */
@@ -261,25 +268,26 @@
   z-index: 15;
 }
 
-/* 4 dots matching Image-2 diagonal coordinates — center (170,170) R=170 on a 340×340 container */
+/* 4 dots — percentage positions keep dots ON the ring at every breakpoint.
+   45° diagonal: offset = 50% × (1 − cos45°) ≈ 14.6%  →  rounded to 14.7% */
 .dot-1 {
-  top: 50px;
-  left: 50px;
+  top: 14.7%;
+  left: 14.7%;
 }
 
 .dot-2 {
-  top: 50px;
-  left: 290px;
+  top: 14.7%;
+  left: 85.3%;
 }
 
 .dot-3 {
-  top: 290px;
-  left: 50px;
+  top: 85.3%;
+  left: 14.7%;
 }
 
 .dot-4 {
-  top: 290px;
-  left: 290px;
+  top: 85.3%;
+  left: 85.3%;
 }
 
 /* Right Side - Benefits */

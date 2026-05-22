@@ -3,62 +3,98 @@ import './contact-us.css';
 import contactHero from './assets/hero1.png';
 
 const ContactUs = () => {
+  const tooltipTimerRef = React.useRef(null);
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+  const [showFormTooltip, setShowFormTooltip] = React.useState(false);
+
+  const isFormComplete = Object.values(formData).every((value) => value.trim());
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleEstimateClick = () => {
+    if (isFormComplete) {
+      setShowFormTooltip(false);
+      return;
+    }
+
+    setShowFormTooltip(true);
+    window.clearTimeout(tooltipTimerRef.current);
+    tooltipTimerRef.current = window.setTimeout(() => {
+      setShowFormTooltip(false);
+    }, 2400);
+  };
+
+  React.useEffect(() => {
+    return () => window.clearTimeout(tooltipTimerRef.current);
+  }, []);
+
   const contactCards = [
     {
       id: 1,
       title: "Mail Us 24/7",
       details: ["Rltsales@rayonlabtech.in", "support@pbminfotech.com"],
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-          <circle cx="12" cy="11" r="3"></circle>
-          <path d="M12 11c0 0.5 0.5 1 1 1s1-0.5 1-1"></path>
+        <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M33.9959 10.4104C31.6152 8.77004 19.345 0.667507 19.1254 0.49117C18.6439 0.170877 18.0785 0 17.5002 0C16.9219 0 16.3565 0.170877 15.8749 0.49117L1.48094 10.085C1.03378 10.3322 0.660733 10.6943 0.400376 11.1339C0.140019 11.5735 0.00179767 12.0747 0 12.5856V30.5995C0.0059953 31.3583 0.310088 32.0844 0.846657 32.6209C1.38323 33.1575 2.10925 33.4616 2.86804 33.4676H32.132C32.7541 33.4678 33.3587 33.2615 33.8509 32.881C34.2064 32.616 34.4953 32.2719 34.6947 31.8759C34.8942 31.4799 34.9987 31.0429 35 30.5995V12.5856C35.0013 12.1718 34.912 11.7627 34.7386 11.3869C34.5652 11.0112 34.3117 10.6779 33.9959 10.4104ZM21.0744 19.9636C24.5519 17.6457 31.6336 12.9257 33.4749 11.6983C33.6528 11.9601 33.7486 12.2691 33.75 12.5856V30.5995C33.7497 30.9312 33.6468 31.2546 33.4553 31.5254L21.0744 19.9636ZM16.5662 1.53276C16.8429 1.34863 17.1679 1.25042 17.5004 1.25048C17.8328 1.25053 18.1578 1.34885 18.4345 1.53307L32.4536 10.8769L19.7278 19.363L18.4345 20.2208C18.1578 20.4053 17.8327 20.5037 17.5002 20.5037C17.1676 20.5037 16.8425 20.4053 16.5659 20.2208L2.54608 10.8769L16.5662 1.53276ZM1.54465 31.5254C1.35319 31.2546 1.25026 30.9312 1.25 30.5995V12.5856C1.25267 12.2694 1.34875 11.961 1.52618 11.6992C3.51345 13.0244 11.5617 18.3914 13.9228 19.9659C11.6723 22.0675 3.51795 29.6826 1.54465 31.5254ZM2.86804 32.2176C2.79757 32.2152 2.72734 32.2081 2.65781 32.1963C5.09041 29.9246 13.1858 22.3647 14.9911 20.6787C16.8329 22.0733 18.0874 22.1538 20.0056 20.6759L32.3422 32.1963C32.1147 32.2635 3.10471 32.1926 2.86804 32.2176Z" fill="url(#mailIconGradient)" />
+          <defs>
+            <linearGradient id="mailIconGradient" x1="0" y1="16.7338" x2="48.54" y2="16.5389" gradientUnits="userSpaceOnUse">
+              <stop offset="0.323492" stopColor="#666666" />
+              <stop offset="1" stopColor="#CCCCCC" />
+            </linearGradient>
+          </defs>
         </svg>
       ),
-      type: "light"
     },
     {
       id: 2,
       title: "Our Location",
       details: ["85 Preston, Inglewood, Maine 98", "380, Hoofddorp Noord- 2132"],
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
           <circle cx="12" cy="10" r="3"></circle>
-          <ellipse cx="12" cy="21" rx="7" ry="2"></ellipse>
         </svg>
       ),
-      type: "light"
     },
     {
       id: 3,
       title: "Call US 24/7",
       details: ["Phone: +001 236-895-4732", "Mobile: +91 9909030607"],
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-          <path d="M14 7a2 2 0 0 1 2 2"></path>
-          <path d="M14 3a6 6 0 0 1 6 6"></path>
         </svg>
       ),
-      type: "light"
     },
     {
       id: 4,
       title: "Working Days",
       details: ["Mon to Fri - 09:00am To 06:00pm", "Saturday to Sunday - Closed"],
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
           <line x1="16" y1="2" x2="16" y2="6"></line>
           <line x1="8" y1="2" x2="8" y2="6"></line>
           <line x1="3" y1="10" x2="21" y2="10"></line>
           <path d="M9 16l2 2 4-4"></path>
-          <rect x="8" y="14" width="8" height="6" rx="1"></rect>
         </svg>
       ),
-      type: "light"
     }
   ];
 
@@ -76,37 +112,44 @@ const ContactUs = () => {
         </div>
       </section>
 
-      {/* Info Cards Section */}
+      {/* Info Cards Section — feature-card-v2 design */}
       <div className="contact-cards-container">
         <div className="contact-cards-grid">
           {contactCards.map((card) => (
-            <div key={card.id} className={`contact-info-card ${card.type}`}>
-              <div className="card-top">
-                <h3 className="card-title">{card.title}</h3>
-                <div className="card-details">
-                  {card.details.map((detail, idx) => (
-                    <p key={idx}>{detail}</p>
-                  ))}
-                </div>
-              </div>
-              <div className="card-bottom">
-                <div className="card-icon-box">
+            <article className="feature-card-v2 contact-feature-card" key={card.id}>
+              {/* Header: icon + title */}
+              <div className="f-card-header">
+                <div className="f-icon-wrap contact-icon-wrap">
                   {card.icon}
                 </div>
+                <h3 className="f-title">{card.title}</h3>
               </div>
-              <button className="card-arrow-btn" aria-label="Learn More">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="10 7 17 7 17 14"></polyline>
-                </svg>
-              </button>
-              <div className="card-pattern"></div>
-            </div>
+
+              {/* Divider */}
+              <div className="f-divider"></div>
+
+              {/* Detail lines as description */}
+              <div className="contact-card-details">
+                {card.details.map((detail, idx) => (
+                  <p key={idx} className="f-desc contact-detail-line">{detail}</p>
+                ))}
+              </div>
+
+              {/* Bottom-right arrow tab — same as feature card */}
+              <div className="f-btn-tab">
+                <button className="f-action-btn" type="button" aria-label={`Contact: ${card.title}`}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </article>
           ))}
         </div>
       </div>
 
-      {/* New Q&A Section */}
+      {/* Q&A Section */}
       <section className="contact-qa-section">
         <div className="qa-container">
           <div className="qa-grid">
@@ -118,7 +161,7 @@ const ContactUs = () => {
                 We carefully screen all of our cleaners, so you can rest assured that your home would receive the absolute highest quality of service providing.
               </p>
               <button className="qa-more-btn">
-                More Details <span className="btn-arrow">→</span>
+                More Details <span className="btn-arrow">&rarr;</span>
               </button>
             </div>
 
@@ -128,16 +171,16 @@ const ContactUs = () => {
                 <h3 className="form-card-title">Send a message to staff</h3>
                 <p className="form-card-subtitle">Your email address will not be published. Required fields are marked *</p>
 
-                <form className="qa-actual-form">
+                <form className="qa-actual-form" id="contact-estimate-form" onSubmit={handleFormSubmit}>
                   <div className="qa-form-row">
-                    <input type="text" placeholder="Your Name" />
-                    <input type="email" placeholder="Your Email" />
+                    <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
+                    <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} required />
                   </div>
                   <div className="qa-form-row">
-                    <input type="tel" placeholder="Your Phone" />
-                    <input type="text" placeholder="Subject" />
+                    <input type="tel" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleInputChange} required />
+                    <input type="text" name="subject" placeholder="Subject" value={formData.subject} onChange={handleInputChange} required />
                   </div>
-                  <textarea placeholder="Message" rows="4"></textarea>
+                  <textarea name="message" placeholder="Message" rows="4" value={formData.message} onChange={handleInputChange} required></textarea>
 
                   <div className="qa-checkbox-wrap">
                     <input type="checkbox" id="save-info" />
@@ -145,9 +188,16 @@ const ContactUs = () => {
                   </div>
                 </form>
 
-                <button className="qa-estimate-btn">
-                  Get Cost Estimate <span className="btn-arrow">→</span>
-                </button>
+                <div className="qa-card-footer">
+                  {showFormTooltip && (
+                    <div className="qa-submit-tooltip" role="status">
+                      Please fill all details first.
+                    </div>
+                  )}
+                  <button className="qa-estimate-btn" type="button" onClick={handleEstimateClick}>
+                    Get Cost Estimate <span className="btn-arrow">&rarr;</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

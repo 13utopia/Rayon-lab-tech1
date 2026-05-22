@@ -23,6 +23,14 @@ const PortfolioPage = ({ onGetQuote }) => {
               Modular working tables designed for ultimate flexibility <br className="desktop-br" />
               and safety in modern scientific environments.
             </p>
+            <div className="portfolio-hero-link-wrap">
+              <a href="#portfolio-installations" className="portfolio-hero-link">
+                <span>Explore Portfolio</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12H19M13 6L19 12L13 18" />
+                </svg>
+              </a>
+            </div>
           </div>
           <div className="banner-image-v2">
             <img src={microscopeImg} alt="Microscope" className="banner-microscope-img" />
@@ -31,7 +39,7 @@ const PortfolioPage = ({ onGetQuote }) => {
       </div>
 
       {/* Section 1: Cureza Health Care (Text Left, Image Grid Right) */}
-      <section className="portfolio-installation-section">
+      <section className="portfolio-installation-section" id="portfolio-installations">
         <div className="installation-container">
           <div className="installation-grid-v1">
             <div className="installation-text-card">
@@ -42,22 +50,18 @@ const PortfolioPage = ({ onGetQuote }) => {
                 <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
               </div>
               <button className="products-link-btn">
-                Our Products <span className="arrow-circle">→</span>
+                Our Products <span className="arrow-circle">&rarr;</span>
               </button>
             </div>
-            <div className="portfolio-arch-grid">
-              <div className="arch-card-wrap">
-                <div className="arch-image-card">
-                  <img src={portfolioS1Item1} alt="Lab Installation 1" />
-                </div>
+            <div className="installation-image-grid-v1">
+              <div className="img-large-top">
+                <img src={portfolioS1Item1} alt="Lab Installation 1" />
               </div>
-              <div className="arch-card-wrap">
-                <div className="arch-image-card">
+              <div className="img-small-row">
+                <div className="img-small">
                   <img src={portfolioS1Item2} alt="Lab Installation 2" />
                 </div>
-              </div>
-              <div className="arch-card-wrap">
-                <div className="arch-image-card">
+                <div className="img-small">
                   <img src={portfolioS1Item3} alt="Lab Installation 3" />
                 </div>
               </div>

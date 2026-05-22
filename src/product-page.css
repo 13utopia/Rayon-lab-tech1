@@ -5,10 +5,11 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  background: #EAF1FF;
 }
 
 .page-shell-products {
-  background: #f0f4f9;
+  background: #EAF1FF;
   /* Light background for floating navbar contrast */
   padding-bottom: 0 !important;
   padding-left: 0 !important;
@@ -655,7 +656,7 @@
    ============================================ */
 .product-details {
   padding: 100px 24px;
-  background: #ffffff;
+  background: #EAF1FF;
 }
 
 .product-details-container {
@@ -1018,7 +1019,7 @@
    APPLICATION & FEATURES SECTION
    ============================================ */
 .product-features {
-  background: #fcfdfe;
+  background: #EAF1FF;
   padding: 60px 24px 80px 24px;
   margin-bottom: 40px;
   /* Added gap between features and CTA */

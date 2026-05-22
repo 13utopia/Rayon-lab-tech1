@@ -72,8 +72,8 @@ function FixedSidebar({ theme = 'glass', onGetQuote }) {
       </a>
 
       <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="sidebar-item-v2">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z" />
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 12H12V10H4V12ZM4 9H16V7H4V9ZM4 6H16V4H4V6ZM0 20V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H4L0 20ZM3.15 14H18V2H2V15.125L3.15 14ZM2 14V2V14Z" fill="white" />
         </svg>
         <span>WHATSAPP</span>
       </a>
@@ -964,6 +964,60 @@ function Footer() {
   );
 }
 
+/* ── Custom Dropdown for Consultation Form ── */
+function ConsultDropdown({ value, onChange, options, placeholder, id }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const ref = useRef(null);
+
+  // Close when clicking outside
+  React.useEffect(() => {
+    const handler = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) setIsOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  const selected = options.find(o => o.value === value);
+
+  return (
+    <div className={`consult-custom-select ${isOpen ? 'is-open' : ''}`} ref={ref} id={id}>
+      <button
+        type="button"
+        className={`consult-select-trigger consult-glass-input ${value ? 'has-value' : ''}`}
+        onClick={() => setIsOpen(o => !o)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+      >
+        <span className="consult-select-label">{selected ? selected.label : placeholder}</span>
+        <svg className="consult-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {isOpen && (
+        <ul className="consult-select-dropdown" role="listbox">
+          {options.map(opt => (
+            <li
+              key={opt.value}
+              className={`consult-select-option ${value === opt.value ? 'is-selected' : ''}`}
+              role="option"
+              aria-selected={value === opt.value}
+              onClick={() => { onChange(opt.value); setIsOpen(false); }}
+            >
+              {value === opt.value && (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              )}
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function App() {
   const [activeShowcase, setActiveShowcase] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState('home');
@@ -1121,8 +1175,7 @@ This request was submitted via the "Get your free estimate" section.
                           href="#"
                           className={currentPage === 'products' ? 'active' : ''}
                           onClick={(e) => {
-                            handleNavClick(e, 'products');
-                            setIsDropdownOpen(!isDropdownOpen);
+                            e.preventDefault();
                           }}
                         >
                           {item.toUpperCase()}
@@ -1380,14 +1433,14 @@ This request was submitted via the "Get your free estimate" section.
                       <div className={`showcase-v2-media-wrap ${isExtra ? 'extra-overlay' : ''}`}>
                         <div className="showcase-v2-media" style={{ backgroundImage: `url(${card.image})` }} />
                       </div>
-                    <div className="showcase-v2-meta">
-                      <h3 className="showcase-v2-card-title">{card.title}</h3>
-                      <p className="showcase-v2-card-desc">{card.description}</p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                      <div className="showcase-v2-meta">
+                        <h3 className="showcase-v2-card-title">{card.title}</h3>
+                        <p className="showcase-v2-card-desc">{card.description}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
 
               <div className="showcase-v2-dots">
                 {[...Array(Math.ceil(showcaseCards.length / 3))].map((_, i) => (
@@ -1419,7 +1472,7 @@ This request was submitted via the "Get your free estimate" section.
             <section className="hero-premium-v3">
               {/* Technical Pattern Overlay */}
               <div className="hero-v3-pattern"></div>
-              
+
               {/* Large Background Watermark */}
               <div className="hero-v3-watermark">RAYON</div>
 
@@ -1465,8 +1518,8 @@ This request was submitted via the "Get your free estimate" section.
                 <div className="why-rayon-content">
                   <div className="why-left-list">
                     {whyPills.map((pill, idx) => (
-                      <div 
-                        className={`why-pill ${hoveredWhyIdx === idx ? 'active' : ''}`} 
+                      <div
+                        className={`why-pill ${hoveredWhyIdx === idx ? 'active' : ''}`}
                         key={idx}
                         onMouseEnter={() => setHoveredWhyIdx(idx)}
                         onClick={() => setHoveredWhyIdx(idx)} // Added for mobile tap support
@@ -1500,16 +1553,16 @@ This request was submitted via the "Get your free estimate" section.
                         <div key={i} className={`circle-dot dot-${i}`}></div>
                       ))}
                       <div className="circle-img-wrap">
-                        <img 
+                        <img
                           src={
                             hoveredWhyIdx === 0 ? whyChooseUs1 :
-                            hoveredWhyIdx === 1 ? whyChooseUs2 :
-                            hoveredWhyIdx === 2 ? whyChooseUs3 :
-                            hoveredWhyIdx === 3 ? whyChooseUs4 :
-                            whyChooseUsCenter
-                          } 
-                          alt="Lab Interior" 
-                          className="circle-img hover-transition" 
+                              hoveredWhyIdx === 1 ? whyChooseUs2 :
+                                hoveredWhyIdx === 2 ? whyChooseUs3 :
+                                  hoveredWhyIdx === 3 ? whyChooseUs4 :
+                                    whyChooseUsCenter
+                          }
+                          alt="Lab Interior"
+                          className="circle-img hover-transition"
                         />
                       </div>
                     </div>
@@ -1597,30 +1650,30 @@ This request was submitted via the "Get your free estimate" section.
                       <form id="consult-form" className="consult-modern-form" onSubmit={handleConsultSubmit}>
                         <div className="consult-form-grid">
                           <div className="consult-input-group">
-                            <select
-                              className="consult-glass-input"
+                            <ConsultDropdown
+                              id="consult-service-select"
                               value={consultForm.service}
-                              onChange={(e) => setConsultForm({ ...consultForm, service: e.target.value })}
-                              required
-                            >
-                              <option value="" disabled>Choose a Service</option>
-                              <option value="planning">Lab Planning</option>
-                              <option value="furniture">Lab Furniture</option>
-                              <option value="exhaust">Exhaust System</option>
-                            </select>
+                              onChange={(val) => setConsultForm({ ...consultForm, service: val })}
+                              placeholder="Choose a Service"
+                              options={[
+                                { value: 'planning', label: 'Lab Planning' },
+                                { value: 'furniture', label: 'Lab Furniture' },
+                                { value: 'exhaust', label: 'Exhaust System' },
+                              ]}
+                            />
                           </div>
                           <div className="consult-input-group">
-                            <select
-                              className="consult-glass-input"
+                            <ConsultDropdown
+                              id="consult-clean-select"
                               value={consultForm.cleanType}
-                              onChange={(e) => setConsultForm({ ...consultForm, cleanType: e.target.value })}
-                              required
-                            >
-                              <option value="" disabled>Type of Clean</option>
-                              <option value="class100">Class 100</option>
-                              <option value="class1000">Class 1000</option>
-                              <option value="class10000">Class 10000</option>
-                            </select>
+                              onChange={(val) => setConsultForm({ ...consultForm, cleanType: val })}
+                              placeholder="Type of Clean"
+                              options={[
+                                { value: 'class100', label: 'Class 100' },
+                                { value: 'class1000', label: 'Class 1000' },
+                                { value: 'class10000', label: 'Class 10000' },
+                              ]}
+                            />
                           </div>
                           <div className="consult-input-group">
                             <input
@@ -1684,7 +1737,7 @@ This request was submitted via the "Get your free estimate" section.
               <svg className="serve-clip-defs" width="0" height="0" aria-hidden="true">
                 <defs>
                   <clipPath id="serve-rounded-peak-clip" clipPathUnits="objectBoundingBox">
-                    <path d="M 0.5 0.02 C 0.58 0.07, 0.84 0.12, 0.98 0.14 L 0.98 0.86 C 0.98 0.94, 0.93 0.99, 0.86 1 L 0.14 1 C 0.07 0.99, 0.02 0.94, 0.02 0.86 L 0.02 0.14 C 0.16 0.12, 0.42 0.07, 0.5 0.02 Z" />
+                    <path d="M 0.5 0 C 0.58 0.05, 0.86 0.10, 1 0.12 L 1 1 L 0 1 L 0 0.12 C 0.14 0.10, 0.42 0.05, 0.5 0 Z" />
                   </clipPath>
                 </defs>
               </svg>
@@ -1926,7 +1979,14 @@ This request was submitted via the "Get your free estimate" section.
                       <h3>{item.title}</h3>
                       <div className="card-line"></div>
                       <p>{item.desc}</p>
-
+                      <div className="industry-btn-tab">
+                        <button className="industry-action-btn-circle" type="button" aria-label={`Explore ${item.title}`}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -1959,7 +2019,7 @@ This request was submitted via the "Get your free estimate" section.
                     </div>
                     <h3 className="blog-title-large">Hospital Labs Focused On<br />Patients Begin Here.</h3>
                     <div className="blog-content-divider"></div>
-                    <p className="blog-excerpt">Most laboratory is a facility that provides controlled<br />conditions in which...</p>
+                    <p className="blog-excerpt">Most laboratory is a facility that provides controlled conditions in which...</p>
 
                     <div className="blog-read-more-wrapper">
                       <a href="#" className="blog-read-more">
@@ -2038,7 +2098,7 @@ This request was submitted via the "Get your free estimate" section.
             </div>
 
             <div className="footer-divider-v2"></div>
-            
+
             <div className="footer-grid-v2">
               {/* Branding Column - Now part of the grid for perfect alignment */}
               <div className="footer-col-v2 branding">
@@ -2047,8 +2107,16 @@ This request was submitted via the "Get your free estimate" section.
                   Pioneering precision laboratory manufacturing for global scientific excellence since 2008.
                 </p>
                 <div className="footer-social-v2">
-                  <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
-                  <div className="social-circle-v2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                  <div className="social-circle-v2">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 20C8.61667 20 7.31667 19.7375 6.1 19.2125C4.88333 18.6875 3.825 17.975 2.925 17.075C2.025 16.175 1.3125 15.1167 0.7875 13.9C0.2625 12.6833 0 11.3833 0 10C0 8.61667 0.2625 7.31667 0.7875 6.1C1.3125 4.88333 2.025 3.825 2.925 2.925C3.825 2.025 4.88333 1.3125 6.1 0.7875C7.31667 0.2625 8.61667 0 10 0C11.3833 0 12.6833 0.2625 13.9 0.7875C15.1167 1.3125 16.175 2.025 17.075 2.925C17.975 3.825 18.6875 4.88333 19.2125 6.1C19.7375 7.31667 20 8.61667 20 10C20 11.3833 19.7375 12.6833 19.2125 13.9C18.6875 15.1167 17.975 16.175 17.075 17.075C16.175 17.975 15.1167 18.6875 13.9 19.2125C12.6833 19.7375 11.3833 20 10 20ZM9 17.95V16C8.45 16 7.97917 15.8042 7.5875 15.4125C7.19583 15.0208 7 14.55 7 14V13L2.2 8.2C2.15 8.5 2.10417 8.8 2.0625 9.1C2.02083 9.4 2 9.7 2 10C2 12.0167 2.6625 13.7833 3.9875 15.3C5.3125 16.8167 6.98333 17.7 9 17.95ZM15.9 15.4C16.5833 14.65 17.1042 13.8125 17.4625 12.8875C17.8208 11.9625 18 11 18 10C18 8.36667 17.5458 6.875 16.6375 5.525C15.7292 4.175 14.5167 3.2 13 2.6V3C13 3.55 12.8042 4.02083 12.4125 4.4125C12.0208 4.80417 11.55 5 11 5H9V7C9 7.28333 8.90417 7.52083 8.7125 7.7125C8.52083 7.90417 8.28333 8 8 8H6V10H12C12.2833 10 12.5208 10.0958 12.7125 10.2875C12.9042 10.4792 13 10.7167 13 11V14H14C14.4333 14 14.825 14.1292 15.175 14.3875C15.525 14.6458 15.7667 14.9833 15.9 15.4Z" fill="#94A3B8" />
+                    </svg>
+                  </div>
+                  <div className="social-circle-v2">
+                    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6.95 13.55L12.6 7.9L11.175 6.475L6.95 10.7L4.85 8.6L3.425 10.025L6.95 13.55ZM8 20C5.68333 19.4167 3.77083 18.0875 2.2625 16.0125C0.754167 13.9375 0 11.6333 0 9.1V3L8 0L16 3V9.1C16 11.6333 15.2458 13.9375 13.7375 16.0125C12.2292 18.0875 10.3167 19.4167 8 20ZM8 17.9C9.73333 17.35 11.1667 16.25 12.3 14.6C13.4333 12.95 14 11.1167 14 9.1V4.375L8 2.125L2 4.375V9.1C2 11.1167 2.56667 12.95 3.7 14.6C4.83333 16.25 6.26667 17.35 8 17.9Z" fill="#94A3B8" />
+                    </svg>
+                  </div>
                   <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="whatsapp-pill-v2">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.801.983 3.848 1.503 5.913 1.504h.005c6.554 0 11.89-5.335 11.893-11.893a11.826 11.826 0 00-3.48-8.413z" /></svg>
                     WhatsApp Expert
@@ -2062,12 +2130,13 @@ This request was submitted via the "Get your free estimate" section.
                 <div className="footer-links-v2 dual-col">
                   <div className="link-subcol">
                     <a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'services')}>Service</a>
                     <a href="#" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a>
-                    <a href="#" onClick={(e) => handleNavClick(e, 'contact-us')}>Contact</a>
                   </div>
                   <div className="link-subcol">
                     <a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a>
-                    <a href="#" onClick={(e) => handleNavClick(e, 'portfolio')}>Portfolio</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'pricing')}>Pricing</a>
+                    <a href="#" onClick={(e) => handleNavClick(e, 'contact-us')}>Contact</a>
                   </div>
                 </div>
               </div>
@@ -2102,7 +2171,7 @@ This request was submitted via the "Get your free estimate" section.
           {/* Bottom Bar */}
           <div className="footer-bottom-v2">
             <div className="footer-bottom-inner-v2">
-              <p className="copyright-v2">Copyright © 2026 RayonLabTech All Rights Reserved.</p>
+              <p className="copyright-v2">Copyright © 2024 All Rights Reserved.</p>
               <div className="bottom-links-v2">
                 <a href="#">Privacy Policy</a>
                 <span className="sep-v2">|</span>
