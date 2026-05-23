@@ -1,7 +1,7 @@
 /* New Banner Section v2 */
 .portfolio-banner-v2 {
   padding: 100px 0 100px;
-  background-color: #f0f7ff;
+  background-color: #EAF1FF;
 }
 
 .banner-container-v2 {
@@ -156,14 +156,23 @@
 /* Installation Sections */
 .portfolio-installation-section {
   padding: 52px 0;
-  background-color: #f0f7ff;
+  background-color: #EAF1FF;
   /* Soft light blue background as in image */
 }
 
+#portfolio-installations {
+  padding-bottom: 32px;
+}
+
 .portfolio-installation-section.alt-bg {
-  background-color: #f1f5ff;
-  margin-top: 100px;
-  /* Increased to move section down further */
+  background-color: #EAF1FF;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  margin-top: 0;
+}
+
+.portfolio-installation-section.alt-bg + .portfolio-installation-section {
+  padding-top: 32px;
 }
 
 .installation-container {
@@ -177,7 +186,7 @@
   position: relative;
   background-color: #0d1e44;
   border-radius: 28px;
-  padding: 70px 50px 36px;
+  padding: 54px 50px 36px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -246,7 +255,7 @@
   backdrop-filter: blur(10px);
   border: none;
   color: white;
-  padding: 0 18px 0 22px;
+  padding: 0 24px 0 30px;
   border-radius: 50px;
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
@@ -256,14 +265,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
-  width: 178px;
-  height: 42px;
+  gap: 44px;
+  width: 249px;
+  height: 59px;
+  min-height: 59px;
+  flex: 0 0 auto;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
   z-index: 2;
-  font-size: 0.78rem;
+  font-size: 1rem;
+  line-height: 25px;
 }
 
 .products-link-btn:hover {
@@ -280,7 +292,7 @@
 
 .arrow-circle {
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 1.12rem;
   line-height: 1;
   transition: transform 0.25s ease;
 }
@@ -392,20 +404,18 @@
 /* Grid Layout V2 (Image Grid Left, Text Right) */
 .installation-grid-v2 {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  /* Expands images and balances the card */
-  gap: 100px;
-  /* Moved card and images apart as requested */
-  align-items: start;
-  margin-top: 100px;
-  margin-bottom: 40px;
+  grid-template-columns: minmax(0, 1.12fr) minmax(380px, 0.88fr);
+  gap: 26px;
+  align-items: stretch;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .installation-image-grid-v2 {
   display: grid;
-  grid-template-rows: 280px 280px;
-  /* Equal heights for symmetrical look */
+  grid-template-rows: 270px 270px;
   gap: 20px;
+  height: 560px;
 }
 
 /* Grid Layout V3 (Complex Mix) */
@@ -425,9 +435,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-bottom: 20px;
-  margin-top: -40px;
-  /* Moved up as requested */
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .top-images-row .img-wide {
@@ -442,17 +451,34 @@
   /* Matches top row's 1fr 1fr split */
   gap: 30px;
   align-items: start;
-  /* Staggered look: Card taller, Images shorter */
-  margin-top: -20px;
-  /* Moved down as requested */
+  margin-top: 0;
 }
 
 .installation-grid-v3 .installation-text-card {
-  height: 480px;
-  /* Exact match with images as requested */
-  padding: 50px 45px;
+  height: 340px;
+  padding: 18px 45px 44px;
   justify-content: flex-start;
   /* Move content towards the top */
+}
+
+.installation-grid-v3 .products-link-btn {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.installation-grid-v3 .card-watermark {
+  right: 28px;
+  bottom: 6px;
+  font-size: 4rem;
+  letter-spacing: 8px;
+}
+
+.installation-grid-v3 .installation-desc {
+  margin-bottom: 10px;
+}
+
+.installation-grid-v3 .installation-desc p {
+  margin-bottom: 10px;
 }
 
 .vertical-images-pair {
@@ -462,8 +488,7 @@
 }
 
 .bottom-mixed-row .img-vertical {
-  height: 480px;
-  /* Slightly reduced to maintain staggered rhythm */
+  height: 340px;
 }
 
 /* Responsive adjustments */
@@ -599,22 +624,35 @@
 /* Responsive Overrides for Section 2 (Vihaan Lab) */
 /* Specific overrides for Section 2 */
 .alt-bg .installation-desc {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  max-width: 90%;
+  font-size: 0.9rem;
+  line-height: 1.38;
+  opacity: 1;
+  max-width: 480px;
+  margin-bottom: 25px;
 }
 
 .alt-bg .installation-title {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 1.9rem;
+  margin-bottom: 26px;
 }
 
 .alt-bg .installation-text-card {
-  height: 580px;
-  /* Matched with Section 2 grid */
+  height: 560px;
   justify-content: flex-start;
-  padding: 50px 40px;
+  padding: 54px 50px 36px;
+}
+
+.alt-bg .installation-desc p {
+  margin-bottom: 18px;
+}
+
+.alt-bg .products-link-btn {
+  margin-top: 18px;
+  margin-bottom: 28px;
+}
+
+.alt-bg .card-watermark {
+  bottom: -18px;
 }
 
 @media (max-width: 1200px) {

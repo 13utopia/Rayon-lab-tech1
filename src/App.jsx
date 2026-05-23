@@ -73,7 +73,7 @@ function FixedSidebar({ theme = 'glass', onGetQuote }) {
 
       <a href="https://wa.me/919909030607" target="_blank" rel="noopener noreferrer" className="sidebar-item-v2">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 12H12V10H4V12ZM4 9H16V7H4V9ZM4 6H16V4H4V6ZM0 20V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H4L0 20ZM3.15 14H18V2H2V15.125L3.15 14ZM2 14V2V14Z" fill="white" />
+          <path d="M4 12H12V10H4V12ZM4 9H16V7H4V9ZM4 6H16V4H4V6ZM0 20V2C0 1.45 0.195833 0.979167 0.5875 0.5875C0.979167 0.195833 1.45 0 2 0H18C18.55 0 19.0208 0.195833 19.4125 0.5875C19.8042 0.979167 20 1.45 20 2V14C20 14.55 19.8042 15.0208 19.4125 15.4125C19.0208 15.8042 18.55 16 18 16H4L0 20ZM3.15 14H18V2H2V15.125L3.15 14ZM2 14V2V14Z" fill="currentColor" />
         </svg>
         <span>WHATSAPP</span>
       </a>
@@ -638,7 +638,40 @@ Phone: +91 ${phone}
 
 function ProductPage({ product, onGetQuote, onProductSelect }) {
   const [activeImageIndex, setActiveImageIndex] = React.useState(0);
+  const subProductsTrackRef = React.useRef(null);
   const images = product.images;
+  const defaultDescription = "LabEquip Inc. offers a modular type of working / instrument table with 3 unique types of frame design. This provides greater flexibility and interchangeability according to your laboratory room space. We strictly adhere to international safety & manufacturing standards during production, assembly, and installation of all laboratory furniture.";
+  const defaultSpecs = [
+    {
+      heading: "Material of Construction",
+      items: [
+        "Galvanized Iron Sheet (G.I.) Construction",
+        "Stainless Steel (SS) Construction",
+        "Polypropylene (PP) Construction"
+      ]
+    },
+    {
+      heading: "Table Top",
+      items: [
+        "Natural Black Granite",
+        "Stainless Steel",
+        "Phenolic Resin"
+      ]
+    }
+  ];
+  const defaultNotes = [
+    "We can design an island table as per the user in the laboratory.",
+    "Epoxy powder coated with 60-80 micron thick as per customer's choice or standard color combination."
+  ];
+  const displayDescription = product.description || defaultDescription;
+  const displaySpecs = defaultSpecs.map((fallback, index) => {
+    const spec = product.specs?.[index];
+    return {
+      heading: spec?.heading || fallback.heading,
+      items: spec?.items?.length ? spec.items : fallback.items
+    };
+  });
+  const displayNotes = product.notes?.length ? product.notes : defaultNotes;
 
   // Reset image index when product changes
   React.useEffect(() => {
@@ -651,6 +684,16 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
 
   const handleNext = () => {
     setActiveImageIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+  };
+
+  const scrollSubProducts = (direction) => {
+    const track = subProductsTrackRef.current;
+    if (!track) return;
+
+    track.scrollBy({
+      left: direction * Math.max(track.clientWidth * 0.75, 360),
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -706,7 +749,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
             {/* Right: Info */}
             <div className="product-info">
               <p className="product-description">
-                {product.description}
+                {displayDescription}
               </p>
 
               <div className="tech-specs-header">
@@ -718,7 +761,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
               </div>
 
               <div className="specs-grid">
-                {product.specs.map((spec, index) => (
+                {displaySpecs.map((spec, index) => (
                   <div className="spec-item-card" key={index}>
                     <h4>{spec.heading}</h4>
                     <div className="spec-card-divider"></div>
@@ -737,7 +780,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
               </div>
 
               <div className="note-box">
-                {product.notes.map((note, index) => (
+                {displayNotes.map((note, index) => (
                   <p key={index}>• {note}</p>
                 ))}
               </div>
@@ -776,10 +819,20 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
         <section className="sub-products-section">
           <div className="sub-products-container">
             <div className="sub-products-header">
-              <h2 className="sub-products-title">Explore Our Range</h2>
-              <div className="sub-products-underline"></div>
+              <div className="sub-products-heading-copy">
+                <h2 className="sub-products-title">Laboratory Infrastructure Solutions</h2>
+                <p>Modular systems engineered for adaptability and stringent safety protocols.</p>
+              </div>
+              <div className="sub-products-controls" aria-label="Carousel controls">
+                <button type="button" className="sub-products-nav" aria-label="Previous products" onClick={() => scrollSubProducts(-1)}>
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button type="button" className="sub-products-nav" aria-label="Next products" onClick={() => scrollSubProducts(1)}>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
             </div>
-            <div className="sub-products-grid">
+            <div className="sub-products-grid" ref={subProductsTrackRef}>
               {product.subProducts.map((sub) => (
                 <div
                   key={sub.id}
@@ -808,6 +861,16 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
         <div className="product-cta-watermark">RAYON</div>
         <div className="product-cta-container">
           <div className="product-cta-left">
+            <div className="cta-hover-list">
+              <div className="cta-hover-item">
+                <span className="cta-hover-check" aria-hidden="true"></span>
+                <span className="cta-hover-text">Design Smarter Lab Spaces With Durable Modular Workstations</span>
+              </div>
+              <div className="cta-hover-item">
+                <span className="cta-hover-check" aria-hidden="true"></span>
+                <span className="cta-hover-text">Transform Your Laboratory With High-Quality Modular Furniture</span>
+              </div>
+            </div>
             <div className="cta-visual-col">
               <div className="cta-point"><div className="cta-check">✓</div></div>
 
