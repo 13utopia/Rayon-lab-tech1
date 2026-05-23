@@ -2,6 +2,8 @@ import React from 'react';
 import './contact-us.css';
 import contactHero from './assets/hero1.png';
 
+const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
+
 const ContactUs = () => {
   const tooltipTimerRef = React.useRef(null);
   const [formData, setFormData] = React.useState({
@@ -25,6 +27,27 @@ const ContactUs = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+
+    if (!isFormComplete) {
+      setShowFormTooltip(true);
+      return;
+    }
+
+    const subject = `Contact Message: ${formData.subject} - ${formData.name}`;
+    const body = `
+New Contact Us form submission from Rayon Lab Tech Website
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+
+Message:
+${formData.message}
+    `.trim();
+
+    window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
   const handleEstimateClick = () => {
@@ -194,7 +217,7 @@ const ContactUs = () => {
                       Please fill all details first.
                     </div>
                   )}
-                  <button className="qa-estimate-btn" type="button" onClick={handleEstimateClick}>
+                  <button className="qa-estimate-btn" type="submit" form="contact-estimate-form" onClick={handleEstimateClick}>
                     Get Cost Estimate <span className="btn-arrow">&rarr;</span>
                   </button>
                 </div>

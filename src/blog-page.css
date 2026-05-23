@@ -258,10 +258,12 @@
 @media (max-width: 600px) {
   .blog-posts-grid {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
 
   .blog-grid-container {
-    padding: 0 25px;
+    padding: 0 10px;
+    margin-bottom: 38px;
   }
 
   .blog-banner {
@@ -270,5 +272,45 @@
 
   .blog-banner-title {
     font-size: 32px;
+  }
+
+  .blog-post-card {
+    min-height: 0;
+    border-radius: 24px;
+  }
+
+  .blog-post-image-wrap {
+    height: 210px;
+    padding: 10px 10px 0;
+  }
+
+  .blog-post-image {
+    border-radius: 22px;
+  }
+
+  .blog-post-info {
+    padding: 14px 20px 46px;
+  }
+
+  .blog-post-meta {
+    margin-bottom: 8px;
+  }
+
+  .blog-post-title {
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .blog-post-btn-wrap {
+    width: 56px;
+    height: 56px;
+  }
+
+  .blog-post-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex-basis: 44px;
   }
 }

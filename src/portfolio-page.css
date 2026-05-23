@@ -577,6 +577,17 @@
 }
 
 @media (max-width: 480px) {
+  .banner-container-v2 {
+    padding: 0 10px;
+    margin-top: 36px;
+  }
+
+  .banner-card-v2 {
+    border-radius: 24px;
+    padding: 36px 20px 205px;
+    width: 100%;
+  }
+
   .banner-title-v2 {
     font-size: 2.8rem;
   }
@@ -592,7 +603,17 @@
   }
 
   .banner-image-v2 {
-    height: 250px;
+    height: 205px;
+    bottom: -10px;
+  }
+
+  .portfolio-installation-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .installation-container {
+    padding: 0 10px;
   }
 
   .installation-title {
@@ -680,5 +701,75 @@
 
   .installation-text-card {
     padding: 50px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-installation-section,
+  .portfolio-installation-section.alt-bg,
+  .portfolio-installation-section.alt-bg + .portfolio-installation-section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .installation-text-card,
+  .alt-bg .installation-text-card,
+  .installation-grid-v3 .installation-text-card {
+    height: auto;
+    min-height: 0;
+    padding: 34px 24px 64px;
+    text-align: left;
+  }
+
+  .installation-title,
+  .alt-bg .installation-title {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .installation-desc,
+  .alt-bg .installation-desc,
+  .installation-grid-v3 .installation-desc {
+    font-size: 0.86rem;
+    line-height: 1.32;
+    margin-bottom: 18px;
+  }
+
+  .installation-desc p,
+  .alt-bg .installation-desc p,
+  .installation-grid-v3 .installation-desc p {
+    margin-bottom: 12px;
+  }
+
+  .products-link-btn,
+  .alt-bg .products-link-btn,
+  .installation-grid-v3 .products-link-btn {
+    width: min(100%, 280px);
+    height: 56px;
+    min-height: 56px;
+    margin: 18px auto 0;
+    justify-content: space-between;
+  }
+
+  .card-watermark,
+  .alt-bg .card-watermark,
+  .installation-grid-v3 .card-watermark {
+    left: 50%;
+    right: auto;
+    bottom: -8px;
+    width: max-content;
+    font-size: clamp(3.7rem, 18vw, 4.8rem);
+    letter-spacing: 8px;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .vertical-images-pair {
+    gap: 14px;
+  }
+
+  .bottom-mixed-row .img-vertical {
+    height: 240px;
   }
 }

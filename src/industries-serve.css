@@ -291,24 +291,37 @@
 
 @media (max-width: 768px) {
   .industries-section {
-    padding: 80px 24px;
-    border-radius: 40px;
-    margin-top: 60px;
+    padding: 48px 20px 0;
+    border-radius: 32px;
+    margin-top: 42px;
+  }
+
+  .industries-header {
+    margin-bottom: 20px;
   }
 
   .industries-title {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
+  }
+
+  .industries-subtitle {
+    font-size: 0.72rem;
+  }
+
+  .industries-grid {
+    gap: 16px;
   }
 
   .industry-card {
     height: auto;
     display: flex;
     flex-direction: column;
-    border-radius: 32px;
+    border-radius: 22px;
+    margin-bottom: 18px;
   }
 
   .industry-card-img {
-    height: 320px;
+    height: 220px;
   }
 
   .industry-info-card {
@@ -317,13 +330,63 @@
     right: auto;
     transform: none;
     max-width: 100%;
-    border-radius: 0 0 24px 24px;
-    padding: 30px 24px 62px;
+    min-height: 130px;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 20px 50px;
     box-shadow: none;
     background: #ffffff;
   }
 
+  .industry-info-card h3 {
+    margin-bottom: 12px;
+  }
+
+  .industry-info-card p {
+    font-size: 0.72rem;
+    line-height: 1.45;
+  }
+
   .industry-card:hover .industry-info-card {
     transform: none;
+  }
+
+  .industry-all-btn-wrap {
+    height: 38px;
+    margin-top: 14px;
+    align-items: flex-end;
+  }
+
+  .industry-btn-container {
+    width: 118px;
+    height: 42px;
+    border-radius: 12px 12px 0 0;
+    bottom: -2px;
+  }
+
+  .industry-btn-container::before,
+  .industry-btn-container::after {
+    width: 24px;
+    height: 24px;
+  }
+
+  .industry-btn-container::before {
+    left: -24px;
+    background: radial-gradient(circle at top left, transparent 24px, #EAF1FF 24.5px);
+  }
+
+  .industry-btn-container::after {
+    right: -24px;
+    background: radial-gradient(circle at top right, transparent 24px, #EAF1FF 24.5px);
+  }
+
+  .industry-all-btn {
+    padding: 8px 18px;
+    gap: 8px;
+    font-size: 0.55rem;
+    box-shadow: 0 6px 14px rgba(13, 30, 68, 0.08);
+  }
+
+  .industry-all-btn span {
+    font-size: 0.72rem;
   }
 }

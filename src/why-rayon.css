@@ -482,9 +482,13 @@
 
 @media (max-width: 768px) {
   .why-rayon-section {
-    padding: 60px 0;
+    padding: 38px 0;
     width: 100%;
     overflow: hidden;
+  }
+
+  .why-rayon-header {
+    margin-bottom: 26px;
   }
 
   .why-rayon-container {
@@ -495,7 +499,7 @@
 
   .why-rayon-content {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 26px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -505,51 +509,60 @@
   .why-left-list {
     order: 1;
     width: 100%;
-    gap: 12px;
+    gap: 8px;
   }
 
   .why-pill {
     min-width: 100%;
     width: 100%;
-    padding: 10px 10px 10px 20px;
+    height: 40px;
+    padding: 6px 8px 6px 16px;
+  }
+
+  .why-pill-arrow {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
   }
 
   .why-middle-circle {
     order: 2;
     width: 100%;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   .circle-ring {
-    width: 260px;
-    height: 260px;
+    width: 220px;
+    height: 220px;
   }
 
   .circle-img-wrap {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
+    padding: 10px;
   }
 
   .why-right-benefits {
     order: 3;
     width: 100%;
-    align-items: flex-start;
-    /* CRITICAL: keep left aligned for connector */
+    align-items: center;
+    text-align: center;
     padding: 0 10px;
   }
 
   .benefit-list {
-    margin-top: 20px;
-    width: 100%;
+    margin-top: 12px;
+    width: min(100%, 310px);
     padding-left: 0;
     position: relative;
+    gap: 8px;
   }
 
   .benefit-item {
     justify-content: flex-start;
-    padding: 12px 0;
-    gap: 15px;
+    padding: 7px 0;
+    gap: 12px;
     width: 100%;
   }
 
@@ -565,15 +578,18 @@
   }
 
   .benefit-main-title {
-    font-size: 1.6rem;
-    text-align: left;
+    font-size: 1.35rem;
+    text-align: center;
     width: 100%;
+    margin-bottom: 6px;
   }
 
   .benefit-desc {
-    text-align: left;
+    text-align: center;
     width: 100%;
-    font-size: 0.85rem;
+    font-size: 0.76rem;
+    line-height: 1.45;
+    margin-bottom: 4px;
   }
 
   .why-rayon-title {
@@ -584,24 +600,33 @@
 
 @media (max-width: 480px) {
   .why-rayon-section {
-    padding: 50px 0;
+    padding: 30px 0 10px;
   }
 
   .why-rayon-title {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
   }
 
   .benefit-main-title {
-    font-size: 1.4rem;
+    font-size: 1.18rem;
+    max-width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .benefit-desc {
+    max-width: 280px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .circle-ring {
-    width: 240px;
-    height: 240px;
+    width: 190px;
+    height: 190px;
   }
 
   .circle-img-wrap {
-    width: 180px;
-    height: 180px;
+    width: 148px;
+    height: 148px;
   }
 }

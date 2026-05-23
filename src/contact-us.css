@@ -690,8 +690,51 @@
     font-size: 36px;
   }
 
+  .contact-cards-container {
+    padding: 28px 16px 10px;
+  }
+
+  .contact-feature-card {
+    min-height: 230px;
+    padding: 42px 28px 32px;
+  }
+
+  .contact-qa-section {
+    padding: 26px 0 42px;
+  }
+
+  .qa-container {
+    margin-bottom: 0;
+    padding: 0 16px;
+  }
+
+  .qa-grid {
+    gap: 28px;
+  }
+
+  .qa-left {
+    margin-bottom: 0;
+  }
+
+  .qa-pill {
+    margin-bottom: 16px;
+  }
+
   .qa-title {
     font-size: 28px;
+    margin-bottom: 18px;
+  }
+
+  .qa-desc {
+    margin-bottom: 22px;
+  }
+
+  .qa-more-btn {
+    padding: 12px 28px;
+  }
+
+  .qa-form-card {
+    padding-top: 28px;
   }
 
   .qa-card-footer {

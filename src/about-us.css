@@ -194,8 +194,16 @@
 
 @media (max-width: 520px) {
   .about-hero {
-    min-height: 260px;
+    height: 180px !important;
+    min-height: 180px !important;
     border-radius: 18px;
+    margin-top: 18px;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .about-hero-title {
+    font-size: 2rem;
   }
 }
 
@@ -227,6 +235,7 @@
   font-family: 'Raleway', sans-serif !important;
   margin: 0;
   letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
 }
@@ -394,6 +403,7 @@
 
   .about-hero {
     height: 300px;
+    min-height: 300px !important;
   }
 
   .about-hero-content h1 {
@@ -423,6 +433,8 @@
   position: relative;
   height: auto;
   min-height: 420px;
+  border-radius: 22px;
+  overflow: hidden;
 }
 
 .about-contact-inner {
@@ -540,7 +552,7 @@
 
 @media (max-width: 520px) {
   .about-contact-section {
-    padding: 56px 0;
+    padding: 34px 0 46px;
   }
 
   .about-contact-inner {
@@ -566,6 +578,7 @@
 
   .about-form-submit {
     border-radius: 12px;
+    margin-top: 8px;
   }
 }
 

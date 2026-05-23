@@ -5,6 +5,8 @@ import heroBg from './assets/about-hero-scientific.png';
 import introLabImg from './assets/about-intro-lab.png';
 import contactBg from './assets/contact-handshake-bg.png';
 
+const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
+
 function HeaderLogo() {
   return (
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="footer-logo-svg">
@@ -35,6 +37,18 @@ const AboutUs = ({ onGetQuote }) => {
       return;
     }
 
+    const subject = `About Page Contact Request: ${formData.get('name')}`;
+    const body = `
+New About page contact form submission from Rayon Lab Tech Website
+
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+City: ${formData.get('city')}
+Phone: ${formData.get('phone')}
+Requirement: ${formData.get('requirement')}
+    `.trim();
+
+    window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     form.reset();
   };
 

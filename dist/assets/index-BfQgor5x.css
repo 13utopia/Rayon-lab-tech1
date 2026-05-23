@@ -9384,7 +9384,7 @@ body {
     background: #fff;
     border-radius: 30px;
     overflow: hidden;
-    box-shadow: 0 20px 50px #0d1e440d;
+   
     position: relative;
     min-height: 400px
 }
@@ -12273,7 +12273,7 @@ select.consult-glass-input {
     height: 520px;
     border-radius: 40px;
     overflow: hidden;
-    box-shadow: 0 25px 60px #0d1e4414
+    /* box-shadow: 0 25px 60px #0d1e4414 */
 }
 
 .blog-large-img-v3 {

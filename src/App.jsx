@@ -56,6 +56,12 @@ import productNavLogo from './assets/product-nav-logo.png';
 import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
+
+const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
+
+const openFormEmail = (subject, body) => {
+  window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
 import whyChooseUs1 from './assets/portfolio-s1-1.png';
 import whyChooseUs2 from './assets/portfolio-s1-2.png';
 import whyChooseUs3 from './assets/portfolio-s1-3.png';
@@ -106,6 +112,48 @@ function FixedSidebar({ theme = 'glass', onGetQuote }) {
 
 
 const navItems = ['Home', 'About Us', 'Products', 'Portfolio', 'Blog', 'Contact Us'];
+
+const pagePaths = {
+  home: '/',
+  'about-us': '/about-us',
+  products: '/products',
+  portfolio: '/portfolio',
+  blog: '/blog',
+  'contact-us': '/contact-us',
+};
+
+const allProducts = products.flatMap((product) => [product, ...(product.subProducts || [])]);
+
+const getProductById = (productId) => allProducts.find((product) => product.id === productId);
+
+const getRouteFromLocation = () => {
+  if (typeof window === 'undefined') {
+    return { page: 'home', product: products[0] };
+  }
+
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+
+  if (path.startsWith('/products/')) {
+    const productId = decodeURIComponent(path.split('/')[2] || '');
+    return { page: 'products', product: getProductById(productId) || products[0] };
+  }
+
+  if (path === '/products') {
+    return { page: 'products', product: products[0] };
+  }
+
+  const matchedPage = Object.entries(pagePaths).find(([, pagePath]) => pagePath === path);
+  return { page: matchedPage?.[0] || 'home', product: products[0] };
+};
+
+const getPathForRoute = (page, product = null) => {
+  if (page === 'products') {
+    const selected = product || products[0];
+    return `/products/${encodeURIComponent(selected.id)}`;
+  }
+
+  return pagePaths[page] || pagePaths.home;
+};
 
 const featureCards = [
   {
@@ -468,8 +516,7 @@ Technical Requirements:
 ${requirements}
       `.trim();
 
-      const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
+      openFormEmail(subject, body);
 
       alert('Technical Quote Protocol Initiated! Opening your mail client...');
       onClose();
@@ -591,8 +638,7 @@ E-mail: ${email}
 Phone: +91 ${phone}
     `.trim();
 
-    const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+    openFormEmail(subject, body);
     onClose();
   };
 
@@ -701,8 +747,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
       <section className="product-hero" aria-label="Product Hero" style={{
         backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.6), rgba(13, 30, 68, 0.6)), url(${productHeroBg})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '400px'
+        backgroundPosition: 'center'
       }}>
         <div className="product-hero-bg-text">RAYON</div>
         <div className="product-hero-content">
@@ -905,8 +950,16 @@ function Footer() {
             <h3>Subscribe to Our Newsletter</h3>
             <p>Get the latest updates on lab solutions, product launches &amp; industry news.</p>
           </div>
-          <form className="footer-nl-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="email" placeholder="Enter your email address" />
+          <form className="footer-nl-form" onSubmit={(e) => {
+            e.preventDefault();
+            const email = new FormData(e.currentTarget).get('newsletterEmail');
+            openFormEmail(
+              `Newsletter Subscription: ${email}`,
+              `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`
+            );
+            e.currentTarget.reset();
+          }}>
+            <input type="email" name="newsletterEmail" placeholder="Enter your email address" required />
             <button type="submit" className="footer-nl-btn">
               Subscribe Now
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -1082,9 +1135,14 @@ function ConsultDropdown({ value, onChange, options, placeholder, id }) {
 }
 
 function App() {
+  const initialRouteRef = React.useRef(null);
+  if (!initialRouteRef.current) {
+    initialRouteRef.current = getRouteFromLocation();
+  }
+
   const [activeShowcase, setActiveShowcase] = React.useState(0);
-  const [currentPage, setCurrentPage] = React.useState('home');
-  const [selectedProduct, setSelectedProduct] = React.useState(products[0]);
+  const [currentPage, setCurrentPage] = React.useState(initialRouteRef.current.page);
+  const [selectedProduct, setSelectedProduct] = React.useState(initialRouteRef.current.product);
   const [showQuoteModal, setShowQuoteModal] = React.useState(false);
   const [showAppointmentModal, setShowAppointmentModal] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
@@ -1103,6 +1161,20 @@ function App() {
       });
     }, 5000); // Auto-slide every 5 seconds
     return () => clearInterval(timer);
+  }, []);
+
+  React.useEffect(() => {
+    const handlePopState = () => {
+      const route = getRouteFromLocation();
+      setCurrentPage(route.page);
+      setSelectedProduct(route.product);
+      setIsDropdownOpen(false);
+      setIsPremiumMobileMenuOpen(false);
+      setIsMainMobileMenuOpen(false);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const [consultForm, setConsultForm] = useState({
@@ -1137,10 +1209,8 @@ Email: ${consultForm.email}
 This request was submitted via the "Get your free estimate" section.
     `.trim();
 
-    const mailtoLink = `mailto:Rltsales@rayonlabtech.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
     // Open mail client
-    window.location.href = mailtoLink;
+    openFormEmail(subject, body);
 
     // Simulate success
     setTimeout(() => {
@@ -1150,24 +1220,43 @@ This request was submitted via the "Get your free estimate" section.
     }, 1000);
   };
 
-  const handleNavClick = (e, page, product = null) => {
+  const handleNewsletterSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('newsletterEmail');
+
+    if (!email) return;
+
+    openFormEmail(
+      `Newsletter Subscription: ${email}`,
+      `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`
+    );
+    e.currentTarget.reset();
+  };
+
+  const handleNavClick = (e, page, product = null, options = {}) => {
+    if (e) e.preventDefault();
+    const nextProduct = page === 'products' ? (product || products[0]) : products[0];
     setCurrentPage(page);
     setIsDropdownOpen(false); // Close dropdown on any nav click
     setIsPremiumMobileMenuOpen(false);
     setIsMainMobileMenuOpen(false);
-    if (product) {
-      setSelectedProduct(product);
-    } else if (page === 'products' && !product) {
-      setSelectedProduct(products[0]);
+    setSelectedProduct(nextProduct);
+
+    const nextPath = getPathForRoute(page, nextProduct);
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, '', nextPath);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (options.scroll !== false) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const scrollToConsultation = (e) => {
     if (e) e.preventDefault();
     if (currentPage !== 'home') {
-      setCurrentPage('home');
+      handleNavClick(e, 'home', null, { scroll: false });
       setTimeout(() => {
         const element = document.getElementById('consultation-form');
         if (element) {
@@ -2137,7 +2226,7 @@ This request was submitted via the "Get your free estimate" section.
           <ProductPage
             product={selectedProduct}
             onGetQuote={() => setShowQuoteModal(true)}
-            onProductSelect={(p) => setSelectedProduct(p)}
+            onProductSelect={(p) => handleNavClick(null, 'products', p)}
           />
         )}
 
@@ -2153,10 +2242,10 @@ This request was submitted via the "Get your free estimate" section.
               {/* Newsletter Section - Now centered or full width */}
               <div className="footer-newsletter-v2">
                 <h2 className="newsletter-title-v2">Subscribe to Our Newsletter</h2>
-                <div className="newsletter-form-v2">
-                  <input type="email" placeholder="Enter Your Email Address" className="newsletter-input-v2" />
-                  <button type="button" className="newsletter-btn-v2">Subscribe Now <span className="arrow">→</span></button>
-                </div>
+                <form className="newsletter-form-v2" onSubmit={handleNewsletterSubmit}>
+                  <input type="email" name="newsletterEmail" placeholder="Enter Your Email Address" className="newsletter-input-v2" required />
+                  <button type="submit" className="newsletter-btn-v2">Subscribe Now <span className="arrow">→</span></button>
+                </form>
               </div>
             </div>
 
