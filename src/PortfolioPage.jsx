@@ -11,7 +11,7 @@ import portfolioS1Item1 from './assets/portfolio-s1-1.png';
 import portfolioS1Item2 from './assets/portfolio-s1-2.png';
 import portfolioS1Item3 from './assets/portfolio-s1-3.png';
 
-const PortfolioPage = ({ onGetQuote }) => {
+const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
   return (
     <div className="portfolio-page">
       {/* Premium Banner Section */}
@@ -49,7 +49,7 @@ const PortfolioPage = ({ onGetQuote }) => {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                 <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
               </div>
-              <button className="products-link-btn">
+              <button className="products-link-btn" type="button" onClick={onProductsClick}>
                 Our Products <span className="arrow-circle">&rarr;</span>
               </button>
             </div>
@@ -89,7 +89,7 @@ const PortfolioPage = ({ onGetQuote }) => {
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                 <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
               </div>
-              <button className="products-link-btn">
+              <button className="products-link-btn" type="button" onClick={onProductsClick}>
                 Our Products <span className="arrow-circle">→</span>
               </button>
             </div>
@@ -116,7 +116,7 @@ const PortfolioPage = ({ onGetQuote }) => {
                 <div className="installation-desc">
                   <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                 </div>
-                <button className="products-link-btn">
+                <button className="products-link-btn" type="button" onClick={onProductsClick}>
                   Our Products <span className="arrow-circle">→</span>
                 </button>
               </div>

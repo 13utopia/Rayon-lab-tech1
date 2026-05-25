@@ -10,6 +10,7 @@ import AboutUs from './AboutUs';
 import BlogPage from './BlogPage';
 import ContactUs from './ContactUs';
 import PortfolioPage from './PortfolioPage';
+import { sendFormEmail } from './email';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
@@ -56,12 +57,6 @@ import productNavLogo from './assets/product-nav-logo.png';
 import logoWhite from './assets/logo-white.png';
 import clientBgIcon from './assets/client-bg-icon.png';
 import { products } from './data/products';
-
-const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
-
-const openFormEmail = (subject, body) => {
-  window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-};
 import whyChooseUs1 from './assets/portfolio-s1-1.png';
 import whyChooseUs2 from './assets/portfolio-s1-2.png';
 import whyChooseUs3 from './assets/portfolio-s1-3.png';
@@ -496,7 +491,7 @@ function QuoteModal({ isOpen, onClose }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (phone.length === 10 && isVerified) {
       const formData = new FormData(e.target);
@@ -516,10 +511,13 @@ Technical Requirements:
 ${requirements}
       `.trim();
 
-      openFormEmail(subject, body);
-
-      alert('Technical Quote Protocol Initiated! Opening your mail client...');
-      onClose();
+      try {
+        await sendFormEmail({ subject, body, replyTo: email });
+        alert('Technical Quote Protocol Initiated! Your request has been sent.');
+        onClose();
+      } catch (error) {
+        alert(error.message || 'Could not send your request. Please try again.');
+      }
     }
   };
 
@@ -625,7 +623,7 @@ function AppointmentModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const name = formData.get('fullName');
@@ -638,8 +636,12 @@ E-mail: ${email}
 Phone: +91 ${phone}
     `.trim();
 
-    openFormEmail(subject, body);
-    onClose();
+    try {
+      await sendFormEmail({ subject, body, replyTo: email });
+      onClose();
+    } catch (error) {
+      alert(error.message || 'Could not send your request. Please try again.');
+    }
   };
 
   return (
@@ -950,14 +952,19 @@ function Footer() {
             <h3>Subscribe to Our Newsletter</h3>
             <p>Get the latest updates on lab solutions, product launches &amp; industry news.</p>
           </div>
-          <form className="footer-nl-form" onSubmit={(e) => {
+          <form className="footer-nl-form" onSubmit={async (e) => {
             e.preventDefault();
             const email = new FormData(e.currentTarget).get('newsletterEmail');
-            openFormEmail(
-              `Newsletter Subscription: ${email}`,
-              `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`
-            );
-            e.currentTarget.reset();
+            try {
+              await sendFormEmail({
+                subject: `Newsletter Subscription: ${email}`,
+                body: `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`,
+                replyTo: email,
+              });
+              e.currentTarget.reset();
+            } catch (error) {
+              alert(error.message || 'Could not send your subscription. Please try again.');
+            }
           }}>
             <input type="email" name="newsletterEmail" placeholder="Enter your email address" required />
             <button type="submit" className="footer-nl-btn">
@@ -1186,11 +1193,10 @@ function App() {
   });
   const [formStatus, setFormStatus] = useState('idle'); // 'idle', 'submitting', 'success'
 
-  const handleConsultSubmit = (e) => {
+  const handleConsultSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('submitting');
 
-    // Prepare mailto link
     const subject = `Consultation Request: ${consultForm.service} - ${consultForm.name}`;
     const body = `
 New Consultation Request from Rayon Lab Tech Website
@@ -1209,29 +1215,34 @@ Email: ${consultForm.email}
 This request was submitted via the "Get your free estimate" section.
     `.trim();
 
-    // Open mail client
-    openFormEmail(subject, body);
-
-    // Simulate success
-    setTimeout(() => {
+    try {
+      await sendFormEmail({ subject, body, replyTo: consultForm.email });
       setFormStatus('success');
       setConsultForm({ service: '', cleanType: '', area: '', name: '', email: '' });
       setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1000);
+    } catch (error) {
+      setFormStatus('idle');
+      alert(error.message || 'Could not send your request. Please try again.');
+    }
   };
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const email = formData.get('newsletterEmail');
 
     if (!email) return;
 
-    openFormEmail(
-      `Newsletter Subscription: ${email}`,
-      `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`
-    );
-    e.currentTarget.reset();
+    try {
+      await sendFormEmail({
+        subject: `Newsletter Subscription: ${email}`,
+        body: `New newsletter subscription from Rayon Lab Tech Website\n\nEmail: ${email}`,
+        replyTo: email,
+      });
+      e.currentTarget.reset();
+    } catch (error) {
+      alert(error.message || 'Could not send your subscription. Please try again.');
+    }
   };
 
   const handleNavClick = (e, page, product = null, options = {}) => {
@@ -1253,25 +1264,22 @@ This request was submitted via the "Get your free estimate" section.
     }
   };
 
-  const scrollToConsultation = (e) => {
+  const scrollToWhatWeServe = (e) => {
     if (e) e.preventDefault();
-    if (currentPage !== 'home') {
-      handleNavClick(e, 'home', null, { scroll: false });
-      setTimeout(() => {
-        const element = document.getElementById('consultation-form');
-        if (element) {
-          const yOffset = -100; // Offset for header
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 300);
-    } else {
-      const element = document.getElementById('consultation-form');
+    const scrollToSection = () => {
+      const element = document.getElementById('what-we-serve');
       if (element) {
         const yOffset = -100;
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: 'smooth' });
       }
+    };
+
+    if (currentPage !== 'home') {
+      handleNavClick(e, 'home', null, { scroll: false });
+      setTimeout(scrollToSection, 300);
+    } else {
+      scrollToSection();
     }
   };
 
@@ -1511,7 +1519,10 @@ This request was submitted via the "Get your free estimate" section.
         ) : currentPage === 'blog' ? (
           <BlogPage />
         ) : currentPage === 'portfolio' ? (
-          <PortfolioPage onGetQuote={() => setShowQuoteModal(true)} />
+          <PortfolioPage
+            onGetQuote={() => setShowQuoteModal(true)}
+            onProductsClick={(e) => handleNavClick(e, 'products')}
+          />
         ) : currentPage === 'contact-us' ? (
           <ContactUs />
         ) : currentPage === 'home' ? (
@@ -1646,7 +1657,7 @@ This request was submitted via the "Get your free estimate" section.
                       <span>Our Products</span>
                       <span className="hero-v3-arrow">→</span>
                     </button>
-                    <button className="hero-v3-btn-outline" onClick={scrollToConsultation}>
+                    <button className="hero-v3-btn-outline" onClick={scrollToWhatWeServe}>
                       <span>Our Services</span>
                       <span className="hero-v3-arrow">→</span>
                     </button>
@@ -1885,7 +1896,7 @@ This request was submitted via the "Get your free estimate" section.
               </div>
             </section>
 
-            <section className="serve-section-premium" aria-label="What We Serve">
+            <section className="serve-section-premium" id="what-we-serve" aria-label="What We Serve">
               <svg className="serve-clip-defs" width="0" height="0" aria-hidden="true">
                 <defs>
                   <clipPath id="serve-rounded-peak-clip" clipPathUnits="objectBoundingBox">
@@ -2174,7 +2185,7 @@ This request was submitted via the "Get your free estimate" section.
                     <p className="blog-excerpt">Most laboratory is a facility that provides controlled conditions in which...</p>
 
                     <div className="blog-read-more-wrapper">
-                      <a href="#" className="blog-read-more">
+                      <a href="#" className="blog-read-more" onClick={(e) => handleNavClick(e, 'blog')}>
                         Read More <span>→</span>
                       </a>
                     </div>

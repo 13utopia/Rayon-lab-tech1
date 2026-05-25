@@ -1860,7 +1860,7 @@ body {
   background: #ffffff;
   border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(13, 30, 68, 0.05);
+  box-shadow: none;
   position: relative;
   min-height: 400px;
 }
@@ -1989,7 +1989,7 @@ body {
   text-decoration: none;
   padding: 12px 28px;
   border-radius: 100px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   white-space: nowrap;
   border: none;
@@ -2000,7 +2000,7 @@ body {
   background: #0D1E44;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(13, 30, 68, 0.15);
+  box-shadow: none;
 }
 
 /* Right Small Cards List */

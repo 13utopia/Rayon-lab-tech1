@@ -1,8 +1,7 @@
 import React from 'react';
 import './contact-us.css';
 import contactHero from './assets/hero1.png';
-
-const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
+import { sendFormEmail } from './email';
 
 const ContactUs = () => {
   const tooltipTimerRef = React.useRef(null);
@@ -25,7 +24,7 @@ const ContactUs = () => {
     }));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     if (!isFormComplete) {
@@ -46,8 +45,12 @@ Message:
 ${formData.message}
     `.trim();
 
-    window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    try {
+      await sendFormEmail({ subject, body, replyTo: formData.email });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      alert(error.message || 'Could not send your message. Please try again.');
+    }
   };
 
   const handleEstimateClick = () => {

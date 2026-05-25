@@ -1389,8 +1389,8 @@
     background: #fff;
     border-radius: 24px;
     z-index: -1;
-    -webkit-mask: radial-gradient(circle at right 12px bottom 64px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 64px bottom 12px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 52px bottom 52px, #ffffff 15px, transparent 15.5px), linear-gradient(#ffffff, #ffffff) no-repeat left top / 100% calc(100% - 63px), linear-gradient(#ffffff, #ffffff) no-repeat left top / calc(100% - 63px) 100%, linear-gradient(#ffffff, #ffffff) no-repeat right 52px bottom 12px / 13px 53px, linear-gradient(#ffffff, #ffffff) no-repeat right 12px bottom 52px / 53px 13px;
-    mask: radial-gradient(circle at right 12px bottom 64px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 64px bottom 12px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 52px bottom 52px, #ffffff 15px, transparent 15.5px), linear-gradient(#ffffff, #ffffff) no-repeat left top / 100% calc(100% - 63px), linear-gradient(#ffffff, #ffffff) no-repeat left top / calc(100% - 63px) 100%, linear-gradient(#ffffff, #ffffff) no-repeat right 52px bottom 12px / 13px 53px, linear-gradient(#ffffff, #ffffff) no-repeat right 12px bottom 52px / 53px 13px;
+    -webkit-mask: radial-gradient(circle at right 12px bottom 64px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 64px bottom 12px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 52px bottom 52px, #ffffff 21px, transparent 21.5px), linear-gradient(#ffffff, #ffffff) no-repeat left top / 100% calc(100% - 63px), linear-gradient(#ffffff, #ffffff) no-repeat left top / calc(100% - 63px) 100%, linear-gradient(#ffffff, #ffffff) no-repeat right 52px bottom 12px / 13px 53px, linear-gradient(#ffffff, #ffffff) no-repeat right 12px bottom 52px / 53px 13px;
+    mask: radial-gradient(circle at right 12px bottom 64px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 64px bottom 12px, #ffffff 13px, transparent 13.5px), radial-gradient(circle at right 52px bottom 52px, #ffffff 21px, transparent 21.5px), linear-gradient(#ffffff, #ffffff) no-repeat left top / 100% calc(100% - 63px), linear-gradient(#ffffff, #ffffff) no-repeat left top / calc(100% - 63px) 100%, linear-gradient(#ffffff, #ffffff) no-repeat right 52px bottom 12px / 13px 53px, linear-gradient(#ffffff, #ffffff) no-repeat right 12px bottom 52px / 53px 13px;
     box-shadow: 0 30px 60px #00000026;
     pointer-events: none;
     transition: all .5s cubic-bezier(.165, .84, .44, 1)
@@ -1460,7 +1460,8 @@
 
 .industry-action-btn-circle:hover {
     transform: scale(1.1);
-    background: #eaf1ff
+    background: #0d1e44;
+    color: #fff
 }
 
 .industry-action-btn-circle svg {
@@ -1502,7 +1503,7 @@
     position: relative;
     width: 250px;
     height: 90px;
-    background: #f0f7ff;
+    background: #eaf1ff;
     border-radius: 20px 20px 0 0;
     display: flex;
     justify-content: center;
@@ -1511,16 +1512,27 @@
     align-self: flex-end
 }
 
+.industry-btn-container:before,
+.industry-btn-container:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    pointer-events: none
+}
+
 .industry-btn-container:before {
     left: -40px;
     border-bottom-right-radius: 40px;
-    box-shadow: 20px 0 #eaf1ff
+    box-shadow: 20px 20px #eaf1ff
 }
 
 .industry-btn-container:after {
     right: -40px;
     border-bottom-left-radius: 40px;
-    box-shadow: -20px 0 #eaf1ff
+    box-shadow: -20px 20px #eaf1ff
 }
 
 .industry-all-btn {
@@ -9384,7 +9396,7 @@ body {
     background: #fff;
     border-radius: 30px;
     overflow: hidden;
-   
+    box-shadow: 0 20px 50px #0d1e440d;
     position: relative;
     min-height: 400px
 }
@@ -9461,7 +9473,7 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #f4f8ff;
+    background: #EAF1FF;
     padding: 16px 20px;
     border-top-left-radius: 40px;
     z-index: 10;
@@ -9484,7 +9496,7 @@ body {
     top: -30px;
     right: 0;
     border-bottom-right-radius: 30px;
-    box-shadow: 10px 10px 0 10px #f4f8ff
+    box-shadow: 10px 10px 0 10px EAF1FF
 }
 
 .blog-read-more-wrapper:after {
@@ -12273,7 +12285,7 @@ select.consult-glass-input {
     height: 520px;
     border-radius: 40px;
     overflow: hidden;
-    /* box-shadow: 0 25px 60px #0d1e4414 */
+    box-shadow: 0 25px 60px #0d1e4414
 }
 
 .blog-large-img-v3 {

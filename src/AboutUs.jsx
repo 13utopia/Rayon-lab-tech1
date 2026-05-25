@@ -4,8 +4,7 @@ import teamImage from './assets/about-team-main.png';
 import heroBg from './assets/about-hero-scientific.png';
 import introLabImg from './assets/about-intro-lab.png';
 import contactBg from './assets/contact-handshake-bg.png';
-
-const FORM_RECIPIENT_EMAIL = 'smitradadiya2307@gmail.com';
+import { sendFormEmail } from './email';
 
 function HeaderLogo() {
   return (
@@ -23,7 +22,7 @@ function HeaderLogo() {
 }
 
 const AboutUs = ({ onGetQuote }) => {
-  const handleContactSubmit = (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -48,8 +47,12 @@ Phone: ${formData.get('phone')}
 Requirement: ${formData.get('requirement')}
     `.trim();
 
-    window.location.href = `mailto:${FORM_RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    form.reset();
+    try {
+      await sendFormEmail({ subject, body, replyTo: formData.get('email') });
+      form.reset();
+    } catch (error) {
+      alert(error.message || 'Could not send your message. Please try again.');
+    }
   };
 
   return (
