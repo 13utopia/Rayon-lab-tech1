@@ -160,16 +160,6 @@ ${formData.message}
                   <p key={idx} className="f-desc contact-detail-line">{detail}</p>
                 ))}
               </div>
-
-              {/* Bottom-right arrow tab — same as feature card */}
-              <div className="f-btn-tab">
-                <button className="f-action-btn" type="button" aria-label={`Contact: ${card.title}`}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </button>
-              </div>
             </article>
           ))}
         </div>

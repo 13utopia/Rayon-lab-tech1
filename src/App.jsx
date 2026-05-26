@@ -178,31 +178,31 @@ const showcaseCards = [
     title: 'Sentinel Fume Hoods',
     description: 'Variable air volume (VAV) containment for high-toxicity environments.',
     image: showcase1,
-    productId: 'fume-hood-expert'
+    productId: 'fume-spot-extractor'
   },
   {
     title: 'Monolith Workstations',
     description: 'Heavy-duty, vibration-isolated benches for precision instrumentation.',
     image: showcase2,
-    productId: 'laboratory-island-table'
+    productId: 'laboratory-furniture'
   },
   {
     title: 'Secure Storage Vaults',
     description: 'Corrosive and flammable material storage with passive venting.',
     image: showcase3,
-    productId: 'chemical-storage-cabinet'
+    productId: 'laboratory-fume-hood'
   },
   {
     title: 'Adaptive Lab Benches',
     description: 'Precision-engineered modular systems for dynamic research spaces.',
     image: infra1,
-    productId: 'laboratory-island-table'
+    productId: 'anti-vibration-table'
   },
   {
     title: 'Cleanroom Stations',
     description: 'Ultra-pure environments designed for sensitive biological analysis.',
     image: infra2,
-    productId: 'laboratory-island-table'
+    productId: 'overhead-storage-cabinet'
   },
   {
     title: 'Chemical Flow Modules',
@@ -1074,7 +1074,7 @@ function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            Copyright © 2024 <span>Rayon Lab Tech</span>. All Rights Reserved.
+            Copyright © 2026 <span>Rayon Lab Tech</span>. All Rights Reserved.
           </p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
@@ -1157,18 +1157,6 @@ function App() {
   const [isMainMobileMenuOpen, setIsMainMobileMenuOpen] = React.useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = React.useState(false);
   const [hoveredWhyIdx, setHoveredWhyIdx] = React.useState(0);
-
-  // Auto-slide effect for showcase section (Home Page)
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveShowcase((prev) => {
-        const totalSlides = Math.ceil(showcaseCards.length / 3);
-        if (totalSlides <= 1) return 0;
-        return prev < totalSlides - 1 ? prev + 1 : 0;
-      });
-    }, 5000); // Auto-slide every 5 seconds
-    return () => clearInterval(timer);
-  }, []);
 
   React.useEffect(() => {
     const handlePopState = () => {
@@ -1553,7 +1541,12 @@ This request was submitted via the "Get your free estimate" section.
                   <div className="f-divider"></div>
                   <p className="f-desc">{description}</p>
                   <div className="f-btn-tab">
-                    <button className="f-action-btn" type="button" aria-label={`Explore ${title}`}>
+                    <button
+                      className="f-action-btn"
+                      type="button"
+                      aria-label={`Explore ${title}`}
+                      onClick={(e) => handleNavClick(e, 'portfolio')}
+                    >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7"></line>
                         <polyline points="7 7 17 7 17 17"></polyline>
@@ -1589,7 +1582,7 @@ This request was submitted via the "Get your free estimate" section.
                       className="showcase-v2-card is-active"
                       key={`${activeShowcase}-${card.title}`}
                       onClick={(e) => {
-                        const prod = products.find(p => p.id === card.productId);
+                        const prod = getProductById(card.productId);
                         if (prod) handleNavClick(e, 'products', prod);
                       }}
                     >
@@ -2143,7 +2136,12 @@ This request was submitted via the "Get your free estimate" section.
                       <div className="card-line"></div>
                       <p>{item.desc}</p>
                       <div className="industry-btn-tab">
-                        <button className="industry-action-btn-circle" type="button" aria-label={`Explore ${item.title}`}>
+                        <button
+                          className="industry-action-btn-circle"
+                          type="button"
+                          aria-label={`Explore ${item.title}`}
+                          onClick={(e) => handleNavClick(e, 'portfolio')}
+                        >
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7 7 17 7 17 17"></polyline>
@@ -2157,7 +2155,7 @@ This request was submitted via the "Get your free estimate" section.
 
               <div className="industry-all-btn-wrap">
                 <div className="industry-btn-container">
-                  <a href="#" className="industry-all-btn">
+                  <a href="#" className="industry-all-btn" onClick={(e) => handleNavClick(e, 'portfolio')}>
                     All Projects <span>→</span>
                   </a>
                 </div>
@@ -2334,7 +2332,7 @@ This request was submitted via the "Get your free estimate" section.
           {/* Bottom Bar */}
           <div className="footer-bottom-v2">
             <div className="footer-bottom-inner-v2">
-              <p className="copyright-v2">Copyright © 2024 All Rights Reserved.</p>
+              <p className="copyright-v2">Copyright © 2026 All Rights Reserved.</p>
               <div className="bottom-links-v2">
                 <a href="#">Privacy Policy</a>
                 <span className="sep-v2">|</span>
