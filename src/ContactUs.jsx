@@ -3,21 +3,100 @@ import './contact-us.css';
 import contactHero from './assets/hero1.png';
 import { sendFormEmail } from './email';
 
+const estimateServiceOptions = [
+  { value: 'planning', label: 'Lab Planning' },
+  { value: 'furniture', label: 'Lab Furniture' },
+  { value: 'exhaust', label: 'Exhaust System' },
+];
+
+const estimateTypeOptions = [
+  { value: 'class100', label: 'Class 100' },
+  { value: 'class1000', label: 'Class 1000' },
+  { value: 'class10000', label: 'Class 10000' },
+];
+
+function ContactEstimateDropdown({ value, onChange, options, placeholder, id }) {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const ref = React.useRef(null);
+  const selected = options.find((option) => option.value === value);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className={`contact-estimate-select ${isOpen ? 'is-open' : ''}`} ref={ref} id={id}>
+      <button
+        type="button"
+        className={`contact-estimate-select-trigger ${value ? 'has-value' : ''}`}
+        onClick={() => setIsOpen((current) => !current)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+      >
+        <span>{selected ? selected.label : placeholder}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <ul className="contact-estimate-select-dropdown" role="listbox">
+          {options.map((option) => (
+            <li
+              key={option.value}
+              className={`contact-estimate-select-option ${value === option.value ? 'is-selected' : ''}`}
+              role="option"
+              aria-selected={value === option.value}
+              onClick={() => {
+                onChange(option.value);
+                setIsOpen(false);
+              }}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 const ContactUs = () => {
   const tooltipTimerRef = React.useRef(null);
   const [formData, setFormData] = React.useState({
+    service: '',
+    cleanType: '',
+    area: '',
     name: '',
     email: '',
-    phone: '',
-    subject: '',
-    message: '',
   });
   const [showFormTooltip, setShowFormTooltip] = React.useState(false);
+  const [formStatus, setFormStatus] = React.useState('idle');
 
   const isFormComplete = Object.values(formData).every((value) => value.trim());
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if (formStatus === 'success') {
+      setFormStatus('idle');
+    }
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+  };
+
+  const handleDropdownChange = (name, value) => {
+    if (formStatus === 'success') {
+      setFormStatus('idle');
+    }
     setFormData((currentData) => ({
       ...currentData,
       [name]: value,
@@ -32,23 +111,46 @@ const ContactUs = () => {
       return;
     }
 
-    const subject = `Contact Message: ${formData.subject} - ${formData.name}`;
+    const selectedService = estimateServiceOptions.find((option) => option.value === formData.service)?.label || formData.service;
+    const selectedCleanType = estimateTypeOptions.find((option) => option.value === formData.cleanType)?.label || formData.cleanType;
+    const subject = `Contact Estimate Request: ${selectedService} - ${formData.name}`;
     const body = `
-New Contact Us form submission from Rayon Lab Tech Website
+New Contact Us estimate request from Rayon Lab Tech Website
 
+Service Requested: ${selectedService}
+Type: ${selectedCleanType}
+Total Floor Area: ${formData.area} sq ft
 Name: ${formData.name}
 Email: ${formData.email}
-Phone: ${formData.phone}
-Subject: ${formData.subject}
-
-Message:
-${formData.message}
     `.trim();
 
     try {
-      await sendFormEmail({ subject, body, replyTo: formData.email });
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      setFormStatus('submitting');
+      await sendFormEmail({
+        subject,
+        body,
+        replyTo: formData.email,
+        templateParams: {
+          form_title: 'Contact Us Estimate Form',
+          service: selectedService,
+          selected_service: selectedService,
+          clean_type: selectedCleanType,
+          type_of_clean: selectedCleanType,
+          area: formData.area,
+          total_floor_area: formData.area,
+          from_name: formData.name,
+          customer_name: formData.name,
+          name: formData.name,
+          from_email: formData.email,
+          email: formData.email,
+          email_address: formData.email,
+          reply_to: formData.email,
+        },
+      });
+      setFormData({ service: '', cleanType: '', area: '', name: '', email: '' });
+      setFormStatus('success');
     } catch (error) {
+      setFormStatus('idle');
       alert(error.message || 'Could not send your message. Please try again.');
     }
   };
@@ -184,24 +286,31 @@ ${formData.message}
             {/* Right Form Card */}
             <div className="qa-right">
               <div className="qa-form-card">
-                <h3 className="form-card-title">Send a message to staff</h3>
-                <p className="form-card-subtitle">Your email address will not be published. Required fields are marked *</p>
+                <h3 className="form-card-title">Get your free estimate!</h3>
+                <p className="form-card-subtitle">Submit this information and we will send you the cost for the service.</p>
 
                 <form className="qa-actual-form" id="contact-estimate-form" onSubmit={handleFormSubmit}>
                   <div className="qa-form-row">
-                    <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
-                    <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} required />
+                    <ContactEstimateDropdown
+                      id="contact-service-select"
+                      value={formData.service}
+                      onChange={(value) => handleDropdownChange('service', value)}
+                      placeholder="Choose a Service"
+                      options={estimateServiceOptions}
+                    />
+                    <ContactEstimateDropdown
+                      id="contact-type-select"
+                      value={formData.cleanType}
+                      onChange={(value) => handleDropdownChange('cleanType', value)}
+                      placeholder="Type of Clean"
+                      options={estimateTypeOptions}
+                    />
                   </div>
                   <div className="qa-form-row">
-                    <input type="tel" name="phone" placeholder="Your Phone" value={formData.phone} onChange={handleInputChange} required />
-                    <input type="text" name="subject" placeholder="Subject" value={formData.subject} onChange={handleInputChange} required />
+                    <input type="text" name="area" placeholder="Total Floor Area (sq ft)" value={formData.area} onChange={handleInputChange} required />
+                    <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
                   </div>
-                  <textarea name="message" placeholder="Message" rows="4" value={formData.message} onChange={handleInputChange} required></textarea>
-
-                  <div className="qa-checkbox-wrap">
-                    <input type="checkbox" id="save-info" />
-                    <label htmlFor="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
-                  </div>
+                  <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleInputChange} required />
                 </form>
 
                 <div className="qa-card-footer">
@@ -210,8 +319,19 @@ ${formData.message}
                       Please fill all details first.
                     </div>
                   )}
-                  <button className="qa-estimate-btn" type="submit" form="contact-estimate-form" onClick={handleEstimateClick}>
-                    Get Cost Estimate <span className="btn-arrow">&rarr;</span>
+                  {formStatus === 'success' && (
+                    <div className="qa-submit-success" role="status">
+                      Message sent successfully.
+                    </div>
+                  )}
+                  <button
+                    className="qa-estimate-btn"
+                    type="submit"
+                    form="contact-estimate-form"
+                    onClick={handleEstimateClick}
+                    disabled={formStatus === 'submitting'}
+                  >
+                    {formStatus === 'submitting' ? 'Sending...' : 'Get Cost Estimate'} <span className="btn-arrow">&rarr;</span>
                   </button>
                 </div>
               </div>

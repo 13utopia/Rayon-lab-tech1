@@ -620,6 +620,7 @@ ${requirements}
 
 function AppointmentModal({ isOpen, onClose }) {
   const [phone, setPhone] = React.useState('');
+  const [appointmentStatus, setAppointmentStatus] = React.useState('idle');
 
   if (!isOpen) return null;
 
@@ -637,9 +638,29 @@ Phone: +91 ${phone}
     `.trim();
 
     try {
-      await sendFormEmail({ subject, body, replyTo: email });
+      setAppointmentStatus('submitting');
+      await sendFormEmail({
+        subject,
+        body,
+        replyTo: email,
+        configName: 'appointment',
+        templateParams: {
+          form_title: 'Appointment Request',
+          from_name: name,
+          customer_name: name,
+          name,
+          from_email: email,
+          email,
+          email_address: email,
+          phone: `+91 ${phone}`,
+          phone_number: `+91 ${phone}`,
+          reply_to: email,
+        },
+      });
+      setAppointmentStatus('success');
       onClose();
     } catch (error) {
+      setAppointmentStatus('idle');
       alert(error.message || 'Could not send your request. Please try again.');
     }
   };
@@ -675,8 +696,13 @@ Phone: +91 ${phone}
               />
             </div>
           </div>
-          <button type="submit" className="submit-protocol-btn" style={{ width: '100%', marginTop: '10px' }}>
-            Book Now →
+          <button
+            type="submit"
+            className="submit-protocol-btn"
+            style={{ width: '100%', marginTop: '10px' }}
+            disabled={appointmentStatus === 'submitting' || phone.length !== 10}
+          >
+            {appointmentStatus === 'submitting' ? 'Sending...' : 'Book Now →'}
           </button>
         </form>
       </div>
@@ -1204,7 +1230,38 @@ This request was submitted via the "Get your free estimate" section.
     `.trim();
 
     try {
-      await sendFormEmail({ subject, body, replyTo: consultForm.email });
+      const serviceLabel = {
+        planning: 'Lab Planning',
+        furniture: 'Lab Furniture',
+        exhaust: 'Exhaust System',
+      }[consultForm.service] || consultForm.service;
+      const cleanTypeLabel = {
+        class100: 'Class 100',
+        class1000: 'Class 1000',
+        class10000: 'Class 10000',
+      }[consultForm.cleanType] || consultForm.cleanType;
+
+      await sendFormEmail({
+        subject,
+        body,
+        replyTo: consultForm.email,
+        templateParams: {
+          form_title: 'Free Estimate Request',
+          service: serviceLabel,
+          selected_service: serviceLabel,
+          clean_type: cleanTypeLabel,
+          type_of_clean: cleanTypeLabel,
+          area: consultForm.area,
+          total_floor_area: consultForm.area,
+          from_name: consultForm.name,
+          customer_name: consultForm.name,
+          name: consultForm.name,
+          from_email: consultForm.email,
+          email: consultForm.email,
+          email_address: consultForm.email,
+          reply_to: consultForm.email,
+        },
+      });
       setFormStatus('success');
       setConsultForm({ service: '', cleanType: '', area: '', name: '', email: '' });
       setTimeout(() => setFormStatus('idle'), 5000);
