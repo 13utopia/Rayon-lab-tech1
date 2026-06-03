@@ -268,6 +268,12 @@
 }
 
 /* Mobile Menu Button Styling */
+.premium-nav-menu-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
 .premium-nav-menu-btn {
   display: none;
   width: 42px;
@@ -1549,8 +1555,8 @@
   transform: translateX(2px);
 }
 
-.product-cta-left > .cta-visual-col,
-.product-cta-left > .cta-text-col {
+.product-cta-left>.cta-visual-col,
+.product-cta-left>.cta-text-col {
   display: none;
 }
 

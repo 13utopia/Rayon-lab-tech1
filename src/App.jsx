@@ -624,6 +624,19 @@ function AppointmentModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
+  const formatPhoneNumber = (value) => {
+    const digits = value.replace(/\D/g, '');
+    if (digits.length <= 5) {
+      return digits;
+    }
+    return `${digits.slice(0, 5)} ${digits.slice(5, 10)}`;
+  };
+
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setPhone(formatted);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -668,7 +681,12 @@ Phone: +91 ${phone}
   return (
     <div className="quote-modal-overlay" onClick={onClose}>
       <div className="quote-modal-content appointment-modal-content" onClick={e => e.stopPropagation()}>
-        <button className="quote-modal-close" onClick={onClose}>&times;</button>
+        <button className="quote-modal-close" onClick={onClose} aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px', display: 'block' }}>
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
         <div className="appointment-modal-header">
           <h2 className="quote-modal-title">Book an Appointment</h2>
           <p className="quote-modal-desc">Fill in your details and our team will get back to you shortly.</p>
@@ -684,23 +702,21 @@ Phone: +91 ${phone}
           </div>
           <div className="form-group">
             <label>Phone Number</label>
-            <div className="phone-input-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-              <span style={{ position: 'absolute', left: '12px', color: '#1a2b56', fontWeight: '600' }}>+91</span>
+            <div className="phone-input-wrapper">
+              <span className="phone-prefix">+91</span>
               <input
                 type="tel"
                 placeholder="99090 30607"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                style={{ paddingLeft: '45px' }}
+                onChange={handlePhoneChange}
                 required
               />
             </div>
           </div>
           <button
             type="submit"
-            className="submit-protocol-btn"
-            style={{ width: '100%', marginTop: '10px' }}
-            disabled={appointmentStatus === 'submitting' || phone.length !== 10}
+            className="appointment-submit-btn"
+            disabled={appointmentStatus === 'submitting' || phone.replace(/\s/g, '').length !== 10}
           >
             {appointmentStatus === 'submitting' ? 'Sending...' : 'Book Now →'}
           </button>
@@ -1198,6 +1214,13 @@ function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAppointmentModal(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const [consultForm, setConsultForm] = useState({
     service: '',
     cleanType: '',
@@ -1455,7 +1478,7 @@ This request was submitted via the "Get your free estimate" section.
                 </svg>
               </div>
               <button className="nav-appointment-btn" onClick={() => setShowAppointmentModal(true)}>
-                Appointment
+                Book Appointment
                 <span className="btn-arrow">
                   <svg width="18" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -1552,7 +1575,7 @@ This request was submitted via the "Get your free estimate" section.
                 </div>
 
                 <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowAppointmentModal(true); }}>
-                  Appointment <span className="btn-arrow">→</span>
+                  Book Appointment <span className="btn-arrow">→</span>
                 </button>
               </div>
             </div>
