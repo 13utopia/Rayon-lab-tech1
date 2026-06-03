@@ -688,7 +688,7 @@ Phone: +91 ${phone}
           </svg>
         </button>
         <div className="appointment-modal-header">
-          <h2 className="quote-modal-title">Book an Appointment</h2>
+          <h2 className="quote-modal-title">Get A Quote Now</h2>
           <p className="quote-modal-desc">Fill in your details and our team will get back to you shortly.</p>
         </div>
         <form className="quote-form" onSubmit={handleSubmit}>
