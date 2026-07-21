@@ -28,7 +28,7 @@ import showcase3 from './assets/lab-working-table-132.webp';
 import infra1 from './assets/lab-furniture-73.webp';
 import infra2 from './assets/Laboratory-Furniture-Supplier-74.webp';
 import infra3 from './assets/lab-working-table-75.webp';
-import heroMain from './assets/hero-banner-custom.jpg';
+import heroMain from './assets/Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad.webp';
 import labInterior from './assets/College-Laboratory-Furniture-78.webp';
 import serveNew1 from './assets/Pharmaceutical-Laboratory-Furniture-127.webp';
 import serveNew2 from './assets/College-Laboratory-Furniture-128.webp';
