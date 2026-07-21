@@ -1,0 +1,443 @@
+.serve-section-premium {
+  padding: 100px 0;
+  background: #EAF1FF;
+  font-family: 'Manrope', sans-serif;
+  overflow: visible;
+}
+
+.serve-container-premium {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  margin-top: -90px;
+  margin-bottom: -80px;
+}
+
+.serve-header-premium {
+  text-align: center;
+  margin-bottom: 70px;
+  font-weight: 500px;
+}
+
+.serve-header-premium h2 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #0D1E44;
+  margin-bottom: 15px;
+}
+
+.serve-header-premium p {
+  color: #5f6f8e;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+
+}
+
+.serve-grid-premium {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding-bottom: 48px;
+}
+
+.serve-clip-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.serve-card-premium {
+  background: transparent;
+  border-radius: 30px;
+  position: relative;
+  overflow: visible;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-bottom: 42px;
+}
+
+.serve-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(13, 30, 68, 0.05);
+  border: 1px solid rgba(13, 30, 68, 0.03);
+}
+
+.serve-card-premium:hover {
+  transform: translateY(-12px);
+}
+
+.serve-card-premium:hover .serve-card-inner {
+  box-shadow: 0 30px 60px rgba(13, 30, 68, 0.12);
+}
+
+/* Watermark Background Icon — fully inside card */
+.serve-card-watermark {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.06;
+  pointer-events: none;
+  color: #0D1E44;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serve-card-watermark .serve-icon-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.serve-card-content-wrap {
+  padding: 40px 35px 20px;
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.serve-card-top {
+  display: flex;
+  flex-direction: column;
+  /* Stacked: Title below Icon */
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.serve-card-icon-box {
+  width: 45px;
+  height: 45px;
+  color: #0D1E44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serve-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #0D1E44;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.serve-icon-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none;
+  /* No color fill/alteration as requested */
+}
+
+.serve-card-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(13, 30, 68, 0.08);
+  margin-bottom: 20px;
+}
+
+.serve-card-desc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.serve-card-desc-list p {
+  font-size: 0.68rem;
+  line-height: 1.4;
+  color: #5f6f8e;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.serve-card-premium:hover .serve-card-desc-list p {
+  color: #2b3a5a;
+}
+
+.serve-card-image-section {
+  position: relative;
+  margin-top: auto;
+  padding: 0;
+  overflow: visible;
+}
+
+.serve-card-image-box {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  -webkit-mask-image: url('/src/assets/lab-furniture-123.webp');
+  mask-image: url('/src/assets/lab-furniture-123.webp');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: all 0.5s ease;
+}
+
+/* Plus hexagon: hidden by default, shows on card hover */
+.serve-bottom-hexagon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.serve-card-premium:hover .serve-bottom-hexagon {
+  opacity: 1;
+  visibility: visible;
+  z-index: 35;
+}
+
+.serve-bottom-hexagon .serve-hexagon-outer-white {
+  width: 72px;
+  height: 82px;
+  margin-bottom: 0;
+  transform: scale(0.4);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 16px rgba(13, 30, 68, 0.18));
+}
+
+.serve-bottom-hexagon .serve-hexagon-center-btn {
+  width: 64px;
+  height: 74px;
+}
+
+.serve-bottom-hexagon .serve-hexagon-center-btn .plus-icon {
+  font-size: 2.2rem;
+}
+
+.serve-card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.serve-card-premium:hover .serve-card-image-box img {
+  transform: scale(1.1);
+}
+
+.serve-hover-hexagon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 30, 68, 0.4);
+  -webkit-mask-image: url('/src/assets/lab-furniture-123.webp');
+  mask-image: url('/src/assets/lab-furniture-123.webp');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.serve-card-premium:hover .serve-hover-hexagon-overlay {
+  opacity: 1;
+}
+
+.serve-hexagon-outer-white {
+  width: 85px;
+  height: 95px;
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(20px) scale(0.3);
+  margin-bottom: 0;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.serve-card-premium:hover .serve-bottom-hexagon .serve-hexagon-outer-white {
+  transform: scale(1);
+}
+
+.serve-hexagon-center-btn {
+  width: 77px;
+  /* Creating a 4px border effect */
+  height: 87px;
+  background: #0D1E44;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.plus-icon {
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 200;
+  /* Thin plus like the image */
+  line-height: 1;
+}
+
+/* Subtle Hexagon Pattern inside the button */
+.serve-hexagon-center-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M10 0 L18.66 5 L18.66 15 L10 20 L1.34 15 L1.34 5 Z' fill='none' stroke='white' stroke-opacity='0.1' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 15px;
+  opacity: 0.5;
+}
+
+.serve-hexagon-center-btn .plus-icon {
+  color: #ffffff;
+  font-size: 2.8rem;
+  position: relative;
+  z-index: 2;
+  margin-top: -2px;
+}
+
+/* Dots Navigation */
+.serve-dots-premium {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 50px;
+}
+
+.serve-dot-premium {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(13, 30, 68, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.serve-dot-premium.active {
+  background: #0D1E44;
+  width: 30px;
+  border-radius: 100px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .serve-container-premium {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .serve-grid-premium {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .serve-section-premium {
+    padding: 60px 0;
+  }
+
+  .serve-header-premium {
+    margin-bottom: 40px;
+    padding: 0 20px;
+  }
+
+  .serve-grid-premium {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .serve-header-premium h2 {
+    font-size: 2.2rem;
+  }
+
+  .serve-card-premium,
+  .serve-card-inner {
+    border-radius: 24px;
+  }
+
+  .serve-card-content-wrap {
+    padding: 30px 25px 15px;
+  }
+
+  .serve-card-title {
+    font-size: 1.4rem;
+  }
+
+  .serve-card-image-box {
+    height: 280px;
+  }
+
+  .serve-card-watermark {
+    width: 100px;
+    height: 100px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .serve-bottom-hexagon .serve-hexagon-outer-white {
+    width: 64px;
+    height: 74px;
+  }
+
+  .serve-bottom-hexagon .serve-hexagon-center-btn {
+    width: 58px;
+    height: 68px;
+  }
+}
+
+@media (max-width: 480px) {
+  .serve-header-premium h2 {
+    font-size: 1.8rem;
+  }
+
+  .serve-card-content-wrap {
+    padding: 25px 20px 10px;
+  }
+
+  .serve-card-top {
+    gap: 12px;
+  }
+
+  .serve-card-image-box {
+    height: 240px;
+  }
+}

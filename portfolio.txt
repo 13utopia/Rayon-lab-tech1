@@ -1,0 +1,51 @@
+# PORTFOLIO PAGE
+
+## PORTFOLIO HERO
+
+### Heading
+
+Our Portfolio
+
+### Description — 13 words
+
+Explore customised laboratory furniture projects engineered for safety, durability, efficiency, precision, and performance.
+
+### Button
+
+Explore Portfolio
+
+---
+
+## CUREZA HEALTH CARE
+
+### Heading
+
+Cureza Health Care
+
+### Description — 43 words
+
+Rayon Lab Tech delivered customised laboratory working tables, island tables, overhead storage cabinets, and stainless steel furniture for Cureza Health Care. The project focused on hygienic finishes, efficient space utilisation, organised storage, durable construction, and a practical workflow for daily healthcare laboratory operations.
+
+### Button
+
+Our Products
+
+---
+
+## VIHAAN LAB
+
+### Heading
+
+Vihaan Lab
+
+### Paragraph 1 — 43 words
+
+Rayon Lab Tech designed and installed customised laboratory furniture for Vihaan Lab, including modular working tables, island tables, storage cabinets, and utility-ready workstations. The layout was planned to improve movement, equipment placement, accessibility, organisation, and overall efficiency throughout daily scientific laboratory testing activities.
+
+### Paragraph 2 — 48 words
+
+Each unit was manufactured using durable materials and precise specifications to support safe, reliable, and long-term performance. The completed laboratory combines practical storage, strong working surfaces, organised utility access, and an efficient layout suited to testing, research, sample preparation, and everyday scientific operations across demanding modern laboratory environments.
+
+### Button
+
+Our Products

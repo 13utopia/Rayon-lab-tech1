@@ -1,0 +1,345 @@
+/* Our Clients Section - Premium Design */
+.client-section-v2 {
+  position: relative;
+  font-family: Raleway;
+  font-weight: 100;
+  padding: 120px 0;
+  background-color: #f8fbff;
+  /* Lighter clean background */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: -20px;
+}
+
+/* Background Watermark */
+.client-watermark-v2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-5deg);
+  width: 950px;
+  height: auto;
+  opacity: 0.03;
+  /* Very subtle watermark */
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d1e44;
+}
+
+.client-watermark-svg {
+  width: 100%;
+  height: auto;
+}
+
+
+.client-container-v2 {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1250px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.client-main-heading-centered {
+  font-family: 'Raleway', sans-serif;
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #0d1e44;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: -1.5px;
+  position: relative;
+  margin-top: -20px;
+}
+
+.client-divider-v2 {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(13, 30, 68, 0.06);
+  margin: 0;
+}
+
+.client-logo-grid-v2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.client-logo-row-v2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0;
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+}
+
+.client-logo-item-v2 {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0d1e44;
+  transition: all 0.3s ease;
+  min-height: 40px;
+}
+
+
+/* Logo Specific Styles to match image sequence */
+
+/* 1. LAB */
+.logo-lab {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #0d1e44;
+}
+
+.lab-text-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.lab-dots-diamond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  margin-top: -15px;
+  margin-right: -10px;
+  margin-left: 5px;
+}
+
+.lab-dots-diamond .d-mid {
+  display: flex;
+  gap: 1px;
+}
+
+.lab-dots-diamond .d-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #0d1e44;
+  border-radius: 50%;
+}
+
+.a-char-stylized {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0d1e44;
+  margin-top: 4px;
+}
+
+/* 2. SCIENCE */
+.logo-science-v2 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sc-orb-container {
+  width: 40px;
+  height: 40px;
+  color: #0d1e44;
+}
+
+.sc-text-inner {
+  font-size: 8px;
+  font-weight: 900;
+  fill: #0d1e44;
+}
+
+.science-text-v2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #0d1e44;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* 3. BIOLAB */
+.logo-biolab-v2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #0d1e44;
+}
+
+/* 4. LABORA */
+.logo-labora-v2 {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0d1e44;
+}
+
+.flask-o-stylized {
+  width: 28px;
+  height: 28px;
+  margin-bottom: -4px;
+  color: #0d1e44;
+}
+
+/* 5. BIOLOGY CENTER */
+.logo-biology-v2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bio-square-icon {
+  width: 38px;
+  height: 38px;
+  color: #0d1e44;
+}
+
+.bio-text-stack {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+
+.bio-top {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #0d1e44;
+}
+
+.bio-bot {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0d1e44;
+}
+
+/* 6. ECO LAB */
+.logo-ecolab-v2 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0d1e44;
+}
+
+.micro-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+  .client-container-v2 {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .client-logo-row-v2 {
+    justify-content: center;
+    /* Center for better balance when wrapping */
+    gap: 40px 60px;
+  }
+
+  .client-logo-item-v2 {
+    flex: 0 1 calc(33.33% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-section-v2 {
+    padding: 80px 0;
+  }
+
+  .client-container-v2 {
+    padding: 0 24px;
+  }
+
+  .client-main-heading-centered {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
+
+  .client-logo-row-v2 {
+    padding: 40px 0;
+    gap: 40px 30px;
+    justify-content: center;
+  }
+
+  .client-logo-item-v2 {
+    flex: 0 1 calc(50% - 20px);
+    min-width: 120px;
+  }
+
+  @media (max-width: 991px) {
+    .client-watermark-v2 {
+      width: 600px;
+    }
+
+    .client-main-heading-centered {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .client-section-v2 {
+      padding: 60px 0;
+    }
+
+    .client-logo-row-v2 {
+      padding: 40px 0;
+      gap: 40px 30px;
+    }
+
+    .client-watermark-v2 {
+      width: 450px;
+      opacity: 0.05;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .client-container-v2 {
+      padding: 0 20px;
+    }
+
+    .client-main-heading-centered {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .client-logo-row-v2 {
+      padding: 30px 0;
+      gap: 35px 20px;
+    }
+
+    .client-logo-item-v2 {
+      flex: 0 1 45%;
+      min-width: 130px;
+    }
+
+    .client-watermark-v2 {
+      width: 500px;
+      opacity: 0.06;
+      top: 50%;
+    }
+  }
+}

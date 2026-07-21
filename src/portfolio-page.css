@@ -1,0 +1,761 @@
+/* New Banner Section v2 */
+.portfolio-banner-v2 {
+  padding: 100px 0 100px;
+  background-color: #EAF1FF;
+}
+
+.banner-container-v2 {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 25px;
+  margin-top: 60px;
+}
+
+.banner-card-v2 {
+  background-image: url('./assets/College-Laboratory-Furniture-21.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  padding: 70px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 350px;
+  font-family: Raleway;
+}
+
+.banner-card-v2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(13, 30, 68, 0.75), rgba(13, 30, 68, 0.75));
+  z-index: 1;
+}
+
+.banner-card-v2::after {
+  display: none;
+}
+
+.banner-content-v2 {
+  max-width: 600px;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner-title-v2 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 25px;
+  line-height: 1.1;
+  margin-top: -20px;
+}
+
+.banner-desc-v2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.portfolio-hero-link-wrap {
+  margin-top: 58px;
+}
+
+.portfolio-hero-link {
+  position: relative;
+  width: 249px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  padding: 0 72px 0 34px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.33) 100%);
+  border-radius: 50px;
+  color: #ffffff;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.portfolio-hero-link span {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.portfolio-hero-link svg {
+  position: absolute;
+  left: 79.92%;
+  right: 13.09%;
+  top: 39.33%;
+  bottom: 39.33%;
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.portfolio-hero-link:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+.banner-image-v2 {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 455px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.banner-microscope-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+}
+
+/* Installation Sections */
+.portfolio-installation-section {
+  padding: 52px 0;
+  background-color: #EAF1FF;
+  /* Soft light blue background as in image */
+}
+
+#portfolio-installations {
+  padding-bottom: 32px;
+}
+
+.portfolio-installation-section.alt-bg {
+  background-color: #EAF1FF;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  margin-top: 0;
+}
+
+.portfolio-installation-section.alt-bg + .portfolio-installation-section {
+  padding-top: 32px;
+}
+
+.installation-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Common Text Card */
+.installation-text-card {
+  position: relative;
+  background-color: #0d1e44;
+  border-radius: 28px;
+  padding: 54px 50px 36px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Aligned to top as in image */
+  box-shadow: none;
+  height: 100%;
+  /* Refined height for better proportion */
+  font-family: Raleway;
+  overflow: hidden;
+}
+
+.card-watermark {
+  position: absolute;
+  bottom: -18px;
+  right: -20px;
+  font-size: 6rem;
+  font-weight: 600;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  line-height: 1;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  user-select: none;
+  z-index: 1;
+  transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.installation-text-card:hover .card-watermark {
+  letter-spacing: 18px;
+  opacity: 1;
+}
+
+.installation-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.9rem;
+  /* Reduced for high-impact balance */
+  font-weight: 600;
+  margin-bottom: 26px;
+  position: relative;
+  z-index: 2;
+  line-height: 1.2;
+}
+
+.installation-desc {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  /* Reduced as requested */
+  line-height: 1.38;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+  max-width: 480px;
+}
+
+.installation-desc p {
+  margin-bottom: 18px;
+}
+
+.products-link-btn {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.33) 100%);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: white;
+  padding: 0 24px 0 30px;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  margin-top: 18px;
+  margin-bottom: 28px;
+  /* Push to bottom */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 44px;
+  width: 249px;
+  height: 59px;
+  min-height: 59px;
+  flex: 0 0 auto;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  z-index: 2;
+  font-size: 1rem;
+  line-height: 25px;
+}
+
+.products-link-btn:hover {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.42) 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+.products-link-btn:hover .arrow-circle {
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.arrow-circle {
+  color: #ffffff;
+  font-size: 1.12rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+/* Grid Layout V1 (Text Left, Image Grid Right) */
+.installation-grid-v1 {
+  display: grid;
+  grid-template-columns: minmax(380px, 0.88fr) minmax(0, 1.12fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+.installation-grid-v1 .installation-text-card,
+.installation-grid-v1 .installation-image-grid-v1 {
+  height: 560px;
+  min-height: 0;
+}
+
+/* ── 3-Column Arch Image Grid ── */
+.portfolio-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* White card frame with arch/house top shape */
+.arch-card-wrap {
+  background: #ffffff;
+  border: 1.5px solid rgba(200, 218, 248, 0.85);
+  border-radius: 52% 52% 26px 26px / 30% 30% 26px 26px;
+  box-shadow: 0 8px 30px rgba(13, 30, 68, 0.07);
+  padding: 7px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.arch-card-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(13, 30, 68, 0.13);
+}
+
+/* Inner image container clipped to arch shape */
+.arch-image-card {
+  width: 100%;
+  height: 290px;
+  overflow: hidden;
+  border-radius: 50% 50% 20px 20px / 28% 28% 20px 20px;
+}
+
+.arch-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.arch-card-wrap:hover .arch-image-card img {
+  transform: scale(1.06);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .portfolio-arch-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .arch-image-card {
+    height: 240px;
+  }
+}
+
+.installation-image-grid-v1 {
+  display: grid;
+  grid-template-rows: 335px 205px;
+  gap: 20px;
+}
+
+.installation-image-grid-v1 .img-large-top,
+.installation-image-grid-v1 .img-small-row,
+.installation-image-grid-v1 .img-small {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.img-large-top img,
+.img-small img,
+.img-large-square img,
+.img-wide-bottom img,
+.img-wide img,
+.img-vertical img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Consistent soft corners */
+  box-shadow: none;
+  display: block;
+}
+
+.img-small-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Grid Layout V2 (Image Grid Left, Text Right) */
+.installation-grid-v2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(380px, 0.88fr);
+  gap: 26px;
+  align-items: stretch;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.installation-image-grid-v2 {
+  display: grid;
+  grid-template-rows: 270px 270px;
+  gap: 20px;
+  height: 560px;
+}
+
+/* Grid Layout V3 (Complex Mix) */
+.installation-grid-v3 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  /* Consistent gap throughout the grid */
+}
+
+/* Branded card alignment perfected above */
+
+/* Content refined above */
+
+.top-images-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.top-images-row .img-wide {
+  height: 340px;
+  /* Matched height for balance */
+  width: 100%;
+}
+
+.bottom-mixed-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Matches top row's 1fr 1fr split */
+  gap: 30px;
+  align-items: start;
+  margin-top: 0;
+}
+
+.installation-grid-v3 .installation-text-card {
+  height: 340px;
+  padding: 18px 45px 44px;
+  justify-content: flex-start;
+  /* Move content towards the top */
+}
+
+.installation-grid-v3 .products-link-btn {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.installation-grid-v3 .card-watermark {
+  right: 28px;
+  bottom: 6px;
+  font-size: 4rem;
+  letter-spacing: 8px;
+}
+
+.installation-grid-v3 .installation-desc {
+  margin-bottom: 10px;
+}
+
+.installation-grid-v3 .installation-desc p {
+  margin-bottom: 10px;
+}
+
+.vertical-images-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bottom-mixed-row .img-vertical {
+  height: 340px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .banner-title-v2 {
+    font-size: 4rem;
+  }
+
+  .banner-card-v2 {
+    padding: 80px 60px;
+  }
+
+  .banner-image-v2 {
+    height: 110%;
+    right: 20px;
+  }
+
+  .installation-grid-v1,
+  .installation-grid-v2 {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .installation-grid-v1 .installation-text-card,
+  .installation-grid-v1 .installation-image-grid-v1 {
+    height: auto;
+  }
+
+  .installation-grid-v1 .installation-text-card {
+    min-height: 0;
+  }
+
+  .installation-image-grid-v1 {
+    grid-template-rows: 300px 230px;
+  }
+
+  .installation-text-card {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .banner-card-v2 {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 40px;
+    overflow: hidden;
+  }
+
+  .banner-card-v2::before,
+  .banner-card-v2::after {
+    width: 100%;
+    right: 0;
+    opacity: 0.28;
+  }
+
+  .banner-title-v2 {
+    font-size: 3.5rem;
+  }
+
+  .banner-desc-v2 {
+    margin: 0 auto;
+  }
+
+  .portfolio-hero-link-wrap {
+    width: fit-content;
+    margin: 48px auto 0;
+    text-align: left;
+  }
+
+  .banner-image-v2 {
+    right: 50%;
+    transform: translateX(50%);
+    bottom: -20px;
+    top: auto;
+    height: 350px;
+  }
+
+  .bottom-mixed-row {
+    grid-template-columns: 1fr;
+  }
+
+  .top-images-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container-v2 {
+    padding: 0 10px;
+    margin-top: 36px;
+  }
+
+  .banner-card-v2 {
+    border-radius: 24px;
+    padding: 36px 20px;
+    width: 100%;
+  }
+
+  .banner-title-v2 {
+    font-size: 2.8rem;
+  }
+
+  .banner-desc-v2 {
+    font-size: 1.1rem;
+  }
+
+  .portfolio-hero-link {
+    width: 230px;
+    height: 56px;
+    padding-left: 28px;
+  }
+
+  .banner-image-v2 {
+    height: 205px;
+    bottom: -10px;
+  }
+
+  .portfolio-installation-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .installation-container {
+    padding: 0 10px;
+  }
+
+  .installation-title {
+    font-size: 1.8rem;
+  }
+
+  .installation-text-card {
+    padding: 40px 25px;
+  }
+
+  .card-watermark {
+    font-size: 5rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Overrides for Section 2 (Vihaan Lab) */
+/* Specific overrides for Section 2 */
+.alt-bg .installation-desc {
+  font-size: 0.9rem;
+  line-height: 1.38;
+  opacity: 1;
+  max-width: 480px;
+  margin-bottom: 25px;
+}
+
+.alt-bg .installation-title {
+  font-size: 1.9rem;
+  margin-bottom: 26px;
+}
+
+.alt-bg .installation-text-card {
+  height: 560px;
+  justify-content: flex-start;
+  padding: 54px 50px 36px;
+}
+
+.alt-bg .installation-desc p {
+  margin-bottom: 18px;
+}
+
+.alt-bg .products-link-btn {
+  margin-top: 18px;
+  margin-bottom: 28px;
+}
+
+.alt-bg .card-watermark {
+  bottom: -18px;
+}
+
+@media (max-width: 1200px) {
+  .installation-grid-v2 {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 992px) {
+  .installation-grid-v2 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .installation-image-grid-v2 {
+    grid-template-rows: 400px 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .installation-image-grid-v2 {
+    grid-template-rows: 320px 180px;
+  }
+
+  .installation-text-card {
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-installation-section,
+  .portfolio-installation-section.alt-bg,
+  .portfolio-installation-section.alt-bg + .portfolio-installation-section {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .installation-text-card,
+  .alt-bg .installation-text-card,
+  .installation-grid-v3 .installation-text-card {
+    height: auto;
+    min-height: 0;
+    padding: 34px 24px 64px;
+    text-align: left;
+  }
+
+  .installation-title,
+  .alt-bg .installation-title {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  .installation-desc,
+  .alt-bg .installation-desc,
+  .installation-grid-v3 .installation-desc {
+    font-size: 0.86rem;
+    line-height: 1.32;
+    margin-bottom: 18px;
+  }
+
+  .installation-desc p,
+  .alt-bg .installation-desc p,
+  .installation-grid-v3 .installation-desc p {
+    margin-bottom: 12px;
+  }
+
+  .products-link-btn,
+  .alt-bg .products-link-btn,
+  .installation-grid-v3 .products-link-btn {
+    width: min(100%, 280px);
+    height: 56px;
+    min-height: 56px;
+    margin: 18px auto 0;
+    justify-content: space-between;
+  }
+
+  .card-watermark,
+  .alt-bg .card-watermark,
+  .installation-grid-v3 .card-watermark {
+    left: 50%;
+    right: auto;
+    bottom: -8px;
+    width: max-content;
+    font-size: clamp(3.7rem, 18vw, 4.8rem);
+    letter-spacing: 8px;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .vertical-images-pair {
+    gap: 14px;
+  }
+
+  .bottom-mixed-row .img-vertical {
+    height: 240px;
+  }
+}

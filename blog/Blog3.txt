@@ -1,0 +1,92 @@
+# BLOG 3
+
+## Laboratory Fume Hood, Fume Spot Extractor or Scrubber: What Does Your Lab Need?
+
+### URL Slug
+
+laboratory-fume-hood-extractor-scrubber-guide
+
+### Meta Title
+
+Fume Hood, Spot Extractor & Scrubber Guide
+
+### Meta Description
+
+Understand the difference between a laboratory fume hood, fume spot extractor, exhaust blower, and scrubber before planning your laboratory ventilation system.
+
+### Focus Keywords
+
+laboratory fume hood, fume spot extractor, exhaust blower and scrubber, fume-control system, chemical laboratory furniture, laboratory equipment
+
+## Blog Content
+
+Laboratory processes can generate fumes, vapours, odours, dust, and airborne contaminants. Selecting the correct fume-control system is essential for creating a safer working environment.
+
+A laboratory fume hood, fume spot extractor, exhaust blower, and scrubber perform different functions. They should not be selected only according to price or available space.
+
+The correct system depends on the substances being handled, process quantity, exposure risk, required airflow, exhaust route, filtration, laboratory layout, and applicable safety requirements.
+
+### What Is a Laboratory Fume Hood?
+
+A laboratory fume hood is an enclosed workspace designed to capture contaminants generated during chemical handling and direct them into an exhaust or treatment system.
+
+A fume hood may include:
+
+* Enclosed working chamber
+* Movable front sash
+* Worktop
+* Internal lining
+* Utility points
+* Lighting
+* Airflow monitoring
+* Exhaust connection
+* Storage beneath the unit
+
+Laboratory fume hoods are generally used where chemical reactions, solvent handling, acid work, heating, or other processes may release hazardous vapours.
+
+### What Is a Fume Spot Extractor?
+
+A fume spot extractor captures contaminants close to a specific point of generation. It commonly includes an adjustable extraction arm that can be positioned near the process.
+
+Spot extractors may be suitable for localised, low-volume activities where full enclosure is not required. Their suitability must still be evaluated according to the substance and process risk.
+
+### What Is an Exhaust Blower?
+
+An exhaust blower creates the airflow required to move contaminated air through the ducting system.
+
+The blower must be selected according to:
+
+* Required air volume
+* Duct length
+* Number of bends
+* Pressure loss
+* Hood size
+* Chemical compatibility
+* Exhaust-discharge requirements
+
+An incorrectly selected blower may create insufficient or unstable airflow.
+
+### What Is a Scrubber?
+
+A scrubber is used to treat selected contaminants in the exhaust air before discharge. The appropriate scrubber type depends on the chemical composition, concentration, airflow, and treatment requirements.
+
+A scrubber should be designed as part of the complete exhaust system rather than added without technical evaluation.
+
+### Important Selection Factors
+
+Before selecting a fume-control system, identify:
+
+1. Chemicals and processes involved
+2. Quantity and frequency of use
+3. Required containment level
+4. Available exhaust route
+5. Laboratory airflow conditions
+6. Duct and blower requirements
+7. Treatment or filtration requirements
+8. Maintenance and inspection needs
+
+### Conclusion
+
+A laboratory fume hood provides enclosed containment, a fume spot extractor captures contaminants near a local source, an exhaust blower moves air through the system, and a scrubber treats suitable contaminants before discharge.
+
+Rayon Lab Tech provides laboratory fume hoods, fume spot extractors, exhaust blowers, scrubbers, laboratory furniture, and customised fume-control solutions according to project requirements.

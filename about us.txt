@@ -1,0 +1,69 @@
+# ABOUT US PAGE CONTENT
+
+## ABOUT US SECTION
+
+### Small Heading
+
+ABOUT US
+
+### Main Heading — 7 Words
+
+Precision Laboratory Solutions Manufactured for Modern Workspaces
+
+### Paragraph 1 — 44 Words
+
+Rayon Lab Tech is a Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad, delivering customised working tables, island tables, fume hoods, storage cabinets, exhaust systems, and stainless steel furniture for educational, research, healthcare, pharmaceutical, chemical, and industrial laboratory environments across India with professional support.
+
+### Paragraph 2 — 43 Words
+
+Our experienced team combines technical planning, practical design, precise manufacturing, quality materials, and dependable project execution. We support every stage from requirement analysis and layout development to furniture production, equipment installation, and final handover, creating safer, organised, efficient, and durable laboratories every time.
+
+---
+
+## OUR MISSION SECTION
+
+### Heading
+
+OUR MISSION
+
+### Point 1 — 9 Words
+
+To manufacture durable laboratory furniture and reliable scientific equipment.
+
+### Point 2 — 10 Words
+
+To provide customised laboratory solutions for every industry and application.
+
+### Point 3 — 10 Words
+
+To maintain high standards of safety, durability, precision, and functionality.
+
+### Point 4 — 10 Words
+
+To build lasting relationships through trust, quality, service, and satisfaction.
+
+### Bottom Italic Text — 22 Words
+
+*We value every customer’s feedback and suggestions, helping us improve our products and deliver flexible solutions according to their specific laboratory requirements.*
+
+---
+
+## STAY IN TOUCH SECTION
+
+Keep the existing heading, content, design, and layout unchanged.
+
+---
+
+## CTA STRIP
+
+### Main Heading — 7 Words
+
+Build Better Laboratories With Custom Furniture Solutions
+
+### Supporting Heading — 5 Words
+
+Design Your Ideal Laboratory Space
+
+### Button
+
+Request A Quote
