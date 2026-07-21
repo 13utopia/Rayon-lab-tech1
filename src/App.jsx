@@ -1154,7 +1154,7 @@ function Footer() {
         {/* Bottom Bar */}
         <div className="footer-bottom">
           <p className="footer-copyright">
-            Copyright © 2026 <span>Rayon Lab Tech</span>. All Rights Reserved.
+            Copyright © {new Date().getFullYear()} <span>Rayon Lab Tech</span>. All Rights Reserved.
           </p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
@@ -2455,7 +2455,7 @@ This request was submitted via the "Get your free estimate" section.
           {/* Bottom Bar */}
           <div className="footer-bottom-v2">
             <div className="footer-bottom-inner-v2">
-              <p className="copyright-v2">Copyright © 2024 All Rights Reserved.</p>
+              <p className="copyright-v2">Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
               <div className="bottom-links-v2">
                 <a href="#">Privacy Policy</a>
                 <span className="sep-v2">|</span>
