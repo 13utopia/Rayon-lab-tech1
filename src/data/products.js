@@ -292,7 +292,7 @@ export const products = [
     title: "Fume Spot Extractor",
     heroTitle: "Fume Spot Extractor",
     heroSubtitle: "Targeted suction for localized removal of hazardous fumes and vapors.",
-    images: [fumeExtractor1, fumeExtractor2, labCenter, scientist],
+    images: [fumeExtractor1, fumeExtractor2],
     description: "Our articular suction arms are designed for maximum flexibility and targeted fume extraction. Perfect for chemical research, pharmaceutical labs, and electronics soldering where localized exhaust is required.",
     specs: [
       {
