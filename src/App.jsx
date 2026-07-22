@@ -700,11 +700,11 @@ Phone: +91 ${phone}
         <form className="quote-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Full Name</label>
-            <input type="text" name="fullName" placeholder="abc" required />
+            <input type="text" name="fullName" placeholder="John Doe" required />
           </div>
           <div className="form-group">
             <label>E-mail Address</label>
-            <input type="email" name="email" placeholder="abc@company.in" required />
+            <input type="email" name="email" placeholder="johndoe@example.com" required />
           </div>
           <div className="form-group">
             <label>Phone Number</label>
@@ -712,7 +712,7 @@ Phone: +91 ${phone}
               <span className="phone-prefix">+91</span>
               <input
                 type="tel"
-                placeholder="99090 30607"
+                placeholder="12345 67890"
                 value={phone}
                 onChange={handlePhoneChange}
                 required
@@ -724,7 +724,7 @@ Phone: +91 ${phone}
             className="appointment-submit-btn"
             disabled={appointmentStatus === 'submitting' || phone.replace(/\s/g, '').length !== 10}
           >
-            {appointmentStatus === 'submitting' ? 'Sending...' : 'Book Now →'}
+            {appointmentStatus === 'submitting' ? 'Sending...' : 'Get Quote →'}
           </button>
         </form>
       </div>
@@ -1565,7 +1565,7 @@ This request was submitted via the "Get your free estimate" section.
                 </svg>
               </div>
               <button className="nav-appointment-btn" onClick={() => setShowAppointmentModal(true)}>
-                Book Appointment
+                Get a Quote
                 <span className="btn-arrow">
                   <svg width="18" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -1662,7 +1662,7 @@ This request was submitted via the "Get your free estimate" section.
                 </div>
 
                 <button type="button" className="nav-appointment-btn" style={{ width: '100%', justifyContent: 'center', marginTop: '10px' }} onClick={() => { setIsPremiumMobileMenuOpen(false); setShowAppointmentModal(true); }}>
-                  Book Appointment <span className="btn-arrow">→</span>
+                  Get a Quote <span className="btn-arrow">→</span>
                 </button>
               </div>
             </div>

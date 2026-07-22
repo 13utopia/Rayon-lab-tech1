@@ -55,9 +55,6 @@ const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
                 <p>Rayon Lab Tech designed and installed customised laboratory furniture for Vihaan Lab, including modular working tables, island tables, storage cabinets, and utility-ready workstations. The layout was planned to improve movement, equipment placement, accessibility, organisation, and overall efficiency throughout daily scientific laboratory testing activities.</p>
                 <p>Each unit was manufactured using durable materials and precise specifications to support safe, reliable, and long-term performance. The completed laboratory combines practical storage, strong working surfaces, organised utility access, and an efficient layout suited to testing, research, sample preparation, and everyday scientific operations across demanding modern laboratory environments.</p>
               </div>
-              <button className="products-link-btn" type="button" onClick={onProductsClick}>
-                Our Products <span className="arrow-circle">→</span>
-              </button>
             </div>
           </div>
         </div>
@@ -82,9 +79,6 @@ const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
                 <div className="installation-desc">
                   <p>Rayon Lab Tech delivered customised laboratory working tables, island tables, overhead storage cabinets, and stainless steel furniture for Cureza Health Care. The project focused on hygienic finishes, efficient space utilisation, organised storage, durable construction, and a practical workflow for daily healthcare laboratory operations.</p>
                 </div>
-                <button className="products-link-btn" type="button" onClick={onProductsClick}>
-                  Our Products <span className="arrow-circle">→</span>
-                </button>
               </div>
               <div className="vertical-images-pair">
                 <div className="img-vertical">
