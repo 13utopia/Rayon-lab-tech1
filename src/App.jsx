@@ -2454,15 +2454,8 @@ This request was submitted via the "Get your free estimate" section.
 
           {/* Bottom Bar */}
           <div className="footer-bottom-v2">
-            <div className="footer-bottom-inner-v2">
-              <p className="copyright-v2">Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
-              <div className="bottom-links-v2">
-                <a href="#">Privacy Policy</a>
-                <span className="sep-v2">|</span>
-                <a href="#">Term And Condition</a>
-                <span className="sep-v2">|</span>
-                <a href="#">FAQ</a>
-              </div>
+            <div className="footer-bottom-inner-v2" style={{ justifyContent: 'center' }}>
+              <p className="copyright-v2" style={{ textAlign: 'center', width: '100%' }}>Copyright &copy; {new Date().getFullYear()} All Rights Reserved.</p>
             </div>
           </div>
         </footer>
