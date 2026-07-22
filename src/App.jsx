@@ -533,9 +533,9 @@ ${requirements}
         <button className="quote-modal-close" onClick={onClose}>&times;</button>
         <div className="quote-modal-grid">
           <div className="quote-modal-left">
-            <h2 className="quote-modal-title">Technical Quote Request</h2>
+            <h2 className="quote-modal-title">Get A Quote</h2>
             <p className="quote-modal-desc">
-              Provide your project specifications below. Our precision engineering team will review your requirements and provide a calibrated proposal within 24 hours.
+              Fill in your details below. Our team will review your requirements and provide a customized proposal within 24 hours.
             </p>
             <div className="quote-feature-list">
               <div className="quote-feature">
@@ -543,8 +543,8 @@ ${requirements}
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
                 </div>
                 <div className="quote-feature-text">
-                  <strong>CALIBRATED ASSESSMENT</strong>
-                  <p>Exact matching of hardware to procedural needs.</p>
+                  <strong>CUSTOMIZED SOLUTIONS</strong>
+                  <p>Laboratory furniture tailored to your exact space and workflow.</p>
                 </div>
               </div>
               <div className="quote-feature">
@@ -552,33 +552,33 @@ ${requirements}
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
                 </div>
                 <div className="quote-feature-text">
-                  <strong>EXPERT REVIEW</strong>
-                  <p>Analysis by certified laboratory technicians.</p>
+                  <strong>EXPERT CONSULTATION</strong>
+                  <p>Guidance from our experienced laboratory design experts.</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="quote-modal-right">
             <form className="quote-form" onSubmit={handleSubmit}>
-              <h3 className="form-section-title">Client Data</h3>
+              <h3 className="form-section-title">Your Details</h3>
               <div className="form-row">
                 <div className="form-group">
                   <label>Full Name</label>
-                  <input type="text" name="fullName" placeholder="abc" required />
+                  <input type="text" name="fullName" placeholder="John Doe" required />
                 </div>
                 <div className="form-group">
-                  <label>Institutional E-mail</label>
-                  <input type="email" name="email" placeholder="abc@company.in" required />
+                  <label>E-mail Address</label>
+                  <input type="email" name="email" placeholder="johndoe@example.com" required />
                 </div>
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Direct Line</label>
+                  <label>Phone Number</label>
                   <div className="phone-input-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <span style={{ position: 'absolute', left: '12px', color: '#1a2b56', fontWeight: '600' }}>+91</span>
                     <input
                       type="text"
-                      placeholder="99090 30607"
+                      placeholder="12345 67890"
                       value={phone}
                       onChange={handlePhoneChange}
                       style={{ paddingLeft: '45px' }}
@@ -587,15 +587,15 @@ ${requirements}
                   </div>
                 </div>
                 <div className="form-group">
-                  <label>Facility Location (City)</label>
-                  <input type="text" name="city" placeholder="India" required />
+                  <label>City</label>
+                  <input type="text" name="city" placeholder="Ahmedabad" required />
                 </div>
               </div>
 
-              <h3 className="form-section-title">Technical Requirements</h3>
+              <h3 className="form-section-title">Project Requirements</h3>
               <div className="form-group">
-                <label>Equipment Specifications & Usage Context</label>
-                <textarea name="requirements" placeholder="Describe the required parameters, throughput needs, and integration environment..." required></textarea>
+                <label>Tell us about your requirements</label>
+                <textarea name="requirements" placeholder="Describe your laboratory furniture or equipment needs..." required></textarea>
               </div>
 
               <div className="human-verification">
@@ -605,7 +605,7 @@ ${requirements}
                   </div>
                   <div className="hv-text">
                     <strong>Human Verification</strong>
-                    <span>Please confirm you are a human operator.</span>
+                    <span>Please confirm you are human.</span>
                   </div>
                 </div>
                 <div className="hv-shield">
@@ -614,7 +614,7 @@ ${requirements}
               </div>
 
               <button type="submit" className="submit-protocol-btn" disabled={phone.length !== 10 || !isVerified}>
-                Submit Protocol →
+                Get Quote →
               </button>
             </form>
           </div>
