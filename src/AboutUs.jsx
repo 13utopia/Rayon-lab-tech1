@@ -173,7 +173,6 @@ Requirement: ${formData.get('requirement')}
               Build Better Laboratories With Custom Furniture Solutions
               <img src={arrowMoveWhite} alt="Arrow decoration" className="premium-cta-arrow" />
             </h2>
-            <p className="premium-cta-subtext" style={{ color: 'white', marginTop: '10px' }}>Design Your Ideal Laboratory Space</p>
             <button className="premium-cta-btn" onClick={onGetQuote}>
               Request A Quote
               <span className="btn-icon-circle">
