@@ -87,9 +87,9 @@ const ArticleDetailPage = ({ post, onBack, allPosts, onSelectArticle, onGetQuote
           {/* Product Info Widget */}
           <div className="blog-product-widget">
             <ul className="widget-info-list">
-              <li><strong>CALL NOW</strong><span>: <a href="tel:+919974089504" style={{color: 'inherit', textDecoration: 'none'}}>+91-9974089504</a></span></li>
-              <li><strong>WHATSAPP</strong><span>: <a href="https://wa.me/919974089504" target="_blank" rel="noopener noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>(+91-9974089504)</a></span></li>
-              <li><strong>Availability</strong><span>: <Link to={`/products/${relatedProduct.id}`} style={{color: 'inherit', textDecoration: 'underline'}}>In Stock</Link></span></li>
+              <li><strong>CALL NOW</strong><span>: <a href="tel:+919974089504" style={{color: '#0056b3', textDecoration: 'underline', fontWeight: '600'}}>+91-9974089504</a></span></li>
+              <li><strong>WHATSAPP</strong><span>: <a href="https://wa.me/919974089504" target="_blank" rel="noopener noreferrer" style={{color: '#0056b3', textDecoration: 'underline', fontWeight: '600'}}>(+91-9974089504)</a></span></li>
+              <li><strong>Availability</strong><span>: <Link to={`/products/${relatedProduct.id}`} style={{color: '#0056b3', textDecoration: 'underline', fontWeight: '600'}}>In Stock</Link></span></li>
               <li><strong>Eligible Region</strong><span style={{textTransform: 'capitalize'}}>: {region}</span></li>
               <li><strong>Payment Methods</strong><span>: Cash, COD, DirectDebit</span></li>
             </ul>
