@@ -324,11 +324,8 @@ Email: ${formData.email}
               <span className="qa-pill">CONTACT US</span>
               <h2 className="qa-title">Happy to Answer All Your Questions</h2>
               <p className="qa-desc">
-                We carefully screen all of our cleaners, so you can rest assured that your home would receive the absolute highest quality of service providing.
+                Our expert team is here to help you design the perfect laboratory space. From customized furniture to fume hoods, we ensure the highest standards of safety and quality for your research environment.
               </p>
-              <button className="qa-more-btn">
-                More Details <span className="btn-arrow">&rarr;</span>
-              </button>
             </div>
 
             {/* Right Form Card */}
