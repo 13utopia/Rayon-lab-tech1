@@ -2414,12 +2414,10 @@ This request was submitted via the "Get your free estimate" section.
                 <div className="footer-links-v2 dual-col">
                   <div className="link-subcol">
                     <a href="#" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
-                    <a href="#" onClick={(e) => handleNavClick(e, 'services')}>Service</a>
                     <a href="#" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a>
                   </div>
                   <div className="link-subcol">
                     <a href="#" onClick={(e) => handleNavClick(e, 'about-us')}>About</a>
-                    <a href="#" onClick={(e) => handleNavClick(e, 'pricing')}>Pricing</a>
                     <a href="#" onClick={(e) => handleNavClick(e, 'contact-us')}>Contact</a>
                   </div>
                 </div>
