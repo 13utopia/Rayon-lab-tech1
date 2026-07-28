@@ -1775,21 +1775,6 @@ This request was submitted via the "Get your free estimate" section.
                   />
                 ))}
               </div>
-
-              <div className="showcase-marquee-wrapper">
-                <div className="showcase-marquee-content">
-                  {[...Array(4)].map((_, i) => (
-                    <React.Fragment key={i}>
-                      {showcaseLabels.map((label) => (
-                        <React.Fragment key={`${i}-${label}`}>
-                          <span className="marquee-text">{label}</span>
-                          <span className="marquee-plus">+</span>
-                        </React.Fragment>
-                      ))}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
             </section>
 
             <section className="hero-premium-v3">
