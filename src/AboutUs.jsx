@@ -100,29 +100,56 @@ Requirement: ${formData.get('requirement')}
             </div>
           </div>
 
-          <div className="about-mission-block">
-            <h2 className="mission-title">OUR MISSION</h2>
-            <ul className="mission-bullet-list">
-              <li>
-                <span className="mission-dot">⦿</span>
-                To manufacture durable laboratory furniture and reliable scientific equipment.
-              </li>
-              <li>
-                <span className="mission-dot">⦿</span>
-                To provide customised laboratory solutions for every industry and application.
-              </li>
-              <li>
-                <span className="mission-dot">⦿</span>
-                To maintain high standards of safety, durability, precision, and functionality.
-              </li>
-              <li>
-                <span className="mission-dot">⦿</span>
-                To build lasting relationships through trust, quality, service, and satisfaction.
-              </li>
-            </ul>
-            <p className="mission-footer-note">
-              We value every customer’s feedback and suggestions, helping us improve our products and deliver flexible solutions according to their specific laboratory requirements.
-            </p>
+          <div className="about-mv-grid">
+            <div className="about-mission-block">
+              <h2 className="mission-title">OUR MISSION</h2>
+              <ul className="mission-bullet-list">
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To manufacture durable laboratory furniture and reliable scientific equipment.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To provide customised laboratory solutions for every industry and application.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To maintain high standards of safety, durability, precision, and functionality.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To build lasting relationships through trust, quality, service, and satisfaction.
+                </li>
+              </ul>
+              <p className="mission-footer-note">
+                We value every customer’s feedback and suggestions, helping us improve our products and deliver flexible solutions according to their specific laboratory requirements.
+              </p>
+            </div>
+
+            <div className="about-mission-block">
+              <h2 className="mission-title">OUR VISION</h2>
+              <ul className="mission-bullet-list">
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To provide premier laboratory furniture and engineering services worldwide.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To deliver the highest quality products and solutions at a global level.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To reach and empower our first 1,000 customers within a defined period.
+                </li>
+                <li>
+                  <span className="mission-dot">⦿</span>
+                  To establish international benchmarks in laboratory safety, innovation, and service.
+                </li>
+              </ul>
+              <p className="mission-footer-note">
+                We aspire to expand our global footprint while maintaining uncompromised quality, precision manufacturing, and dedicated customer support worldwide.
+              </p>
+            </div>
           </div>
         </div>
       </section>

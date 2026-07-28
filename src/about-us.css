@@ -311,7 +311,21 @@
   color: #0D1E44;
 }
 
-/* Mission Section */
+/* Mission & Vision Section */
+.about-mv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+@media (max-width: 850px) {
+  .about-mv-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+
 .mission-section {
   margin-top: 5px;
 }
