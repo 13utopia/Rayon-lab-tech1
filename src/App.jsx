@@ -2322,7 +2322,60 @@ This request was submitted via the "Get your free estimate" section.
                 <p className="blog-main-subtitle">Latest insights for safer, smarter, and efficient laboratory planning.</p>
               </div>
 
-              <BlogPage showBanner={false} />
+              <div className="blog-container">
+                {/* Left Large Card */}
+                {blogPosts.length > 0 && (
+                  <div className="blog-card-large" onClick={(e) => { e.preventDefault(); navigate('/updates/' + generateSlug(blogPosts[0].title)); window.scrollTo(0,0); }} style={{ cursor: 'pointer' }}>
+                    <div className="blog-card-large-image" style={{ backgroundImage: `url(${blogPosts[0].image})` }}></div>
+                    <div className="blog-card-large-content">
+                      <div className="blog-meta">
+                        <span className="blog-date">{blogPosts[0].date}</span>
+                        <span className="blog-divider">/</span>
+                        <span className="blog-category">UPDATE</span>
+                      </div>
+                      <h3 className="blog-title-large">Laboratory Furniture Trends for Modern Labs in 2026</h3>
+                      <div className="blog-content-divider"></div>
+                      <p className="blog-excerpt">Explore flexible furniture, smarter storage, safer layouts, and modern laboratory solutions...</p>
+
+                      <div className="blog-read-more-wrapper">
+                        <span className="blog-read-more">
+                          Read More <span>→</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Right Small Cards List */}
+                <div className="blog-list">
+                  {blogPosts.slice(1, 3).map((post, index) => (
+                    <React.Fragment key={post.id}>
+                      <article className="blog-card-small" onClick={(e) => { e.preventDefault(); navigate('/updates/' + generateSlug(post.title)); window.scrollTo(0,0); }} style={{ cursor: 'pointer' }}>
+                        <div className="blog-card-small-image" style={{ backgroundImage: `url(${post.image})` }}></div>
+                        <div className="blog-card-small-content">
+                          <div className="blog-meta-small">
+                            <span className="blog-meta-item"><CalendarIcon /> {post.date}</span>
+                            <span className="blog-meta-item"><UserIcon /> BY RAYON</span>
+                          </div>
+                          <h4 className="blog-title-small">{post.title}</h4>
+                        </div>
+                      </article>
+                      {index === 0 && <div className="blog-list-divider"></div>}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                <button
+                  className="widget-quote-btn"
+                  onClick={(e) => { e.preventDefault(); handleNavClick(e, 'blog'); }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', fontSize: '0.95rem', fontWeight: '600', cursor: 'pointer', borderRadius: '30px' }}
+                >
+                  View All Blogs <span>→</span>
+                </button>
+              </div>
+
             </section>
           </>
           } />
