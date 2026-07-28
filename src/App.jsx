@@ -2348,7 +2348,7 @@ This request was submitted via the "Get your free estimate" section.
 
                 {/* Right Small Cards List */}
                 <div className="blog-list">
-                  {blogPosts.slice(1, 3).map((post, index) => (
+                  {blogPosts.slice(1, 4).map((post, index) => (
                     <React.Fragment key={post.id}>
                       <article className="blog-card-small" onClick={(e) => { e.preventDefault(); navigate('/updates/' + generateSlug(post.title)); window.scrollTo(0,0); }} style={{ cursor: 'pointer' }}>
                         <div className="blog-card-small-image" style={{ backgroundImage: `url(${post.image})` }}></div>
@@ -2360,7 +2360,7 @@ This request was submitted via the "Get your free estimate" section.
                           <h4 className="blog-title-small">{post.title}</h4>
                         </div>
                       </article>
-                      {index === 0 && <div className="blog-list-divider"></div>}
+                      {index < 2 && <div className="blog-list-divider"></div>}
                     </React.Fragment>
                   ))}
                 </div>
