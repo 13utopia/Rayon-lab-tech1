@@ -3,10 +3,12 @@
    ============================================ */
 .gallery-page-v2 {
   min-height: 100vh;
+  width: 100%;
   background-color: #f8fafc;
 }
 
 .gallery-banner {
+  width: 100%;
   height: 380px;
   background-size: cover;
   background-position: center;
@@ -31,37 +33,37 @@
 
 .gallery-banner-content {
   text-align: center;
-  max-width: 800px;
+  max-width: 850px;
   color: #ffffff;
 }
 
 .gallery-banner-title {
   font-family: 'Raleway', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 16px;
   letter-spacing: 0.02em;
 }
 
 .gallery-banner-desc {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
-  opacity: 0.9;
-  max-width: 650px;
+  opacity: 0.95;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 /* Gallery Section */
 .gallery-section-container {
-  max-width: 1400px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 60px 24px 80px;
+  padding: 60px 30px 90px;
 }
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .gallery-card {
@@ -77,12 +79,12 @@
 
 .gallery-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(13, 30, 68, 0.12);
+  box-shadow: 0 20px 40px rgba(13, 30, 68, 0.14);
 }
 
 .gallery-img-wrapper {
   width: 100%;
-  height: 260px;
+  height: 280px;
   overflow: hidden;
   position: relative;
 }
@@ -101,7 +103,7 @@
 .gallery-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(13, 30, 68, 0.75) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(13, 30, 68, 0.78) 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
   display: flex;
@@ -118,7 +120,7 @@
 }
 
 .gallery-card-title {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 4px;
 }
@@ -182,7 +184,14 @@
   background: rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
   .gallery-banner {
     height: 280px;
   }
@@ -190,10 +199,10 @@
     padding: 30px 16px 60px;
   }
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   .gallery-img-wrapper {
-    height: 210px;
+    height: 220px;
   }
 }

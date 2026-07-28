@@ -1449,7 +1449,7 @@ This request was submitted via the "Get your free estimate" section.
   return (
     <>
       <FixedSidebar theme="glass" onGetQuote={() => setShowQuoteModal(true)} />
-      <div className={`page-shell ${currentPage === 'products' ? 'page-shell-products' : ''}`}>
+      <div className={`page-shell ${(currentPage === 'products' || currentPage === 'gallery') ? 'page-shell-products' : ''}`}>
         <header className={`topbar ${(currentPage === 'products' || currentPage === 'about-us' || currentPage === 'home' || currentPage === 'blog' || currentPage === 'contact-us' || currentPage === 'portfolio') ? 'product-header-premium' : ''}`}>
           <div className="premium-nav-bar">
             <div className="premium-nav-logo" onClick={(e) => handleNavClick(e, 'home')}>
