@@ -17,7 +17,7 @@ const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
       <SEO title="Our Portfolio - Rayon Lab Tech" description="Explore our successful laboratory installations and projects." />
       
       {/* Premium Banner Section */}
-      <section className="portfolio-banner" style={{ backgroundImage: `url(${portfolio1})` }}>
+      <section className="portfolio-banner" style={{ backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.75), rgba(13, 30, 68, 0.75)), url(${portfolio1})` }}>
         <div className="portfolio-banner-overlay">
           <div className="portfolio-banner-content">
             <h1 className="portfolio-banner-title">Our Portfolio</h1>
