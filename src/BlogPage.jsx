@@ -57,7 +57,7 @@ export const blogPosts = seoArticles.map(article => ({
   image: article.image || getMatchedImage(article.title)
 }));
 
-const BlogPage = () => {
+const BlogPage = ({ showBanner = true }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
 
@@ -75,16 +75,18 @@ const BlogPage = () => {
   return (
     <div className="blog-page-v2">
       {/* Banner Section */}
-      <section className="blog-banner" style={{ backgroundImage: `url(${labBannerBg})` }}>
-        <div className="blog-banner-overlay">
-          <div className="blog-banner-content">
-            <h1 className="blog-banner-title">Our Articles & Updates</h1>
-            <p className="blog-banner-desc">
-              Explore our latest insights, case studies, and updates on laboratory infrastructure across India.
-            </p>
+      {showBanner && (
+        <section className="blog-banner" style={{ backgroundImage: `url(${labBannerBg})` }}>
+          <div className="blog-banner-overlay">
+            <div className="blog-banner-content">
+              <h1 className="blog-banner-title">Our Articles & Updates</h1>
+              <p className="blog-banner-desc">
+                Explore our latest insights, case studies, and updates on laboratory infrastructure across India.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Blog Grid Section */}
       <div className="blog-grid-container">
