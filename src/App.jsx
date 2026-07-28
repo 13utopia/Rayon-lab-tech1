@@ -68,6 +68,12 @@ import whyChooseUs2 from './assets/Fume-Hood-Manufacturer-103.webp';
 import whyChooseUs3 from './assets/Chemical-Laboratory-Furniture-104.webp';
 import whyChooseUs4 from './assets/lab-working-table-99.webp';
 
+import certCe from './assets/cert_ce.svg';
+import certImg2 from './assets/cert_images_2.png';
+import certImg3 from './assets/cert_images_3.png';
+import certImg4 from './assets/cert_images_4.png';
+import certLogo from './assets/cert_logo.png';
+
 function FixedSidebar({ theme = 'glass', onGetQuote }) {
   return (
     <div className={`fixed-sidebar-v2 ${theme}-theme`}>
@@ -2312,6 +2318,20 @@ This request was submitted via the "Get your free estimate" section.
                   <a href="#" className="industry-all-btn" onClick={(e) => handleNavClick(e, 'portfolio')}>
                     All Projects <span>→</span>
                   </a>
+                </div>
+              </div>
+            </section>
+
+            {/* Our Certification Section */}
+            <section className="certification-section" aria-label="Our Certification">
+              <div className="certification-container">
+                <h2 className="certification-title">OUR CERTIFICATION</h2>
+                <div className="certification-grid">
+                  <div className="cert-item"><img src={certCe} alt="CE Certification" className="cert-img" /></div>
+                  <div className="cert-item"><img src={certImg2} alt="ISO Certification" className="cert-img" /></div>
+                  <div className="cert-item"><img src={certImg3} alt="ISO 14001 Certification" className="cert-img" /></div>
+                  <div className="cert-item"><img src={certImg4} alt="ISO 45001 Certification" className="cert-img" /></div>
+                  <div className="cert-item"><img src={certLogo} alt="Quality Certification" className="cert-img" /></div>
                 </div>
               </div>
             </section>

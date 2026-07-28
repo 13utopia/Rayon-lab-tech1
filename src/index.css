@@ -5304,3 +5304,74 @@ body {
 
 /* Height Equalization Fixes */
 .f-card-wrap, .feature-card-v2, .showcase-v2-card, .serve-card-premium, .serve-card-inner, .industry-card, .industry-card-content, .why-card-premium { height: 100%; }
+
+/* ============================================
+   OUR CERTIFICATION SECTION
+   ============================================ */
+.certification-section {
+  padding: 60px 20px;
+  background: #ffffff;
+  border-top: 1px solid rgba(13, 30, 68, 0.05);
+  border-bottom: 1px solid rgba(13, 30, 68, 0.05);
+}
+
+.certification-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.certification-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0b1630;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+}
+
+.certification-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  flex-wrap: wrap;
+}
+
+.cert-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cert-item:hover {
+  transform: translateY(-4px);
+}
+
+.cert-img {
+  max-height: 110px;
+  max-width: 190px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .certification-section {
+    padding: 40px 16px;
+  }
+  .certification-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+  .certification-grid {
+    gap: 25px;
+  }
+  .cert-img {
+    max-height: 85px;
+    max-width: 140px;
+  }
+}
