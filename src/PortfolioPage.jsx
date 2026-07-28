@@ -17,24 +17,16 @@ const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
       <SEO title="Our Portfolio - Rayon Lab Tech" description="Explore our successful laboratory installations and projects." />
       
       {/* Premium Banner Section */}
-      <div className="banner-container-v2">
-        <div className="banner-card-v2">
-          <div className="banner-content-v2">
-            <h1 className="banner-title-v2">Our Portfolio</h1>
-            <p className="banner-desc-v2">
+      <section className="portfolio-banner" style={{ backgroundImage: `url(${portfolio1})` }}>
+        <div className="portfolio-banner-overlay">
+          <div className="portfolio-banner-content">
+            <h1 className="portfolio-banner-title">Our Portfolio</h1>
+            <p className="portfolio-banner-desc">
               Explore customised laboratory furniture projects engineered for safety, durability, efficiency, precision, and performance.
             </p>
-            <div className="portfolio-hero-link-wrap">
-              <a href="#portfolio-installations" className="portfolio-hero-link">
-                <span>Explore Portfolio</span>
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12H19M13 6L19 12L13 18" />
-                </svg>
-              </a>
-            </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Section 2: Vihaan Lab (Image Grid Left, Text Right) */}
       <section className="portfolio-installation-section alt-bg" id="portfolio-installations">
