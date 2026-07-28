@@ -2325,7 +2325,9 @@ This request was submitted via the "Get your free estimate" section.
             {/* Our Certification Section */}
             <section className="certification-section" aria-label="Our Certification">
               <div className="certification-container">
-                <h2 className="certification-title">OUR CERTIFICATION</h2>
+                <div className="certification-header">
+                  <h2 className="certification-title">Our Certification</h2>
+                </div>
                 <div className="certification-grid">
                   <div className="cert-item"><img src={certCe} alt="CE Certification" className="cert-img" /></div>
                   <div className="cert-item"><img src={certImg2} alt="ISO Certification" className="cert-img" /></div>

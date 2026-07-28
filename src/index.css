@@ -5309,10 +5309,8 @@ body {
    OUR CERTIFICATION SECTION
    ============================================ */
 .certification-section {
-  padding: 60px 20px;
-  background: #ffffff;
-  border-top: 1px solid rgba(13, 30, 68, 0.05);
-  border-bottom: 1px solid rgba(13, 30, 68, 0.05);
+  padding: 80px 20px;
+  background: transparent;
 }
 
 .certification-container {
@@ -5321,21 +5319,26 @@ body {
   text-align: center;
 }
 
+.certification-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 .certification-title {
-  font-family: 'Raleway', sans-serif;
-  font-size: 2.2rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: #0b1630;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 45px;
+  color: #0D1E44;
+  margin: 0 0 16px 0;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .certification-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 45px;
+  gap: 50px;
   flex-wrap: wrap;
 }
 
@@ -5348,12 +5351,12 @@ body {
 }
 
 .cert-item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .cert-img {
-  max-height: 110px;
-  max-width: 190px;
+  max-height: 115px;
+  max-width: 200px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -5361,10 +5364,9 @@ body {
 
 @media (max-width: 768px) {
   .certification-section {
-    padding: 40px 16px;
+    padding: 50px 16px;
   }
-  .certification-title {
-    font-size: 1.6rem;
+  .certification-header {
     margin-bottom: 30px;
   }
   .certification-grid {
