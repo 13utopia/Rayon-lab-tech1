@@ -164,8 +164,8 @@
 /* Grid Section */
 .footer-grid-v2 {
   display: grid;
-  grid-template-columns: 1.25fr 1fr 0.95fr 0.95fr;
-  gap: 40px;
+  grid-template-columns: 1.65fr 1fr 0.9fr 0.9fr;
+  gap: 30px;
   position: relative;
   z-index: 2;
   align-items: start;
@@ -179,7 +179,7 @@
 }
 
 .footer-col-v2.branding {
-  padding-right: 20px;
+  padding-right: 15px;
   align-items: flex-start;
   text-align: left;
   margin-top: -92px;
@@ -198,10 +198,16 @@
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
-  margin-bottom: 12px;
   max-width: 320px;
-  margin-left: 0;
-  align-self: flex-start;
+}
+
+.footer-contact-item-v2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
   font-family: 'Raleway', sans-serif !important;
   font-weight: 500;
 }
@@ -209,11 +215,12 @@
 .footer-social-v2 {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 5px;
+  gap: 10px;
+  margin-top: 15px;
   margin-left: 0;
   align-self: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .social-icon-btn {
