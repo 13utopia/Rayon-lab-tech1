@@ -13,6 +13,7 @@ import AboutUs from './AboutUs';
 import BlogPage from './BlogPage';
 import ContactUs from './ContactUs';
 import PortfolioPage from './PortfolioPage';
+import GalleryPage from './GalleryPage';
 import { sendFormEmail } from './email';
 import ArticleDetailPage from './ArticleDetailPage';
 import { blogPosts, generateSlug } from './BlogPage';
@@ -118,12 +119,13 @@ function FixedSidebar({ theme = 'glass', onGetQuote }) {
 }
 
 
-const navItems = ['Home', 'About Us', 'Products', 'Portfolio', 'Contact Us'];
+const navItems = ['Home', 'About Us', 'Products', 'Gallery', 'Portfolio', 'Contact Us'];
 
 const pagePaths = {
   home: '/',
   'about-us': '/about-us',
   products: '/products',
+  gallery: '/gallery',
   portfolio: '/portfolio',
   blog: '/blog',
   'contact-us': '/contact-us',
@@ -1533,7 +1535,7 @@ This request was submitted via the "Get your free estimate" section.
                         href="#"
                         className={currentPage === pageId ? 'active' : ''}
                         onClick={(e) => {
-                          if (isHome || isAbout || isProducts || pageId === 'blog' || pageId === 'contact-us' || pageId === 'portfolio') {
+                          if (isHome || isAbout || isProducts || pageId === 'gallery' || pageId === 'blog' || pageId === 'contact-us' || pageId === 'portfolio') {
                             handleNavClick(e, pageId);
                           } else {
                             e.preventDefault();
@@ -1680,6 +1682,7 @@ This request was submitted via the "Get your free estimate" section.
           <Route path="/updates" element={<BlogPage onSelectArticle={(post) => navigate('/updates/' + generateSlug(post.title))} />} />
           <Route path="/updates/:slug" element={<ArticleDetailRoute onGetQuote={() => setShowQuoteModal(true)} />} />
           <Route path="/portfolio" element={<PortfolioPage onGetQuote={() => setShowQuoteModal(true)} onProductsClick={(e) => handleNavClick(e, 'products')} />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/products/:id" element={<ProductPage product={selectedProduct} onGetQuote={() => setShowQuoteModal(true)} onProductSelect={(p) => handleNavClick(null, 'products', p)} />} />
           <Route path="/" element={
