@@ -221,11 +221,11 @@
 
 .nav-phone-num {
   font-family: 'Raleway', sans-serif !important;
-  font-size: 0.95rem;
-  font-weight: 800;
+  font-size: 0.88rem;
+  font-weight: 600;
   color: #0D1E44;
   white-space: nowrap;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
 }
 
 .nav-appointment-btn {
