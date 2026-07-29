@@ -6,6 +6,10 @@ import newChemicalCabinet from '../assets/new-chemical-cabinet.webp';
 import newGlasswareStorage from '../assets/new-glassware-storage.webp';
 import chemicalStorageCabinet from '../assets/chemical-storage-cabinet.webp';
 import labStools from '../assets/lab-furniture-77.webp';
+import ssFurnitureTable from '../assets/ss_furniture_table.webp';
+import ssFurnitureStorage from '../assets/ss_furniture_storage.webp';
+import ssFurnitureSink from '../assets/ss_furniture_sink.webp';
+import ssFurnitureTrolley from '../assets/ss_furniture_trolley.webp';
 import labCenter from '../assets/Chemical-Laboratory-Furniture-76.webp';
 import scientist from '../assets/lab-working-table-107.webp';
 import showcase1 from '../assets/lab-working-table-130.webp';
@@ -353,27 +357,36 @@ export const products = [
     id: "stainless-steel-furniture",
     title: "Stainless Steel Furniture",
     heroTitle: "Stainless Steel Furniture",
-    heroSubtitle: "Comfortable and durable seating designed for long hours of scientific work.",
-    images: [labStools, thumbMan, labCenter, scientist],
-    description: "Our laboratory chairs and stools are built with easy-to-clean materials that resist chemical spills. Ergonomic adjustments ensure proper posture during focused lab tasks.",
+    heroSubtitle: "High-grade SS 304 / SS 316 laboratory furniture engineered for sterile and cleanroom environments.",
+    images: [ssFurnitureTable, ssFurnitureStorage, ssFurnitureSink, ssFurnitureTrolley],
+    description: "Our premium Stainless Steel (SS 304 / SS 316) laboratory furniture is specifically engineered for pharmaceutical, cleanroom, biotechnology, and sterile testing environments. Built with seamless corrosion-resistant construction, smooth hygienic surfaces, and maximum load capacity.",
     specs: [
       {
-        heading: "Material & Finish",
+        heading: "Material & Construction",
         items: [
-          "PU (Polyurethane) Integral Foam",
-          "Vinyl upholstery with antimicrobial coating",
-          "Stainless Steel frame options"
+          "High-Grade SS 304 / SS 316 Stainless Steel",
+          "Seamless TIG welded joints with satin/mirror finish",
+          "Chemical & corrosion resistant surface treatment"
+        ]
+      },
+      {
+        heading: "Product Range",
+        items: [
+          "SS Modular Worktables & Island Benches",
+          "SS Cleanroom Storage Cabinets & Pass Boxes",
+          "SS Laboratory Sink & Washing Units",
+          "SS Utility Trolleys & Transport Carts"
         ]
       }
     ],
     notes: [
-      "Height adjustment via pneumatic gas lift.",
-      "Equipped with glides or castors as per floor type."
+      "Custom dimensions and grade selection available according to cleanroom classification.",
+      "Equipped with heavy-duty leveling feet or anti-static castors."
     ],
     features: [
-      "Adjustable foot-ring for height-appropriate support.",
-      "360-degree swivel for easy movement.",
-      "Backrest with height and depth adjustment."
+      "100% rust-proof and easy to sanitize for sterile compliance.",
+      "Heavy load-bearing capacity for heavy laboratory instruments.",
+      "Integrated sink units, under-bench drawers, and overhead shelves."
     ]
   },
 ];
