@@ -194,6 +194,12 @@ const featureCards = [
 
 const showcaseCards = [
   {
+    title: 'Sentinel Fume Hoods',
+    description: `Laboratory fume hoods designed for safer chemical handling.`,
+    image: showcase1,
+    productId: 'fume-spot-extractor'
+  },
+  {
     title: 'Adaptive Lab Benches',
     description: 'Precision-engineered modular systems for dynamic research spaces.',
     image: imgAdaptiveLabBenches,
