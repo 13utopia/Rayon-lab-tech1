@@ -66,7 +66,7 @@ import heroIslandTable from './assets/hero-island-table.webp';
 
 import productNavLogo from './assets/rayon_logo_hd.png';
 import logoWhite from './assets/rayon_logo_white_hd.png';
-import newHeroImage from './assets/College-Laboratory-Furniture-1.webp';
+import newHeroImage from './assets/home_hero_new.webp';
 import clientBgIcon from './assets/Laboratory-Furniture-Supplier-39.webp';
 import { products } from './data/products';
 import whyChooseUs1 from './assets/Laboratory-Furniture-Supplier-102.webp';
