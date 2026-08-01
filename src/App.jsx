@@ -14,6 +14,7 @@ import BlogPage from './BlogPage';
 import ContactUs from './ContactUs';
 import PortfolioPage from './PortfolioPage';
 import GalleryPage from './GalleryPage';
+import ClientsPage from './ClientsPage';
 import { sendFormEmail } from './email';
 import ArticleDetailPage from './ArticleDetailPage';
 import { blogPosts, generateSlug } from './BlogPage';
@@ -124,7 +125,7 @@ function FixedSidebar({ theme = 'glass', onGetQuote }) {
 }
 
 
-const navItems = ['Home', 'About Us', 'Products', 'Gallery', 'Portfolio', 'Contact Us'];
+const navItems = ['Home', 'About Us', 'Products', 'Gallery', 'Portfolio', 'Clients', 'Contact Us'];
 
 const pagePaths = {
   home: '/',
@@ -132,6 +133,7 @@ const pagePaths = {
   products: '/products',
   gallery: '/gallery',
   portfolio: '/portfolio',
+  clients: '/clients',
   blog: '/blog',
   'contact-us': '/contact-us',
 };
@@ -1688,6 +1690,7 @@ This request was submitted via the "Get your free estimate" section.
           <Route path="/updates/:slug" element={<ArticleDetailRoute onGetQuote={() => setShowQuoteModal(true)} />} />
           <Route path="/portfolio" element={<PortfolioPage onGetQuote={() => setShowQuoteModal(true)} onProductsClick={(e) => handleNavClick(e, 'products')} />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/products/:id" element={<ProductPage product={selectedProduct} onGetQuote={() => setShowQuoteModal(true)} onProductSelect={(p) => handleNavClick(null, 'products', p)} />} />
           <Route path="/" element={
