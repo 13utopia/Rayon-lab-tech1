@@ -142,25 +142,24 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
-  margin-left: 60px;
+  margin-left: 35px;
 }
 
 .premium-nav-links a {
   font-family: 'Raleway', sans-serif !important;
-  font-size: 13.5px;
-  /* Fixed small size to look like Image 1 */
+  font-size: 13px;
+  /* Slightly reduced for 7 nav items */
   font-weight: 700;
   color: #64748b;
   text-decoration: none;
   transition: all 0.3s ease;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 10px 16px;
-  /* Balanced horizontal padding */
+  padding: 10px 10px;
+  /* Slightly reduced horizontal padding */
   white-space: nowrap;
-  margin-left: -10px;
 }
 
 .premium-nav-links a:hover,
@@ -169,12 +168,10 @@
 }
 
 .nav-dot {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #0D1E44;
-  /* Dark blue/navy dots from image */
   opacity: 1;
-  /* Full opacity to override washed out gray */
-  margin: 0 4px;
+  margin: 0 2px;
   display: flex;
   align-items: center;
   line-height: 1;

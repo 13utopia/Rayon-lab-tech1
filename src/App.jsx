@@ -1542,7 +1542,7 @@ This request was submitted via the "Get your free estimate" section.
                         href="#"
                         className={currentPage === pageId ? 'active' : ''}
                         onClick={(e) => {
-                          if (isHome || isAbout || isProducts || pageId === 'gallery' || pageId === 'blog' || pageId === 'contact-us' || pageId === 'portfolio') {
+                          if (isHome || isAbout || isProducts || pageId === 'gallery' || pageId === 'clients' || pageId === 'blog' || pageId === 'contact-us' || pageId === 'portfolio') {
                             handleNavClick(e, pageId);
                           } else {
                             e.preventDefault();
