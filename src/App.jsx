@@ -29,6 +29,11 @@ import showcase3 from './assets/lab-working-table-132.webp';
 import infra1 from './assets/lab-furniture-73.webp';
 import infra2 from './assets/Laboratory-Furniture-Supplier-74.webp';
 import infra3 from './assets/lab-working-table-75.webp';
+import imgAdaptiveLabBenches from './assets/product_solutions/adaptive_lab_benches.webp';
+import imgChemicalFlowModules from './assets/product_solutions/chemical_flow_modules.webp';
+import imgCleanroomStations from './assets/product_solutions/cleanroom_stations.webp';
+import imgMonolithWorkstations from './assets/product_solutions/monolith_workstations.webp';
+import imgSecureStorageVaults from './assets/product_solutions/secure_storage_vaults.webp';
 import heroMain from './assets/Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad.webp';
 import labInterior from './assets/College-Laboratory-Furniture-78.webp';
 import serveNew1 from './assets/Pharmaceutical-Laboratory-Furniture-127.webp';
@@ -189,39 +194,33 @@ const featureCards = [
 
 const showcaseCards = [
   {
-    title: 'Sentinel Fume Hoods',
-    description: `Laboratory fume hoods designed for safer chemical handling.`,
-    image: showcase1,
-    productId: 'fume-spot-extractor'
-  },
-  {
-    title: 'Monolith Workstations',
-    description: `Durable laboratory working tables for efficient daily operations.`,
-    image: showcase2,
-    productId: 'laboratory-furniture'
-  },
-  {
-    title: 'Secure Storage Vaults',
-    description: `Chemical storage cabinets for safe, organised laboratory storage.`,
-    image: showcase3,
-    productId: 'laboratory-fume-hood'
-  },
-  {
     title: 'Adaptive Lab Benches',
     description: 'Precision-engineered modular systems for dynamic research spaces.',
-    image: infra1,
-    productId: 'anti-vibration-table'
-  },
-  {
-    title: 'Cleanroom Stations',
-    description: 'Ultra-pure environments designed for sensitive biological analysis.',
-    image: infra2,
-    productId: 'overhead-storage-cabinet'
+    image: imgAdaptiveLabBenches,
+    productId: 'laboratory-furniture'
   },
   {
     title: 'Chemical Flow Modules',
     description: 'Optimized cabinetry for streamlined chemical and reagent access.',
-    image: infra3,
+    image: imgChemicalFlowModules,
+    productId: 'chemical-storage-cabinet'
+  },
+  {
+    title: 'Cleanroom Stations',
+    description: 'Ultra-pure environments designed for sensitive biological analysis.',
+    image: imgCleanroomStations,
+    productId: 'overhead-storage-cabinet'
+  },
+  {
+    title: 'Monolith Workstations',
+    description: 'Durable laboratory working tables for efficient daily operations.',
+    image: imgMonolithWorkstations,
+    productId: 'laboratory-furniture'
+  },
+  {
+    title: 'Secure Storage Vaults',
+    description: 'Chemical storage cabinets for safe, organised laboratory storage.',
+    image: imgSecureStorageVaults,
     productId: 'chemical-storage-cabinet'
   },
 ];
