@@ -1,5 +1,6 @@
 import SEO from './SEO';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './contact-us.css';
 import contactHero from './assets/College-Laboratory-Furniture-63.webp';
 import { sendFormEmail } from './email';
@@ -69,7 +70,8 @@ function ContactEstimateDropdown({ value, onChange, options, placeholder, id }) 
   );
 }
 
-const ContactUs = () => {
+export default function ContactUs() {
+  const navigate = useNavigate();
   const tooltipTimerRef = React.useRef(null);
   const [formData, setFormData] = React.useState({
     service: '',
@@ -150,6 +152,7 @@ Email: ${formData.email}
       });
       setFormData({ service: '', cleanType: '', area: '', name: '', email: '' });
       setFormStatus('success');
+      navigate('/thank-you');
     } catch (error) {
       setFormStatus('idle');
       alert(error.message || 'Could not send your message. Please try again.');

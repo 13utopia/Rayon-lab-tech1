@@ -15,6 +15,7 @@ import ContactUs from './ContactUs';
 import PortfolioPage from './PortfolioPage';
 import GalleryPage from './GalleryPage';
 import ClientsPage from './ClientsPage';
+import ThankYouPage from './ThankYouPage';
 import { sendFormEmail } from './email';
 import ArticleDetailPage from './ArticleDetailPage';
 import { blogPosts, generateSlug } from './BlogPage';
@@ -534,8 +535,8 @@ ${requirements}
 
       try {
         await sendFormEmail({ subject, body, replyTo: email });
-        alert('Technical Quote Protocol Initiated! Your request has been sent.');
         onClose();
+        navigate('/thank-you');
       } catch (error) {
         alert(error.message || 'Could not send your request. Please try again.');
       }
@@ -693,6 +694,7 @@ Phone: +91 ${phone}
       });
       setAppointmentStatus('success');
       onClose();
+      navigate('/thank-you');
     } catch (error) {
       setAppointmentStatus('idle');
       alert(error.message || 'Could not send your request. Please try again.');
@@ -1384,7 +1386,7 @@ This request was submitted via the "Get your free estimate" section.
       });
       setFormStatus('success');
       setConsultForm({ service: '', cleanType: '', area: '', name: '', email: '' });
-      setTimeout(() => setFormStatus('idle'), 5000);
+      navigate('/thank-you');
     } catch (error) {
       setFormStatus('idle');
       alert(error.message || 'Could not send your request. Please try again.');
@@ -1692,6 +1694,7 @@ This request was submitted via the "Get your free estimate" section.
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/clients" element={<ClientsPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/products/:id" element={<ProductPage product={selectedProduct} onGetQuote={() => setShowQuoteModal(true)} onProductSelect={(p) => handleNavClick(null, 'products', p)} />} />
           <Route path="/" element={
             <>

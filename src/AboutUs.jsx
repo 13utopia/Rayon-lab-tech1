@@ -5,6 +5,7 @@ import teamImage from './assets/Laboratory-Furniture-Supplier-14.webp';
 import heroBg from './assets/lab-working-table-9.webp';
 import introLabImg from './assets/Pharmaceutical-Laboratory-Furniture-11.webp';
 import contactBg from './assets/lab-furniture-45.webp';
+import { useNavigate } from 'react-router-dom';
 import { sendFormEmail } from './email';
 import arrowMoveWhite from './assets/College-Laboratory-Furniture-17.webp';
 
@@ -24,6 +25,7 @@ function HeaderLogo() {
 }
 
 const AboutUs = ({ onGetQuote }) => {
+  const navigate = useNavigate();
   const handleContactSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,6 +54,7 @@ Requirement: ${formData.get('requirement')}
     try {
       await sendFormEmail({ subject, body, replyTo: formData.get('email') });
       form.reset();
+      navigate('/thank-you');
     } catch (error) {
       alert(error.message || 'Could not send your message. Please try again.');
     }
