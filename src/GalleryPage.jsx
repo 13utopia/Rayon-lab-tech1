@@ -41,6 +41,14 @@ const GalleryPage = () => {
       <SEO 
         title="Photo Gallery & Laboratory Infrastructure Showcase | Rayon Lab Tech" 
         description="Browse our photo gallery featuring custom laboratory working tables, island tables, fume hoods, storage cabinets, and complete cleanroom setups manufactured across India." 
+        canonical="https://rayonlabtech.in/gallery"
+        schemaJson={{
+          "@context": "https://schema.org",
+          "@type": "ImageGallery",
+          "name": "Rayon Lab Tech Laboratory Photo Gallery",
+          "url": "https://rayonlabtech.in/gallery",
+          "description": "High resolution showcase of laboratory benches, island workstations, and fume extraction systems."
+        }}
       />
 
       {/* Title / Banner Section */}

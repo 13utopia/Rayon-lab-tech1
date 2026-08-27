@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { sendSubmissionEmail } from './api/email-service.js';
+import updatesHandler from './api/updates.js';
+import sitemapHandler from './api/sitemap.js';
+import publishHandler from './api/publish.js';
 
 const readJsonBody = (req) =>
   new Promise((resolve, reject) => {
@@ -21,9 +24,41 @@ const readJsonBody = (req) =>
     req.on('error', reject);
   });
 
+function adaptHandler(handler) {
+  return async (req, res) => {
+    const urlObj = new URL(req.url, 'http://localhost');
+    req.query = Object.fromEntries(urlObj.searchParams.entries());
+    res.status = (code) => {
+      res.statusCode = code;
+      return {
+        json: (data) => {
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(data));
+        },
+        send: (body) => {
+          res.end(body);
+        }
+      };
+    };
+    res.json = (data) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(data));
+    };
+    res.send = (body) => {
+      res.end(body);
+    };
+    await handler(req, res);
+  };
+}
+
 const localApiPlugin = (env) => ({
   name: 'local-api',
   configureServer(server) {
+    server.middlewares.use('/api/updates', adaptHandler(updatesHandler));
+    server.middlewares.use('/api/sitemap', adaptHandler(sitemapHandler));
+    server.middlewares.use('/sitemap.xml', adaptHandler(sitemapHandler));
+    server.middlewares.use('/api/publish', adaptHandler(publishHandler));
+
     server.middlewares.use('/api/send-email', async (req, res) => {
       res.setHeader('Content-Type', 'application/json');
 

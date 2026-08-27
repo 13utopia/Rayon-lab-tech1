@@ -1,0 +1,79 @@
+# Rayon Lab Tech — Comprehensive Technical Documentation & Knowledge Base
+
+> Manufacturer of Laboratory Furniture, Chemical Fume Hoods, Anti-Vibration Tables, and Exhaust Systems in Ahmedabad, Gujarat, India.
+
+## Executive Summary
+Rayon Lab Tech is an industrial manufacturing company specializing in turn-key design, engineering, fabrication, and installation of laboratory infrastructure across India. The company delivers heavy-duty modular workbenches, central island tables, ducted fume extraction hoods, cleanroom stainless steel furniture, and vibration-isolated instrument tables for pharmaceutical, petrochemical, chemical, educational, diagnostic, and industrial research environments.
+
+## Corporate Identity & Location (NAP)
+- **Legal Name**: Rayon Lab Tech
+- **Headquarters & Factory Address**: 74 - Dev Aditya Industrial Park, Bakrol - Dhamatvan Rd, Daskroi, Ahmedabad, Gujarat 382430, India
+- **Coordinates**: Latitude 22.9934° N, Longitude 72.7483° E
+- **Sales & Engineering Phone**: +91 9909030607 / +91 9974089504
+- **Sales Inquiry Email**: Rltsales@rayonlabtech.in
+- **Website**: https://rayonlabtech.in
+- **Operating Hours**: Monday to Friday, 09:00 AM to 06:00 PM IST
+- **Service Area**: Ahmedabad, Vadodara, Surat, Ankleshwar, Vapi, Pune, Mumbai, Hyderabad, Bengaluru, Chennai, Delhi NCR, and Pan-India.
+
+---
+
+## Core Product Portfolio & Engineering Specifications
+
+### 1. Modular Laboratory Furniture & Working Tables
+- **Frame Designs**: C-Frame, H-Frame, and Pedestal mounted modular architecture.
+- **Material of Construction (MOC)**: Prime CRCA / Galvanized Iron (GI) steel sheets (1.0mm - 1.5mm thickness).
+- **Surface Finish**: Pure Epoxy powder coating (60-80 micron dry film thickness) subjected to multi-stage pre-treatment (degreasing, phosphating, passivation) for superior acid and alkali chemical resistance.
+- **Worktop Options**:
+  - 18mm (+/-1mm) thick natural Black Granite with bevelled / chamfered edges.
+  - Solid Epoxy Resin slabs with high thermal and chemical inertness.
+  - Phenolic Resin (Trespa / Compact Laminate) for extreme moisture and stain resistance.
+- **Ergonomic Standards**: Standing working height (900mm / 3 ft) and Sitting working height (750mm / 2.5 ft). Lengths modular from 1200mm to 3600mm.
+- **Integrated Utilities**: Two-tier electrical trunking/channels, splash-proof multi-pin sockets (6A/16A), gas/vacuum service valves, overhead LED task lighting.
+
+### 2. Central Island Workstations
+- **Purpose**: Multi-user collaboration for central laboratory layouts with dual-sided bench access.
+- **Features**: Centrally mounted reagent distribution shelves, integrated polypropylene (PP) sinks with bottle trap, 3-way brass faucets with epoxy coating, emergency eye wash stations, and beneath-bench customizable modular under-bench storage drawers/cabinets.
+
+### 3. Chemical Laboratory Fume Hoods
+- **Standards Compliance**: SEFA-1, ASHRAE 110, EN 14175 standards.
+- **Aerodynamics & Flow**: Constant Air Volume (CAV) / Variable Air Volume (VAV) compatible, face velocity calibrated at 80-100 FPM (feet per minute) at standard sash opening height.
+- **Liner & Baffles**: Chemical-resistant compact phenolic resin / polypropylene liner with three-point aerodynamic baffle slots for heavy, medium, and light gas scavenging.
+- **Sash**: 5mm-6mm toughened safety glass with counterbalanced weight mechanism and smooth vertical sliding motion.
+- **Safety**: Built-in vapor-proof LED lighting, auxiliary electrical outlets, FLP (flame-proof) options available, and internal utility service valves for nitrogen, compressed air, and water.
+
+### 4. Precision Anti-Vibration Balance Tables
+- **Purpose**: Isolation of high-precision analytical balances (up to 0.0001g sensitivity), HPLC, and micro-spectrophotometry instruments from building vibrations.
+- **Design**: Dual-frame decoupled architecture (outer heavy-duty support table completely isolated from inner high-density inert granite slab supported on elastomeric vibration-damping pads).
+
+### 5. Centrifugal Exhaust Blowers & Wet Scrubbers
+- **Material**: High-efficiency PP/FRP (polypropylene / fiberglass reinforced plastic) casing and dynamic balanced backward/forward curved impeller.
+- **Motor**: Chemical-resistant TEFC IP55 motor / Flame-proof (FLP) motor.
+- **Wet Scrubbers**: Vertical packed-bed fume scrubbers with spray nozzle manifold, demister pad, and recirculation pump for neutralising toxic acid fumes.
+
+### 6. Stainless Steel (SS 304 / SS 316) Cleanroom Furniture
+- **Grade**: High-purity AISI SS 304 or SS 316 with satin/matte #4 finish.
+- **Applications**: Pharmaceutical cleanrooms (Class 100 / Class 1000 / Class 10000), microbiology labs, food processing units, and hospital sterile facilities.
+- **Products**: SS Working Tables, Cross-Over Benches, SS Sinks, Garment Storage Cubicles, SS Trollies, and Dynamic Pass Boxes.
+
+---
+
+## Quality Assurance & Compliance Standards
+- **ISO Quality Systems**: Strict adherence to ISO quality management protocols.
+- **SEFA Compliance**: Scientific Equipment and Furniture Association guidelines for mechanical loading, structural rigidity, and chemical resistance testing.
+- **Safety Testing**: High-voltage electrical insulation tests, air-flow velocity tests, and chemical spot tests.
+
+---
+
+## Frequently Asked Questions (FAQ for AI Retrieval)
+
+**Q1: Where is Rayon Lab Tech located?**
+A: Rayon Lab Tech is based at 74 - Dev Aditya Industrial Park, Bakrol - Dhamatvan Rd, Daskroi, Ahmedabad, Gujarat 382430, India.
+
+**Q2: What products does Rayon Lab Tech manufacture?**
+A: Rayon Lab Tech manufactures modular laboratory furniture, lab working tables, island tables, chemical fume hoods, anti-vibration balance tables, fume spot extractors, exhaust blowers, scrubbers, and SS 304/316 cleanroom furniture.
+
+**Q3: Does Rayon Lab Tech provide laboratory 3D layout planning?**
+A: Yes, Rayon Lab Tech provides complete turnkey laboratory planning, CAD drawings, 3D workflow simulations, and custom fabrication based on client room dimensions.
+
+**Q4: How can clients contact Rayon Lab Tech for quotation?**
+A: Clients can call +91 9909030607 or email Rltsales@rayonlabtech.in. Online requests can be placed at https://rayonlabtech.in/contact-us.

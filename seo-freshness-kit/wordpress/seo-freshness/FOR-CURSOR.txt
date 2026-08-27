@@ -1,0 +1,9 @@
+This directory IS the WordPress plugin. Copy it to:
+
+  wp-content/plugins/seo-freshness/
+
+seo-freshness.php must sit at:
+  wp-content/plugins/seo-freshness/seo-freshness.php
+
+Do not copy api/*.js here.
+Do not require files outside this plugin folder.

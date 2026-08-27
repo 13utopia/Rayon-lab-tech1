@@ -10,6 +10,7 @@ const ThankYouPage = () => {
       <SEO 
         title="Thank You | Rayon Lab Tech" 
         description="Thank you for reaching out to Rayon Lab Tech. We have received your inquiry and our engineering team will get back to you shortly." 
+        canonical="https://rayonlabtech.in/thank-you"
       />
 
       {/* Hero Banner */}

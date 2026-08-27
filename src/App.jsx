@@ -19,6 +19,7 @@ import ThankYouPage from './ThankYouPage';
 import { sendFormEmail } from './email';
 import ArticleDetailPage from './ArticleDetailPage';
 import { blogPosts, generateSlug } from './BlogPage';
+import { loadUpdate } from './client/fetch-updates';
 import './quote-modal.css';
 import './manufacturer-section.css';
 import './sub-products.css';
@@ -755,7 +756,7 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
   const thumbsRef = React.useRef(null);
   const isHovered = React.useRef(false);
   const images = product.images;
-  const defaultDescription = "LabEquip Inc. offers a modular type of working / instrument table with 3 unique types of frame design. This provides greater flexibility and interchangeability according to your laboratory room space. We strictly adhere to international safety & manufacturing standards during production, assembly, and installation of all laboratory furniture.";
+  const defaultDescription = "Rayon Lab Tech offers a modular type of working / instrument table with 3 unique types of frame design. This provides greater flexibility and interchangeability according to your laboratory room space. We strictly adhere to international safety & manufacturing standards during production, assembly, and installation of all laboratory furniture.";
   const defaultSpecs = [
     {
       heading: "Material of Construction",
@@ -836,9 +837,38 @@ function ProductPage({ product, onGetQuote, onProductSelect }) {
     }
   }, [activeImageIndex]);
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${product.title} - Laboratory Furniture`,
+    "image": product.images?.[0] ? (typeof product.images[0] === 'string' && product.images[0].startsWith('http') ? product.images[0] : `https://rayonlabtech.in${product.images[0]}`) : "https://rayonlabtech.in/favicon.png",
+    "description": product.heroSubtitle || displayDescription,
+    "brand": {
+      "@type": "Brand",
+      "name": "Rayon Lab Tech"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Rayon Lab Tech",
+      "url": "https://rayonlabtech.in"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `https://rayonlabtech.in/products/${product.id}`,
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
+    }
+  };
+
   return (
     <div className="product-page-container">
-      <SEO title={`${product.title} - Rayon Lab Tech`} description={product.heroSubtitle} />
+      <SEO
+        title={`${product.title} Manufacturer In Ahmedabad | Rayon Lab Tech`}
+        description={product.heroSubtitle || displayDescription}
+        canonical={`https://rayonlabtech.in/products/${product.id}`}
+        schemaJson={productSchema}
+      />
       
       <section className="product-hero" aria-label="Product Hero" style={{
         backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.6), rgba(13, 30, 68, 0.6)), url(${productHeroBg})`,
@@ -1242,16 +1272,70 @@ function ConsultDropdown({ value, onChange, options, placeholder, id }) {
 const ArticleDetailRoute = ({ onGetQuote }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const post = blogPosts.find(p => generateSlug(p.title) === slug);
+  const [post, setPost] = useState(() => blogPosts.find(p => generateSlug(p.title) === slug || p.id === slug) || null);
+  const [loading, setLoading] = useState(!post);
 
-  if (!post) return <div style={{padding: '100px', textAlign: 'center'}}>Article not found.</div>;
+  useEffect(() => {
+    let active = true;
+    const staticMatch = blogPosts.find(p => generateSlug(p.title) === slug || p.id === slug);
+    if (staticMatch) {
+      setPost(staticMatch);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    loadUpdate(slug).then((feedPost) => {
+      if (!active) return;
+      if (feedPost) {
+        setPost({
+          id: feedPost.id,
+          date: feedPost.dateLabel,
+          title: feedPost.title,
+          image: feedPost.image,
+          summary: feedPost.summary,
+          body: feedPost.body,
+          location: feedPost.location,
+          category: feedPost.category,
+          standard: feedPost.standard,
+          sizeRange: feedPost.sizeRange,
+          spec: feedPost.spec,
+          publishedAt: feedPost.publishedAt,
+          isFreshness: true,
+          slug: feedPost.id,
+        });
+      } else {
+        setPost(null);
+      }
+      setLoading(false);
+    }).catch(() => {
+      if (active) setLoading(false);
+    });
+
+    return () => { active = false; };
+  }, [slug]);
+
+  if (loading) {
+    return <div style={{ padding: '100px', textAlign: 'center', color: '#666' }}>Loading update details...</div>;
+  }
+
+  if (!post) {
+    return (
+      <div style={{ padding: '100px', textAlign: 'center' }}>
+        <h2>Update not found</h2>
+        <button className="article-back-btn" onClick={() => navigate('/updates')} style={{ marginTop: '20px', padding: '10px 20px', cursor: 'pointer' }}>
+          ← Back to Updates
+        </button>
+      </div>
+    );
+  }
 
   return (
     <ArticleDetailPage
       post={post}
       onBack={() => navigate('/updates')}
       allPosts={blogPosts}
-      onSelectArticle={(p) => navigate('/updates/' + generateSlug(p.title))}
+      onSelectArticle={(p) => navigate('/updates/' + (p.slug || generateSlug(p.title) || p.id))}
       onGetQuote={onGetQuote}
     />
   );
@@ -1698,7 +1782,49 @@ This request was submitted via the "Get your free estimate" section.
           <Route path="/products/:id" element={<ProductPage product={selectedProduct} onGetQuote={() => setShowQuoteModal(true)} onProductSelect={(p) => handleNavClick(null, 'products', p)} />} />
           <Route path="/" element={
             <>
-            <SEO title="Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad" description="Rayon Lab Tech is a leading manufacturer of premium laboratory furniture, fume hoods, and scientific equipment in Ahmedabad, providing high-quality solutions for modern research environments." />
+            <SEO
+              title="Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad | Rayon Lab Tech"
+              description="Rayon Lab Tech is a premier manufacturer of modular laboratory furniture, island tables, chemical fume hoods, anti-vibration tables, and lab exhaust systems in Ahmedabad, Gujarat."
+              canonical="https://rayonlabtech.in/"
+              schemaJson={{
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Who is the leading manufacturer of laboratory furniture in Ahmedabad?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Rayon Lab Tech is a premier manufacturer of modular laboratory furniture, working tables, island benches, chemical fume hoods, anti-vibration tables, and exhaust systems based in Dev Aditya Industrial Park, Ahmedabad, Gujarat."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What materials are used for Rayon Lab Tech laboratory workstations?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Workstations are fabricated using heavy-gauge Galvanized Iron (GI) sheets with chemical-resistant epoxy powder coating (60-80 microns) or AISI SS 304/316 stainless steel, fitted with natural black granite or epoxy resin worktops."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Do you manufacture custom-sized laboratory furniture and fume hoods?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes, Rayon Lab Tech provides turnkey 3D design, custom length/depth configurations, utility line integration, and on-site assembly for pharmaceutical, chemical, educational, and industrial laboratories across India."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How can I get a quote or consultation for a laboratory setup?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "You can contact our engineering sales team directly via phone at +91 9909030607 or email Rltsales@rayonlabtech.in, or submit your requirements through our website quote request form."
+                    }
+                  }
+                ]
+              }}
+            />
             
             <h1 className="sr-only" style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
               Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad

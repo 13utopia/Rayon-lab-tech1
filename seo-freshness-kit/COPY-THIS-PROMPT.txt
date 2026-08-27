@@ -1,0 +1,11 @@
+Read seo-freshness-kit/INTEGRATE.md from the first line to the last line.
+
+Then integrate THIS kit (the seo-freshness-kit folder already in this repo) into THIS website.
+
+Rules:
+- Follow INTEGRATE.md only. Do not invent a CMS or hourly posts.
+- Do not copy Navkar Tubes, Navkar, or any phone/address from example comments if this site already has its own.
+- Use this site's existing brand, city, and phone if you can find them.
+- When done, print the PASS/FAIL checklist from INTEGRATE.md.
+
+If seo-freshness-kit is not in this repo, stop and say: drop the folder into this project first.

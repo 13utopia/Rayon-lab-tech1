@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const SEO = ({ title, description }) => {
+const SEO = ({ title, description, canonical, schemaJson }) => {
   useEffect(() => {
     if (title) {
       document.title = title;
@@ -25,7 +25,34 @@ const SEO = ({ title, description }) => {
       const twitterDesc = document.querySelector('meta[property="twitter:description"]');
       if (twitterDesc) twitterDesc.setAttribute('content', description);
     }
-  }, [title, description]);
+
+    if (canonical) {
+      let linkCanonical = document.querySelector('link[rel="canonical"]');
+      if (!linkCanonical) {
+        linkCanonical = document.createElement('link');
+        linkCanonical.rel = 'canonical';
+        document.head.appendChild(linkCanonical);
+      }
+      linkCanonical.setAttribute('href', canonical);
+    }
+
+    let scriptEl = null;
+    if (schemaJson) {
+      scriptEl = document.createElement('script');
+      scriptEl.type = 'application/ld+json';
+      scriptEl.id = 'dynamic-seo-schema';
+      scriptEl.text = JSON.stringify(schemaJson);
+      // Remove any existing dynamic-seo-schema
+      const existing = document.getElementById('dynamic-seo-schema');
+      if (existing) existing.remove();
+      document.head.appendChild(scriptEl);
+    }
+
+    return () => {
+      const existing = document.getElementById('dynamic-seo-schema');
+      if (existing) existing.remove();
+    };
+  }, [title, description, canonical, schemaJson]);
 
   return null;
 };

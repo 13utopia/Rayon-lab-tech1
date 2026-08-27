@@ -1,0 +1,19 @@
+SEND THIS WHOLE FOLDER. Nothing else.
+
+You (the developer with Cursor):
+
+1. Put this folder inside the client website project
+   (same place as wp-config.php OR package.json).
+
+2. Open THAT website project in Cursor (not some other folder).
+
+3. Open COPY-THIS-PROMPT.txt, copy ALL of it, paste into Cursor chat, send.
+
+4. When Cursor finishes, do the 2 human clicks it prints:
+   - WordPress: Activate plugin + Permalinks Save
+   - Add the cron line to cPanel / hosting cron
+
+5. Open the URLs it lists. If /updates/ loads, you are done.
+
+Do not invent your own plan. Do not type "integrate this folder".
+Use COPY-THIS-PROMPT.txt only.

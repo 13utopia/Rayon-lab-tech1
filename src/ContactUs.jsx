@@ -70,7 +70,7 @@ function ContactEstimateDropdown({ value, onChange, options, placeholder, id }) 
   );
 }
 
-export default function ContactUs() {
+function ContactUs() {
   const navigate = useNavigate();
   const tooltipTimerRef = React.useRef(null);
   const [formData, setFormData] = React.useState({
@@ -181,10 +181,9 @@ Email: ${formData.email}
       id: 1,
       title: "Mail Us 24/7",
       details: [
-        { text: "Rltsales@rayonlabtech.in", href: "mailto:Rltsales@rayonlabtech.in" },
-        { text: "support@pbminfotech.com", href: "mailto:support@pbminfotech.com" }
+        { text: "Rltsales@rayonlabtech.in", href: "mailto:Rltsales@rayonlabtech.in" }
       ],
-      actionHref: "mailto:support@pbminfotech.com",
+      actionHref: "mailto:Rltsales@rayonlabtech.in",
       icon: (
         <svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M33.9959 10.4104C31.6152 8.77004 19.345 0.667507 19.1254 0.49117C18.6439 0.170877 18.0785 0 17.5002 0C16.9219 0 16.3565 0.170877 15.8749 0.49117L1.48094 10.085C1.03378 10.3322 0.660733 10.6943 0.400376 11.1339C0.140019 11.5735 0.00179767 12.0747 0 12.5856V30.5995C0.0059953 31.3583 0.310088 32.0844 0.846657 32.6209C1.38323 33.1575 2.10925 33.4616 2.86804 33.4676H32.132C32.7541 33.4678 33.3587 33.2615 33.8509 32.881C34.2064 32.616 34.4953 32.2719 34.6947 31.8759C34.8942 31.4799 34.9987 31.0429 35 30.5995V12.5856C35.0013 12.1718 34.912 11.7627 34.7386 11.3869C34.5652 11.0112 34.3117 10.6779 33.9959 10.4104ZM21.0744 19.9636C24.5519 17.6457 31.6336 12.9257 33.4749 11.6983C33.6528 11.9601 33.7486 12.2691 33.75 12.5856V30.5995C33.7497 30.9312 33.6468 31.2546 33.4553 31.5254L21.0744 19.9636ZM16.5662 1.53276C16.8429 1.34863 17.1679 1.25042 17.5004 1.25048C17.8328 1.25053 18.1578 1.34885 18.4345 1.53307L32.4536 10.8769L19.7278 19.363L18.4345 20.2208C18.1578 20.4053 17.8327 20.5037 17.5002 20.5037C17.1676 20.5037 16.8425 20.4053 16.5659 20.2208L2.54608 10.8769L16.5662 1.53276ZM1.54465 31.5254C1.35319 31.2546 1.25026 30.9312 1.25 30.5995V12.5856C1.25267 12.2694 1.34875 11.961 1.52618 11.6992C3.51345 13.0244 11.5617 18.3914 13.9228 19.9659C11.6723 22.0675 3.51795 29.6826 1.54465 31.5254ZM2.86804 32.2176C2.79757 32.2152 2.72734 32.2081 2.65781 32.1963C5.09041 29.9246 13.1858 22.3647 14.9911 20.6787C16.8329 22.0733 18.0874 22.1538 20.0056 20.6759L32.3422 32.1963C32.1147 32.2635 3.10471 32.1926 2.86804 32.2176Z" fill="url(#mailIconGradient)" />
@@ -218,8 +217,8 @@ Email: ${formData.email}
       id: 3,
       title: "Call US 24/7",
       details: [
-        { text: "Phone: +001 236-895-4732", href: "tel:+0012368954732" },
-        { text: "Mobile: +91 9909030607", href: "tel:+919909030607" }
+        { text: "Phone: +91 9909030607", href: "tel:+919909030607" },
+        { text: "Mobile: +91 9974089504", href: "tel:+919974089504" }
       ],
       actionHref: "tel:+919909030607",
       icon: (
@@ -251,7 +250,37 @@ Email: ${formData.email}
 
   return (
     <div className="contact-page">
-      <SEO title="Contact Us - Rayon Lab Tech" description="Get in touch with Rayon Lab Tech for your laboratory furniture needs." />
+      <SEO
+        title="Contact Rayon Lab Tech | Laboratory Furniture Manufacturer Ahmedabad"
+        description="Get in touch with Rayon Lab Tech in Ahmedabad, Gujarat for modular laboratory benches, fume hoods, island tables, and CAD lab planning consultation."
+        canonical="https://rayonlabtech.in/contact-us"
+        schemaJson={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact Rayon Lab Tech",
+          "url": "https://rayonlabtech.in/contact-us",
+          "mainEntity": {
+            "@type": ["LocalBusiness", "Manufacturer"],
+            "name": "Rayon Lab Tech",
+            "telephone": "+91-9909030607",
+            "email": "Rltsales@rayonlabtech.in",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "74 - Dev Aditya Industrial Park, Bakrol - Dhamatvan Rd, Daskroi",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "postalCode": "382430",
+              "addressCountry": "IN"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 22.9934,
+              "longitude": 72.7483
+            },
+            "openingHours": "Mo-Fr 09:00-18:00"
+          }
+        }}
+      />
       
       {/* Banner Section */}
       <section className="contact-banner" style={{ backgroundImage: `url(${contactHero})` }}>

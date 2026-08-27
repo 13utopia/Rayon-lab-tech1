@@ -1,0 +1,40 @@
+# Standard Search Engine Crawlers
+User-agent: *
+Allow: /
+
+# AI Answer Engines & LLM Crawlers (AEO / GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Sitemap & LLMs Knowledge Base
+Sitemap: https://rayonlabtech.in/sitemap.xml
+# LLMs contextual index
+# https://rayonlabtech.in/llms.txt
+# https://rayonlabtech.in/llms-full.txt

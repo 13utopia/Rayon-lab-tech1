@@ -1,0 +1,19 @@
+# {BRAND}
+
+{one-sentence description of the business, city, and what they sell}.
+
+## Facts
+- Company: {BRAND}
+- City: {CITY}, {REGION}, India
+- Phone: {PHONE}
+- Email: {EMAIL}
+
+## Freshness
+Yard / stock / dispatch notes publish on a fixed weekday cadence.
+List: {SITE}{LIST_PATH}
+Each post has a unique URL: {SITE}{LIST_PATH}/{id}
+
+## Site
+- Home: {SITE}/
+- Updates: {SITE}{LIST_PATH}
+- Sitemap: {SITE}/sitemap.xml

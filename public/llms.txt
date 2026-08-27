@@ -1,0 +1,32 @@
+# Rayon Lab Tech
+
+Manufacturer of premium modular laboratory furniture, fume hoods, anti-vibration tables, exhaust systems, and laboratory workstations based in Ahmedabad, Gujarat, India.
+
+## Facts
+- Company: Rayon Lab Tech
+- City: Ahmedabad, Gujarat, India
+- Address: 74 - Dev Aditya Industrial Park, Bakrol - Dhamatvan Rd, Daskroi, Gujarat 382430
+- Phone: +91 9909030607
+- Email: Rltsales@rayonlabtech.in
+
+## Products & Capabilities
+- Modular Laboratory Furniture & Island Tables
+- Chemical & Ducted Laboratory Fume Hoods
+- Anti-Vibration Tables for Precision Instruments
+- Fume Spot Extractors & Centrifugal Exhaust Blowers
+- Stainless Steel (SS 304/316) Lab Furniture & Sinks
+- Chemical Storage & Glassware Cabinets
+
+## Freshness
+Yard, stock, installation, and dispatch notes publish on a fixed weekday cadence (Tuesday & Friday).
+List: https://rayonlabtech.in/updates
+Each post has a unique URL: https://rayonlabtech.in/updates/{id}
+
+## Site
+- Home: https://rayonlabtech.in/
+- About Us: https://rayonlabtech.in/about-us
+- Products: https://rayonlabtech.in/products/laboratory-furniture
+- Portfolio: https://rayonlabtech.in/portfolio
+- Updates: https://rayonlabtech.in/updates
+- Contact: https://rayonlabtech.in/contact-us
+- Sitemap: https://rayonlabtech.in/sitemap.xml

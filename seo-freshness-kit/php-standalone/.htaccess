@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+RewriteRule ^llms\.txt$ llms.php [L]
+RewriteRule ^sitemap(-updates)?\.xml$ index.php [L]
+RewriteRule ^updates(/.*)?$ index.php [L]

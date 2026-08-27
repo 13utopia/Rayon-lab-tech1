@@ -1,5 +1,15 @@
 {
+  "crons": [
+    {
+      "path": "/api/publish",
+      "schedule": "30 1 * * 2,5"
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    },
     {
       "source": "/((?!api/.*).*)",
       "destination": "/index.html"

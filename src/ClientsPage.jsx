@@ -65,6 +65,14 @@ const ClientsPage = () => {
       <SEO 
         title="Our Clients & Key Partners | Rayon Lab Tech" 
         description="Explore our list of trusted clients across pharmaceutical, healthcare research, educational institutions, cosmetics, and industrial enterprises in India." 
+        canonical="https://rayonlabtech.in/clients"
+        schemaJson={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "Rayon Lab Tech Clientele & Partnerships",
+          "url": "https://rayonlabtech.in/clients",
+          "description": "Trusted by leading pharmaceutical giants, healthcare research institutes, and industrial laboratories across India."
+        }}
       />
 
       {/* Hero Banner Section */}

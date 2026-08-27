@@ -1,8 +1,10 @@
 import SEO from './SEO';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './blog-page.css';
 import labBannerBg from './assets/lab-working-table-62.webp';
+import { loadUpdates } from './client/fetch-updates';
+import { itemListJsonLd } from './client/schema';
 
 // Import scraped SEO articles
 import seoArticles from './data/seoArticles.json';
@@ -48,32 +50,82 @@ function getMatchedImage(title) {
 }
 
 // Map SEO articles to have scraped images, falling back to matched premium AI images
-export const blogPosts = seoArticles.map(article => ({
+export const staticBlogPosts = seoArticles.map(article => ({
   id: article.id,
   date: article.date,
   title: article.title,
-  // If the article has an authentic image scraped from the legacy site, use it!
-  // Otherwise, fallback to the AI matching logic.
-  image: article.image || getMatchedImage(article.title)
+  image: article.image || getMatchedImage(article.title),
+  slug: generateSlug(article.title),
+  isFreshness: false
 }));
 
+export const blogPosts = staticBlogPosts;
+
 const BlogPage = ({ showBanner = true }) => {
+  const [updates, setUpdates] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
+
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchFeed() {
+      try {
+        const liveUpdates = await loadUpdates();
+        if (isMounted && Array.isArray(liveUpdates) && liveUpdates.length > 0) {
+          const mapped = liveUpdates.map(u => ({
+            id: u.id,
+            date: u.dateLabel,
+            title: u.title,
+            image: u.image || getMatchedImage(u.title),
+            summary: u.summary,
+            location: u.location,
+            category: u.category,
+            isFreshness: true,
+            slug: u.id,
+            publishedAt: u.publishedAt
+          }));
+          setUpdates(mapped);
+        }
+      } catch (err) {
+        console.warn('Error fetching updates feed:', err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+    fetchFeed();
+    return () => { isMounted = false; };
+  }, []);
+
+  const allPosts = updates.length > 0 ? [...updates, ...staticBlogPosts] : staticBlogPosts;
 
   // Calculate pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPages = Math.ceil(blogPosts.length / postsPerPage);
+  const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(allPosts.length / postsPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const schema = itemListJsonLd({
+    siteUrl: 'https://rayonlabtech.in',
+    brand: 'Rayon Lab Tech',
+    listPath: '/updates',
+    posts: allPosts.map(p => ({ id: p.slug || p.id, title: p.title }))
+  });
+
   return (
     <div className="blog-page-v2">
+      <SEO
+        title="Live Facility Updates & Insights - Rayon Lab Tech"
+        description="Fresh updates, laboratory furniture dispatches, equipment installations, and technical case studies from Rayon Lab Tech Ahmedabad."
+        canonical="https://rayonlabtech.in/updates"
+        schemaJson={schema}
+      />
+
       {/* Banner Section */}
       {showBanner && (
         <section className="blog-banner" style={{ backgroundImage: `url(${labBannerBg})` }}>
@@ -91,34 +143,42 @@ const BlogPage = ({ showBanner = true }) => {
       {/* Blog Grid Section */}
       <div className="blog-grid-container">
         <div className="blog-posts-grid">
-          {currentPosts.map((post) => (
-            <div key={post.id} className="blog-post-card-wrap">
-              <Link to={`/updates/${generateSlug(post.title)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                <article className="blog-post-card">
-                  <div className="blog-post-image-wrap">
-                    <img src={post.image} alt={post.title} className="blog-post-image" />
-                  </div>
-                  <div className="blog-post-info">
-                    <div className="blog-post-meta">
-                      <span className="blog-post-date">{post.date}</span>
-                      <span className="blog-post-divider">/</span>
+          {currentPosts.map((post) => {
+            const linkTarget = `/updates/${post.slug || post.id}`;
+            return (
+              <div key={post.id} className="blog-post-card-wrap">
+                <Link to={linkTarget} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <article className="blog-post-card">
+                    <div className="blog-post-image-wrap">
+                      <img src={post.image} alt={post.title} className="blog-post-image" loading="lazy" />
                     </div>
-                    <h3 className="blog-post-title">{post.title}</h3>
-                  </div>
-                </article>
-              </Link>
-              <div className="blog-post-btn-wrap">
-                <Link to={`/updates/${generateSlug(post.title)}`}>
-                  <button className="blog-post-btn" aria-label="Read More">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </button>
+                    <div className="blog-post-info">
+                      <div className="blog-post-meta">
+                        <span className="blog-post-date">{post.date}</span>
+                        {post.category && (
+                          <>
+                            <span className="blog-post-divider">/</span>
+                            <span className="blog-post-category" style={{ fontSize: '0.85rem', color: '#0056b3', fontWeight: 600 }}>{post.category}</span>
+                          </>
+                        )}
+                      </div>
+                      <h3 className="blog-post-title">{post.title}</h3>
+                    </div>
+                  </article>
                 </Link>
+                <div className="blog-post-btn-wrap">
+                  <Link to={linkTarget}>
+                    <button className="blog-post-btn" aria-label="Read More">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </button>
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Pagination Controls */}

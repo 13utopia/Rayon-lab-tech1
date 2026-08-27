@@ -62,7 +62,33 @@ Requirement: ${formData.get('requirement')}
 
   return (
     <div className="about-page">
-      <SEO title="Manufacturer Of Laboratory Furniture & Equipment In India" description="Rayon Lab Tech is a Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad, delivering customised working tables, island tables, fume hoods, storage cabinets, exhaust systems, and stainless steel furniture for educational, research, healthcare, pharmaceutical, chemical, and industrial laboratory environments across India with professional support." />
+      <SEO
+        title="About Us | Manufacturer Of Laboratory Furniture & Equipment In India | Rayon Lab Tech"
+        description="Rayon Lab Tech is a leading manufacturer of laboratory furniture and scientific equipment in Ahmedabad, Gujarat, delivering customised workstations, fume hoods, and cleanroom solutions across India."
+        canonical="https://rayonlabtech.in/about-us"
+        schemaJson={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About Rayon Lab Tech",
+          "url": "https://rayonlabtech.in/about-us",
+          "mainEntity": {
+            "@type": "Organization",
+            "name": "Rayon Lab Tech",
+            "url": "https://rayonlabtech.in",
+            "description": "Manufacturer Of Laboratory Furniture & Equipment In Ahmedabad, delivering customised working tables, island tables, fume hoods, storage cabinets, exhaust systems, and stainless steel furniture across India.",
+            "telephone": "+91-9909030607",
+            "email": "Rltsales@rayonlabtech.in",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "74 - Dev Aditya Industrial Park, Bakrol - Dhamatvan Rd, Daskroi",
+              "addressLocality": "Ahmedabad",
+              "addressRegion": "Gujarat",
+              "postalCode": "382430",
+              "addressCountry": "IN"
+            }
+          }
+        }}
+      />
       
       <h1 className="sr-only" style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: '0' }}>
         Manufacturer Of Laboratory Furniture & Equipment In India

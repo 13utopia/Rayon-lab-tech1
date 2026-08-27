@@ -14,7 +14,18 @@ import portfolioS1Item3 from './assets/Chemical-Laboratory-Furniture-104.webp';
 const PortfolioPage = ({ onGetQuote, onProductsClick }) => {
   return (
     <div className="portfolio-page">
-      <SEO title="Our Portfolio - Rayon Lab Tech" description="Explore our successful laboratory installations and projects." />
+      <SEO
+        title="Our Portfolio & Installation Case Studies | Rayon Lab Tech"
+        description="Explore laboratory installation case studies and modular furniture projects by Rayon Lab Tech across healthcare, education, and pharmaceutical sectors."
+        canonical="https://rayonlabtech.in/portfolio"
+        schemaJson={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Rayon Lab Tech Project Portfolio",
+          "url": "https://rayonlabtech.in/portfolio",
+          "description": "Customized laboratory furniture installations engineered for safety, durability, and performance."
+        }}
+      />
       
       {/* Premium Banner Section */}
       <section className="portfolio-banner" style={{ backgroundImage: `linear-gradient(rgba(13, 30, 68, 0.75), rgba(13, 30, 68, 0.75)), url(${portfolio1})` }}>

@@ -1,0 +1,10 @@
+WordPress-only: this folder is a complete plugin.
+
+1. It must live at wp-content/plugins/seo-freshness/seo-freshness.php
+2. Activate plugin, then Settings → Permalinks → Save
+3. Settings → SEO Freshness: fill brand/city/phone from THIS site
+4. GET /wp-json/seo-freshness/v1/health
+5. GET /wp-json/seo-freshness/v1/publish?key=SECRET
+6. Open /updates/ in the browser
+
+Do not copy api/*.js into WordPress.

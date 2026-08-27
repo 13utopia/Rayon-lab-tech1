@@ -81,7 +81,7 @@ export const products = [
     heroTitle: "Laboratory furniture",
     heroSubtitle: "Engineered for precision and durability, our tables provide a stable foundation for critical research and analysis.",
     images: [newFurn1, newFurn2, newFurn3, newFurn4, newFurn5],
-    description: "LabEquip Inc. offers a modular type of working / instrument table with 3 unique types of frame design. This provides greater flexibility and Interchangeability according to your laboratory room space. We strictly adhere to International safety & manufacturing standards during production, assembly, and installation of all laboratory furniture.",
+    description: "Rayon Lab Tech offers a modular type of working / instrument table with 3 unique types of frame design. This provides greater flexibility and Interchangeability according to your laboratory room space. We strictly adhere to International safety & manufacturing standards during production, assembly, and installation of all laboratory furniture.",
     specs: [
       {
         heading: "Material Selection",
